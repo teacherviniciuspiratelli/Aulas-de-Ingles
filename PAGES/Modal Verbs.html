@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Modal Verbs - Ensino e Exercícios</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        /* Teaching Section */
+        .teaching-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .teaching-section h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #8e44ad;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .grammar-box {
+            background: #ecf0f1;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #8e44ad;
+        }
+        .grammar-box h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .grammar-box table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        .grammar-box table td, .grammar-box table th {
+            padding: 8px 12px;
+            border: 1px solid #bdc3c7;
+        }
+        .grammar-box table th {
+            background: #8e44ad;
+            color: white;
+            text-align: left;
+        }
+        .example {
+            background: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 8px 0;
+            border-left: 4px solid #3498db;
+        }
+        .example .en {
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        .example .pt {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        .highlight {
+            color: #8e44ad;
+            font-weight: bold;
+        }
+        .modal-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .modal-list .item {
+            background: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .modal-list .item .modal {
+            font-weight: 600;
+            color: #8e44ad;
+        }
+        .modal-list .item .meaning {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .tip {
+            background: #d1ecf1;
+            padding: 12px 18px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 4px solid #17a2b8;
+        }
+        .tip strong {
+            color: #0c5460;
+        }
+        .warning {
+            background: #fff3cd;
+            padding: 12px 18px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 4px solid #ffc107;
+        }
+        .warning strong {
+            color: #856404;
+        }
+
+        /* Exercise Sections */
+        .exercise-section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .exercise-section h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .exercise-item {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+        .exercise-item .question {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        .exercise-item .context {
+            color: #666;
+            font-style: italic;
+            font-size: 0.95em;
+            margin-bottom: 8px;
+        }
+        .options {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 8px 0;
+        }
+        .options label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+        .options label:hover {
+            background: #e8f4f8;
+        }
+        .options input[type="radio"] {
+            cursor: pointer;
+        }
+        .answer-line {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+        .answer-line input[type="text"] {
+            padding: 8px 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 15px;
+            width: 250px;
+            transition: border-color 0.3s;
+        }
+        .answer-line input[type="text"]:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        .translation-box {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .translation-box input {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        /* Feedback */
+        .feedback {
+            font-size: 0.9em;
+            margin-left: 10px;
+            padding: 3px 12px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        .feedback.correct {
+            background: #d4edda;
+            color: #155724;
+        }
+        .feedback.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .feedback.waiting {
+            background: #e9ecef;
+            color: #6c757d;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            margin: 5px;
+        }
+        .btn-primary {
+            background: #3498db;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        .btn-success {
+            background: #2ecc71;
+            color: white;
+        }
+        .btn-success:hover {
+            background: #27ae60;
+            transform: translateY(-2px);
+        }
+        .btn-danger {
+            background: #e74c3c;
+            color: white;
+        }
+        .btn-danger:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+        .btn-warning {
+            background: #f39c12;
+            color: white;
+        }
+        .btn-warning:hover {
+            background: #e67e22;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background: #95a5a6;
+            color: white;
+        }
+        .btn-secondary:hover {
+            background: #7f8c8d;
+            transform: translateY(-2px);
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .result-box {
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            text-align: center;
+            display: none;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        .result-box.correct {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+        .result-box.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+        .result-box.partial {
+            background: #fff3cd;
+            color: #856404;
+            display: block;
+        }
+        .section-result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+        .section-result.correct {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+        .section-result.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+        .section-result.partial {
+            background: #fff3cd;
+            color: #856404;
+            display: block;
+        }
+        .score-display {
+            text-align: center;
+            font-size: 1.2em;
+            padding: 10px;
+            background: #ecf0f1;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .score-display span {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        @media (max-width: 600px) {
+            .options {
+                flex-direction: column;
+                gap: 5px;
+            }
+            .answer-line input[type="text"] {
+                width: 100%;
+            }
+            .translation-box {
+                flex-direction: column;
+            }
+            .modal-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Modal Verbs</h1>
+        <p class="subtitle">Aprenda e pratique os verbos modais em inglês</p>
+
+        <!-- ==================== ENSINO ==================== -->
+        <div class="teaching-section">
+            <h2>📖 O que são Modal Verbs?</h2>
+            
+            <div class="grammar-box">
+                <h3>🔹 Definição</h3>
+                <p><strong>Modal verbs</strong> (verbos modais) são verbos auxiliares que expressam <strong>atitude</strong> ou <strong>modalidade</strong> em relação à ação principal. Eles indicam:</p>
+                <ul style="margin-left: 20px; line-height: 1.8; margin-top: 10px;">
+                    <li>✅ <strong>Habilidade</strong> (can, could)</li>
+                    <li>📋 <strong>Permissão</strong> (can, may, might)</li>
+                    <li>🎯 <strong>Obrigação</strong> (must, have to, should)</li>
+                    <li>💡 <strong>Possibilidade</strong> (may, might, could)</li>
+                    <li>🔮 <strong>Dedução</strong> (must, can't, may not)</li>
+                    <li>👥 <strong>Conselhos</strong> (should, ought to)</li>
+                </ul>
+            </div>
+
+            <div class="grammar-box">
+                <h3>🔹 Características dos Modal Verbs</h3>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li>🔸 <strong>Não mudam</strong> de forma (não têm -s, -ed, -ing)</li>
+                    <li>🔸 <strong>Sempre seguidos</strong> do verbo principal no infinitivo sem "to" (exceto ought to)</li>
+                    <li>🔸 <strong>Não precisam de auxiliar</strong> nas negativas e interrogativas</li>
+                    <li>🔸 <strong>Não têm infinitivo</strong> ou particípio</li>
+                </ul>
+                <div class="example">
+                    <div class="en">✅ <strong>She can speak</strong> three languages.</div>
+                    <div class="en">❌ She <strong>cans</strong> speak three languages.</div>
+                    <div class="en">✅ <strong>Can you help</strong> me?</div>
+                    <div class="en">❌ Do you can help me?</div>
+                </div>
+            </div>
+
+            <div class="grammar-box">
+                <h3>🔹 Tabela de Modal Verbs</h3>
+                <table>
+                    <tr>
+                        <th>Modal</th>
+                        <th>Uso Principal</th>
+                        <th>Exemplo</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Can</strong></td>
+                        <td>Habilidade, Permissão, Possibilidade</td>
+                        <td><span class="highlight">I can swim.</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Could</strong></td>
+                        <td>Habilidade passada, Pedido educado, Possibilidade</td>
+                        <td><span class="highlight">Could you help me?</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>May</strong></td>
+                        <td>Permissão formal, Possibilidade</td>
+                        <td><span class="highlight">May I come in?</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Might</strong></td>
+                        <td>Possibilidade remota</td>
+                        <td><span class="highlight">It might rain.</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Must</strong></td>
+                        <td>Obrigação forte, Dedução lógica</td>
+                        <td><span class="highlight">You must study.</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Should</strong></td>
+                        <td>Conselho, Recomendação</td>
+                        <td><span class="highlight">You should sleep.</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Would</strong></td>
+                        <td>Pedido educado, Condicional, Hábitos passados</td>
+                        <td><span class="highlight">Would you like tea?</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Will</strong></td>
+                        <td>Futuro, Promessa, Oferta</td>
+                        <td><span class="highlight">I will help you.</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Shall</strong></td>
+                        <td>Oferta, Sugestão (com I/We)</td>
+                        <td><span class="highlight">Shall we go?</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ought to</strong></td>
+                        <td>Conselho (similar a should)</td>
+                        <td><span class="highlight">You ought to rest.</span></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="grammar-box">
+                <h3>🔹 Estrutura das Frases</h3>
+                <table>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Estrutura</th>
+                        <th>Exemplo</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Afirmativa</strong></td>
+                        <td>Sujeito + modal + verbo base</td>
+                        <td><span class="highlight">She can dance.</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Negativa</strong></td>
+                        <td>Sujeito + modal + not + verbo base</td>
+                        <td><span class="highlight">She cannot dance.</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Interrogativa</strong></td>
+                        <td>Modal + sujeito + verbo base?</td>
+                        <td><span class="highlight">Can she dance?</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Resposta curta</strong></td>
+                        <td>Yes/No + sujeito + modal</td>
+                        <td><span class="highlight">Yes, she can.</span></td>
+                    </tr>
+                </table>
+                <div class="warning">
+                    <strong>⚠️ Atenção:</strong> Na negativa, "can not" geralmente é contraído para <strong>"can't"</strong>, e "will not" para <strong>"won't"</strong>.
+                </div>
+            </div>
+
+            <div class="grammar-box">
+                <h3>🔹 Diferenças Importantes</h3>
+                <div class="example">
+                    <div class="en"><strong>Must vs Have to</strong></div>
+                    <div class="en">📌 <strong>Must</strong> = obrigação pessoal / interna</div>
+                    <div class="en">📌 <strong>Have to</strong> = obrigação externa / regra</div>
+                    <div class="pt"><em>I must study. (eu decidi)</em></div>
+                    <div class="pt"><em>I have to study. (o professor exige)</em></div>
+                </div>
+                <div class="example">
+                    <div class="en"><strong>Can vs May</strong></div>
+                    <div class="en">📌 <strong>Can</strong> = permissão informal</div>
+                    <div class="en">📌 <strong>May</strong> = permissão formal</div>
+                    <div class="pt"><em>Can I use your phone? (informal)</em></div>
+                    <div class="pt"><em>May I come in? (formal)</em></div>
+                </div>
+                <div class="example">
+                    <div class="en"><strong>Should vs Must</strong></div>
+                    <div class="en">📌 <strong>Should</strong> = conselho (não é obrigatório)</div>
+                    <div class="en">📌 <strong>Must</strong> = obrigação (é necessário)</div>
+                    <div class="pt"><em>You should eat vegetables. (recomendação)</em></div>
+                    <div class="pt"><em>You must stop at the red light. (obrigatório)</em></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== EXERCÍCIOS ==================== -->
+
+        <!-- EXERCÍCIO 1: Selecionar -->
+        <div class="exercise-section" id="sec1">
+            <h2>📝 Exercício 1: Escolha o modal verb correto</h2>
+            <p style="color: #666; margin-bottom: 15px;">Selecione o modal verb que melhor completa a frase.</p>
+
+            <div class="exercise-item">
+                <div class="question">1. She ______ speak three languages fluently.</div>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="can"> can</label>
+                    <label><input type="radio" name="q1" value="must"> must</label>
+                    <label><input type="radio" name="q1" value="should"> should</label>
+                </div>
+                <span class="feedback" id="fb1"></span>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">2. ______ I use your phone? (formal)</div>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="Can"> Can</label>
+                    <label><input type="radio" name="q2" value="May"> May</label>
+                    <label><input type="radio" name="q2" value="Should"> Should</label>
+                </div>
+                <span class="feedback" id="fb2"></span>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">3. You ______ eat more vegetables. It's good for you.</div>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="can"> can</label>
+                    <label><input type="radio" name="q3" value="must"> must</label>
+                    <label><input type="radio" name="q3" value="should"> should</label>
+                </div>
+                <span class="feedback" id="fb3"></span>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">4. She looks tired. She ______ be sick.</div>
+                <div class="options">
+                    <label><input type="radio" name="q4" value="might"> might</label>
+                    <label><input type="radio" name="q4" value="must"> must</label>
+                    <label><input type="radio" name="q4" value="will"> will</label>
+                </div>
+                <span class="feedback" id="fb4"></span>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">5. You ______ stop at the red light. It's the law.</div>
+                <div class="options">
+                    <label><input type="radio" name="q5" value="should"> should</label>
+                    <label><input type="radio" name="q5" value="can"> can</label>
+                    <label><input type="radio" name="q5" value="must"> must</label>
+                </div>
+                <span class="feedback" id="fb5"></span>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-success" onclick="checkSelectExercise()">Verificar Respostas</button>
+            </div>
+            <div class="section-result" id="resultSelect"></div>
+        </div>
+
+        <!-- EXERCÍCIO 2: Escrever -->
+        <div class="exercise-section" id="sec2">
+            <h2>✍️ Exercício 2: Complete com o modal verb correto</h2>
+            <p style="color: #666; margin-bottom: 15px;">Escreva o modal verb adequado para cada frase.</p>
+
+            <div class="exercise-item">
+                <div class="question">6. ______ (Habilidade) you play the guitar?</div>
+                <div class="answer-line">
+                    <input type="text" class="q6" placeholder="Sua resposta...">
+                    <span class="feedback" id="fb6"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">7. I ______ (obrigação) finish this report today.</div>
+                <div class="answer-line">
+                    <input type="text" class="q7" placeholder="Sua resposta...">
+                    <span class="feedback" id="fb7"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">8. You ______ (conselho) see a doctor.</div>
+                <div class="answer-line">
+                    <input type="text" class="q8" placeholder="Sua resposta...">
+                    <span class="feedback" id="fb8"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">9. ______ (Permissão formal) I leave early?</div>
+                <div class="answer-line">
+                    <input type="text" class="q9" placeholder="Sua resposta...">
+                    <span class="feedback" id="fb9"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">10. It ______ (possibilidade) rain tomorrow.</div>
+                <div class="answer-line">
+                    <input type="text" class="q10" placeholder="Sua resposta...">
+                    <span class="feedback" id="fb10"></span>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-success" onclick="checkWriteExercise()">Verificar Respostas</button>
+            </div>
+            <div class="section-result" id="resultWrite"></div>
+        </div>
+
+        <!-- EXERCÍCIO 3: Frases completas -->
+        <div class="exercise-section" id="sec3">
+            <h2>✍️ Exercício 3: Forme frases com modal verbs</h2>
+            <p style="color: #666; margin-bottom: 15px;">Crie frases completas usando o modal verb indicado.</p>
+
+            <div class="exercise-item">
+                <div class="question">11. Use "must" (obrigação) com "study".</div>
+                <div class="answer-line">
+                    <input type="text" class="q11" placeholder="Escreva a frase..." style="width: 400px;">
+                    <span class="feedback" id="fb11"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">12. Use "can" (habilidade) com "swim".</div>
+                <div class="answer-line">
+                    <input type="text" class="q12" placeholder="Escreva a frase..." style="width: 400px;">
+                    <span class="feedback" id="fb12"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">13. Use "should" (conselho) com "sleep".</div>
+                <div class="answer-line">
+                    <input type="text" class="q13" placeholder="Escreva a frase..." style="width: 400px;">
+                    <span class="feedback" id="fb13"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">14. Use "could" (pedido educado) com "help".</div>
+                <div class="answer-line">
+                    <input type="text" class="q14" placeholder="Escreva a frase..." style="width: 400px;">
+                    <span class="feedback" id="fb14"></span>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-success" onclick="checkSentenceExercise()">Verificar Respostas</button>
+            </div>
+            <div class="section-result" id="resultSentence"></div>
+        </div>
+
+        <!-- EXERCÍCIO 4: Tradução -->
+        <div class="exercise-section" id="sec4">
+            <h2>🌍 Exercício 4: Tradução</h2>
+            <p style="color: #666; margin-bottom: 15px;">Traduza as frases para o inglês usando modal verbs.</p>
+
+            <div class="exercise-item">
+                <div class="context">🇧🇷 Eu posso nadar muito bem.</div>
+                <div class="translation-box">
+                    <input type="text" class="q15" placeholder="Tradução em inglês..." style="width: 400px;">
+                    <span class="feedback" id="fb15"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="context">🇧🇷 Você deve estudar mais.</div>
+                <div class="translation-box">
+                    <input type="text" class="q16" placeholder="Tradução em inglês..." style="width: 400px;">
+                    <span class="feedback" id="fb16"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="context">🇧🇷 Posso entrar? (formal)</div>
+                <div class="translation-box">
+                    <input type="text" class="q17" placeholder="Tradução em inglês..." style="width: 400px;">
+                    <span class="feedback" id="fb17"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="context">🇧🇷 Ele não pode dirigir.</div>
+                <div class="translation-box">
+                    <input type="text" class="q18" placeholder="Tradução em inglês..." style="width: 400px;">
+                    <span class="feedback" id="fb18"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="context">🇧🇷 Nós deveríamos ajudar.</div>
+                <div class="translation-box">
+                    <input type="text" class="q19" placeholder="Tradução em inglês..." style="width: 400px;">
+                    <span class="feedback" id="fb19"></span>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-success" onclick="checkTranslationExercise()">Verificar Traduções</button>
+            </div>
+            <div class="section-result" id="resultTranslation"></div>
+        </div>
+
+        <!-- EXERCÍCIO 5: Misto -->
+        <div class="exercise-section" id="sec5">
+            <h2>🔀 Exercício 5: Misto</h2>
+            <p style="color: #666; margin-bottom: 15px;">Combine diferentes habilidades com modal verbs.</p>
+
+            <div class="exercise-item">
+                <div class="question">20. Escolha: She ______ (can/must/might) be at home. I'm not sure.</div>
+                <div class="options">
+                    <label><input type="radio" name="q20" value="can"> can</label>
+                    <label><input type="radio" name="q20" value="must"> must</label>
+                    <label><input type="radio" name="q20" value="might"> might</label>
+                </div>
+                <span class="feedback" id="fb20"></span>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">21. Complete: You ______ (deveria) call your mother.</div>
+                <div class="answer-line">
+                    <input type="text" class="q21" placeholder="Sua resposta...">
+                    <span class="feedback" id="fb21"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="context">🇧🇷 Ela precisa descansar. (obrigação)</div>
+                <div class="translation-box">
+                    <input type="text" class="q22" placeholder="Tradução em inglês..." style="width: 400px;">
+                    <span class="feedback" id="fb22"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">23. Use "could" para fazer um pedido educado com "open the window".</div>
+                <div class="answer-line">
+                    <input type="text" class="q23" placeholder="Escreva a frase..." style="width: 400px;">
+                    <span class="feedback" id="fb23"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">24. Escolha: ______ we leave now? (sugestão)</div>
+                <div class="options">
+                    <label><input type="radio" name="q24" value="Can"> Can</label>
+                    <label><input type="radio" name="q24" value="Shall"> Shall</label>
+                    <label><input type="radio" name="q24" value="Will"> Will</label>
+                </div>
+                <span class="feedback" id="fb24"></span>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-success" onclick="checkMixedExercise()">Verificar Respostas</button>
+            </div>
+            <div class="section-result" id="resultMixed"></div>
+        </div>
+
+        <!-- ==================== BOTÕES GLOBAIS ==================== -->
+        <div class="button-group">
+            <button class="btn btn-danger" onclick="checkAllExercises()">✅ Verificar Todos os Exercícios</button>
+            <button class="btn btn-secondary" onclick="resetAllExercises()">🔄 Resetar Todos</button>
+        </div>
+
+        <div class="score-display">
+            Total: <span id="scoreCount">0</span> / <span id="totalCount">0</span> corretas
+        </div>
+        <div class="result-box" id="globalResult"></div>
+
+    </div>
+
+    <script>
+        // ==================== RESPOSTAS ====================
+        const answers = {
+            select: ['can', 'May', 'should', 'might', 'must'],
+            write: ['can', 'must', 'should', 'may', 'might'],
+            sentences: [
+                ['i must study', 'you must study', 'she must study', 'he must study', 'we must study', 'they must study'],
+                ['i can swim', 'you can swim', 'she can swim', 'he can swim', 'we can swim', 'they can swim'],
+                ['i should sleep', 'you should sleep', 'she should sleep', 'he should sleep', 'we should sleep', 'they should sleep'],
+                ['could you help me', 'could you help']
+            ],
+            translations: [
+                ['i can swim very well'],
+                ['you must study more', 'you should study more'],
+                ['may i come in', 'may i enter'],
+                ['he cannot drive', 'he can\'t drive', 'he can not drive'],
+                ['we should help', 'we ought to help']
+            ],
+            mixed: ['might', 'should', 'she must rest', 'could you open the window', 'Shall']
+        };
+
+        // ==================== FUNÇÕES ====================
+        function normalize(text) {
+            return text.toLowerCase().trim().replace(/\s+/g, ' ');
+        }
+
+        function checkSelectExercise() {
+            let correct = 0;
+            const total = 5;
+            for (let i = 1; i <= total; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                const fb = document.getElementById(`fb${i}`);
+                if (selected) {
+                    const isCorrect = selected.value === answers.select[i-1];
+                    fb.textContent = isCorrect ? '✓ Correto' : '✗ Incorreto';
+                    fb.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                    if (isCorrect) correct++;
+                } else {
+                    fb.textContent = '⚠️ Selecione uma opção';
+                    fb.className = 'feedback waiting';
+                }
+            }
+            showSectionResult('resultSelect', correct, total);
+        }
+
+        function checkWriteExercise() {
+            let correct = 0;
+            const total = 5;
+            for (let i = 6; i <= 10; i++) {
+                const input = document.querySelector(`.q${i}`);
+                const fb = document.getElementById(`fb${i}`);
+                if (input) {
+                    const userAnswer = normalize(input.value);
+                    const isCorrect = userAnswer === answers.write[i-6];
+                    fb.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                    fb.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                    if (isCorrect) correct++;
+                }
+            }
+            showSectionResult('resultWrite', correct, total);
+        }
+
+        function checkSentenceExercise() {
+            let correct = 0;
+            const total = 4;
+            for (let i = 11; i <= 14; i++) {
+                const input = document.querySelector(`.q${i}`);
+                const fb = document.getElementById(`fb${i}`);
+                if (input) {
+                    const userAnswer = normalize(input.value);
+                    const isValid = answers.sentences[i-11].some(acceptable => 
+                        userAnswer.includes(acceptable)
+                    );
+                    fb.textContent = userAnswer === '' ? '⚠️ Preencha' : (isValid ? '✓ Correto' : '✗ Incorreto');
+                    fb.className = `feedback ${userAnswer === '' ? 'waiting' : (isValid ? 'correct' : 'incorrect')}`;
+                    if (isValid) correct++;
+                }
+            }
+            showSectionResult('resultSentence', correct, total);
+        }
+
+        function checkTranslationExercise() {
+            let correct = 0;
+            const total = 5;
+            for (let i = 15; i <= 19; i++) {
+                const input = document.querySelector(`.q${i}`);
+                const fb = document.getElementById(`fb${i}`);
+                if (input) {
+                    const userAnswer = normalize(input.value);
+                    const isValid = answers.translations[i-15].some(acceptable => 
+                        userAnswer === acceptable
+                    );
+                    fb.textContent = userAnswer === '' ? '⚠️ Preencha' : (isValid ? '✓ Correto' : '✗ Incorreto');
+                    fb.className = `feedback ${userAnswer === '' ? 'waiting' : (isValid ? 'correct' : 'incorrect')}`;
+                    if (isValid) correct++;
+                }
+            }
+            showSectionResult('resultTranslation', correct, total);
+        }
+
+        function checkMixedExercise() {
+            let correct = 0;
+            const total = 5;
+
+            // Q20
+            const selected = document.querySelector(`input[name="q20"]:checked`);
+            const fb20 = document.getElementById('fb20');
+            if (selected) {
+                const isCorrect = selected.value === answers.mixed[0];
+                fb20.textContent = isCorrect ? '✓ Correto' : '✗ Incorreto';
+                fb20.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                if (isCorrect) correct++;
+            } else {
+                fb20.textContent = '⚠️ Selecione uma opção';
+                fb20.className = 'feedback waiting';
+            }
+
+            // Q21
+            const input21 = document.querySelector('.q21');
+            const fb21 = document.getElementById('fb21');
+            if (input21) {
+                const userAnswer = normalize(input21.value);
+                const isCorrect = userAnswer === answers.mixed[1];
+                fb21.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                fb21.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                if (isCorrect) correct++;
+            }
+
+            // Q22
+            const input22 = document.querySelector('.q22');
+            const fb22 = document.getElementById('fb22');
+            if (input22) {
+                const userAnswer = normalize(input22.value);
+                const isCorrect = userAnswer === answers.mixed[2];
+                fb22.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                fb22.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                if (isCorrect) correct++;
+            }
+
+            // Q23
+            const input23 = document.querySelector('.q23');
+            const fb23 = document.getElementById('fb23');
+            if (input23) {
+                const userAnswer = normalize(input23.value);
+                const isValid = userAnswer.includes('could you open the window');
+                fb23.textContent = userAnswer === '' ? '⚠️ Preencha' : (isValid ? '✓ Correto' : '✗ Incorreto');
+                fb23.className = `feedback ${userAnswer === '' ? 'waiting' : (isValid ? 'correct' : 'incorrect')}`;
+                if (isValid) correct++;
+            }
+
+            // Q24
+            const selected24 = document.querySelector(`input[name="q24"]:checked`);
+            const fb24 = document.getElementById('fb24');
+            if (selected24) {
+                const isCorrect = selected24.value === answers.mixed[4];
+                fb24.textContent = isCorrect ? '✓ Correto' : '✗ Incorreto';
+                fb24.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                if (isCorrect) correct++;
+            } else {
+                fb24.textContent = '⚠️ Selecione uma opção';
+                fb24.className = 'feedback waiting';
+            }
+
+            showSectionResult('resultMixed', correct, total);
+        }
+
+        // ==================== FUNÇÕES AUXILIARES ====================
+        function showSectionResult(elementId, correct, total) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.textContent = `Você acertou ${correct} de ${total} (${Math.round(correct/total*100)}%)`;
+                element.className = `section-result ${correct === total ? 'correct' : (correct > 0 ? 'partial' : 'incorrect')}`;
+            }
+            updateGlobalScore();
+        }
+
+        function updateGlobalScore() {
+            let correct = 0;
+            let total = 0;
+            
+            document.querySelectorAll('.feedback').forEach(fb => {
+                if (fb.textContent.includes('✓')) {
+                    correct++;
+                    total++;
+                } else if (fb.textContent.includes('✗') || fb.textContent.includes('⚠️')) {
+                    total++;
+                }
+            });
+            
+            document.getElementById('scoreCount').textContent = correct;
+            document.getElementById('totalCount').textContent = total;
+        }
+
+        function checkAllExercises() {
+            checkSelectExercise();
+            checkWriteExercise();
+            checkSentenceExercise();
+            checkTranslationExercise();
+            checkMixedExercise();
+            
+            const total = document.querySelectorAll('.feedback').length;
+            const correct = document.querySelectorAll('.feedback.correct').length;
+            const result = document.getElementById('globalResult');
+            result.textContent = `🎯 Você acertou ${correct} de ${total} questões (${Math.round(correct/total*100)}%)`;
+            result.className = `result-box ${correct === total ? 'correct' : (correct > total/2 ? 'partial' : 'incorrect')}`;
+        }
+
+        function resetAllExercises() {
+            document.querySelectorAll('input[type="radio"]').forEach(el => el.checked = false);
+            document.querySelectorAll('input[type="text"]').forEach(el => el.value = '');
+            document.querySelectorAll('.feedback').forEach(el => {
+                el.textContent = '';
+                el.className = 'feedback';
+            });
+            document.querySelectorAll('.section-result').forEach(el => {
+                el.textContent = '';
+                el.className = 'section-result';
+            });
+            const result = document.getElementById('globalResult');
+            result.textContent = '';
+            result.className = 'result-box';
+            updateGlobalScore();
+        }
+
+        // Event listeners
+        document.querySelectorAll('input[type="text"]').forEach(input => {
+            input.addEventListener('input', updateGlobalScore);
+        });
+        document.querySelectorAll('input[type="radio"]').forEach(input => {
+            input.addEventListener('change', updateGlobalScore);
+        });
+
+        updateGlobalScore();
+    </script>
+</body>
+</html>

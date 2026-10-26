@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprenda Question Tags - Inglês Básico</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        header {
+            background: #4e54c8;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        h2 {
+            color: #4e54c8;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        
+        h3 {
+            color: #5a67d8;
+            margin: 20px 0 10px;
+            font-size: 1.4rem;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .example-box {
+            background: white;
+            border-left: 4px solid #4e54c8;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .example {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #4e54c8;
+        }
+        
+        .translation {
+            font-style: italic;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .rule-box {
+            display: flex;
+            align-items: center;
+            background: #e9ecef;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        
+        .rule-number {
+            background: #4e54c8;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+        
+        .interactive-area {
+            background: white;
+            border: 2px dashed #4e54c8;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .practice-box {
+            background: #f0f4ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .question {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        input {
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            width: 200px;
+            margin: 0 10px;
+            font-size: 1rem;
+        }
+        
+        button {
+            background: #4e54c8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+            margin: 10px 5px;
+        }
+        
+        button:hover {
+            background: #3a40b0;
+        }
+        
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            display: block; /* Mudei de 'none' para 'block' para mostrar sempre */
+        }
+        
+        .correct {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .tips {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            input {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Question Tags</h1>
+            <p class="subtitle">Aprenda a usar "não é?", "você não?", etc. em inglês</p>
+        </header>
+        
+        <div class="content">
+            <div class="section">
+                <h2>O que são Question Tags?</h2>
+                <p>Question Tags são pequenas perguntas que colocamos no final de frases para confirmar informações, pedir concordância ou iniciar uma conversa.</p>
+                
+                <div class="example-box">
+                    <div class="example">You like pizza, <span style="color:red">don't you</span>?</div>
+                    <div class="translation">Você gosta de pizza, não gosta?</div>
+                </div>
+                
+                <div class="example-box">
+                    <div class="example">She is Brazilian, <span style="color:red">isn't she</span>?</div>
+                    <div class="translation">Ela é brasileira, não é?</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Como formar Question Tags</h2>
+                <p>Existem duas regras principais para formar question tags:</p>
+                
+                <div class="rule-box">
+                    <div class="rule-number">1</div>
+                    <div>
+                        <strong>Se a frase principal é afirmativa, a question tag é negativa</strong>
+                    </div>
+                </div>
+                
+                <div class="example-box">
+                    <div class="example">You speak English, <span style="color:red">don't you</span>?</div>
+                    <div class="translation">Você fala inglês, não fala?</div>
+                </div>
+                
+                <div class="rule-box">
+                    <div class="rule-number">2</div>
+                    <div>
+                        <strong>Se a frase principal é negativa, a question tag é afirmativa</strong>
+                    </div>
+                </div>
+                
+                <div class="example-box">
+                    <div class="example">You don't like coffee, <span style="color:red">do you</span>?</div>
+                    <div class="translation">Você não gosta de café, gosta?</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Verbo TO BE</h2>
+                <p>Com o verbo TO BE, usamos a mesma forma do verbo na question tag:</p>
+                
+                <div class="example-box">
+                    <div class="example">He is tired, <span style="color:red">isn't he</span>?</div>
+                    <div class="translation">Ele está cansado, não está?</div>
+                </div>
+                
+                <div class="example-box">
+                    <div class="example">They are students, <span style="color:red">aren't they</span>?</div>
+                    <div class="translation">Eles são estudantes, não são?</div>
+                </div>
+                
+                <div class="example-box">
+                    <div class="example">I am late, <span style="color:red">aren't I</span>?</div>
+                    <div class="translation">Eu estou atrasado, não estou?</div>
+                    <p><small>Nota: Com "I am", usamos "aren't I" como exceção</small></p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Verbos Modais</h2>
+                <p>Com verbos modais (can, will, should, etc.), repetimos o modal na question tag:</p>
+                
+                <div class="example-box">
+                    <div class="example">You can swim, <span style="color:red">can't you</span>?</div>
+                    <div class="translation">Você sabe nadar, não sabe?</div>
+                </div>
+                
+                <div class="example-box">
+                    <div class="example">She will come, <span style="color:red">won't she</span>?</div>
+                    <div class="translation">Ela virá, não virá?</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Verbos no Presente Simples</h2>
+                <p>Com verbos no presente simples (sem auxiliar), usamos "do" ou "does":</p>
+                
+                <div class="example-box">
+                    <div class="example">You work here, <span style="color:red">don't you</span>?</div>
+                    <div class="translation">Você trabalha aqui, não trabalha?</div>
+                </div>
+                
+                <div class="example-box">
+                    <div class="example">He likes music, <span style="color:red">doesn't he</span>?</div>
+                    <div class="translation">Ele gosta de música, não gosta?</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Verbos no Passado Simples</h2>
+                <p>Com verbos no passado simples, usamos "did":</p>
+                
+                <div class="example-box">
+                    <div class="example">You went to the party, <span style="color:red">didn't you</span>?</div>
+                    <div class="translation">Você foi à festa, não foi?</div>
+                </div>
+                
+                <div class="example-box">
+                    <div class="example">She studied English, <span style="color:red">didn't she</span>?</div>
+                    <div class="translation">Ela estudou inglês, não estudou?</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Vamos Praticar!</h2>
+                <div class="exercise">
+                    <h3>Complete as question tags corretamente:</h3> <!-- Corrigi a tag h3 -->
+                    
+                    <div class="question">
+                        <p>1. You like chocolate, __________?</p>
+                        <input type="text" id="q1" placeholder="digite a question tag">
+                        <button onclick="checkAnswer(1)">Verificar</button>
+                        <div id="result1" class="result"></div>
+                    </div>
+                    
+                    <div class="question">
+                        <p>2. She is a doctor, __________?</p>
+                        <input type="text" id="q2" placeholder="digite a question tag">
+                        <button onclick="checkAnswer(2)">Verificar</button>
+                        <div id="result2" class="result"></div>
+                    </div>
+                    
+                    <div class="question">
+                        <p>3. They can help us, __________?</p>
+                        <input type="text" id="q3" placeholder="digite a question tag">
+                        <button onclick="checkAnswer(3)">Verificar</button>
+                        <div id="result3" class="result"></div>
+                    </div>
+                    
+                    <div class="question">
+                        <p>4. He doesn't speak French, __________?</p>
+                        <input type="text" id="q4" placeholder="digite a question tag">
+                        <button onclick="checkAnswer(4)">Verificar</button>
+                        <div id="result4" class="result"></div>
+                    </div>
+                    
+                    <button onclick="checkAllAnswers()" style="margin-top: 20px;">Verificar Todas as Respostas</button>
+                    <button onclick="resetExercises()" style="margin-top: 10px; background-color: #95a5a6;">Limpar Respostas</button>
+                </div>
+            </div> <!-- Fechamento correto da section -->
+            
+            <div class="section">
+                <div class="tips">
+                    <h3>Dicas Importantes:</h3>
+                    <ul>
+                        <li>Pronomes sempre se referem ao sujeito da frase principal</li>
+                        <li>A question tag sempre usa o mesmo tempo verbal da frase principal</li>
+                        <li>Com "I am", usamos "aren't I" como exceção à regra</li>
+                        <li>Com "Let's", usamos "shall we" (ex: Let's go, shall we?)</li>
+                    </ul>
+                </div>
+            </div> <!-- Fechamento correto da section -->
+        </div> <!-- Fechamento do content -->
+        
+        <footer>
+            <p>Aula de Inglês - Question Tags para Iniciantes</p>
+        </footer>
+    </div>
+
+    <script>
+        // Respostas corretas
+        const answers = {
+            1: "don't you",
+            2: "isn't she",
+            3: "can't they",
+            4: "does he",
+        };
+        
+        // Função para verificar uma resposta individual
+        function checkAnswer(questionNumber) {
+            const userAnswer = document.getElementById(`q${questionNumber}`).value.trim().toLowerCase();
+            const correctAnswer = answers[questionNumber].toLowerCase();
+            const resultElement = document.getElementById(`result${questionNumber}`);
+            
+            if (userAnswer === correctAnswer) {
+                resultElement.textContent = "✓ Correto!";
+                resultElement.className = "result correct";
+                resultElement.style.display = "block";
+            } else {
+                resultElement.textContent = `✗ Incorreto. A resposta correta é: "${answers[questionNumber]}"`;
+                resultElement.className = "result incorrect";
+                resultElement.style.display = "block";
+            }
+        }
+        
+        // Função para verificar todas as respostas
+        function checkAllAnswers() {
+            for (let i = 1; i <= 4; i++) {
+                checkAnswer(i);
+            }
+        }
+        
+        // Função para limpar todas as respostas
+        function resetExercises() {
+            for (let i = 1; i <= 4; i++) {
+                document.getElementById(`q${i}`).value = "";
+                const resultElement = document.getElementById(`result${i}`);
+                resultElement.textContent = "";
+                resultElement.className = "result";
+                resultElement.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Used to / Would - Hábitos Passados</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f0f4f8;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+        
+        /* Teaching Section */
+        .teaching-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .teaching-section h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .grammar-box {
+            background: #ecf0f1;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #3498db;
+        }
+        .grammar-box h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .grammar-box table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        .grammar-box table td {
+            padding: 8px 12px;
+            border: 1px solid #bdc3c7;
+        }
+        .grammar-box table th {
+            background: #3498db;
+            color: white;
+            padding: 8px 12px;
+            border: 1px solid #3498db;
+            text-align: left;
+        }
+        .example {
+            background: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 8px 0;
+            border-left: 4px solid #2ecc71;
+        }
+        .example .en {
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        .example .pt {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        .highlight {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .highlight-blue {
+            color: #2980b9;
+            font-weight: bold;
+        }
+        .formula {
+            background: #2c3e50;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.1em;
+            margin: 15px 0;
+        }
+        .formula span {
+            color: #f1c40f;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        .comparison-table th {
+            background: #2c3e50;
+            color: white;
+            padding: 10px 12px;
+            text-align: left;
+        }
+        .comparison-table td {
+            padding: 10px 12px;
+            border: 1px solid #bdc3c7;
+            vertical-align: top;
+        }
+        .comparison-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        /* Exercise Sections */
+        .exercise-section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .exercise-section h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #e67e22;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .exercise-item {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+        .exercise-item .question {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .exercise-item .context {
+            color: #666;
+            font-style: italic;
+            font-size: 0.95em;
+            margin-bottom: 8px;
+        }
+        .options {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 8px 0;
+        }
+        .options label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+        .options label:hover {
+            background: #e8f4f8;
+        }
+        .options input[type="radio"] {
+            cursor: pointer;
+        }
+        .answer-line {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+        .answer-line input[type="text"] {
+            padding: 8px 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 15px;
+            width: 300px;
+            transition: border-color 0.3s;
+        }
+        .answer-line input[type="text"]:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        .translation-box {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .translation-box input {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        /* Feedback */
+        .feedback {
+            font-size: 0.9em;
+            margin-left: 10px;
+            padding: 3px 12px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        .feedback.correct {
+            background: #d4edda;
+            color: #155724;
+        }
+        .feedback.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .feedback.waiting {
+            background: #e9ecef;
+            color: #6c757d;
+        }
+        
+        /* Buttons */
+        .btn {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            margin: 5px;
+        }
+        .btn-success {
+            background: #2ecc71;
+            color: white;
+        }
+        .btn-success:hover {
+            background: #27ae60;
+            transform: translateY(-2px);
+        }
+        .btn-danger {
+            background: #e74c3c;
+            color: white;
+        }
+        .btn-danger:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background: #95a5a6;
+            color: white;
+        }
+        .btn-secondary:hover {
+            background: #7f8c8d;
+            transform: translateY(-2px);
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .result-box {
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            text-align: center;
+            display: none;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        .result-box.correct {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+        .result-box.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+        .result-box.partial {
+            background: #fff3cd;
+            color: #856404;
+            display: block;
+        }
+
+        .section-result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+        .section-result.correct {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+        .section-result.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+        .section-result.partial {
+            background: #fff3cd;
+            color: #856404;
+            display: block;
+        }
+
+        .score-display {
+            text-align: center;
+            font-size: 1.2em;
+            padding: 10px;
+            background: #ecf0f1;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .score-display span {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        @media (max-width: 600px) {
+            .options {
+                flex-direction: column;
+                gap: 5px;
+            }
+            .answer-line input[type="text"] {
+                width: 100%;
+            }
+            .translation-box {
+                flex-direction: column;
+            }
+            .comparison-table {
+                font-size: 12px;
+            }
+            .comparison-table td, .comparison-table th {
+                padding: 6px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>📚 Used to / Would</h1>
+    <p class="subtitle">Aprenda a falar sobre hábitos e situações do passado</p>
+
+    <!-- ==================== ENSINO ==================== -->
+    <div class="teaching-section">
+        <h2>📖 O que são Used to e Would?</h2>
+        
+        <div class="grammar-box">
+            <h3>🔹 Quando usar "Used to"</h3>
+            <ul style="margin-left: 20px; line-height: 1.8;">
+                <li><strong>Hábitos no passado que não acontecem mais:</strong> <em>I <span class="highlight">used to</span> drink coffee every morning.</em></li>
+                <li><strong>Estados ou situações passadas que mudaram:</strong> <em>She <span class="highlight">used to</span> live in London.</em></li>
+                <li><strong>Coisas que eram verdade no passado:</strong> <em>People <span class="highlight">used to</span> believe the Earth was flat.</em></li>
+            </ul>
+            <div class="formula">
+                <span>Sujeito</span> + <span>used to</span> + <span>verbo base</span>
+            </div>
+            <div class="example">
+                <span class="en">I <span class="highlight">used to play</span> soccer when I was a kid.</span><br>
+                <span class="pt">Eu costumava jogar futebol quando era criança.</span>
+            </div>
+            <div class="example">
+                <span class="en">She <span class="highlight">used to have</span> long hair.</span><br>
+                <span class="pt">Ela costumava ter cabelo comprido.</span>
+            </div>
+        </div>
+
+        <div class="grammar-box">
+            <h3>🔹 Quando usar "Would"</h3>
+            <ul style="margin-left: 20px; line-height: 1.8;">
+                <li><strong>Hábitos repetidos no passado:</strong> <em>Every summer, we <span class="highlight">would go</span> to the beach.</em></li>
+                <li><strong>Ações típicas no passado:</strong> <em>My grandmother <span class="highlight">would always bake</span> cookies on Sundays.</em></li>
+                <li><strong>Não é usado para estados:</strong> ❌ <em>I would have a car. → ✅ I used to have a car.</em></li>
+            </ul>
+            <div class="formula">
+                <span>Sujeito</span> + <span>would</span> + <span>verbo base</span>
+            </div>
+            <div class="example">
+                <span class="en">When I was young, I <span class="highlight">would play</span> outside every day.</span><br>
+                <span class="pt">Quando eu era jovem, eu brincava fora todos os dias.</span>
+            </div>
+            <div class="example">
+                <span class="en">He <span class="highlight">would always call</span> me on my birthday.</span><br>
+                <span class="pt">Ele sempre me ligava no meu aniversário.</span>
+            </div>
+        </div>
+
+        <div class="grammar-box">
+            <h3>🔹 Comparação: Used to vs Would</h3>
+            <table class="comparison-table">
+                <tr>
+                    <th style="width: 25%;">Aspecto</th>
+                    <th style="width: 37.5%;">Used to</th>
+                    <th style="width: 37.5%;">Would</th>
+                </tr>
+                <tr>
+                    <td><strong>Hábitos passados</strong></td>
+                    <td>✅ I <span class="highlight">used to walk</span> to school.</td>
+                    <td>✅ I <span class="highlight">would walk</span> to school.</td>
+                </tr>
+                <tr>
+                    <td><strong>Estados/situações</strong></td>
+                    <td>✅ She <span class="highlight">used to have</span> a dog.</td>
+                    <td>❌ She <span class="highlight">would have</span> a dog.</td>
+                </tr>
+                <tr>
+                    <td><strong>Passado que não acontece mais</strong></td>
+                    <td>✅ I <span class="highlight">used to live</span> in Brazil.</td>
+                    <td>❌ I <span class="highlight">would live</span> in Brazil.</td>
+                </tr>
+                <tr>
+                    <td><strong>Com expressões de tempo</strong></td>
+                    <td>✅ I <span class="highlight">used to play</span> every day.</td>
+                    <td>✅ I <span class="highlight">would play</span> every day.</td>
+                </tr>
+                <tr>
+                    <td><strong>Fatos que mudaram</strong></td>
+                    <td>✅ People <span class="highlight">used to think</span> differently.</td>
+                    <td>❌ People <span class="highlight">would think</span> differently.</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="grammar-box">
+            <h3>🔹 Formas Negativa e Interrogativa</h3>
+            <table>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Used to</th>
+                    <th>Would</th>
+                </tr>
+                <tr>
+                    <td><strong>Afirmativa</strong></td>
+                    <td>I <span class="highlight">used to</span> play.</td>
+                    <td>I <span class="highlight">would</span> play.</td>
+                </tr>
+                <tr>
+                    <td><strong>Negativa</strong></td>
+                    <td>I <span class="highlight">didn't use to</span> play.</td>
+                    <td>I <span class="highlight">wouldn't</span> play.</td>
+                </tr>
+                <tr>
+                    <td><strong>Interrogativa</strong></td>
+                    <td><span class="highlight">Did</span> you use to play?</td>
+                    <td><span class="highlight">Would</span> you play?</td>
+                </tr>
+            </table>
+            <div class="example">
+                <span class="en"><strong>Negativa:</strong> She <span class="highlight">didn't use to</span> like vegetables.</span><br>
+                <span class="pt">Ela não costumava gostar de vegetais.</span>
+            </div>
+            <div class="example">
+                <span class="en"><strong>Interrogativa:</strong> <span class="highlight">Did</span> you use to study French?</span><br>
+                <span class="pt">Você costumava estudar francês?</span>
+            </div>
+        </div>
+
+        <div class="grammar-box">
+            <h3>🔹 Resumo: Quando usar cada um</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 10px;">
+                <div style="background: #d4edda; padding: 15px; border-radius: 8px;">
+                    <h4 style="color: #155724;">✅ Use "Used to"</h4>
+                    <ul style="margin-left: 15px; line-height: 1.8;">
+                        <li>Hábitos passados</li>
+                        <li>Estados/situações</li>
+                        <li>Fatos que mudaram</li>
+                        <li>Com o verbo "be"</li>
+                    </ul>
+                </div>
+                <div style="background: #cce5ff; padding: 15px; border-radius: 8px;">
+                    <h4 style="color: #004085;">✅ Use "Would"</h4>
+                    <ul style="margin-left: 15px; line-height: 1.8;">
+                        <li>Apenas hábitos repetidos</li>
+                        <li>Não usado com estados</li>
+                        <li>Com expressões de tempo</li>
+                        <li>Mais formal que "used to"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== EXERCÍCIOS ==================== -->
+
+    <!-- EXERCÍCIO 1: Escolher Used to ou Would -->
+    <div class="exercise-section" id="sec1">
+        <h2>📝 Exercício 1: Escolha Used to ou Would</h2>
+        <p style="color: #666; margin-bottom: 15px;">Escolha a opção correta para cada frase.</p>
+
+        <div class="exercise-item">
+            <div class="question">1. I ______ (play) soccer every day when I was a kid.</div>
+            <div class="options">
+                <label><input type="radio" name="q1" value="used to"> used to</label>
+                <label><input type="radio" name="q1" value="would"> would</label>
+                <label><input type="radio" name="q1" value="both"> both are correct</label>
+            </div>
+            <span class="feedback" id="fb1"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">2. She ______ (live) in New York, but now she lives in London.</div>
+            <div class="options">
+                <label><input type="radio" name="q2" value="used to"> used to</label>
+                <label><input type="radio" name="q2" value="would"> would</label>
+                <label><input type="radio" name="q2" value="both"> both are correct</label>
+            </div>
+            <span class="feedback" id="fb2"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">3. My grandmother ______ (bake) cookies every Sunday.</div>
+            <div class="options">
+                <label><input type="radio" name="q3" value="used to"> used to</label>
+                <label><input type="radio" name="q3" value="would"> would</label>
+                <label><input type="radio" name="q3" value="both"> both are correct</label>
+            </div>
+            <span class="feedback" id="fb3"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">4. I ______ (have) a dog when I was young.</div>
+            <div class="options">
+                <label><input type="radio" name="q4" value="used to"> used to</label>
+                <label><input type="radio" name="q4" value="would"> would</label>
+                <label><input type="radio" name="q4" value="both"> both are correct</label>
+            </div>
+            <span class="feedback" id="fb4"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">5. Every summer, we ______ (visit) my grandparents.</div>
+            <div class="options">
+                <label><input type="radio" name="q5" value="used to"> used to</label>
+                <label><input type="radio" name="q5" value="would"> would</label>
+                <label><input type="radio" name="q5" value="both"> both are correct</label>
+            </div>
+            <span class="feedback" id="fb5"></span>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-success" onclick="checkSelectExercise()">Verificar Respostas</button>
+        </div>
+        <div class="section-result" id="resultSelect"></div>
+    </div>
+
+    <!-- EXERCÍCIO 2: Completar com Used to ou Would -->
+    <div class="exercise-section" id="sec2">
+        <h2>✍️ Exercício 2: Complete com Used to ou Would</h2>
+        <p style="color: #666; margin-bottom: 15px;">Complete com a forma correta.</p>
+
+        <div class="exercise-item">
+            <div class="question">6. I ______ (eat) a lot of sweets when I was a child.</div>
+            <div class="answer-line">
+                <input type="text" class="q6" placeholder="Sua resposta..." style="width: 250px;">
+                <span class="feedback" id="fb6"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">7. She ______ (be) a teacher, but now she's a writer.</div>
+            <div class="answer-line">
+                <input type="text" class="q7" placeholder="Sua resposta..." style="width: 250px;">
+                <span class="feedback" id="fb7"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">8. He ______ (always / talk) about his travels.</div>
+            <div class="answer-line">
+                <input type="text" class="q8" placeholder="Sua resposta..." style="width: 250px;">
+                <span class="feedback" id="fb8"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">9. They ______ (not / like) each other, but now they're friends.</div>
+            <div class="answer-line">
+                <input type="text" class="q9" placeholder="Sua resposta..." style="width: 250px;">
+                <span class="feedback" id="fb9"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">10. My father ______ (read) me a story every night.</div>
+            <div class="answer-line">
+                <input type="text" class="q10" placeholder="Sua resposta..." style="width: 250px;">
+                <span class="feedback" id="fb10"></span>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-success" onclick="checkCompleteExercise()">Verificar Respostas</button>
+        </div>
+        <div class="section-result" id="resultComplete"></div>
+    </div>
+
+    <!-- EXERCÍCIO 3: Transformar frases -->
+    <div class="exercise-section" id="sec3">
+        <h2>✍️ Exercício 3: Transforme as frases</h2>
+        <p style="color: #666; margin-bottom: 15px;">Reescreva as frases usando "used to" ou "would".</p>
+
+        <div class="exercise-item">
+            <div class="context">I played the piano when I was a child. (hábito)</div>
+            <div class="question">11. Resposta:</div>
+            <div class="answer-line">
+                <input type="text" class="q11" placeholder="Escreva a frase..." style="width: 400px;">
+                <span class="feedback" id="fb11"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">She lived in Paris. (situação)</div>
+            <div class="question">12. Resposta:</div>
+            <div class="answer-line">
+                <input type="text" class="q12" placeholder="Escreva a frase..." style="width: 400px;">
+                <span class="feedback" id="fb12"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">Every weekend, we went to the beach. (hábito com tempo)</div>
+            <div class="question">13. Resposta:</div>
+            <div class="answer-line">
+                <input type="text" class="q13" placeholder="Escreva a frase..." style="width: 400px;">
+                <span class="feedback" id="fb13"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">He had a bicycle. (estado)</div>
+            <div class="question">14. Resposta:</div>
+            <div class="answer-line">
+                <input type="text" class="q14" placeholder="Escreva a frase..." style="width: 400px;">
+                <span class="feedback" id="fb14"></span>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-success" onclick="checkTransformExercise()">Verificar Respostas</button>
+        </div>
+        <div class="section-result" id="resultTransform"></div>
+    </div>
+
+    <!-- EXERCÍCIO 4: Tradução -->
+    <div class="exercise-section" id="sec4">
+        <h2>🌍 Exercício 4: Tradução</h2>
+        <p style="color: #666; margin-bottom: 15px;">Traduza as frases para o inglês.</p>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 Eu costumava nadar todos os dias.</div>
+            <div class="translation-box">
+                <input type="text" class="q15" placeholder="Tradução em inglês..." style="width: 450px;">
+                <span class="feedback" id="fb15"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 Ela costumava ter um carro vermelho.</div>
+            <div class="translation-box">
+                <input type="text" class="q16" placeholder="Tradução em inglês..." style="width: 450px;">
+                <span class="feedback" id="fb16"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 Ele sempre lia histórias para mim.</div>
+            <div class="translation-box">
+                <input type="text" class="q17" placeholder="Tradução em inglês..." style="width: 450px;">
+                <span class="feedback" id="fb17"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 Nós não costumávamos viajar muito.</div>
+            <div class="translation-box">
+                <input type="text" class="q18" placeholder="Tradução em inglês..." style="width: 450px;">
+                <span class="feedback" id="fb18"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 Você costumava brincar aqui?</div>
+            <div class="translation-box">
+                <input type="text" class="q19" placeholder="Tradução em inglês..." style="width: 450px;">
+                <span class="feedback" id="fb19"></span>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-success" onclick="checkTranslationExercise()">Verificar Traduções</button>
+        </div>
+        <div class="section-result" id="resultTranslation"></div>
+    </div>
+
+    <!-- EXERCÍCIO 5: Misto -->
+    <div class="exercise-section" id="sec5">
+        <h2>🔀 Exercício 5: Misto</h2>
+        <p style="color: #666; margin-bottom: 15px;">Combine diferentes formas.</p>
+
+        <div class="exercise-item">
+            <div class="question">20. Escolha: I ______ be a doctor, but I changed my mind.</div>
+            <div class="options">
+                <label><input type="radio" name="q20" value="used to"> used to</label>
+                <label><input type="radio" name="q20" value="would"> would</label>
+            </div>
+            <span class="feedback" id="fb20"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">21. Complete: She ______ (not / smoke) before, but now she does.</div>
+            <div class="answer-line">
+                <input type="text" class="q21" placeholder="Sua resposta..." style="width: 250px;">
+                <span class="feedback" id="fb21"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 Eles costumavam morar na Itália.</div>
+            <div class="translation-box">
+                <input type="text" class="q22" placeholder="Tradução em inglês..." style="width: 450px;">
+                <span class="feedback" id="fb22"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">23. Escolha: When I was a kid, I ______ watch cartoons every morning.</div>
+            <div class="options">
+                <label><input type="radio" name="q23" value="used to"> used to</label>
+                <label><input type="radio" name="q23" value="would"> would</label>
+                <label><input type="radio" name="q23" value="both"> both are correct</label>
+            </div>
+            <span class="feedback" id="fb23"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">24. Complete: He ______ (have) a motorcycle, but now he has a car.</div>
+            <div class="answer-line">
+                <input type="text" class="q24" placeholder="Sua resposta..." style="width: 250px;">
+                <span class="feedback" id="fb24"></span>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-success" onclick="checkMixedExercise()">Verificar Respostas</button>
+        </div>
+        <div class="section-result" id="resultMixed"></div>
+    </div>
+
+    <!-- ==================== BOTÕES GLOBAIS ==================== -->
+    <div class="button-group">
+        <button class="btn btn-danger" onclick="checkAllExercises()">✅ Verificar Todos os Exercícios</button>
+        <button class="btn btn-secondary" onclick="resetAllExercises()">🔄 Resetar Todos</button>
+    </div>
+
+    <div class="score-display" id="globalScore">
+        Total: <span id="scoreCount">0</span> / <span id="totalCount">0</span> corretas
+    </div>
+    <div class="result-box" id="globalResult"></div>
+
+    <script>
+        // ==================== DADOS DAS RESPOSTAS ====================
+        const answers = {
+            select: ['both', 'used to', 'both', 'used to', 'both'],
+            complete: ["used to eat", "used to be", "would always talk", "didn't use to like", "would read"],
+            transform: [
+                'i used to play the piano when i was a child',
+                'she used to live in paris',
+                'every weekend, we would go to the beach',
+                'he used to have a bicycle'
+            ],
+            translations: [
+                "i used to swim every day",
+                "she used to have a red car",
+                "he would always read stories to me",
+                "we didn't use to travel much",
+                "did you use to play here"
+            ],
+            mixed: ["used to", "didn't use to smoke", "they used to live in italy", "both", "used to have"]
+        };
+
+        // ==================== FUNÇÕES DE VERIFICAÇÃO ====================
+        function normalize(text) {
+            return text.toLowerCase().trim().replace(/\s+/g, ' ');
+        }
+
+        function checkSelectExercise() {
+            let correct = 0;
+            const total = 5;
+            for (let i = 1; i <= total; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                const fb = document.getElementById(`fb${i}`);
+                if (selected) {
+                    const isCorrect = selected.value === answers.select[i-1];
+                    fb.textContent = isCorrect ? '✓ Correto' : '✗ Incorreto';
+                    fb.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                    if (isCorrect) correct++;
+                } else {
+                    fb.textContent = '⚠️ Selecione uma opção';
+                    fb.className = 'feedback waiting';
+                }
+            }
+            showSectionResult('resultSelect', correct, total);
+        }
+
+        function checkCompleteExercise() {
+            let correct = 0;
+            const total = 5;
+            for (let i = 6; i <= 10; i++) {
+                const input = document.querySelector(`.q${i}`);
+                const fb = document.getElementById(`fb${i}`);
+                if (input) {
+                    const userAnswer = normalize(input.value);
+                    const isCorrect = userAnswer === answers.complete[i-6];
+                    fb.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                    fb.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                    if (isCorrect) correct++;
+                }
+            }
+            showSectionResult('resultComplete', correct, total);
+        }
+
+        function checkTransformExercise() {
+            let correct = 0;
+            const total = 4;
+            for (let i = 11; i <= 14; i++) {
+                const input = document.querySelector(`.q${i}`);
+                const fb = document.getElementById(`fb${i}`);
+                if (input) {
+                    const userAnswer = normalize(input.value);
+                    const isCorrect = userAnswer === answers.transform[i-11];
+                    fb.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                    fb.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                    if (isCorrect) correct++;
+                }
+            }
+            showSectionResult('resultTransform', correct, total);
+        }
+
+        function checkTranslationExercise() {
+            let correct = 0;
+            const total = 5;
+            for (let i = 15; i <= 19; i++) {
+                const input = document.querySelector(`.q${i}`);
+                const fb = document.getElementById(`fb${i}`);
+                if (input) {
+                    const userAnswer = normalize(input.value);
+                    const isCorrect = userAnswer === answers.translations[i-15];
+                    fb.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                    fb.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                    if (isCorrect) correct++;
+                }
+            }
+            showSectionResult('resultTranslation', correct, total);
+        }
+
+        function checkMixedExercise() {
+            let correct = 0;
+            const total = 5;
+            
+            // Q20
+            const selected20 = document.querySelector(`input[name="q20"]:checked`);
+            const fb20 = document.getElementById('fb20');
+            if (selected20) {
+                const isCorrect = selected20.value === answers.mixed[0];
+                fb20.textContent = isCorrect ? '✓ Correto' : '✗ Incorreto';
+                fb20.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                if (isCorrect) correct++;
+            } else {
+                fb20.textContent = '⚠️ Selecione uma opção';
+                fb20.className = 'feedback waiting';
+            }
+
+            // Q21
+            const input21 = document.querySelector('.q21');
+            const fb21 = document.getElementById('fb21');
+            if (input21) {
+                const userAnswer = normalize(input21.value);
+                const isCorrect = userAnswer === answers.mixed[1];
+                fb21.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                fb21.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                if (isCorrect) correct++;
+            }
+
+            // Q22
+            const input22 = document.querySelector('.q22');
+            const fb22 = document.getElementById('fb22');
+            if (input22) {
+                const userAnswer = normalize(input22.value);
+                const isCorrect = userAnswer === answers.mixed[2];
+                fb22.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                fb22.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                if (isCorrect) correct++;
+            }
+
+            // Q23
+            const selected23 = document.querySelector(`input[name="q23"]:checked`);
+            const fb23 = document.getElementById('fb23');
+            if (selected23) {
+                const isCorrect = selected23.value === answers.mixed[3];
+                fb23.textContent = isCorrect ? '✓ Correto' : '✗ Incorreto';
+                fb23.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                if (isCorrect) correct++;
+            } else {
+                fb23.textContent = '⚠️ Selecione uma opção';
+                fb23.className = 'feedback waiting';
+            }
+
+            // Q24
+            const input24 = document.querySelector('.q24');
+            const fb24 = document.getElementById('fb24');
+            if (input24) {
+                const userAnswer = normalize(input24.value);
+                const isCorrect = userAnswer === answers.mixed[4];
+                fb24.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                fb24.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                if (isCorrect) correct++;
+            }
+
+            showSectionResult('resultMixed', correct, total);
+        }
+
+        // ==================== FUNÇÕES AUXILIARES ====================
+        function showSectionResult(elementId, correct, total) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.textContent = `Você acertou ${correct} de ${total} (${Math.round(correct/total*100)}%)`;
+                element.className = `section-result ${correct === total ? 'correct' : (correct > 0 ? 'partial' : 'incorrect')}`;
+            }
+            updateGlobalScore();
+        }
+
+        function updateGlobalScore() {
+            let correct = 0;
+            let total = 0;
+            
+            document.querySelectorAll('.feedback').forEach(fb => {
+                if (fb.textContent.includes('✓')) {
+                    correct++;
+                    total++;
+                } else if (fb.textContent.includes('✗') || fb.textContent.includes('⚠️')) {
+                    total++;
+                }
+            });
+            
+            document.getElementById('scoreCount').textContent = correct;
+            document.getElementById('totalCount').textContent = total;
+        }
+
+        function checkAllExercises() {
+            checkSelectExercise();
+            checkCompleteExercise();
+            checkTransformExercise();
+            checkTranslationExercise();
+            checkMixedExercise();
+            
+            const total = document.querySelectorAll('.feedback').length;
+            const correct = document.querySelectorAll('.feedback.correct').length;
+            const result = document.getElementById('globalResult');
+            result.textContent = `🎯 Você acertou ${correct} de ${total} questões (${Math.round(correct/total*100)}%)`;
+            result.className = `result-box ${correct === total ? 'correct' : (correct > total/2 ? 'partial' : 'incorrect')}`;
+        }
+
+        function resetAllExercises() {
+            document.querySelectorAll('input[type="radio"]').forEach(el => el.checked = false);
+            document.querySelectorAll('input[type="text"]').forEach(el => el.value = '');
+            document.querySelectorAll('.feedback').forEach(el => {
+                el.textContent = '';
+                el.className = 'feedback';
+            });
+            document.querySelectorAll('.section-result').forEach(el => {
+                el.textContent = '';
+                el.className = 'section-result';
+            });
+            const result = document.getElementById('globalResult');
+            result.textContent = '';
+            result.className = 'result-box';
+            updateGlobalScore();
+        }
+
+        document.querySelectorAll('input[type="text"]').forEach(input => {
+            input.addEventListener('input', updateGlobalScore);
+        });
+        document.querySelectorAll('input[type="radio"]').forEach(input => {
+            input.addEventListener('change', updateGlobalScore);
+        });
+
+        updateGlobalScore();
+    </script>
+</body>
+</html>

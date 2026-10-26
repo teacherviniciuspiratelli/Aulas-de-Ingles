@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula de Present Perfect</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #2ecc71;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        nav {
+            background-color: var(--dark-color);
+            padding: 15px;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0 15px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--light-color);
+        }
+        
+        section {
+            padding: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        h2 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-color);
+        }
+        
+        h3 {
+            color: var(--primary-color);
+            margin: 20px 0 10px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        .example {
+            background-color: var(--light-color);
+            padding: 15px;
+            border-left: 5px solid var(--primary-color);
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .highlight {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        
+        .formula {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .exercise {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .question {
+            margin-bottom: 15px;
+        }
+        
+        input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            max-width: 300px;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        
+        .correct {
+            color: var(--success-color);
+        }
+        
+        .incorrect {
+            color: var(--accent-color);
+        }
+        
+        .verbs-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .verb-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .verb-card h4 {
+            color: var(--dark-color);
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 5px 0;
+            }
+            
+            .verbs-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Present Perfect</h1>
+            <p class="subtitle">Aprenda a usar corretamente o tempo verbal que conecta passado e presente</p>
+        </header>
+        
+        <nav>
+            <ul>
+                <li><a href="#introducao">Introdução</a></li>
+                <li><a href="#formacao">Formação</a></li>
+                <li><a href="#usos">Usos</a></li>
+                <li><a href="#exercicios">Exercícios</a></li>
+                <li><a href="#verbos">Verbos Irregulares</a></li>
+            </ul>
+        </nav>
+        
+        <section id="introducao">
+            <h2>Introdução ao Present Perfect</h2>
+            <p>O <span class="highlight">Present Perfect</span> (Presente Perfeito) é um tempo verbal que expressa ações que aconteceram em um tempo não específico no passado e que têm relevância no presente.</p>
+            
+            <p>Diferente do Simple Past (Passado Simples), que se refere a ações concluídas em um momento específico do passado, o Present Perfect conecta o passado com o presente.</p>
+            
+            <div class="example">
+                <p><strong>Exemplo com Simple Past:</strong> I <span class="highlight">visited</span> London last year. (Eu visitei Londres no ano passado.)</p>
+                <p><strong>Exemplo com Present Perfect:</strong> I <span class="highlight">have visited</span> London. (Eu já visitei Londres.)</p>
+            </div>
+            
+            <p>No primeiro exemplo, sabemos exatamente quando a ação aconteceu (last year). No segundo, não sabemos quando, apenas que aconteceu em algum momento no passado e essa experiência é relevante agora.</p>
+        </section>
+        
+        <section id="formacao">
+            <h2>Formação do Present Perfect</h2>
+            
+            <h3>Estrutura Básica</h3>
+            <div class="formula">
+                Sujeito + have/has + verbo no particípio passado + complemento
+            </div>
+            
+            <h3>Forma Afirmativa</h3>
+            <table>
+                <tr>
+                    <th>Pronome</th>
+                    <th>Estrutura</th>
+                    <th>Exemplo</th>
+                </tr>
+                <tr>
+                    <td>I, You, We, They</td>
+                    <td>have + past participle</td>
+                    <td>I <span class="highlight">have finished</span> my homework.</td>
+                </tr>
+                <tr>
+                    <td>He, She, It</td>
+                    <td>has + past participle</td>
+                    <td>She <span class="highlight">has visited</span> Paris.</td>
+                </tr>
+            </table>
+            
+            <h3>Forma Negativa</h3>
+            <table>
+                <tr>
+                    <th>Pronome</th>
+                    <th>Estrutura</th>
+                    <th>Exemplo</th>
+                </tr>
+                <tr>
+                    <td>I, You, We, They</td>
+                    <td>have not + past participle</td>
+                    <td>We <span class="highlight">have not seen</span> that movie.</td>
+                </tr>
+                <tr>
+                    <td>He, She, It</td>
+                    <td>has not + past participle</td>
+                    <td>He <span class="highlight">has not finished</span> his work.</td>
+                </tr>
+            </table>
+            
+            <h3>Forma Interrogativa</h3>
+            <table>
+                <tr>
+                    <th>Estrutura</th>
+                    <th>Exemplo</th>
+                    <th>Resposta Curta</th>
+                </tr>
+                <tr>
+                    <td>Have/Has + sujeito + past participle</td>
+                    <td><span class="highlight">Have you eaten</span> lunch?</td>
+                    <td>Yes, I have. / No, I haven't.</td>
+                </tr>
+                <tr>
+                    <td>Have/Has + sujeito + past participle</td>
+                    <td><span class="highlight">Has she arrived</span> yet?</td>
+                    <td>Yes, she has. / No, she hasn't.</td>
+                </tr>
+            </table>
+            
+            <h3>Contrações</h3>
+            <p>No inglês falado e informal, é comum usar contrações:</p>
+            <ul>
+                <li>I have → I've</li>
+                <li>You have → You've</li>
+                <li>We have → We've</li>
+                <li>They have → They've</li>
+                <li>He has → He's</li>
+                <li>She has → She's</li>
+                <li>It has → It's</li>
+                <li>Have not → Haven't</li>
+                <li>Has not → Hasn't</li>
+            </ul>
+        </section>
+        
+        <section id="usos">
+            <h2>Usos do Present Perfect</h2>
+            
+            <h3>1. Ações que aconteceram em um tempo não específico no passado</h3>
+            <p>Usamos o Present Perfect quando não mencionamos ou não sabemos exatamente quando a ação aconteceu.</p>
+            <div class="example">
+                <p>I <span class="highlight">have read</span> that book. (Eu já li aquele livro.)</p>
+                <p>She <span class="highlight">has traveled</span> to Japan. (Ela já viajou para o Japão.)</p>
+            </div>
+            
+            <h3>2. Ações que começaram no passado e continuam no presente</h3>
+            <p>Usamos o Present Perfect para ações que começaram em algum momento no passado e ainda estão acontecendo.</p>
+            <div class="example">
+                <p>I <span class="highlight">have lived</span> in this city for five years. (Eu moro nesta cidade há cinco anos.)</p>
+                <p>He <span class="highlight">has worked</span> here since 2010. (Ele trabalha aqui desde 2010.)</p>
+            </div>
+            
+            <h3>3. Experiências de vida</h3>
+            <p>Usamos o Present Perfect para falar sobre experiências que tivemos (ou não) ao longo da vida.</p>
+            <div class="example">
+                <p>I <span class="highlight">have never eaten</span> sushi. (Eu nunca comi sushi.)</p>
+                <p><span class="highlight">Have you ever been</span> to New York? (Você já esteve em Nova York?)</p>
+            </div>
+            
+            <h3>4. Ações recentes com resultados no presente</h3>
+            <p>Usamos o Present Perfect para ações que aconteceram recentemente e têm consequências ou resultados visíveis no presente.</p>
+            <div class="example">
+                <p>I <span class="highlight">have lost</span> my keys. (Eu perdi minhas chaves.) → Resultado: Não posso entrar em casa.</p>
+                <p>She <span class="highlight">has finished</span> her report. (Ela terminou seu relatório.) → Resultado: Agora ela pode descansar.</p>
+            </div>
+            
+            <h3>Palavras e Expressões Comuns</h3>
+            <p>Algumas palavras e expressões são frequentemente usadas com o Present Perfect:</p>
+            <ul>
+                <li>Already (já)</li>
+                <li>Yet (ainda)</li>
+                <li>Just (acabar de)</li>
+                <li>Ever (alguma vez)</li>
+                <li>Never (nunca)</li>
+                <li>For (por/durante)</li>
+                <li>Since (desde)</li>
+                <li>So far (até agora)</li>
+                <li>Recently (recentemente)</li>
+                <li>Lately (ultimamente)</li>
+            </ul>
+        </section>
+        
+        <section id="exercicios">
+            <h2>Exercícios de Prática</h2>
+            
+            <div class="exercise">
+                <h3>Exercício 1: Complete as frases com a forma correta do Present Perfect</h3>
+                
+                <div class="question">
+                    <p>1. I __________ (finish) my homework.</p>
+                    <input type="text" id="q1" placeholder="Digite sua resposta">
+                    <button onclick="checkAnswer(1)">Verificar</button>
+                    <div id="result1" class="result"></div>
+                </div>
+                
+                <div class="question">
+                    <p>2. She __________ (not eat) lunch yet.</p>
+                    <input type="text" id="q2" placeholder="Digite sua resposta">
+                    <button onclick="checkAnswer(2)">Verificar</button>
+                    <div id="result2" class="result"></div>
+                </div>
+                
+                <div class="question">
+                    <p>3. __________ you __________ (see) that movie?</p>
+                    <input type="text" id="q3" placeholder="Digite sua resposta">
+                    <button onclick="checkAnswer(3)">Verificar</button>
+                    <div id="result3" class="result"></div>
+                </div>
+                
+                <div class="question">
+                    <p>4. They __________ (live) here for ten years.</p>
+                    <input type="text" id="q4" placeholder="Digite sua resposta">
+                    <button onclick="checkAnswer(4)">Verificar</button>
+                    <div id="result4" class="result"></div>
+                </div>
+                
+                <div class="question">
+                    <p>5. He __________ (just arrive) from work.</p>
+                    <input type="text" id="q5" placeholder="Digite sua resposta">
+                    <button onclick="checkAnswer(5)">Verificar</button>
+                    <div id="result5" class="result"></div>
+                </div>
+            </div>
+            
+            <div class="exercise">
+                <h3>Exercício 2: Escolha entre Present Perfect e Simple Past</h3>
+                
+                <div class="question">
+                    <p>1. I __________ (visit) Paris last summer.</p>
+                    <input type="text" id="q6" placeholder="Digite sua resposta">
+                    <button onclick="checkAnswer(6)">Verificar</button>
+                    <div id="result6" class="result"></div>
+                </div>
+                
+                <div class="question">
+                    <p>2. She __________ (live) in London since 2015.</p>
+                    <input type="text" id="q7" placeholder="Digite sua resposta">
+                    <button onclick="checkAnswer(7)">Verificar</button>
+                    <div id="result7" class="result"></div>
+                </div>
+                
+                <div class="question">
+                    <p>3. __________ you ever __________ (be) to Japan?</p>
+                    <input type="text" id="q8" placeholder="Digite sua resposta">
+                    <button onclick="checkAnswer(8)">Verificar</button>
+                    <div id="result8" class="result"></div>
+                </div>
+                
+                <div class="question">
+                    <p>4. They __________ (not finish) their project yet.</p>
+                    <input type="text" id="q9" placeholder="Digite sua resposta">
+                    <button onclick="checkAnswer(9)">Verificar</button>
+                    <div id="result9" class="result"></div>
+                </div>
+                
+                <div class="question">
+                    <p>5. We __________ (watch) a great movie yesterday.</p>
+                    <input type="text" id="q10" placeholder="Digite sua resposta">
+                    <button onclick="checkAnswer(10)">Verificar</button>
+                    <div id="result10" class="result"></div>
+                </div>
+            </div>
+            
+            <button onclick="checkAllAnswers()" style="margin-top: 20px;">Verificar Todas as Respostas</button>
+            <button onclick="resetExercises()" style="margin-top: 10px; background-color: #95a5a6;">Limpar Respostas</button>
+        </section>
+        
+        <section id="verbos">
+            <h2>Lista de Verbos Irregulares</h2>
+            <p>Aqui está uma lista dos verbos irregulares mais comuns com suas formas de passado e particípio:</p>
+            
+            <div class="verbs-container">
+                <div class="verb-card">
+                    <h4>be (ser/estar)</h4>
+                    <p>Simple Past: was/were</p>
+                    <p>Past Participle: been</p>
+                </div>
+                
+                <div class="verb-card">
+                    <h4>begin (começar)</h4>
+                    <p>Simple Past: began</p>
+                    <p>Past Participle: begun</p>
+                </div>
+                
+                <div class="verb-card">
+                    <h4>break (quebrar)</h4>
+                    <p>Simple Past: broke</p>
+                    <p>Past Participle: broken</p>
+                </div>
+                
+                <div class="verb-card">
+                    <h4>bring (trazer)</h4>
+                    <p>Simple Past: brought</p>
+                    <p>Past Participle: brought</p>
+                </div>
+                
+                <div class="verb-card">
+                    <h4>build (construir)</h4>
+                    <p>Simple Past: built</p>
+                    <p>Past Participle: built</p>
+                </div>
+                
+                <div class="verb-card">
+                    <h4>buy (comprar)</h4>
+                    <p>Simple Past: bought</p>
+                    <p>Past Participle: bought</p>
+                </div>
+                
+                <div class="verb-card">
+                    <h4>come (vir)</h4>
+                    <p>Simple Past: came</p>
+                    <p>Past Participle: come</p>
+                </div>
+                
+                <div class="verb-card">
+                    <h4>do (fazer)</h4>
+                    <p>Simple Past: did</p>
+                    <p>Past Participle: done</p>
+                </div>
+                
+                <div class="verb-card">
+                    <h4>drink (beber)</h4>
+                    <p>Simple Past: drank</p>
+                    <p>Past Participle: drunk</p>
+                </div>
+                
+                <div class="verb-card">
+                    <h4>eat (comer)</h4>
+                    <p>Simple Past: ate</p>
+                    <p>Past Participle: eaten</p>
+                </div>
+                
+                <div class="verb-card">
+                    <h4>find (encontrar)</h4>
+                    <p>Simple Past: found</p>
+                    <p>Past Participle: found</p>
+                </div>
+                
+                <div class="verb-card">
+                    <h4>get (obter)</h4>
+                    <p>Simple Past: got</p>
+                    <p>Past Participle: got/gotten</p>
+                </div>
+                
+                <div class="verb-card">
+                    <h4>give (dar)</h4>
+                    <p>Simple Past: gave</p>
+                    <p>Past Participle: given</p>
+                </div>
+                
+                <div class="verb-card">
+                    <h4>go (ir)</h4>
+                    <p>Simple Past: went</p>
+                    <p>Past Participle: gone</p>
+                </div>
+                
+                <div class="verb-card">
+                    <h4>have (ter)</h4>
+                    <p>Simple Past: had</p>
+                    <p>Past Participle: had</p>
+                </div>
+                
+                <div class="verb-card">
+                    <h4>know (saber)</h4>
+                    <p>Simple Past: knew</p>
+                    <p>Past Participle: known</p>
+                </div>
+                
+                <div class="verb-card">
+                    <h4>make (fazer)</h4>
+                    <p>Simple Past: made</p>
+                    <p>Past Participle: made</p>
+                </div>
+                
+                <div class="verb-card">
+                    <h4>read (ler)</h4>
+                    <p>Simple Past: read</p>
+                    <p>Past Participle: read</p>
+                </div>
+                
+                <div class="verb-card">
+                    <h4>see (ver)</h4>
+                    <p>Simple Past: saw</p>
+                    <p>Past Participle: seen</p>
+                </div>
+                
+                <div class="verb-card">
+                    <h4>speak (falar)</h4>
+                    <p>Simple Past: spoke</p>
+                    <p>Past Participle: spoken</p>
+                </div>
+                
+                <div class="verb-card">
+                    <h4>take (tomar)</h4>
+                    <p>Simple Past: took</p>
+                    <p>Past Participle: taken</p>
+                </div>
+                
+                <div class="verb-card">
+                    <h4>write (escrever)</h4>
+                    <p>Simple Past: wrote</p>
+                    <p>Past Participle: written</p>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>Aula de Present Perfect &copy; - Todos os direitos reservados</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Respostas corretas
+        const answers = {
+            1: "have finished",
+            2: "hasn't eaten",
+            3: "Have seen",
+            4: "have lived",
+            5: "has just arrived",
+            6: "visited",
+            7: "has lived",
+            8: "Have been",
+            9: "haven't finished",
+            10: "watched"
+        };
+        
+        // Função para verificar uma resposta individual
+        function checkAnswer(questionNumber) {
+            const userAnswer = document.getElementById(`q${questionNumber}`).value.trim().toLowerCase();
+            const correctAnswer = answers[questionNumber].toLowerCase();
+            const resultElement = document.getElementById(`result${questionNumber}`);
+            
+            if (userAnswer === correctAnswer) {
+                resultElement.textContent = "Correto!";
+                resultElement.className = "result correct";
+            } else {
+                resultElement.textContent = `Incorreto. A resposta correta é: ${answers[questionNumber]}`;
+                resultElement.className = "result incorrect";
+            }
+        }
+        
+        // Função para verificar todas as respostas
+        function checkAllAnswers() {
+            for (let i = 1; i <= 10; i++) {
+                checkAnswer(i);
+            }
+        }
+        
+        // Função para limpar todas as respostas
+        function resetExercises() {
+            for (let i = 1; i <= 10; i++) {
+                document.getElementById(`q${i}`).value = "";
+                document.getElementById(`result${i}`).textContent = "";
+                document.getElementById(`result${i}`).className = "result";
+            }
+        }
+    </script>
+</body>
+</html>

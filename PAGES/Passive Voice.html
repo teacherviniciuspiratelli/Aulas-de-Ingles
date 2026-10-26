@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Passive Voice - Voz Passiva em Inglês</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f0f4f8;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+        
+        /* Teaching Section */
+        .teaching-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .teaching-section h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .grammar-box {
+            background: #ecf0f1;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #3498db;
+        }
+        .grammar-box h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .grammar-box table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        .grammar-box table td {
+            padding: 8px 12px;
+            border: 1px solid #bdc3c7;
+        }
+        .grammar-box table th {
+            background: #3498db;
+            color: white;
+            padding: 8px 12px;
+            border: 1px solid #3498db;
+            text-align: left;
+        }
+        .example {
+            background: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 8px 0;
+            border-left: 4px solid #2ecc71;
+        }
+        .example .en {
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        .example .pt {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        .highlight {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .highlight-blue {
+            color: #2980b9;
+            font-weight: bold;
+        }
+        .formula {
+            background: #2c3e50;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.2em;
+            margin: 15px 0;
+        }
+        .formula span {
+            color: #f1c40f;
+        }
+
+        /* Exercise Sections */
+        .exercise-section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .exercise-section h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #e67e22;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .exercise-item {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+        .exercise-item .question {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .exercise-item .context {
+            color: #666;
+            font-style: italic;
+            font-size: 0.95em;
+            margin-bottom: 8px;
+        }
+        .options {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 8px 0;
+        }
+        .options label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+        .options label:hover {
+            background: #e8f4f8;
+        }
+        .options input[type="radio"] {
+            cursor: pointer;
+        }
+        .answer-line {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+        .answer-line input[type="text"] {
+            padding: 8px 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 15px;
+            width: 250px;
+            transition: border-color 0.3s;
+        }
+        .answer-line input[type="text"]:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        .translation-box {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .translation-box input {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        /* Feedback */
+        .feedback {
+            font-size: 0.9em;
+            margin-left: 10px;
+            padding: 3px 12px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        .feedback.correct {
+            background: #d4edda;
+            color: #155724;
+        }
+        .feedback.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .feedback.waiting {
+            background: #e9ecef;
+            color: #6c757d;
+        }
+        
+        /* Buttons */
+        .btn {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            margin: 5px;
+        }
+        .btn-primary {
+            background: #3498db;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        .btn-success {
+            background: #2ecc71;
+            color: white;
+        }
+        .btn-success:hover {
+            background: #27ae60;
+            transform: translateY(-2px);
+        }
+        .btn-danger {
+            background: #e74c3c;
+            color: white;
+        }
+        .btn-danger:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background: #95a5a6;
+            color: white;
+        }
+        .btn-secondary:hover {
+            background: #7f8c8d;
+            transform: translateY(-2px);
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .result-box {
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            text-align: center;
+            display: none;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        .result-box.correct {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+        .result-box.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+        .result-box.partial {
+            background: #fff3cd;
+            color: #856404;
+            display: block;
+        }
+
+        .section-result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+        .section-result.correct {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+        .section-result.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+        .section-result.partial {
+            background: #fff3cd;
+            color: #856404;
+            display: block;
+        }
+
+        .score-display {
+            text-align: center;
+            font-size: 1.2em;
+            padding: 10px;
+            background: #ecf0f1;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .score-display span {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        @media (max-width: 600px) {
+            .options {
+                flex-direction: column;
+                gap: 5px;
+            }
+            .answer-line input[type="text"] {
+                width: 100%;
+            }
+            .translation-box {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>📚 Passive Voice</h1>
+    <p class="subtitle">Aprenda a usar a voz passiva em inglês</p>
+
+    <!-- ==================== ENSINO ==================== -->
+    <div class="teaching-section">
+        <h2>📖 O que é a Voz Passiva?</h2>
+        
+        <div class="grammar-box">
+            <h3>🔹 Quando usar a Voz Passiva</h3>
+            <ul style="margin-left: 20px; line-height: 1.8;">
+                <li><strong>Quando o agente não é importante:</strong> <em><span class="highlight">The car was stolen</span> last night.</em> (Quem roubou não importa)</li>
+                <li><strong>Quando queremos enfatizar a ação:</strong> <em><span class="highlight">The Mona Lisa was painted</span> by Da Vinci.</em></li>
+                <li><strong>Em textos formais e científicos:</strong> <em><span class="highlight">The experiment was conducted</span> in 2020.</em></li>
+                <li><strong>Quando o agente é desconhecido:</strong> <em>My wallet <span class="highlight">was taken</span>.</em></li>
+            </ul>
+        </div>
+
+        <div class="grammar-box">
+            <h3>🔹 Estrutura da Voz Passiva</h3>
+            <div class="formula">
+                <span>Sujeito</span> + <span>to be</span> (no tempo) + <span>Past Participle (V3)</span>
+            </div>
+            
+            <table>
+                <tr>
+                    <th>Tempo Verbal</th>
+                    <th>Estrutura Passiva</th>
+                    <th>Exemplo</th>
+                </tr>
+                <tr>
+                    <td><strong>Present Simple</strong></td>
+                    <td>am/is/are + V3</td>
+                    <td>The house <span class="highlight">is cleaned</span> every day.</td>
+                </tr>
+                <tr>
+                    <td><strong>Past Simple</strong></td>
+                    <td>was/were + V3</td>
+                    <td>The house <span class="highlight">was cleaned</span> yesterday.</td>
+                </tr>
+                <tr>
+                    <td><strong>Future (will)</strong></td>
+                    <td>will be + V3</td>
+                    <td>The house <span class="highlight">will be cleaned</span> tomorrow.</td>
+                </tr>
+                <tr>
+                    <td><strong>Present Continuous</strong></td>
+                    <td>am/is/are being + V3</td>
+                    <td>The house <span class="highlight">is being cleaned</span> right now.</td>
+                </tr>
+                <tr>
+                    <td><strong>Past Continuous</strong></td>
+                    <td>was/were being + V3</td>
+                    <td>The house <span class="highlight">was being cleaned</span> when I arrived.</td>
+                </tr>
+                <tr>
+                    <td><strong>Present Perfect</strong></td>
+                    <td>have/has been + V3</td>
+                    <td>The house <span class="highlight">has been cleaned</span>.</td>
+                </tr>
+                <tr>
+                    <td><strong>Modal Verbs</strong></td>
+                    <td>modal + be + V3</td>
+                    <td>The house <span class="highlight">must be cleaned</span>.</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="grammar-box">
+            <h3>🔹 Como transformar da Ativa para a Passiva</h3>
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
+                <p><strong>Ativa:</strong> <span class="highlight">Sujeito</span> + verbo + <span class="highlight-blue">Objeto</span></p>
+                <p style="margin: 10px 0;">↓</p>
+                <p><strong>Passiva:</strong> <span class="highlight-blue">Objeto</span> + to be + V3 + (by + <span class="highlight">Sujeito</span>)</p>
+            </div>
+            <div style="margin-top: 15px;">
+                <div class="example">
+                    <span class="en"><strong>Ativa:</strong> <span class="highlight">John</span> <span class="highlight-blue">wrote</span> <span class="highlight-blue">the book</span>.</span><br>
+                    <span class="pt"><strong>Passiva:</strong> <span class="highlight-blue">The book</span> <span class="highlight">was written</span> by John.</span>
+                </div>
+                <div class="example">
+                    <span class="en"><strong>Ativa:</strong> <span class="highlight">They</span> <span class="highlight-blue">are building</span> <span class="highlight-blue">a new hospital</span>.</span><br>
+                    <span class="pt"><strong>Passiva:</strong> <span class="highlight-blue">A new hospital</span> <span class="highlight">is being built</span>.</span>
+                </div>
+                <div class="example">
+                    <span class="en"><strong>Ativa:</strong> <span class="highlight">Someone</span> <span class="highlight-blue">has stolen</span> <span class="highlight-blue">my car</span>.</span><br>
+                    <span class="pt"><strong>Passiva:</strong> <span class="highlight-blue">My car</span> <span class="highlight">has been stolen</span>.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grammar-box">
+            <h3>🔹 Quando NÃO usar a Voz Passiva</h3>
+            <ul style="margin-left: 20px; line-height: 1.8;">
+                <li><strong>Quando o sujeito é importante:</strong> <em>❌ The cake was eaten by me. → ✅ I ate the cake.</em></li>
+                <li><strong>Com verbos intransitivos (que não têm objeto):</strong> <em>❌ She was arrived. → ✅ She arrived.</em></li>
+                <li><strong>Em frases informais e conversação:</strong> <em>❌ The party was organized by us. → ✅ We organized the party.</em></li>
+            </ul>
+        </div>
+
+        <div class="grammar-box">
+            <h3>🔹 Estrutura das frases na Passiva</h3>
+            <table>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Estrutura</th>
+                    <th>Exemplo</th>
+                </tr>
+                <tr>
+                    <td><strong>Afirmativa</strong></td>
+                    <td>Sujeito + to be + V3</td>
+                    <td><span class="highlight">The letter was sent</span>.</td>
+                </tr>
+                <tr>
+                    <td><strong>Negativa</strong></td>
+                    <td>Sujeito + to be + not + V3</td>
+                    <td><span class="highlight">The letter was not sent</span>.</td>
+                </tr>
+                <tr>
+                    <td><strong>Interrogativa</strong></td>
+                    <td>To be + sujeito + V3?</td>
+                    <td><span class="highlight">Was the letter sent</span>?</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- ==================== EXERCÍCIOS ==================== -->
+
+    <!-- EXERCÍCIO 1: Escolher a forma correta -->
+    <div class="exercise-section" id="sec1">
+        <h2>📝 Exercício 1: Escolha a forma correta</h2>
+        <p style="color: #666; margin-bottom: 15px;">Selecione a opção correta para cada frase na voz passiva.</p>
+
+        <div class="exercise-item">
+            <div class="question">1. The cake ______ (eat) by the children.</div>
+            <div class="options">
+                <label><input type="radio" name="q1" value="was eaten"> was eaten</label>
+                <label><input type="radio" name="q1" value="is eat"> is eat</label>
+                <label><input type="radio" name="q1" value="ate"> ate</label>
+            </div>
+            <span class="feedback" id="fb1"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">2. The project ______ (finish) by Friday.</div>
+            <div class="options">
+                <label><input type="radio" name="q2" value="will be finished"> will be finished</label>
+                <label><input type="radio" name="q2" value="will finish"> will finish</label>
+                <label><input type="radio" name="q2" value="is finishing"> is finishing</label>
+            </div>
+            <span class="feedback" id="fb2"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">3. The house ______ (clean) right now.</div>
+            <div class="options">
+                <label><input type="radio" name="q3" value="is cleaning"> is cleaning</label>
+                <label><input type="radio" name="q3" value="is being cleaned"> is being cleaned</label>
+                <label><input type="radio" name="q3" value="cleaned"> cleaned</label>
+            </div>
+            <span class="feedback" id="fb3"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">4. The car ______ (steal) last night.</div>
+            <div class="options">
+                <label><input type="radio" name="q4" value="was stole"> was stole</label>
+                <label><input type="radio" name="q4" value="was stolen"> was stolen</label>
+                <label><input type="radio" name="q4" value="is stolen"> is stolen</label>
+            </div>
+            <span class="feedback" id="fb4"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">5. The documents ______ (sign) by the manager.</div>
+            <div class="options">
+                <label><input type="radio" name="q5" value="have been signed"> have been signed</label>
+                <label><input type="radio" name="q5" value="have signed"> have signed</label>
+                <label><input type="radio" name="q5" value="are signing"> are signing</label>
+            </div>
+            <span class="feedback" id="fb5"></span>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-success" onclick="checkSelectExercise()">Verificar Respostas</button>
+        </div>
+        <div class="section-result" id="resultSelect"></div>
+    </div>
+
+    <!-- EXERCÍCIO 2: Transformar para Passiva -->
+    <div class="exercise-section" id="sec2">
+        <h2>✍️ Exercício 2: Transforme para a Voz Passiva</h2>
+        <p style="color: #666; margin-bottom: 15px;">Escreva a forma correta na voz passiva.</p>
+
+        <div class="exercise-item">
+            <div class="context">Ativa: They clean the office every day.</div>
+            <div class="question">6. Passiva: The office ______ every day.</div>
+            <div class="answer-line">
+                <input type="text" class="q6" placeholder="Sua resposta..." style="width: 300px;">
+                <span class="feedback" id="fb6"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">Ativa: She wrote the report yesterday.</div>
+            <div class="question">7. Passiva: The report ______ yesterday.</div>
+            <div class="answer-line">
+                <input type="text" class="q7" placeholder="Sua resposta..." style="width: 300px;">
+                <span class="feedback" id="fb7"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">Ativa: They will build a new bridge.</div>
+            <div class="question">8. Passiva: A new bridge ______ .</div>
+            <div class="answer-line">
+                <input type="text" class="q8" placeholder="Sua resposta..." style="width: 300px;">
+                <span class="feedback" id="fb8"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">Ativa: Someone has stolen my bike.</div>
+            <div class="question">9. Passiva: My bike ______ .</div>
+            <div class="answer-line">
+                <input type="text" class="q9" placeholder="Sua resposta..." style="width: 300px;">
+                <span class="feedback" id="fb9"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">Ativa: They are repairing the road.</div>
+            <div class="question">10. Passiva: The road ______ .</div>
+            <div class="answer-line">
+                <input type="text" class="q10" placeholder="Sua resposta..." style="width: 300px;">
+                <span class="feedback" id="fb10"></span>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-success" onclick="checkTransformExercise()">Verificar Respostas</button>
+        </div>
+        <div class="section-result" id="resultTransform"></div>
+    </div>
+
+    <!-- EXERCÍCIO 3: Escolher Ativa ou Passiva -->
+    <div class="exercise-section" id="sec3">
+        <h2>🔀 Exercício 3: Ativa ou Passiva?</h2>
+        <p style="color: #666; margin-bottom: 15px;">Escolha a forma correta (ativa ou passiva).</p>
+
+        <div class="exercise-item">
+            <div class="question">11. The book ______ by millions of people.</div>
+            <div class="options">
+                <label><input type="radio" name="q11" value="has read"> has read</label>
+                <label><input type="radio" name="q11" value="has been read"> has been read</label>
+            </div>
+            <span class="feedback" id="fb11"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">12. She ______ the email yesterday.</div>
+            <div class="options">
+                <label><input type="radio" name="q12" value="sent"> sent</label>
+                <label><input type="radio" name="q12" value="was sent"> was sent</label>
+            </div>
+            <span class="feedback" id="fb12"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">13. The dinner ______ by my mother.</div>
+            <div class="options">
+                <label><input type="radio" name="q13" value="is cooking"> is cooking</label>
+                <label><input type="radio" name="q13" value="is being cooked"> is being cooked</label>
+            </div>
+            <span class="feedback" id="fb13"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">14. The students ______ the exam.</div>
+            <div class="options">
+                <label><input type="radio" name="q14" value="have passed"> have passed</label>
+                <label><input type="radio" name="q14" value="have been passed"> have been passed</label>
+            </div>
+            <span class="feedback" id="fb14"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">15. The movie ______ in 1995.</div>
+            <div class="options">
+                <label><input type="radio" name="q15" value="made"> made</label>
+                <label><input type="radio" name="q15" value="was made"> was made</label>
+            </div>
+            <span class="feedback" id="fb15"></span>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-success" onclick="checkActivePassiveExercise()">Verificar Respostas</button>
+        </div>
+        <div class="section-result" id="resultActivePassive"></div>
+    </div>
+
+    <!-- EXERCÍCIO 4: Tradução -->
+    <div class="exercise-section" id="sec4">
+        <h2>🌍 Exercício 4: Tradução</h2>
+        <p style="color: #666; margin-bottom: 15px;">Traduza as frases para o inglês usando a voz passiva.</p>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 O bolo foi comido pelas crianças.</div>
+            <div class="translation-box">
+                <input type="text" class="q16" placeholder="Tradução em inglês..." style="width: 400px;">
+                <span class="feedback" id="fb16"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 A casa está sendo pintada agora.</div>
+            <div class="translation-box">
+                <input type="text" class="q17" placeholder="Tradução em inglês..." style="width: 400px;">
+                <span class="feedback" id="fb17"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 O relatório será enviado amanhã.</div>
+            <div class="translation-box">
+                <input type="text" class="q18" placeholder="Tradução em inglês..." style="width: 400px;">
+                <span class="feedback" id="fb18"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 O carro já foi consertado.</div>
+            <div class="translation-box">
+                <input type="text" class="q19" placeholder="Tradução em inglês..." style="width: 400px;">
+                <span class="feedback" id="fb19"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 A carta não foi enviada.</div>
+            <div class="translation-box">
+                <input type="text" class="q20" placeholder="Tradução em inglês..." style="width: 400px;">
+                <span class="feedback" id="fb20"></span>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-success" onclick="checkTranslationExercise()">Verificar Traduções</button>
+        </div>
+        <div class="section-result" id="resultTranslation"></div>
+    </div>
+
+    <!-- ==================== BOTÕES GLOBAIS ==================== -->
+    <div class="button-group">
+        <button class="btn btn-danger" onclick="checkAllExercises()">✅ Verificar Todos os Exercícios</button>
+        <button class="btn btn-secondary" onclick="resetAllExercises()">🔄 Resetar Todos</button>
+    </div>
+
+    <div class="score-display" id="globalScore">
+        Total: <span id="scoreCount">0</span> / <span id="totalCount">0</span> corretas
+    </div>
+    <div class="result-box" id="globalResult"></div>
+
+    <script>
+        // ==================== DADOS DAS RESPOSTAS ====================
+        const answers = {
+            select: ['was eaten', 'will be finished', 'is being cleaned', 'was stolen', 'have been signed'],
+            transform: [
+                'is cleaned',
+                'was written',
+                'will be built',
+                'has been stolen',
+                'is being repaired'
+            ],
+            activePassive: ['has been read', 'sent', 'is being cooked', 'have passed', 'was made'],
+            translations: [
+                'the cake was eaten by the children',
+                'the house is being painted now',
+                'the report will be sent tomorrow',
+                'the car has already been fixed',
+                'the letter was not sent'
+            ]
+        };
+
+        // ==================== FUNÇÕES DE VERIFICAÇÃO ====================
+        function normalize(text) {
+            return text.toLowerCase().trim().replace(/\s+/g, ' ');
+        }
+
+        function checkSelectExercise() {
+            let correct = 0;
+            const total = 5;
+            for (let i = 1; i <= total; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                const fb = document.getElementById(`fb${i}`);
+                if (selected) {
+                    const isCorrect = selected.value === answers.select[i-1];
+                    fb.textContent = isCorrect ? '✓ Correto' : '✗ Incorreto';
+                    fb.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                    if (isCorrect) correct++;
+                } else {
+                    fb.textContent = '⚠️ Selecione uma opção';
+                    fb.className = 'feedback waiting';
+                }
+            }
+            showSectionResult('resultSelect', correct, total);
+        }
+
+        function checkTransformExercise() {
+            let correct = 0;
+            const total = 5;
+            for (let i = 6; i <= 10; i++) {
+                const input = document.querySelector(`.q${i}`);
+                const fb = document.getElementById(`fb${i}`);
+                if (input) {
+                    const userAnswer = normalize(input.value);
+                    const isCorrect = userAnswer === answers.transform[i-6];
+                    fb.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                    fb.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                    if (isCorrect) correct++;
+                }
+            }
+            showSectionResult('resultTransform', correct, total);
+        }
+
+        function checkActivePassiveExercise() {
+            let correct = 0;
+            const total = 5;
+            for (let i = 11; i <= 15; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                const fb = document.getElementById(`fb${i}`);
+                if (selected) {
+                    const isCorrect = selected.value === answers.activePassive[i-11];
+                    fb.textContent = isCorrect ? '✓ Correto' : '✗ Incorreto';
+                    fb.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                    if (isCorrect) correct++;
+                } else {
+                    fb.textContent = '⚠️ Selecione uma opção';
+                    fb.className = 'feedback waiting';
+                }
+            }
+            showSectionResult('resultActivePassive', correct, total);
+        }
+
+        function checkTranslationExercise() {
+            let correct = 0;
+            const total = 5;
+            for (let i = 16; i <= 20; i++) {
+                const input = document.querySelector(`.q${i}`);
+                const fb = document.getElementById(`fb${i}`);
+                if (input) {
+                    const userAnswer = normalize(input.value);
+                    const isCorrect = userAnswer === answers.translations[i-16];
+                    fb.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                    fb.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                    if (isCorrect) correct++;
+                }
+            }
+            showSectionResult('resultTranslation', correct, total);
+        }
+
+        // ==================== FUNÇÕES AUXILIARES ====================
+        function showSectionResult(elementId, correct, total) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.textContent = `Você acertou ${correct} de ${total} (${Math.round(correct/total*100)}%)`;
+                element.className = `section-result ${correct === total ? 'correct' : (correct > 0 ? 'partial' : 'incorrect')}`;
+            }
+            updateGlobalScore();
+        }
+
+        function updateGlobalScore() {
+            let correct = 0;
+            let total = 0;
+            
+            document.querySelectorAll('.feedback').forEach(fb => {
+                if (fb.textContent.includes('✓')) {
+                    correct++;
+                    total++;
+                } else if (fb.textContent.includes('✗') || fb.textContent.includes('⚠️')) {
+                    total++;
+                }
+            });
+            
+            document.getElementById('scoreCount').textContent = correct;
+            document.getElementById('totalCount').textContent = total;
+        }
+
+        function checkAllExercises() {
+            checkSelectExercise();
+            checkTransformExercise();
+            checkActivePassiveExercise();
+            checkTranslationExercise();
+            
+            const total = document.querySelectorAll('.feedback').length;
+            const correct = document.querySelectorAll('.feedback.correct').length;
+            const result = document.getElementById('globalResult');
+            result.textContent = `🎯 Você acertou ${correct} de ${total} questões (${Math.round(correct/total*100)}%)`;
+            result.className = `result-box ${correct === total ? 'correct' : (correct > total/2 ? 'partial' : 'incorrect')}`;
+        }
+
+        function resetAllExercises() {
+            document.querySelectorAll('input[type="radio"]').forEach(el => el.checked = false);
+            document.querySelectorAll('input[type="text"]').forEach(el => el.value = '');
+            document.querySelectorAll('.feedback').forEach(el => {
+                el.textContent = '';
+                el.className = 'feedback';
+            });
+            document.querySelectorAll('.section-result').forEach(el => {
+                el.textContent = '';
+                el.className = 'section-result';
+            });
+            const result = document.getElementById('globalResult');
+            result.textContent = '';
+            result.className = 'result-box';
+            updateGlobalScore();
+        }
+
+        // ==================== EVENT LISTENERS ====================
+        document.querySelectorAll('input[type="text"]').forEach(input => {
+            input.addEventListener('input', updateGlobalScore);
+        });
+        document.querySelectorAll('input[type="radio"]').forEach(input => {
+            input.addEventListener('change', updateGlobalScore);
+        });
+
+        updateGlobalScore();
+    </script>
+</body>
+</html>

@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sufixos em Inglês - Guia Completo</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #8e44ad, #9b59b6);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        section {
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            color: #8e44ad;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        h3 {
+            color: #2c3e50;
+            margin: 15px 0 10px 0;
+        }
+        
+        .suffix-card {
+            background-color: #f9f9f9;
+            border-left: 4px solid #8e44ad;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+            transition: transform 0.3s;
+        }
+        
+        .suffix-card:hover {
+            transform: translateX(5px);
+        }
+        
+        .suffix-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .suffix-badge {
+            background-color: #8e44ad;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .example {
+            background-color: #f4ecf7;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        .example p {
+            margin-bottom: 10px;
+        }
+        
+        .highlight {
+            background-color: #d7bde2;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .word-pair {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #e8daef;
+            border-radius: 5px;
+        }
+        
+        .original {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .with-suffix {
+            font-weight: bold;
+            color: #8e44ad;
+        }
+        
+        .exercise {
+            background-color: #faf4fb;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .question {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            margin-top: 5px;
+        }
+        
+        input[type="text"] {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            margin-top: 5px;
+        }
+        
+        button {
+            background-color: #8e44ad;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background-color: #7d3c98;
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .correct {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #c8e6c9;
+        }
+        
+        .incorrect {
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ffcdd2;
+        }
+        
+        .suffix-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .suffix-type-card {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-top: 4px solid #8e44ad;
+        }
+        
+        .suffix-type-card h3 {
+            color: #8e44ad;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .tip-box {
+            background-color: #e8f4f8;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .warning-box {
+            background-color: #fdebd0;
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .rules-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .rules-table th {
+            background-color: #8e44ad;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .rules-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .rules-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .suffix-category {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .category-card {
+            background-color: #f0f7f5;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .category-card h4 {
+            color: #8e44ad;
+            margin-bottom: 10px;
+        }
+        
+        .visual-guide {
+            background: linear-gradient(135deg, #f4ecf7, #e8daef);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .visual-guide h3 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f1f1f1;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .suffix-examples {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .suffix-grid, .suffix-category, .suffix-examples {
+                grid-template-columns: 1fr;
+            }
+            
+            .rules-table {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>SUFIXOS EM INGLÊS</h1>
+            <p class="subtitle">Guia Completo - Formação de Palavras e Seus Significados</p>
+        </header>
+        
+        <div class="content">
+            <section id="introduction">
+                <h2>O que são Sufixos?</h2>
+                <p>Sufixos são grupos de letras adicionados ao <strong>final</strong> de uma palavra para modificar seu significado ou função gramatical. Eles podem transformar verbos em substantivos, adjetivos em advérbios, e muito mais!</p>
+                
+                <div class="example">
+                    <p>• <span class="highlight">happy</span> (feliz) + <strong>ness</strong> = <span class="highlight">happiness</span> (felicidade)</p>
+                    <p>• <span class="highlight">quick</span> (rápido) + <strong>ly</strong> = <span class="highlight">quickly</span> (rapidamente)</p>
+                    <p>• <span class="highlight">care</span> (cuidado) + <strong>ful</strong> = <span class="highlight">careful</span> (cuidadoso)</p>
+                </div>
+            </section>
+
+            <section id="noun-suffixes">
+                <h2>Sufixos que Formam Substantivos</h2>
+                
+                <div class="suffix-card">
+                    <div class="suffix-header">
+                        <div class="suffix-badge">-NESS</div>
+                        <h3>Forma substantivos abstratos a partir de adjetivos</h3>
+                    </div>
+                    <p>Indica <strong>estado, qualidade ou condição</strong></p>
+                    
+                    <div class="suffix-examples">
+                        <div class="word-pair">
+                            <span class="original">happy</span>
+                            <span class="with-suffix">happiness</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">sad</span>
+                            <span class="with-suffix">sadness</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">kind</span>
+                            <span class="with-suffix">kindness</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">dark</span>
+                            <span class="with-suffix">darkness</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="suffix-card">
+                    <div class="suffix-header">
+                        <div class="suffix-badge">-MENT</div>
+                        <h3>Forma substantivos a partir de verbos</h3>
+                    </div>
+                    <p>Indica <strong>ação, processo ou resultado</strong></p>
+                    
+                    <div class="suffix-examples">
+                        <div class="word-pair">
+                            <span class="original">develop</span>
+                            <span class="with-suffix">development</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">govern</span>
+                            <span class="with-suffix">government</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">enjoy</span>
+                            <span class="with-suffix">enjoyment</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">pay</span>
+                            <span class="with-suffix">payment</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="suffix-card">
+                    <div class="suffix-header">
+                        <div class="suffix-badge">-ION / -TION</div>
+                        <h3>Forma substantivos a partir de verbos</h3>
+                    </div>
+                    <p>Indica <strong>ação, processo ou estado</strong></p>
+                    
+                    <div class="suffix-examples">
+                        <div class="word-pair">
+                            <span class="original">act</span>
+                            <span class="with-suffix">action</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">educate</span>
+                            <span class="with-suffix">education</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">inform</span>
+                            <span class="with-suffix">information</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">celebrate</span>
+                            <span class="with-suffix">celebration</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="suffix-card">
+                    <div class="suffix-header">
+                        <div class="suffix-badge">-ER / -OR</div>
+                        <h3>Indica pessoa que faz algo</h3>
+                    </div>
+                    <p>Forma substantivos que significam <strong>"aquele que faz"</strong></p>
+                    
+                    <div class="suffix-examples">
+                        <div class="word-pair">
+                            <span class="original">teach</span>
+                            <span class="with-suffix">teacher</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">work</span>
+                            <span class="with-suffix">worker</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">act</span>
+                            <span class="with-suffix">actor</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">direct</span>
+                            <span class="with-suffix">director</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="suffix-card">
+                    <div class="suffix-header">
+                        <div class="suffix-badge">-SHIP</div>
+                        <h3>Indica estado, condição ou habilidade</h3>
+                    </div>
+                    <p>Forma substantivos abstratos</p>
+                    
+                    <div class="suffix-examples">
+                        <div class="word-pair">
+                            <span class="original">friend</span>
+                            <span class="with-suffix">friendship</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">leader</span>
+                            <span class="with-suffix">leadership</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">member</span>
+                            <span class="with-suffix">membership</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">citizen</span>
+                            <span class="with-suffix">citizenship</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="adjective-suffixes">
+                <h2>Sufixos que Formam Adjetivos</h2>
+                
+                <div class="suffix-card">
+                    <div class="suffix-header">
+                        <div class="suffix-badge">-FUL</div>
+                        <h3>Indica "cheio de" ou "com"</h3>
+                    </div>
+                    <p>Significa <strong>possuir a qualidade</strong> do substantivo original</p>
+                    
+                    <div class="suffix-examples">
+                        <div class="word-pair">
+                            <span class="original">care</span>
+                            <span class="with-suffix">careful</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">beauty</span>
+                            <span class="with-suffix">beautiful</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">help</span>
+                            <span class="with-suffix">helpful</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">wonder</span>
+                            <span class="with-suffix">wonderful</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="suffix-card">
+                    <div class="suffix-header">
+                        <div class="suffix-badge">-LESS</div>
+                        <h3>Indica "sem" ou "falta de"</h3>
+                    </div>
+                    <p>Significa <strong>não possuir</strong> a qualidade do substantivo original</p>
+                    
+                    <div class="suffix-examples">
+                        <div class="word-pair">
+                            <span class="original">care</span>
+                            <span class="with-suffix">careless</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">home</span>
+                            <span class="with-suffix">homeless</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">hope</span>
+                            <span class="with-suffix">hopeless</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">fear</span>
+                            <span class="with-suffix">fearless</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="suffix-card">
+                    <div class="suffix-header">
+                        <div class="suffix-badge">-ABLE / -IBLE</div>
+                        <h3>Indica "que pode ser"</h3>
+                    </div>
+                    <p>Significa <strong>capaz de</strong> ou <strong>passível de</strong></p>
+                    
+                    <div class="suffix-examples">
+                        <div class="word-pair">
+                            <span class="original">read</span>
+                            <span class="with-suffix">readable</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">comfort</span>
+                            <span class="with-suffix">comfortable</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">response</span>
+                            <span class="with-suffix">responsible</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">access</span>
+                            <span class="with-suffix">accessible</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="suffix-card">
+                    <div class="suffix-header">
+                        <div class="suffix-badge">-IVE</div>
+                        <h3>Indica tendência ou qualidade</h3>
+                    </div>
+                    <p>Forma adjetivos a partir de verbos</p>
+                    
+                    <div class="suffix-examples">
+                        <div class="word-pair">
+                            <span class="original">act</span>
+                            <span class="with-suffix">active</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">create</span>
+                            <span class="with-suffix">creative</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">effect</span>
+                            <span class="with-suffix">effective</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">impress</span>
+                            <span class="with-suffix">impressive</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="suffix-card">
+                    <div class="suffix-header">
+                        <div class="suffix-badge">-OUS</div>
+                        <h3>Indica "cheio de" ou "caracterizado por"</h3>
+                    </div>
+                    <p>Forma adjetivos a partir de substantivos</p>
+                    
+                    <div class="suffix-examples">
+                        <div class="word-pair">
+                            <span class="original">danger</span>
+                            <span class="with-suffix">dangerous</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">fame</span>
+                            <span class="with-suffix">famous</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">mystery</span>
+                            <span class="with-suffix">mysterious</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">nerve</span>
+                            <span class="with-suffix">nervous</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="adverb-suffixes">
+                <h2>Sufixos que Formam Advérbios</h2>
+                
+                <div class="suffix-card">
+                    <div class="suffix-header">
+                        <div class="suffix-badge">-LY</div>
+                        <h3>O sufixo mais comum para advérbios</h3>
+                    </div>
+                    <p>Transforma adjetivos em advérbios de <strong>modo</strong></p>
+                    
+                    <div class="suffix-examples">
+                        <div class="word-pair">
+                            <span class="original">quick</span>
+                            <span class="with-suffix">quickly</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">happy</span>
+                            <span class="with-suffix">happily</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">careful</span>
+                            <span class="with-suffix">carefully</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">beautiful</span>
+                            <span class="with-suffix">beautifully</span>
+                        </div>
+                    </div>
+                    
+                    <div class="tip-box">
+                        <h3>🎯 Regra do -Y para -ILY</h3>
+                        <p>Quando o adjetivo termina em <strong>-Y</strong>, trocamos por <strong>-ILY</strong>:</p>
+                        <div class="example">
+                            <p>• easy → easily<br>
+                            • happy → happily<br>
+                            • angry → angrily</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="verb-suffixes">
+                <h2>Sufixos que Formam Verbos</h2>
+                
+                <div class="suffix-card">
+                    <div class="suffix-header">
+                        <div class="suffix-badge">-IZE / -ISE</div>
+                        <h3>Torna em verbo, "fazer tornar-se"</h3>
+                    </div>
+                    <p>Forma verbos que significam <strong>"tornar"</strong> ou <strong>"fazer com que"</strong></p>
+                    
+                    <div class="suffix-examples">
+                        <div class="word-pair">
+                            <span class="original">modern</span>
+                            <span class="with-suffix">modernize</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">special</span>
+                            <span class="with-suffix">specialize</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">real</span>
+                            <span class="with-suffix">realize</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">organ</span>
+                            <span class="with-suffix">organize</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="suffix-card">
+                    <div class="suffix-header">
+                        <div class="suffix-badge">-EN</div>
+                        <h3>Indica "tornar" ou "fazer"</h3>
+                    </div>
+                    <p>Forma verbos a partir de adjetivos</p>
+                    
+                    <div class="suffix-examples">
+                        <div class="word-pair">
+                            <span class="original">wide</span>
+                            <span class="with-suffix">widen</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">sharp</span>
+                            <span class="with-suffix">sharpen</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">soft</span>
+                            <span class="with-suffix">soften</span>
+                        </div>
+                        <div class="word-pair">
+                            <span class="original">strength</span>
+                            <span class="with-suffix">strengthen</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="special-cases">
+                <h2>Casos Especiais e Regras</h2>
+                
+                <div class="warning-box">
+                    <h3>⚠️ Mudanças Ortográficas</h3>
+                    <p>Algumas palavras mudam sua grafia ao receber sufixos:</p>
+                    <div class="example">
+                        <p>• <strong>happy → happiness</strong> (o Y vira I)<br>
+                        • <strong>big → bigger</strong> (duplica a consoante)<br>
+                        • <strong>nice → nicest</strong> (remove o E final)<br>
+                        • <strong>study → studies</strong> (Y vira IES)</p>
+                    </div>
+                </div>
+                
+                <div class="tip-box">
+                    <h3>🎯 Sufixos com Significados Opostos</h3>
+                    <p>Alguns sufixos criam palavras com significados opostos:</p>
+                    <div class="example">
+                        <p>• <strong>careful</strong> (cuidadoso) vs <strong>careless</strong> (descuidado)<br>
+                        • <strong>hopeful</strong> (esperançoso) vs <strong>hopeless</strong> (desesperançado)<br>
+                        • <strong>powerful</strong> (poderoso) vs <strong>powerless</strong> (impotente)</p>
+                    </div>
+                </div>
+
+                <div class="visual-guide">
+                    <h3>📚 Resumo dos Sufixos Mais Comuns</h3>
+                    <table class="rules-table">
+                        <thead>
+                            <tr>
+                                <th>Sufixo</th>
+                                <th>Função</th>
+                                <th>Exemplo</th>
+                                <th>Significado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>-NESS</strong></td>
+                                <td>Substantivo (qualidade)</td>
+                                <td>happy → happiness</td>
+                                <td>felicidade</td>
+                            </tr>
+                            <tr>
+                                <td><strong>-MENT</strong></td>
+                                <td>Substantivo (ação)</td>
+                                <td>develop → development</td>
+                                <td>desenvolvimento</td>
+                            </tr>
+                            <tr>
+                                <td><strong>-FUL</strong></td>
+                                <td>Adjetivo (com)</td>
+                                <td>care → careful</td>
+                                <td>cuidadoso</td>
+                            </tr>
+                            <tr>
+                                <td><strong>-LESS</strong></td>
+                                <td>Adjetivo (sem)</td>
+                                <td>care → careless</td>
+                                <td>descuidado</td>
+                            </tr>
+                            <tr>
+                                <td><strong>-LY</strong></td>
+                                <td>Advérbio (modo)</td>
+                                <td>quick → quickly</td>
+                                <td>rapidamente</td>
+                            </tr>
+                            <tr>
+                                <td><strong>-ER</strong></td>
+                                <td>Substantivo (pessoa)</td>
+                                <td>teach → teacher</td>
+                                <td>professor</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="practice">
+                <h2>Exercícios Práticos</h2>
+                <p>Complete as palavras com o sufixo correto:</p>
+                
+                <div class="exercise">
+                    <div class="question">
+                        <p>1. happy + __________ = happiness</p>
+                        <select id="q1">
+                            <option value="">Selecione</option>
+                            <option value="ness">ness</option>
+                            <option value="ful">ful</option>
+                            <option value="less">less</option>
+                            <option value="ly">ly</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>2. care + __________ = careful</p>
+                        <select id="q2">
+                            <option value="">Selecione</option>
+                            <option value="ness">ness</option>
+                            <option value="ful">ful</option>
+                            <option value="less">less</option>
+                            <option value="ly">ly</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>3. quick + __________ = quickly</p>
+                        <select id="q3">
+                            <option value="">Selecione</option>
+                            <option value="ness">ness</option>
+                            <option value="ful">ful</option>
+                            <option value="less">less</option>
+                            <option value="ly">ly</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>4. teach + __________ = teacher</p>
+                        <select id="q4">
+                            <option value="">Selecione</option>
+                            <option value="er">er</option>
+                            <option value="or">or</option>
+                            <option value="ment">ment</option>
+                            <option value="ion">ion</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>5. develop + __________ = development</p>
+                        <select id="q5">
+                            <option value="">Selecione</option>
+                            <option value="er">er</option>
+                            <option value="or">or</option>
+                            <option value="ment">ment</option>
+                            <option value="ion">ion</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>6. care + __________ = careless</p>
+                        <select id="q6">
+                            <option value="">Selecione</option>
+                            <option value="ness">ness</option>
+                            <option value="ful">ful</option>
+                            <option value="less">less</option>
+                            <option value="ly">ly</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>7. friend + __________ = friendship</p>
+                        <select id="q7">
+                            <option value="">Selecione</option>
+                            <option value="ness">ness</option>
+                            <option value="ship">ship</option>
+                            <option value="ful">ful</option>
+                            <option value="less">less</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>8. beauty + __________ = beautiful</p>
+                        <select id="q8">
+                            <option value="">Selecione</option>
+                            <option value="ness">ness</option>
+                            <option value="ful">ful</option>
+                            <option value="less">less</option>
+                            <option value="ly">ly</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>9. act + __________ = action</p>
+                        <select id="q9">
+                            <option value="">Selecione</option>
+                            <option value="er">er</option>
+                            <option value="or">or</option>
+                            <option value="ment">ment</option>
+                            <option value="ion">ion</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>10. home + __________ = homeless</p>
+                        <select id="q10">
+                            <option value="">Selecione</option>
+                            <option value="ness">ness</option>
+                            <option value="ful">ful</option>
+                            <option value="less">less</option>
+                            <option value="ly">ly</option>
+                        </select>
+                    </div>
+                    
+                    <button id="checkAnswers">Verificar Respostas</button>
+                    
+                    <div class="result" id="result">
+                        <!-- Resultado será inserido aqui -->
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <footer>
+            <p>Material de ensino de Inglês - Sufixos - Guia Completo</p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('checkAnswers').addEventListener('click', function() {
+            const answers = {
+                q1: 'ness',
+                q2: 'ful',
+                q3: 'ly',
+                q4: 'er',
+                q5: 'ment',
+                q6: 'less',
+                q7: 'ship',
+                q8: 'ful',
+                q9: 'ion',
+                q10: 'less'
+            };
+            
+            let correctCount = 0;
+            let resultHTML = '<h3>Resultado:</h3><ul>';
+            
+            for (let i = 1; i <= 10; i++) {
+                const questionId = 'q' + i;
+                const userAnswer = document.getElementById(questionId).value;
+                const correctAnswer = answers[questionId];
+                
+                if (userAnswer === correctAnswer) {
+                    correctCount++;
+                    resultHTML += `<li>Pergunta ${i}: <span style="color: green;">✓ Correto!</span></li>`;
+                } else {
+                    resultHTML += `<li>Pergunta ${i}: <span style="color: red;">✗ Incorreto. A resposta correta é "${correctAnswer}".</span></li>`;
+                }
+            }
+            
+            resultHTML += `</ul><p><strong>Total: ${correctCount}/10 acertos</strong></p>`;
+            
+            const resultDiv = document.getElementById('result');
+            
+            if (correctCount >= 8) {
+                resultDiv.className = 'result correct';
+                resultHTML += '<p>Parabéns! Você domina os sufixos em inglês!</p>';
+            } else if (correctCount >= 5) {
+                resultDiv.className = 'result correct';
+                resultHTML += '<p>Bom trabalho! Revise os sufixos e tente novamente.</p>';
+            } else {
+                resultDiv.className = 'result incorrect';
+                resultHTML += '<p>Estude mais os sufixos e tente novamente. Você consegue!</p>';
+            }
+            
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = resultHTML;
+        });
+    </script>
+</body>
+</html>

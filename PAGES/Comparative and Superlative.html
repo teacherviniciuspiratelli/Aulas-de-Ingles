@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprendendo Comparative and Superlative</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #8B4513, #D2691E);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        section {
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            color: #8B4513;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .rule-card {
+            background-color: #f9f9f9;
+            border-left: 4px solid #8B4513;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .example {
+            background-color: #fef5e7;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        .example p {
+            margin-bottom: 10px;
+        }
+        
+        .highlight {
+            background-color: #f0b27a;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .warning {
+            background-color: #fff3cd;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .exercise {
+            background-color: #fdf2e9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .question {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        input[type="text"] {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            margin-top: 5px;
+        }
+        
+        select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            margin-top: 5px;
+        }
+        
+        button {
+            background-color: #8B4513;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background-color: #654321;
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .correct {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #c8e6c9;
+        }
+        
+        .incorrect {
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ffcdd2;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .comparison-table th {
+            background-color: #8B4513;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .comparison-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .tip-box {
+            background-color: #e8f4f8;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .irregular-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .irregular-table th {
+            background-color: #2c3e50;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .irregular-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f1f1f1;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .comparison-table, .irregular-table {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Comparative and Superlative</h1>
+            <p class="subtitle">Graus Comparativo e Superlativo em Inglês</p>
+        </header>
+        
+        <div class="content">
+            <section id="introduction">
+                <h2>Introdução</h2>
+                <p>Os adjetivos em inglês possuem três graus: <strong>positive</strong> (normal), <strong>comparative</strong> (comparativo) e <strong>superlative</strong> (superlativo). Usamos essas formas para comparar pessoas, coisas ou situações.</p>
+                
+                <div class="example">
+                    <p>• <span class="highlight">Positive:</span> My car is <strong>fast</strong>.</p>
+                    <p>• <span class="highlight">Comparative:</span> Your car is <strong>faster</strong> than mine.</p>
+                    <p>• <span class="highlight">Superlative:</span> His car is the <strong>fastest</strong> of all.</p>
+                </div>
+            </section>
+            
+            <section id="comparative">
+                <h2>Comparative Form (Comparativo)</h2>
+                <p>Usamos o comparativo para comparar <strong>duas</strong> pessoas, coisas ou situações.</p>
+                
+                <div class="rule-card">
+                    <h3>1. Adjetivos Curtos (1 sílaba)</h3>
+                    <p>Adicionamos <strong>-er</strong> ao final do adjetivo + <strong>than</strong>.</p>
+                    <div class="example">
+                        <p>• tall → <span class="highlight">taller than</span></p>
+                        <p>• fast → <span class="highlight">faster than</span></p>
+                        <p>• big → <span class="highlight">bigger than</span> (dobra a consoante final)</p>
+                        <p>• nice → <span class="highlight">nicer than</span> (remove o "e" final)</p>
+                    </div>
+                </div>
+                
+				<div class="rule-card">
+                    <h3>2. Adjetivos com 2 sílabas</h3>
+                    <p>Se acabar com Y, tiramos o Y e adicionamos <strong>-ier</strong> ao final do adjetivo + <strong>than</strong>.</p>
+                    <div class="example">
+                        <p>• ugly → <span class="highlight">uglier than</span></p>
+                        <p>• happy → <span class="highlight">happier than</span></p>
+						</div>
+                    <p>Se não acabar com Y, acrescentamos <strong>more</strong> antes do adjetivo + <strong>than</strong>.</p>
+                    <div class="example">
+                        <p>• crowded → <span class="highlight">more crowded than</span></p>
+                        <p>• careful → <span class="highlight">more careful than</span></p>
+					</div>
+                </div>
+				
+                <div class="rule-card">
+                    <h3>3. Adjetivos Longos (3+ sílabas)</h3>
+                    <p>Usamos <strong>more</strong> antes do adjetivo + <strong>than</strong>.</p>
+                    <div class="example">
+                        <p>• beautiful → <span class="highlight">more beautiful than</span></p>
+                        <p>• interesting → <span class="highlight">more interesting than</span></p>
+                        <p>• expensive → <span class="highlight">more expensive than</span></p>
+                    </div>
+                </div>
+                
+                <div class="rule-card">
+                    <h3>4. Adjetivos de Casos Especiais</h3>
+                    <p>Alguns adjetivos podem usar ambas as formas:</p>
+                    <div class="example">
+                        <p>• clever → <span class="highlight">cleverer than</span> ou <span class="highlight">more clever than</span></p>
+                        <p>• quiet → <span class="highlight">quieter than</span> ou <span class="highlight">more quiet than</span></p>
+                        <p>• simple → <span class="highlight">simpler than</span> ou <span class="highlight">more simple than</span></p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="superlative">
+                <h2>Superlative Form (Superlativo)</h2>
+                <p>Usamos o superlativo para comparar <strong>três ou mais</strong> pessoas, coisas ou situações.</p>
+                
+                <div class="rule-card">
+                    <h3>1. Adjetivos Curtos (1 sílaba)</h3>
+                    <p>Adicionamos <strong>-est</strong> ao final do adjetivo + <strong>the</strong> antes.</p>
+                    <div class="example">
+                        <p>• tall → <span class="highlight">the tallest</span></p>
+                        <p>• fast → <span class="highlight">the fastest</span></p>
+                        <p>• big → <span class="highlight">the biggest</span> (dobra a consoante final)</p>
+                        <p>• nice → <span class="highlight">the nicest</span> (remove o "e" final)</p>
+                    </div>
+                </div>
+                
+				<div class="rule-card">
+                    <h3>2. Adjetivos com 2 sílabas</h3>
+                    <p>Se acabar com Y, usamos <strong>the</strong> antes do adjetivo e tiramos o Y e adicionamos <strong>-iest</strong> ao final do adjetivo.</p>
+                    <div class="example">
+                        <p>• ugly → <span class="highlight">the ugliest</span></p>
+                        <p>• happy → <span class="highlight">the happiest</span></p>
+						</div>
+                    <p>Se não acabar com Y, usamos <strong>the most</strong> antes do adjetivo.</p>
+                    <div class="example">
+                        <p>• crowded → <span class="highlight">the most crowded</span></p>
+                        <p>• careful → <span class="highlight">the most careful</span></p>
+					</div>
+                </div>
+				
+                <div class="rule-card">
+                    <h3>3. Adjetivos Longos (3+ sílabas)</h3>
+                    <p>Usamos <strong>the most</strong> antes do adjetivo.</p>
+                    <div class="example">
+                        <p>• beautiful → <span class="highlight">the most beautiful</span></p>
+                        <p>• interesting → <span class="highlight">the most interesting</span></p>
+                        <p>• expensive → <span class="highlight">the most expensive</span></p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="rules-table">
+                <h2>Resumo das Regras</h2>
+                
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Tipo de Adjetivo</th>
+                            <th>Comparative</th>
+                            <th>Superlative</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1 sílaba<br>(short, tall, big)</td>
+                            <td>short<strong>er</strong> than</td>
+                            <td>the short<strong>est</strong></td>
+                        </tr>
+                        <tr>
+                            <td>1 sílaba terminando em -e<br>(nice, large)</td>
+                            <td>nic<strong>er</strong> than</td>
+                            <td>the nic<strong>est</strong></td>
+                        </tr>
+                        <tr>
+                            <td>1 sílaba: CVC<br>(hot, big, sad)</td>
+                            <td>hot<strong>ter</strong> than</td>
+                            <td>the hot<strong>test</strong></td>
+                        </tr>
+                        <tr>
+                            <td>2 sílabas terminando em -y<br>(happy, easy)</td>
+                            <td>happ<strong>ier</strong> than</td>
+                            <td>the happ<strong>iest</strong></td>
+                        </tr>
+                        <tr>
+                            <td>2+ sílabas<br>(beautiful, interesting)</td>
+                            <td><strong>more</strong> beautiful than</td>
+                            <td>the <strong>most</strong> beautiful</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            
+            <section id="irregular">
+                <h2>Adjetivos Irregulares</h2>
+                <p>Alguns adjetivos têm formas completamente diferentes no comparativo e superlativo:</p>
+                
+                <table class="irregular-table">
+                    <thead>
+                        <tr>
+                            <th>Adjetivo</th>
+                            <th>Comparative</th>
+                            <th>Superlative</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>good (bom)</td>
+                            <td>better (melhor)</td>
+                            <td>the best (o melhor)</td>
+                        </tr>
+                        <tr>
+                            <td>bad (ruim)</td>
+                            <td>worse (pior)</td>
+                            <td>the worst (o pior)</td>
+                        </tr>
+                        <tr>
+                            <td>far (longe)</td>
+                            <td>further/farther (mais longe)</td>
+                            <td>the furthest/farthest (o mais longe)</td>
+                        </tr>
+                        <tr>
+                            <td>little (pouco)</td>
+                            <td>less (menos)</td>
+                            <td>the least (o mínimo)</td>
+                        </tr>
+                        <tr>
+                            <td>much/many (muito)</td>
+                            <td>more (mais)</td>
+                            <td>the most (o máximo)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            
+            <section id="tips">
+                <h2>Dicas Importantes</h2>
+                
+                <div class="tip-box">
+                    <h3>Uso do "than"</h3>
+                    <p>Sempre usamos <strong>than</strong> após o comparativo quando mencionamos a segunda coisa/pessoa sendo comparada:</p>
+                    <div class="example">
+                        <p>• Maria is <span class="highlight">taller than</span> João.</p>
+                        <p>• This book is <span class="highlight">more interesting than</span> that one.</p>
+                    </div>
+                </div>
+                
+                <div class="tip-box">
+                    <h3>Uso do "the" no superlativo</h3>
+                    <p>Quase sempre usamos <strong>the</strong> antes do superlativo:</p>
+                    <div class="example">
+                        <p>• She is <span class="highlight">the</span> smartest student in class.</p>
+                        <p>• This is <span class="highlight">the</span> most expensive restaurant in town.</p>
+                    </div>
+                </div>
+                
+                <div class="tip-box">
+                    <h3>Comparando com "as...as"</h3>
+                    <p>Para igualdade, usamos <strong>as + adjective + as</strong>:</p>
+                    <div class="example">
+                        <p>• Maria is <span class="highlight">as tall as</span> João. (Maria é tão alta quanto João)</p>
+                        <p>• This book is <span class="highlight">as interesting as</span> that one.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="practice">
+                <h2>Exercícios Práticos</h2>
+                <p>Complete as frases com a forma correta do comparativo ou superlativo:</p>
+                
+                <div class="exercise">
+                    <div class="question">
+                        <p>1. My brother is __________ (tall) than me.</p>
+                        <input type="text" id="q1" placeholder="Digite a forma comparativa">
+                    </div>
+                    
+                    <div class="question">
+                        <p>2. This is __________ (good) movie I've ever seen.</p>
+                        <input type="text" id="q2" placeholder="Digite a forma superlativa">
+                    </div>
+                    
+                    <div class="question">
+                        <p>3. Her dress is __________ (beautiful) than mine.</p>
+                        <input type="text" id="q3" placeholder="Digite a forma comparativa">
+                    </div>
+                    
+                    <div class="question">
+                        <p>4. Today is __________ (hot) day of the year.</p>
+                        <input type="text" id="q4" placeholder="Digite a forma superlativa">
+                    </div>
+                    
+                    <div class="question">
+                        <p>5. English is __________ (easy) than Chinese.</p>
+                        <input type="text" id="q5" placeholder="Digite a forma comparativa">
+                    </div>
+                    
+                    <div class="question">
+                        <p>6. This is __________ (bad) restaurant in town.</p>
+                        <input type="text" id="q6" placeholder="Digite a forma superlativa">
+                    </div>
+                    
+                    <div class="question">
+                        <p>7. My car is __________ (expensive) than yours.</p>
+                        <input type="text" id="q7" placeholder="Digite a forma comparativa">
+                    </div>
+                    
+                    <div class="question">
+                        <p>8. He is __________ (smart) student in the class.</p>
+                        <input type="text" id="q8" placeholder="Digite a forma superlativa">
+                    </div>
+                    
+                    <div class="question">
+                        <p>9. This problem is __________ (difficult) than I thought.</p>
+                        <input type="text" id="q9" placeholder="Digite a forma comparativa">
+                    </div>
+                    
+                    <div class="question">
+                        <p>10. That was __________ (funny) joke I've ever heard.</p>
+                        <input type="text" id="q10" placeholder="Digite a forma superlativa">
+                    </div>
+                    
+                    <button id="checkAnswers">Verificar Respostas</button>
+                    
+                    <div class="result" id="result">
+                        <!-- Resultado será inserido aqui -->
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <footer>
+            <p>Material de ensino de Inglês - Comparative and Superlative Forms</p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('checkAnswers').addEventListener('click', function() {
+            const answers = {
+                q1: 'taller',
+                q2: 'the best',
+                q3: 'more beautiful',
+                q4: 'the hottest',
+                q5: 'easier',
+                q6: 'the worst',
+                q7: 'more expensive',
+                q8: 'the smartest',
+                q9: 'more difficult',
+                q10: 'the funniest'
+            };
+            
+            let correctCount = 0;
+            let resultHTML = '<h3>Resultado:</h3><ul>';
+            
+            for (let i = 1; i <= 10; i++) {
+                const questionId = 'q' + i;
+                const userAnswer = document.getElementById(questionId).value.trim().toLowerCase();
+                const correctAnswer = answers[questionId].toLowerCase();
+                
+                // Remove artigos extras para comparação
+                const cleanUserAnswer = userAnswer.replace(/^(a |an |the )/, '');
+                const cleanCorrectAnswer = correctAnswer.replace(/^(a |an |the )/, '');
+                
+                if (cleanUserAnswer === cleanCorrectAnswer) {
+                    correctCount++;
+                    resultHTML += `<li>Pergunta ${i}: <span style="color: green;">✓ Correto!</span></li>`;
+                } else {
+                    resultHTML += `<li>Pergunta ${i}: <span style="color: red;">✗ Incorreto. A resposta correta é "${answers[questionId]}".</span></li>`;
+                }
+            }
+            
+            resultHTML += `</ul><p><strong>Total: ${correctCount}/10 acertos</strong></p>`;
+            
+            const resultDiv = document.getElementById('result');
+            
+            if (correctCount >= 8) {
+                resultDiv.className = 'result correct';
+                resultHTML += '<p>Parabéns! Você domina os comparativos e superlativos!</p>';
+            } else if (correctCount >= 5) {
+                resultDiv.className = 'result correct';
+                resultHTML += '<p>Bom trabalho! Revise as regras e tente novamente para melhorar.</p>';
+            } else {
+                resultDiv.className = 'result incorrect';
+                resultHTML += '<p>Estude mais as regras e tente novamente. Você consegue!</p>';
+            }
+            
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = resultHTML;
+        });
+    </script>
+</body>
+</html>

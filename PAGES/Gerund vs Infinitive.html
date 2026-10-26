@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Gerund vs Infinitive - Gerúndio e Infinitivo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f0f4f8;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+        
+        /* Teaching Section */
+        .teaching-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .teaching-section h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .grammar-box {
+            background: #ecf0f1;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #3498db;
+        }
+        .grammar-box h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .grammar-box table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        .grammar-box table td {
+            padding: 8px 12px;
+            border: 1px solid #bdc3c7;
+        }
+        .grammar-box table th {
+            background: #3498db;
+            color: white;
+            padding: 8px 12px;
+            border: 1px solid #3498db;
+            text-align: left;
+        }
+        .example {
+            background: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 8px 0;
+            border-left: 4px solid #2ecc71;
+        }
+        .example .en {
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        .example .pt {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        .highlight {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .highlight-blue {
+            color: #2980b9;
+            font-weight: bold;
+        }
+        .formula {
+            background: #2c3e50;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.1em;
+            margin: 15px 0;
+        }
+        .formula span {
+            color: #f1c40f;
+        }
+
+        .verb-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 8px;
+            margin: 10px 0;
+        }
+        .verb-list .item {
+            background: white;
+            padding: 6px 12px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            border: 1px solid #ddd;
+        }
+        .verb-list .item .verb {
+            color: #2c3e50;
+        }
+        .verb-list .item .form {
+            color: #2980b9;
+            font-weight: bold;
+        }
+
+        .diff-example {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 4px solid #f39c12;
+        }
+        .diff-example .en {
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        .diff-example .pt {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        .diff-example .highlight {
+            color: #e74c3c;
+        }
+
+        /* Exercise Sections */
+        .exercise-section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .exercise-section h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #e67e22;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .exercise-item {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+        .exercise-item .question {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .exercise-item .context {
+            color: #666;
+            font-style: italic;
+            font-size: 0.95em;
+            margin-bottom: 8px;
+        }
+        .options {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 8px 0;
+        }
+        .options label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+        .options label:hover {
+            background: #e8f4f8;
+        }
+        .options input[type="radio"] {
+            cursor: pointer;
+        }
+        .answer-line {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+        .answer-line input[type="text"] {
+            padding: 8px 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 15px;
+            width: 300px;
+            transition: border-color 0.3s;
+        }
+        .answer-line input[type="text"]:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        .translation-box {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .translation-box input {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        /* Feedback */
+        .feedback {
+            font-size: 0.9em;
+            margin-left: 10px;
+            padding: 3px 12px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        .feedback.correct {
+            background: #d4edda;
+            color: #155724;
+        }
+        .feedback.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .feedback.waiting {
+            background: #e9ecef;
+            color: #6c757d;
+        }
+        
+        /* Buttons */
+        .btn {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            margin: 5px;
+        }
+        .btn-success {
+            background: #2ecc71;
+            color: white;
+        }
+        .btn-success:hover {
+            background: #27ae60;
+            transform: translateY(-2px);
+        }
+        .btn-danger {
+            background: #e74c3c;
+            color: white;
+        }
+        .btn-danger:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background: #95a5a6;
+            color: white;
+        }
+        .btn-secondary:hover {
+            background: #7f8c8d;
+            transform: translateY(-2px);
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .result-box {
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            text-align: center;
+            display: none;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        .result-box.correct {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+        .result-box.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+        .result-box.partial {
+            background: #fff3cd;
+            color: #856404;
+            display: block;
+        }
+
+        .section-result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+        .section-result.correct {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+        .section-result.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+        .section-result.partial {
+            background: #fff3cd;
+            color: #856404;
+            display: block;
+        }
+
+        .score-display {
+            text-align: center;
+            font-size: 1.2em;
+            padding: 10px;
+            background: #ecf0f1;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .score-display span {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        @media (max-width: 600px) {
+            .options {
+                flex-direction: column;
+                gap: 5px;
+            }
+            .answer-line input[type="text"] {
+                width: 100%;
+            }
+            .translation-box {
+                flex-direction: column;
+            }
+            .verb-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>📚 Gerund vs Infinitive</h1>
+    <p class="subtitle">Aprenda a diferença entre Gerúndio e Infinitivo em inglês</p>
+
+    <!-- ==================== ENSINO ==================== -->
+    <div class="teaching-section">
+        <h2>📖 O que são Gerund e Infinitive?</h2>
+        
+        <div class="grammar-box">
+            <h3>🔹 O que é o Gerund?</h3>
+            <p>O <strong>gerund</strong> é a forma do verbo com <span class="highlight">-ing</span> que funciona como substantivo.</p>
+            <div class="formula">
+                <span>Verbo</span> + <span>-ing</span>
+            </div>
+            <div class="example">
+                <span class="en"><span class="highlight">Swimming</span> is fun.</span><br>
+                <span class="pt">Nadar é divertido.</span>
+            </div>
+            <div class="example">
+                <span class="en">I enjoy <span class="highlight">reading</span> books.</span><br>
+                <span class="pt">Eu gosto de ler livros.</span>
+            </div>
+        </div>
+
+        <div class="grammar-box">
+            <h3>🔹 O que é o Infinitive?</h3>
+            <p>O <strong>infinitivo</strong> é a forma do verbo com <span class="highlight-blue">to</span> + verbo base.</p>
+            <div class="formula">
+                <span>to</span> + <span>verbo base</span>
+            </div>
+            <div class="example">
+                <span class="en">I want <span class="highlight-blue">to travel</span> to Japan.</span><br>
+                <span class="pt">Eu quero viajar para o Japão.</span>
+            </div>
+            <div class="example">
+                <span class="en">She decided <span class="highlight-blue">to study</span> medicine.</span><br>
+                <span class="pt">Ela decidiu estudar medicina.</span>
+            </div>
+        </div>
+
+        <div class="grammar-box">
+            <h3>🔹 Quando usar o Gerund</h3>
+            <ul style="margin-left: 20px; line-height: 1.8;">
+                <li><strong>Como sujeito da frase:</strong> <em><span class="highlight">Running</span> is good for your health.</em></li>
+                <li><strong>Após preposições:</strong> <em>I'm interested in <span class="highlight">learning</span> Spanish.</em></li>
+                <li><strong>Após certos verbos (ex: enjoy, avoid, finish):</strong> <em>I enjoy <span class="highlight">traveling</span>.</em></li>
+                <li><strong>Após expressões como "it's no use", "can't help":</strong> <em>I can't help <span class="highlight">laughing</span>.</em></li>
+            </ul>
+            
+            <h4 style="margin-top: 15px;">Verbos comuns seguidos de Gerund:</h4>
+            <div class="verb-list">
+                <div class="item"><span class="verb">admit</span> <span class="form">-ing</span></div>
+                <div class="item"><span class="verb">avoid</span> <span class="form">-ing</span></div>
+                <div class="item"><span class="verb">consider</span> <span class="form">-ing</span></div>
+                <div class="item"><span class="verb">enjoy</span> <span class="form">-ing</span></div>
+                <div class="item"><span class="verb">finish</span> <span class="form">-ing</span></div>
+                <div class="item"><span class="verb">imagine</span> <span class="form">-ing</span></div>
+                <div class="item"><span class="verb">keep</span> <span class="form">-ing</span></div>
+                <div class="item"><span class="verb">mind</span> <span class="form">-ing</span></div>
+                <div class="item"><span class="verb">practice</span> <span class="form">-ing</span></div>
+                <div class="item"><span class="verb">quit</span> <span class="form">-ing</span></div>
+                <div class="item"><span class="verb">suggest</span> <span class="form">-ing</span></div>
+                <div class="item"><span class="verb">risk</span> <span class="form">-ing</span></div>
+            </div>
+        </div>
+
+        <div class="grammar-box">
+            <h3>🔹 Quando usar o Infinitive</h3>
+            <ul style="margin-left: 20px; line-height: 1.8;">
+                <li><strong>Para expressar propósito:</strong> <em>I went to the store <span class="highlight-blue">to buy</span> milk.</em></li>
+                <li><strong>Após certos verbos (ex: want, decide, hope):</strong> <em>I want <span class="highlight-blue">to learn</span> English.</em></li>
+                <li><strong>Após adjetivos:</strong> <em>It's easy <span class="highlight-blue">to do</span>.</em></li>
+                <li><strong>Após "too" e "enough":</strong> <em>It's too difficult <span class="highlight-blue">to understand</span>.</em></li>
+            </ul>
+            
+            <h4 style="margin-top: 15px;">Verbos comuns seguidos de Infinitive:</h4>
+            <div class="verb-list">
+                <div class="item"><span class="verb">agree</span> <span class="form">to V</span></div>
+                <div class="item"><span class="verb">decide</span> <span class="form">to V</span></div>
+                <div class="item"><span class="verb">expect</span> <span class="form">to V</span></div>
+                <div class="item"><span class="verb">hope</span> <span class="form">to V</span></div>
+                <div class="item"><span class="verb">learn</span> <span class="form">to V</span></div>
+                <div class="item"><span class="verb">need</span> <span class="form">to V</span></div>
+                <div class="item"><span class="verb">offer</span> <span class="form">to V</span></div>
+                <div class="item"><span class="verb">plan</span> <span class="form">to V</span></div>
+                <div class="item"><span class="verb">promise</span> <span class="form">to V</span></div>
+                <div class="item"><span class="verb">refuse</span> <span class="form">to V</span></div>
+                <div class="item"><span class="verb">want</span> <span class="form">to V</span></div>
+                <div class="item"><span class="verb">would like</span> <span class="form">to V</span></div>
+            </div>
+        </div>
+
+        <div class="grammar-box">
+            <h3>🔹 Verbos que mudam de sentido</h3>
+            <p>Alguns verbos mudam completamente de significado com Gerund ou Infinitive:</p>
+            
+            <table>
+                <tr>
+                    <th>Verbo</th>
+                    <th style="width: 40%;">Gerund (-ing)</th>
+                    <th style="width: 40%;">Infinitive (to + V)</th>
+                </tr>
+                <tr>
+                    <td><strong>remember</strong></td>
+                    <td><span class="highlight">Lembrar de algo</span> que fez<br><em>I remember <span class="highlight">closing</span> the door.</em></td>
+                    <td><span class="highlight-blue">Lembrar de fazer</span> algo<br><em>I remembered <span class="highlight-blue">to close</span> the door.</em></td>
+                </tr>
+                <tr>
+                    <td><strong>forget</strong></td>
+                    <td><span class="highlight">Esquecer que</span> fez algo<br><em>I'll never forget <span class="highlight">meeting</span> you.</em></td>
+                    <td><span class="highlight-blue">Esquecer de fazer</span> algo<br><em>I forgot <span class="highlight-blue">to call</span> you.</em></td>
+                </tr>
+                <tr>
+                    <td><strong>stop</strong></td>
+                    <td><span class="highlight">Parar de fazer</span> algo<br><em>I stopped <span class="highlight">smoking</span>.</em></td>
+                    <td><span class="highlight-blue">Parar para fazer</span> algo<br><em>I stopped <span class="highlight-blue">to smoke</span>.</em></td>
+                </tr>
+                <tr>
+                    <td><strong>try</strong></td>
+                    <td><span class="highlight">Experimentar</span> fazer algo<br><em>Try <span class="highlight">doing</span> yoga.</em></td>
+                    <td><span class="highlight-blue">Tentar</span> fazer algo (esforço)<br><em>I tried <span class="highlight-blue">to open</span> it.</em></td>
+                </tr>
+            </table>
+
+            <div class="diff-example">
+                <span class="en"><span class="highlight">I stopped smoking</span> = I no longer smoke.</span><br>
+                <span class="pt">Eu parei de fumar (não fumo mais).</span><br><br>
+                <span class="en"><span class="highlight-blue">I stopped to smoke</span> = I stopped what I was doing to have a cigarette.</span><br>
+                <span class="pt">Eu parei para fumar (interrompi outra atividade).</span>
+            </div>
+        </div>
+
+        <div class="grammar-box">
+            <h3>🔹 Verbos que podem usar ambos sem mudança</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px; margin: 10px 0;">
+                <span style="background: #d4edda; padding: 5px 15px; border-radius: 20px;">begin</span>
+                <span style="background: #d4edda; padding: 5px 15px; border-radius: 20px;">start</span>
+                <span style="background: #d4edda; padding: 5px 15px; border-radius: 20px;">continue</span>
+                <span style="background: #d4edda; padding: 5px 15px; border-radius: 20px;">like</span>
+                <span style="background: #d4edda; padding: 5px 15px; border-radius: 20px;">love</span>
+                <span style="background: #d4edda; padding: 5px 15px; border-radius: 20px;">hate</span>
+                <span style="background: #d4edda; padding: 5px 15px; border-radius: 20px;">prefer</span>
+            </div>
+            <div class="example">
+                <span class="en">I <span class="highlight">like swimming</span> / I <span class="highlight-blue">like to swim</span>.</span><br>
+                <span class="pt">Eu gosto de nadar. (ambas as formas estão corretas)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== EXERCÍCIOS ==================== -->
+
+    <!-- EXERCÍCIO 1: Escolher Gerund ou Infinitive -->
+    <div class="exercise-section" id="sec1">
+        <h2>📝 Exercício 1: Escolha a forma correta</h2>
+        <p style="color: #666; margin-bottom: 15px;">Escolha se é Gerund (-ing) ou Infinitive (to + V).</p>
+
+        <div class="exercise-item">
+            <div class="question">1. I enjoy ______ (read) books.</div>
+            <div class="options">
+                <label><input type="radio" name="q1" value="reading"> reading</label>
+                <label><input type="radio" name="q1" value="to read"> to read</label>
+            </div>
+            <span class="feedback" id="fb1"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">2. She decided ______ (study) abroad.</div>
+            <div class="options">
+                <label><input type="radio" name="q2" value="studying"> studying</label>
+                <label><input type="radio" name="q2" value="to study"> to study</label>
+            </div>
+            <span class="feedback" id="fb2"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">3. I can't help ______ (laugh) at his jokes.</div>
+            <div class="options">
+                <label><input type="radio" name="q3" value="laughing"> laughing</label>
+                <label><input type="radio" name="q3" value="to laugh"> to laugh</label>
+            </div>
+            <span class="feedback" id="fb3"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">4. I need ______ (buy) some milk.</div>
+            <div class="options">
+                <label><input type="radio" name="q4" value="buying"> buying</label>
+                <label><input type="radio" name="q4" value="to buy"> to buy</label>
+            </div>
+            <span class="feedback" id="fb4"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">5. They kept ______ (talk) during the movie.</div>
+            <div class="options">
+                <label><input type="radio" name="q5" value="talking"> talking</label>
+                <label><input type="radio" name="q5" value="to talk"> to talk</label>
+            </div>
+            <span class="feedback" id="fb5"></span>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-success" onclick="checkSelectExercise()">Verificar Respostas</button>
+        </div>
+        <div class="section-result" id="resultSelect"></div>
+    </div>
+
+    <!-- EXERCÍCIO 2: Completar -->
+    <div class="exercise-section" id="sec2">
+        <h2>✍️ Exercício 2: Complete com a forma correta</h2>
+        <p style="color: #666; margin-bottom: 15px;">Use Gerund ou Infinitive.</p>
+
+        <div class="exercise-item">
+            <div class="question">6. I want ______ (travel) to Brazil.</div>
+            <div class="answer-line">
+                <input type="text" class="q6" placeholder="Sua resposta..." style="width: 250px;">
+                <span class="feedback" id="fb6"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">7. She avoided ______ (answer) the question.</div>
+            <div class="answer-line">
+                <input type="text" class="q7" placeholder="Sua resposta..." style="width: 250px;">
+                <span class="feedback" id="fb7"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">8. It's important ______ (study) every day.</div>
+            <div class="answer-line">
+                <input type="text" class="q8" placeholder="Sua resposta..." style="width: 250px;">
+                <span class="feedback" id="fb8"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">9. He suggested ______ (go) to the beach.</div>
+            <div class="answer-line">
+                <input type="text" class="q9" placeholder="Sua resposta..." style="width: 250px;">
+                <span class="feedback" id="fb9"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">10. I stopped ______ (smoke) a year ago.</div>
+            <div class="answer-line">
+                <input type="text" class="q10" placeholder="Sua resposta..." style="width: 250px;">
+                <span class="feedback" id="fb10"></span>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-success" onclick="checkCompleteExercise()">Verificar Respostas</button>
+        </div>
+        <div class="section-result" id="resultComplete"></div>
+    </div>
+
+    <!-- EXERCÍCIO 3: Diferença de Sentido -->
+    <div class="exercise-section" id="sec3">
+        <h2>🧠 Exercício 3: Escolha a forma correta (mudança de sentido)</h2>
+        <p style="color: #666; margin-bottom: 15px;">Atenção! A forma muda o significado.</p>
+
+        <div class="exercise-item">
+            <div class="question">11. I remember ______ (lock) the door. (I did it and I remember)</div>
+            <div class="options">
+                <label><input type="radio" name="q11" value="locking"> locking</label>
+                <label><input type="radio" name="q11" value="to lock"> to lock</label>
+            </div>
+            <span class="feedback" id="fb11"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">12. I remembered ______ (lock) the door. (I didn't forget to do it)</div>
+            <div class="options">
+                <label><input type="radio" name="q12" value="locking"> locking</label>
+                <label><input type="radio" name="q12" value="to lock"> to lock</label>
+            </div>
+            <span class="feedback" id="fb12"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">13. I stopped ______ (smoke). (I no longer smoke)</div>
+            <div class="options">
+                <label><input type="radio" name="q13" value="smoking"> smoking</label>
+                <label><input type="radio" name="q13" value="to smoke"> to smoke</label>
+            </div>
+            <span class="feedback" id="fb13"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">14. I stopped ______ (smoke) to take a break. (I paused)</div>
+            <div class="options">
+                <label><input type="radio" name="q14" value="smoking"> smoking</label>
+                <label><input type="radio" name="q14" value="to smoke"> to smoke</label>
+            </div>
+            <span class="feedback" id="fb14"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">15. I tried ______ (open) the window. (I attempted but it was difficult)</div>
+            <div class="options">
+                <label><input type="radio" name="q15" value="opening"> opening</label>
+                <label><input type="radio" name="q15" value="to open"> to open</label>
+            </div>
+            <span class="feedback" id="fb15"></span>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-success" onclick="checkMeaningExercise()">Verificar Respostas</button>
+        </div>
+        <div class="section-result" id="resultMeaning"></div>
+    </div>
+
+    <!-- EXERCÍCIO 4: Tradução -->
+    <div class="exercise-section" id="sec4">
+        <h2>🌍 Exercício 4: Tradução</h2>
+        <p style="color: #666; margin-bottom: 15px;">Traduza as frases para o inglês.</p>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 Eu gosto de nadar.</div>
+            <div class="translation-box">
+                <input type="text" class="q16" placeholder="Tradução em inglês..." style="width: 450px;">
+                <span class="feedback" id="fb16"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 Ela quer aprender chinês.</div>
+            <div class="translation-box">
+                <input type="text" class="q17" placeholder="Tradução em inglês..." style="width: 450px;">
+                <span class="feedback" id="fb17"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 Eu me lembro de ter visitado Paris.</div>
+            <div class="translation-box">
+                <input type="text" class="q18" placeholder="Tradução em inglês..." style="width: 450px;">
+                <span class="feedback" id="fb18"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 É importante praticar todos os dias.</div>
+            <div class="translation-box">
+                <input type="text" class="q19" placeholder="Tradução em inglês..." style="width: 450px;">
+                <span class="feedback" id="fb19"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 Ele parou de fumar.</div>
+            <div class="translation-box">
+                <input type="text" class="q20" placeholder="Tradução em inglês..." style="width: 450px;">
+                <span class="feedback" id="fb20"></span>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-success" onclick="checkTranslationExercise()">Verificar Traduções</button>
+        </div>
+        <div class="section-result" id="resultTranslation"></div>
+    </div>
+
+    <!-- EXERCÍCIO 5: Misto -->
+    <div class="exercise-section" id="sec5">
+        <h2>🔀 Exercício 5: Misto</h2>
+        <p style="color: #666; margin-bottom: 15px;">Combine diferentes habilidades.</p>
+
+        <div class="exercise-item">
+            <div class="question">21. I hope ______ (see) you soon.</div>
+            <div class="options">
+                <label><input type="radio" name="q21" value="seeing"> seeing</label>
+                <label><input type="radio" name="q21" value="to see"> to see</label>
+            </div>
+            <span class="feedback" id="fb21"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">22. She avoided ______ (talk) about the problem.</div>
+            <div class="answer-line">
+                <input type="text" class="q22" placeholder="Sua resposta..." style="width: 250px;">
+                <span class="feedback" id="fb22"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 Eu me esqueci de fechar a janela.</div>
+            <div class="translation-box">
+                <input type="text" class="q23" placeholder="Tradução em inglês..." style="width: 450px;">
+                <span class="feedback" id="fb23"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">24. Escolha: I'll never forget ______ (meet) you.</div>
+            <div class="options">
+                <label><input type="radio" name="q24" value="meeting"> meeting</label>
+                <label><input type="radio" name="q24" value="to meet"> to meet</label>
+            </div>
+            <span class="feedback" id="fb24"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">25. Complete: It's not easy ______ (learn) a new language.</div>
+            <div class="answer-line">
+                <input type="text" class="q25" placeholder="Sua resposta..." style="width: 250px;">
+                <span class="feedback" id="fb25"></span>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-success" onclick="checkMixedExercise()">Verificar Respostas</button>
+        </div>
+        <div class="section-result" id="resultMixed"></div>
+    </div>
+
+    <!-- ==================== BOTÕES GLOBAIS ==================== -->
+    <div class="button-group">
+        <button class="btn btn-danger" onclick="checkAllExercises()">✅ Verificar Todos os Exercícios</button>
+        <button class="btn btn-secondary" onclick="resetAllExercises()">🔄 Resetar Todos</button>
+    </div>
+
+    <div class="score-display" id="globalScore">
+        Total: <span id="scoreCount">0</span> / <span id="totalCount">0</span> corretas
+    </div>
+    <div class="result-box" id="globalResult"></div>
+
+    <script>
+        // ==================== DADOS DAS RESPOSTAS ====================
+        const answers = {
+            select: ['reading', 'to study', 'laughing', 'to buy', 'talking'],
+            complete: ['to travel', 'answering', 'to study', 'going', 'smoking'],
+            meaning: ['locking', 'to lock', 'smoking', 'to smoke', 'to open'],
+            translations: [
+                'i like swimming',
+                'she wants to learn chinese',
+                'i remember visiting paris',
+                'it is important to practice every day',
+                'he stopped smoking'
+            ],
+            mixed: ['to see', 'talking', 'i forgot to close the window', 'meeting', 'to learn']
+        };
+
+        // ==================== FUNÇÕES DE VERIFICAÇÃO ====================
+        function normalize(text) {
+            return text.toLowerCase().trim().replace(/\s+/g, ' ');
+        }
+
+        function checkSelectExercise() {
+            let correct = 0;
+            const total = 5;
+            for (let i = 1; i <= total; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                const fb = document.getElementById(`fb${i}`);
+                if (selected) {
+                    const isCorrect = selected.value === answers.select[i-1];
+                    fb.textContent = isCorrect ? '✓ Correto' : '✗ Incorreto';
+                    fb.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                    if (isCorrect) correct++;
+                } else {
+                    fb.textContent = '⚠️ Selecione uma opção';
+                    fb.className = 'feedback waiting';
+                }
+            }
+            showSectionResult('resultSelect', correct, total);
+        }
+
+        function checkCompleteExercise() {
+            let correct = 0;
+            const total = 5;
+            for (let i = 6; i <= 10; i++) {
+                const input = document.querySelector(`.q${i}`);
+                const fb = document.getElementById(`fb${i}`);
+                if (input) {
+                    const userAnswer = normalize(input.value);
+                    const isCorrect = userAnswer === answers.complete[i-6];
+                    fb.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                    fb.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                    if (isCorrect) correct++;
+                }
+            }
+            showSectionResult('resultComplete', correct, total);
+        }
+
+        function checkMeaningExercise() {
+            let correct = 0;
+            const total = 5;
+            for (let i = 11; i <= 15; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                const fb = document.getElementById(`fb${i}`);
+                if (selected) {
+                    const isCorrect = selected.value === answers.meaning[i-11];
+                    fb.textContent = isCorrect ? '✓ Correto' : '✗ Incorreto';
+                    fb.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                    if (isCorrect) correct++;
+                } else {
+                    fb.textContent = '⚠️ Selecione uma opção';
+                    fb.className = 'feedback waiting';
+                }
+            }
+            showSectionResult('resultMeaning', correct, total);
+        }
+
+        function checkTranslationExercise() {
+            let correct = 0;
+            const total = 5;
+            for (let i = 16; i <= 20; i++) {
+                const input = document.querySelector(`.q${i}`);
+                const fb = document.getElementById(`fb${i}`);
+                if (input) {
+                    const userAnswer = normalize(input.value);
+                    const isCorrect = userAnswer === answers.translations[i-16];
+                    fb.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                    fb.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                    if (isCorrect) correct++;
+                }
+            }
+            showSectionResult('resultTranslation', correct, total);
+        }
+
+        function checkMixedExercise() {
+            let correct = 0;
+            const total = 5;
+            
+            // Q21
+            const selected21 = document.querySelector(`input[name="q21"]:checked`);
+            const fb21 = document.getElementById('fb21');
+            if (selected21) {
+                const isCorrect = selected21.value === answers.mixed[0];
+                fb21.textContent = isCorrect ? '✓ Correto' : '✗ Incorreto';
+                fb21.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                if (isCorrect) correct++;
+            } else {
+                fb21.textContent = '⚠️ Selecione uma opção';
+                fb21.className = 'feedback waiting';
+            }
+
+            // Q22
+            const input22 = document.querySelector('.q22');
+            const fb22 = document.getElementById('fb22');
+            if (input22) {
+                const userAnswer = normalize(input22.value);
+                const isCorrect = userAnswer === answers.mixed[1];
+                fb22.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                fb22.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                if (isCorrect) correct++;
+            }
+
+            // Q23
+            const input23 = document.querySelector('.q23');
+            const fb23 = document.getElementById('fb23');
+            if (input23) {
+                const userAnswer = normalize(input23.value);
+                const isCorrect = userAnswer === answers.mixed[2];
+                fb23.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                fb23.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                if (isCorrect) correct++;
+            }
+
+            // Q24
+            const selected24 = document.querySelector(`input[name="q24"]:checked`);
+            const fb24 = document.getElementById('fb24');
+            if (selected24) {
+                const isCorrect = selected24.value === answers.mixed[3];
+                fb24.textContent = isCorrect ? '✓ Correto' : '✗ Incorreto';
+                fb24.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                if (isCorrect) correct++;
+            } else {
+                fb24.textContent = '⚠️ Selecione uma opção';
+                fb24.className = 'feedback waiting';
+            }
+
+            // Q25
+            const input25 = document.querySelector('.q25');
+            const fb25 = document.getElementById('fb25');
+            if (input25) {
+                const userAnswer = normalize(input25.value);
+                const isCorrect = userAnswer === answers.mixed[4];
+                fb25.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                fb25.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                if (isCorrect) correct++;
+            }
+
+            showSectionResult('resultMixed', correct, total);
+        }
+
+        // ==================== FUNÇÕES AUXILIARES ====================
+        function showSectionResult(elementId, correct, total) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.textContent = `Você acertou ${correct} de ${total} (${Math.round(correct/total*100)}%)`;
+                element.className = `section-result ${correct === total ? 'correct' : (correct > 0 ? 'partial' : 'incorrect')}`;
+            }
+            updateGlobalScore();
+        }
+
+        function updateGlobalScore() {
+            let correct = 0;
+            let total = 0;
+            
+            document.querySelectorAll('.feedback').forEach(fb => {
+                if (fb.textContent.includes('✓')) {
+                    correct++;
+                    total++;
+                } else if (fb.textContent.includes('✗') || fb.textContent.includes('⚠️')) {
+                    total++;
+                }
+            });
+            
+            document.getElementById('scoreCount').textContent = correct;
+            document.getElementById('totalCount').textContent = total;
+        }
+
+        function checkAllExercises() {
+            checkSelectExercise();
+            checkCompleteExercise();
+            checkMeaningExercise();
+            checkTranslationExercise();
+            checkMixedExercise();
+            
+            const total = document.querySelectorAll('.feedback').length;
+            const correct = document.querySelectorAll('.feedback.correct').length;
+            const result = document.getElementById('globalResult');
+            result.textContent = `🎯 Você acertou ${correct} de ${total} questões (${Math.round(correct/total*100)}%)`;
+            result.className = `result-box ${correct === total ? 'correct' : (correct > total/2 ? 'partial' : 'incorrect')}`;
+        }
+
+        function resetAllExercises() {
+            document.querySelectorAll('input[type="radio"]').forEach(el => el.checked = false);
+            document.querySelectorAll('input[type="text"]').forEach(el => el.value = '');
+            document.querySelectorAll('.feedback').forEach(el => {
+                el.textContent = '';
+                el.className = 'feedback';
+            });
+            document.querySelectorAll('.section-result').forEach(el => {
+                el.textContent = '';
+                el.className = 'section-result';
+            });
+            const result = document.getElementById('globalResult');
+            result.textContent = '';
+            result.className = 'result-box';
+            updateGlobalScore();
+        }
+
+        document.querySelectorAll('input[type="text"]').forEach(input => {
+            input.addEventListener('input', updateGlobalScore);
+        });
+        document.querySelectorAll('input[type="radio"]').forEach(input => {
+            input.addEventListener('change', updateGlobalScore);
+        });
+
+        updateGlobalScore();
+    </script>
+</body>
+</html>
