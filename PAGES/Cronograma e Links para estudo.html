@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Study Portal · Dark Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #070b14;
+            --bg-soft: #0d1424;
+            --card: #111a2e;
+            --border: #1e2a44;
+            --neon: #38bdf8;
+            --violet: #8b5cf6;
+        }
+
+        * { -webkit-tap-highlight-color: transparent; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: #e2e8f0;
+            background-image:
+                radial-gradient(ellipse 60% 40% at 15% 0%, rgba(56,189,248,0.10), transparent 60%),
+                radial-gradient(ellipse 50% 40% at 85% 10%, rgba(139,92,246,0.12), transparent 60%),
+                radial-gradient(ellipse 50% 30% at 50% 100%, rgba(16,185,129,0.06), transparent 60%);
+            background-attachment: fixed;
+        }
+
+        h1, h2, h3, .display { font-family: 'Space Grotesk', sans-serif; }
+
+        ::-webkit-scrollbar { width: 9px; height: 9px; }
+        ::-webkit-scrollbar-track { background: #0a1020; }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #334155, #1e293b);
+            border-radius: 8px;
+            border: 2px solid #0a1020;
+        }
+        ::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #38bdf8, #8b5cf6); }
+
+        /* ---------- GLASS / CARDS ---------- */
+        .glass {
+            background: rgba(17, 26, 46, 0.65);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(148, 163, 184, 0.10);
+        }
+
+        .res-card {
+            position: relative;
+            background: linear-gradient(160deg, rgba(23,33,55,0.9), rgba(13,20,36,0.95));
+            border: 1px solid rgba(148,163,184,0.10);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: transform .28s cubic-bezier(.2,.8,.2,1), border-color .28s, box-shadow .28s;
+        }
+        .res-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1rem;
+            padding: 1px;
+            background: linear-gradient(135deg, var(--accent, #38bdf8), transparent 45%);
+            -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor;
+                    mask-composite: exclude;
+            opacity: 0;
+            transition: opacity .28s;
+            pointer-events: none;
+        }
+        .res-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(148,163,184,0.18);
+            box-shadow: 0 18px 40px -18px rgba(0,0,0,0.8), 0 0 30px -12px var(--accent, #38bdf8);
+        }
+        .res-card:hover::before { opacity: 1; }
+
+        .res-card .glow-dot {
+            position: absolute;
+            top: -40px; right: -40px;
+            width: 120px; height: 120px;
+            border-radius: 50%;
+            background: var(--accent, #38bdf8);
+            filter: blur(55px);
+            opacity: .10;
+            transition: opacity .3s;
+            pointer-events: none;
+        }
+        .res-card:hover .glow-dot { opacity: .25; }
+
+        /* ---------- TOP PROGRESS BAR ---------- */
+        #scroll-progress {
+            position: fixed;
+            top: 0; left: 0;
+            height: 3px;
+            width: 0%;
+            z-index: 100;
+            background: linear-gradient(90deg, #38bdf8, #8b5cf6, #f472b6);
+            box-shadow: 0 0 12px rgba(56,189,248,0.7);
+        }
+
+        /* ---------- SCHEDULE ---------- */
+        .day-card {
+            background: linear-gradient(165deg, rgba(23,33,55,0.85), rgba(11,17,31,0.95));
+            border: 1px solid rgba(148,163,184,0.10);
+            border-radius: 1rem;
+            transition: border-color .25s, transform .25s, box-shadow .25s;
+        }
+        .day-card:hover {
+            border-color: rgba(56,189,248,0.35);
+            box-shadow: 0 0 28px -10px rgba(56,189,248,0.35);
+        }
+        .day-card.is-today {
+            border-color: rgba(56,189,248,0.55);
+            box-shadow: 0 0 30px -10px rgba(56,189,248,0.5);
+        }
+
+        select.dark-select {
+            background-color: #0b1324;
+            color: #e2e8f0;
+            border: 1px solid rgba(148,163,184,0.18);
+            transition: border-color .2s, box-shadow .2s;
+            appearance: none;
+        }
+        select.dark-select:focus {
+            outline: none;
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 3px rgba(56,189,248,0.15);
+        }
+        select.dark-select option { background: #0b1324; color: #e2e8f0; }
+
+        input[type="checkbox"].dark-check {
+            accent-color: #38bdf8;
+            width: 1.15rem; height: 1.15rem;
+            cursor: pointer;
+        }
+
+        /* ---------- SEARCH ---------- */
+        .search-input {
+            background: rgba(11,19,36,0.9);
+            border: 1px solid rgba(148,163,184,0.15);
+            transition: border-color .2s, box-shadow .2s;
+        }
+        .search-input:focus {
+            outline: none;
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 3px rgba(56,189,248,0.12);
+        }
+        .search-input::placeholder { color: #475569; }
+
+        .filter-chip {
+            background: rgba(11,19,36,0.9);
+            border: 1px solid rgba(148,163,184,0.15);
+            color: #94a3b8;
+            transition: all .2s;
+            cursor: pointer;
+            user-select: none;
+        }
+        .filter-chip:hover { border-color: rgba(148,163,184,0.4); color: #e2e8f0; }
+        .filter-chip.active {
+            background: linear-gradient(135deg, rgba(56,189,248,0.2), rgba(139,92,246,0.2));
+            border-color: rgba(56,189,248,0.5);
+            color: #7dd3fc;
+            box-shadow: 0 0 18px -6px rgba(56,189,248,0.5);
+        }
+
+        /* ---------- SECTION HEADERS ---------- */
+        .sec-head {
+            display: flex;
+            align-items: center;
+            gap: .85rem;
+            margin-bottom: 1.5rem;
+        }
+        .sec-icon {
+            width: 2.75rem; height: 2.75rem;
+            display: grid; place-items: center;
+            border-radius: .85rem;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            position: relative;
+        }
+        .sec-icon::after {
+            content: '';
+            position: absolute; inset: 0;
+            border-radius: .85rem;
+            background: inherit;
+            filter: blur(14px);
+            opacity: .45;
+            z-index: -1;
+        }
+        .sec-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(148,163,184,0.25), transparent);
+        }
+
+        /* ---------- ANIMATIONS ---------- */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-up { animation: fadeUp .5s cubic-bezier(.2,.8,.2,1) both; }
+
+        @keyframes float {
+            0%,100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .float { animation: float 6s ease-in-out infinite; }
+
+        @keyframes pulseGlow {
+            0%,100% { box-shadow: 0 0 0 0 rgba(56,189,248,0.4); }
+            50% { box-shadow: 0 0 0 8px rgba(56,189,248,0); }
+        }
+        .pulse-glow { animation: pulseGlow 2.5s infinite; }
+
+        .toast-show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .toast-hide {
+            transform: translateY(20px);
+            opacity: 0;
+        }
+
+        .hidden-card { display: none !important; }
+
+        /* gradient text */
+        .grad-text {
+            background: linear-gradient(120deg, #38bdf8, #8b5cf6 55%, #f472b6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+		.fade-exit-active {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 300ms, transform 300ms;
+        }
+    </style>
+	<!-- COLOQUE ESTA LINHA AQUI -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js"></script>
+</head>
+<body class="antialiased min-h-screen relative">
+
+    <!-- Scroll progress -->
+    <div id="scroll-progress"></div>
+
+    <!-- ================= HEADER ================= -->
+    <header class="relative overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute -top-40 -left-40 w-[34rem] h-[34rem] rounded-full bg-sky-500/10 blur-[120px]"></div>
+            <div class="absolute -top-32 right-0 w-[30rem] h-[30rem] rounded-full bg-violet-500/10 blur-[120px]"></div>
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-16">
+            <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+                <div class="fade-up">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase glass text-sky-300 mb-5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-sky-400 pulse-glow"></span>
+                        Plataforma de estudos
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
+                        <span class="grad-text">English Study</span><br>
+                        <span class="text-slate-100">Portal</span>
+                    </h1>
+                    <p class="mt-5 text-slate-400 text-base md:text-lg max-w-xl leading-relaxed">
+                        Seu cronograma personalizado e diretório de recursos. Evolua em leitura, escuta, fala e muito mais — todos os dias.
+                    </p>
+                </div>
+
+                
+            </div>
+        </div>
+    </header>
+
+    <!-- ================= MAIN ================= -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+
+        <!-- ========== SCHEDULE ========== -->
+        <section class="mb-20 fade-up" style="animation-delay:.15s">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                <div class="sec-head !mb-0">
+                    <div class="sec-icon bg-gradient-to-br from-indigo-500 to-violet-600 text-white">
+                        <i class="fa-regular fa-calendar-check"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-100">Weekly Schedule</h2>
+                        <p class="text-sm text-slate-500 mt-0.5">Personalize sua rotina. 15 min de Duolingo todos os dias.</p>
+                    </div>
+                </div>
+                <div class="flex flex-col sm:flex-row items-center gap-3 mt-4 sm:mt-0">
+    <!-- Campo do Nome do Aluno -->
+    <input type="text" id="student-name" placeholder="Nome do Aluno" 
+           class="bg-slate-800 border border-slate-700 text-slate-200 text-sm rounded-xl px-4 py-2.5 focus:outline-none focus:border-sky-500 w-full sm:w-48 transition-colors">
+    
+    <!-- Botão de Salvar Local -->
+    <button onclick="saveSchedule()" title="Salvar apenas neste navegador"
+        class="group inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm text-slate-300 bg-slate-800 hover:bg-slate-700 border border-slate-700 transition-all active:scale-95">
+        <i class="fa-solid fa-floppy-disk text-slate-400"></i>
+        Salvar
+    </button>
+
+    <!-- Botão de Baixar Imagem -->
+    <button onclick="downloadScheduleImage(event)" 
+        class="group inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 transition-all active:scale-95">
+        <i class="fa-brands fa-whatsapp text-lg group-hover:scale-110 transition-transform"></i>
+        Gerar p/ WhatsApp
+    </button>
+</div>
+            </div>
+
+            <div id="schedule-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
+        </section>
+
+        <!-- ========== RESOURCES ========== -->
+        <section>
+            <div class="text-center mb-10 fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-100">Study Resources</h2>
+                <p class="text-slate-400 mt-3 max-w-2xl mx-auto">Explore os melhores links separados por habilidades. Use a busca para achar rapidamente.</p>
+            </div>
+
+            <!-- Search + filters -->
+            <div class="sticky top-4 z-30 mb-10 fade-up" style="animation-delay:.1s">
+                <div class="glass rounded-2xl p-4 shadow-2xl shadow-black/40">
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="relative flex-1">
+                            <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 text-sm"></i>
+                            <input id="search-input" type="text" placeholder="Buscar recurso, site ou descrição..."
+                                class="search-input w-full rounded-xl pl-11 pr-4 py-3 text-sm text-slate-200">
+                        </div>
+                        <div id="filters" class="flex flex-wrap items-center gap-2">
+                            <button class="filter-chip active rounded-lg px-4 py-2 text-xs font-semibold" data-filter="all">Todos</button>
+                            <button class="filter-chip rounded-lg px-4 py-2 text-xs font-semibold" data-filter="reading">📖 Reading</button>
+                            <button class="filter-chip rounded-lg px-4 py-2 text-xs font-semibold" data-filter="listening">🎧 Listening</button>
+                            <button class="filter-chip rounded-lg px-4 py-2 text-xs font-semibold" data-filter="watching">🎬 Watching</button>
+                            <button class="filter-chip rounded-lg px-4 py-2 text-xs font-semibold" data-filter="exercises">✏️ Exercises</button>
+                            <button class="filter-chip rounded-lg px-4 py-2 text-xs font-semibold" data-filter="speaking">🗣️ Speaking</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="no-results" class="hidden text-center py-16">
+                <i class="fa-regular fa-face-frown text-5xl text-slate-700"></i>
+                <p class="text-slate-500 mt-4">Nenhum recurso encontrado.</p>
+            </div>
+
+            <!-- READING -->
+            <div class="mb-14 resource-section" data-cat="reading">
+                <div class="sec-head">
+                    <div class="sec-icon bg-gradient-to-br from-emerald-500 to-teal-600 text-white"><i class="fa-solid fa-book-open"></i></div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-100">Reading</h3>
+                        <p class="text-sm text-slate-500">Leitura</p>
+                    </div>
+                    <div class="sec-line"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="grid-reading"></div>
+            </div>
+
+            <!-- LISTENING -->
+            <div class="mb-14 resource-section" data-cat="listening">
+                <div class="sec-head">
+                    <div class="sec-icon bg-gradient-to-br from-sky-500 to-blue-600 text-white"><i class="fa-solid fa-headphones"></i></div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-100">Listening</h3>
+                        <p class="text-sm text-slate-500">Escutar</p>
+                    </div>
+                    <div class="sec-line"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="grid-listening"></div>
+            </div>
+
+            <!-- WATCHING -->
+            <div class="mb-14 resource-section" data-cat="watching">
+                <div class="sec-head">
+                    <div class="sec-icon bg-gradient-to-br from-violet-500 to-purple-600 text-white"><i class="fa-solid fa-video"></i></div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-100">Watching</h3>
+                        <p class="text-sm text-slate-500">Assistir</p>
+                    </div>
+                    <div class="sec-line"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="grid-watching"></div>
+            </div>
+
+            <!-- EXERCISES -->
+            <div class="mb-14 resource-section" data-cat="exercises">
+                <div class="sec-head">
+                    <div class="sec-icon bg-gradient-to-br from-amber-500 to-orange-600 text-white"><i class="fa-solid fa-pencil"></i></div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-100">Exercises</h3>
+                        <p class="text-sm text-slate-500">Exercícios</p>
+                    </div>
+                    <div class="sec-line"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="grid-exercises"></div>
+            </div>
+
+            <!-- SPEAKING -->
+            <div class="mb-6 resource-section" data-cat="speaking">
+                <div class="sec-head">
+                    <div class="sec-icon bg-gradient-to-br from-rose-500 to-pink-600 text-white"><i class="fa-solid fa-comments"></i></div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-100">Speaking</h3>
+                        <p class="text-sm text-slate-500">Falar</p>
+                    </div>
+                    <div class="sec-line"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="grid-speaking"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="border-t border-slate-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-slate-500 text-sm">
+                Built for English Students <i class="fa-solid fa-heart text-rose-500 mx-1"></i> Keep Learning!
+            </p>
+            <div class="flex items-center gap-3 text-slate-600">
+                <i class="fa-brands fa-html5"></i>
+                <i class="fa-brands fa-css3-alt"></i>
+                <i class="fa-brands fa-js"></i>
+                <i class="fa-brands fa-tailwind-css"></i>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= TOAST ================= -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 toast-hide transition-all duration-300">
+        <div class="glass rounded-2xl px-5 py-4 flex items-center gap-4 shadow-2xl shadow-black/50 border border-emerald-500/30">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 grid place-items-center">
+                <i class="fa-solid fa-check text-emerald-400"></i>
+            </div>
+            <div>
+                <h4 class="font-bold text-sm text-slate-100">Salvo com sucesso!</h4>
+                <p class="text-xs text-slate-400">Seu cronograma foi atualizado.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= JS ================= -->
+    <script>
+        /* ==========================================================
+           DATA
+        ========================================================== */
+        const RESOURCES = {
+            reading: [
+                { title: "Breaking News English", url: "https://breakingnewsenglish.com/", desc: "Notícias atuais em até 7 níveis de dificuldade. Ganhe vocabulário gradativamente.", tag: "7 níveis", icon: "fa-newspaper" },
+                { title: "VOA Learning English", url: "https://learningenglish.voanews.com/", desc: "Inglês americano com notícias e histórias reais em vocabulário reduzido e frases curtas.", tag: "A1–C1", icon: "fa-globe" },
+                { title: "British Council – Reading", url: "https://learnenglish.britishcouncil.org/skills/reading", desc: "Textos do dia a dia (e-mails, artigos, convites) divididos pelos níveis A1 a C1.", tag: "A1–C1", icon: "fa-book" },
+                { title: "News in Levels", url: "https://www.newsinlevels.com/", desc: "Notícias curtas escritas em três níveis de inglês. Ótimo para leitura diária.", tag: "3 níveis", icon: "fa-newspaper" },
+                { title: "Robinson Crusoe in Levels", url: "https://www.robinsoncrusoeinlevels.com/", desc: "Clássico adaptado em diferentes níveis de vocabulário para facilitar o aprendizado.", tag: "Clássico", icon: "fa-book-open" },
+                { title: "Hoopla Digital", url: "https://www.hoopladigital.com/", desc: "Empreste audiobooks, ebooks e quadrinhos (requer cartão de biblioteca).", tag: "Ebooks", icon: "fa-library" },
+                { title: "English e-Reader", url: "https://english-e-reader.net/", desc: "Centenas de livros gratuitos divididos por nível de proficiência.", tag: "Gratuito", icon: "fa-book-reader" },
+                { title: "The Little Prince in Levels", url: "https://www.thelittleprinceinlevels.com/", desc: "O Pequeno Príncipe adaptado de forma progressiva para estudantes.", tag: "Clássico", icon: "fa-star" },
+            ],
+            listening: [
+                { title: "BBC 6 Minute English", url: "https://www.bbc.co.uk/learningenglish/english/features/6-minute-english", desc: "Podcast curto onde dois apresentadores discutem temas curiosos e explicam vocabulário.", tag: "Podcast", icon: "fa-microphone" },
+                { title: "Randall's ESL Cyber Listening Lab", url: "https://www.esl-lab.com/", desc: "Áudios de conversas cotidianas divididos por níveis, com testes de compreensão.", tag: "Fácil–Difícil", icon: "fa-headphones" },
+                { title: "Luke's English Podcast", url: "https://teacherluke.co.uk/", desc: "Professor britânico e comediante. Episódios longos para intermediários e avançados.", tag: "B1–C2", icon: "fa-podcast" },
+                { title: "News in Levels (Audio)", url: "https://www.newsinlevels.com/", desc: "Narração das notícias em diferentes velocidades para treinar o ouvido.", tag: "Áudio", icon: "fa-volume-high" },
+                { title: "AgendaWeb Listening", url: "https://agendaweb.org/listening-exercises.html", desc: "Exercícios de áudio, ditados e podcasts curtos com quizzes.", tag: "Exercícios", icon: "fa-list-check" },
+                { title: "ELLLO Audio Library", url: "https://elllo.org/english/levels/index.htm", desc: "Lições de áudio com pessoas do mundo todo, com transcrições e quizzes.", tag: "Global", icon: "fa-earth-americas" },
+                { title: "Spotify Podcasts", url: "https://open.spotify.com/", desc: "Imersão passiva e ativa com podcasts focados em estudantes de inglês.", tag: "Imersão", icon: "fa-spotify" },
+                { title: "LyricsTraining", url: "https://lyricstraining.com/", desc: "Complete as letras das suas músicas favoritas enquanto aprende inglês.", tag: "Música", icon: "fa-music" },
+                { title: "American English Podcast", url: "https://americanenglishpodcast.com/category/5-minute-english/", desc: "Episódios de 5 minutos sobre cultura e língua americana.", tag: "5 min", icon: "fa-clock" },
+            ],
+            watching: [
+                { title: "EngVid", url: "https://www.engvid.com/", desc: "Centenas de videoaulas gratuitas de professores nativos: gramática, gírias, pronúncia.", tag: "Videoaulas", icon: "fa-chalkboard-user" },
+                { title: "Learn English with TV Series", url: "https://www.youtube.com/@LearnEnglishWithTVSeries", desc: "Cenas de filmes e séries (Friends, The Office) para ensinar vocabulário e expressões.", tag: "Séries", icon: "fa-tv" },
+                { title: "Rachel's English", url: "https://www.youtube.com/@rachelsenglish", desc: "Referência em pronúncia do inglês americano e conexão de sons na fala rápida.", tag: "Pronúncia", icon: "fa-comment-dots" },
+                { title: "English Conversation (YouTube)", url: "https://www.youtube.com/", desc: "Playlist focada em conversas reais do dia a dia para treinar ouvidos e vocabulário.", tag: "Conversação", icon: "fa-comments" },
+                { title: "Videos in Levels", url: "https://www.videosinlevels.com/", desc: "Vídeos curtos com transcrições, adaptados por nível para quem está aprendendo.", tag: "Níveis", icon: "fa-film" },
+                { title: "ELLLO Video", url: "https://elllo.org/video/", desc: "Vídeos curtos de falantes nativos e não-nativos respondendo perguntas do cotidiano.", tag: "Cotidiano", icon: "fa-video" },
+                { title: "Fluente Sem Diploma", url: "https://www.youtube.com/@FluentesemDiploma", desc: "Dicas metodológicas de como estudar sozinho e se tornar fluente.", tag: "Metodologia", icon: "fa-graduation-cap" },
+            ],
+            exercises: [
+                { title: "Test-English", url: "https://test-english.com/", desc: "Testes e exercícios separados por níveis (A1 ao C1): gramática, vocabulário, leitura e escuta.", tag: "A1–C1", icon: "fa-clipboard-check" },
+                { title: "Perfect English Grammar", url: "https://www.perfect-english-grammar.com/", desc: "Explicações gramaticais diretas com exercícios práticos em PDF ou interativos.", tag: "Gramática", icon: "fa-spell-check" },
+                { title: "Quizlet", url: "https://quizlet.com/", desc: "Flashcards com jogos automáticos para memorização de vocabulário.", tag: "Flashcards", icon: "fa-layer-group" },
+                { title: "Grammar in Levels", url: "https://www.grammarinlevels.com/", desc: "Regras gramaticais simples e diretas, divididas pelo seu nível de domínio.", tag: "Níveis", icon: "fa-book" },
+                { title: "AgendaWeb", url: "https://agendaweb.org/", desc: "Banco gigante com milhares de exercícios de gramática e vocabulário gratuitos.", tag: "Gratuito", icon: "fa-dumbbell" },
+                { title: "Learning Chocolate", url: "https://www.learningchocolate.com/", desc: "Aprenda vocabulário associando palavras a imagens e áudio.", tag: "Vocabulário", icon: "fa-image" },
+                { title: "Games to Learn English", url: "https://www.gamestolearnenglish.com/", desc: "Pratique e fixe a estrutura do idioma através de minijogos interativos.", tag: "Jogos", icon: "fa-gamepad" },
+                { title: "Loecsen", url: "https://www.loecsen.com/pt", desc: "Vocabulário rápido e expressões essenciais úteis para viagens.", tag: "Viagem", icon: "fa-plane" },
+                { title: "Oxford Learner's Dictionary", url: "https://www.oxfordlearnersdictionaries.com/us/", desc: "Dicionário indispensável com significados, exemplos e pronúncia exata.", tag: "Dicionário", icon: "fa-book" },
+            ],
+            speaking: [
+                { title: "Speechling", url: "https://speechling.com/", desc: "Ouça um nativo, grave sua voz repetindo e receba feedback (versão gratuita e paga).", tag: "Pronúncia", icon: "fa-microphone-lines" },
+                { title: "Tandem", url: "https://tandem.net/", desc: "Rede social de intercâmbio de idiomas. Converse por áudio, vídeo ou texto com nativos.", tag: "Intercâmbio", icon: "fa-users" },
+                { title: "HelloTalk", url: "https://www.hellotalk.com/", desc: "Aplicativo para conversar com nativos que querem aprender português.", tag: "App", icon: "fa-mobile-screen" },
+                { title: "Free4Talk", url: "https://www.free4talk.com/", desc: "Salas de áudio para conversar com pessoas do mundo todo de graça.", tag: "Salas", icon: "fa-comments" },
+                { title: "Speak and Improve", url: "https://speakandimprove.com/", desc: "Ferramenta da Cambridge com IA para avaliar e dar notas à sua pronúncia.", tag: "Cambridge", icon: "fa-robot" },
+                { title: "YouGlish", url: "https://pt.youglish.com/", desc: "Digite uma palavra e veja cortes de vídeos do YouTube onde ela é pronunciada em contexto.", tag: "Contexto real", icon: "fa-magnifying-glass" },
+                { title: "Dica de Pronúncia", url: "https://www.youtube.com/watch?v=topBLaz4zgk", desc: "Técnicas práticas de shadowing e repetição para melhorar o speaking sozinho.", tag: "Shadowing", icon: "fa-lightbulb" },
+            ]
+        };
+
+        const CAT_META = {
+            reading:   { accent: "#34d399", label: "Reading" },
+            listening: { accent: "#38bdf8", label: "Listening" },
+            watching:  { accent: "#a78bfa", label: "Watching" },
+            exercises: { accent: "#fbbf24", label: "Exercises" },
+            speaking:  { accent: "#fb7185", label: "Speaking" },
+        };
+
+        const ACTIVITY_OPTIONS = [
+            "Class", "Reading (15 min)", "Listening (15 min)", "Watching (15 min)",
+            "Exercises (15 min)", "Speaking (15 min)", "Joker", "Rest"
+        ];
+
+        const BASE_SCHEDULE = [
+            { day: "Segunda",   defaultTask: "Class",            hasDuolingo: true },
+            { day: "Terça",     defaultTask: "Watching (15 min)", hasDuolingo: true },
+            { day: "Quarta",    defaultTask: "Listening (15 min)", hasDuolingo: true },
+            { day: "Quinta",    defaultTask: "Exercises (15 min)", hasDuolingo: true },
+            { day: "Sexta",     defaultTask: "Reading (15 min)",   hasDuolingo: true },
+            { day: "Sábado",    defaultTask: "Speaking (15 min)",  hasDuolingo: true },
+            { day: "Domingo",   defaultTask: "Joker",              hasDuolingo: true },
+        ];
+
+        const STORAGE_KEY = "esp_schedule_v2";
+
+        /* ==========================================================
+           RENDER RESOURCES
+        ========================================================== */
+        function cardHTML(item, cat) {
+            const meta = CAT_META[cat];
+            return `
+                <a href="${item.url}" target="_blank" rel="noopener noreferrer"
+                   class="res-card p-5 group block"
+                   style="--accent:${meta.accent}">
+                    <div class="glow-dot"></div>
+                    <div class="relative flex items-start gap-4">
+                        <div class="w-11 h-11 rounded-xl grid place-items-center flex-shrink-0 border"
+                             style="background:${meta.accent}1a; border-color:${meta.accent}40;">
+                            <i class="fa-solid ${item.icon}" style="color:${meta.accent}"></i>
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <div class="flex items-start justify-between gap-2">
+                                <h4 class="text-base font-bold text-slate-100 group-hover:text-white transition-colors leading-snug">
+                                    ${item.title}
+                                </h4>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-600 group-hover:text-slate-300 transition-colors mt-1 flex-shrink-0"></i>
+                            </div>
+                            <p class="text-sm text-slate-400 mt-2 leading-relaxed">${item.desc}</p>
+                            <div class="mt-3">
+                                <span class="inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-md"
+                                      style="background:${meta.accent}1a; color:${meta.accent}">
+                                    ${item.tag}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>`;
+        }
+
+        function renderResources() {
+            Object.entries(RESOURCES).forEach(([cat, items]) => {
+                const grid = document.getElementById(`grid-${cat}`);
+                if (!grid) return;
+                grid.innerHTML = items.map(it => cardHTML(it, cat)).join("");
+            });
+        }
+
+        /* ==========================================================
+           SEARCH & FILTER
+        ========================================================== */
+        let activeFilter = "all";
+
+        function applyFilters() {
+            const q = (document.getElementById("search-input").value || "").toLowerCase().trim();
+            let anyVisible = false;
+
+            document.querySelectorAll(".resource-section").forEach(section => {
+                const cat = section.dataset.cat;
+                const catMatch = activeFilter === "all" || activeFilter === cat;
+                const cards = section.querySelectorAll(".res-card");
+                let visibleInSection = 0;
+
+                cards.forEach(card => {
+                    const text = card.textContent.toLowerCase();
+                    const textMatch = !q || text.includes(q);
+                    const show = catMatch && textMatch;
+                    card.parentElement.classList.toggle("hidden-card", !show);
+                    if (show) visibleInSection++;
+                });
+
+                // esconde seção inteira se nenhum card visível
+                section.classList.toggle("hidden-card", !catMatch || visibleInSection === 0);
+                if (catMatch && visibleInSection > 0) anyVisible = true;
+            });
+
+            document.getElementById("no-results").classList.toggle("hidden", anyVisible);
+        }
+
+        document.querySelectorAll(".filter-chip").forEach(chip => {
+            chip.addEventListener("click", () => {
+                document.querySelectorAll(".filter-chip").forEach(c => c.classList.remove("active"));
+                chip.classList.add("active");
+                activeFilter = chip.dataset.filter;
+                applyFilters();
+            });
+        });
+
+        document.getElementById("search-input").addEventListener("input", applyFilters);
+
+        /* ==========================================================
+           SCHEDULE
+        ========================================================== */
+        function loadSavedSchedule() {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (!raw) return null;
+                return JSON.parse(raw);
+            } catch { return null; }
+        }
+
+        function getTodayIndex() {
+            // 0 = domingo ... 6 = sábado -> nosso array começa na segunda
+            return (new Date().getDay() + 6) % 7;
+        }
+
+        function renderSchedule() {
+            const container = document.getElementById("schedule-grid");
+            const saved = loadSavedSchedule();
+            const todayIdx = getTodayIndex();
+            container.innerHTML = "";
+
+            BASE_SCHEDULE.forEach((item, i) => {
+                const savedItem = saved ? saved[i] : null;
+                const task = savedItem?.task ?? item.defaultTask;
+                const duo = savedItem?.duo ?? item.hasDuolingo;
+                const isToday = i === todayIdx;
+
+                const card = document.createElement("div");
+                card.className = `day-card p-5 flex flex-col ${isToday ? "is-today" : ""}`;
+
+                card.innerHTML = `
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-sky-500/20 to-violet-500/20 border border-slate-700/60 grid place-items-center">
+                                <i class="fa-regular fa-calendar text-sm ${isToday ? 'text-sky-400' : 'text-slate-400'}"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-100 text-sm">${item.day}</h3>
+                                ${isToday ? '<p class="text-[10px] text-sky-400 font-semibold uppercase tracking-wider">Hoje</p>' : '<p class="text-[10px] text-slate-600 uppercase tracking-wider">Dia</p>'}
+                            </div>
+                        </div>
+                        <span class="w-2 h-2 rounded-full ${isToday ? 'bg-sky-400 pulse-glow' : 'bg-slate-700'}"></span>
+                    </div>
+
+                    <div class="mb-4 flex-grow">
+                        <label class="block text-[10px] font-bold text-slate-500 mb-1.5 uppercase tracking-wider">Atividade principal</label>
+                        <div class="relative">
+                            <select id="select-${i}" class="dark-select w-full rounded-lg py-2.5 px-3 text-sm cursor-pointer">
+                                ${ACTIVITY_OPTIONS.map(opt => `<option value="${opt}" ${opt === task ? "selected" : ""}>${opt}</option>`).join("")}
+                            </select>
+                            <i class="fa-solid fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-slate-500 pointer-events-none"></i>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center mt-auto pt-3 border-t border-slate-800/60">
+                        <input type="checkbox" id="duo-${i}" class="dark-check rounded" ${duo ? "checked" : ""}>
+                        <label for="duo-${i}" class="ml-2.5 text-xs text-slate-400 cursor-pointer flex items-center gap-1.5">
+                            <span class="bg-emerald-500/15 text-emerald-400 px-1.5 py-0.5 rounded text-[10px] font-bold border border-emerald-500/20">Duo</span>
+                            + Duolingo 15 min
+                        </label>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+
+            
+        }
+
+        
+
+        // Substitui a função saveSchedule antiga
+        function saveSchedule() {
+            const studentName = document.getElementById("student-name").value;
+            
+            const data = {
+                name: studentName,
+                schedule: BASE_SCHEDULE.map((_, i) => ({
+                    task: document.getElementById(`select-${i}`).value,
+                    duo:  document.getElementById(`duo-${i}`).checked
+                }))
+            };
+            
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            showToast();
+        }
+
+        // NOVA FUNÇÃO: Gerar imagem para o WhatsApp
+        function downloadScheduleImage(event) {
+            const studentName = document.getElementById("student-name").value.trim();
+
+            if (!studentName) {
+                alert("Por favor, digite o nome do aluno antes de gerar a imagem.");
+                document.getElementById("student-name").focus();
+                return;
+            }
+
+            const btn = event.currentTarget;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Gerando...';
+            btn.disabled = true;
+
+            // 1. Criamos um iframe invisível (Sandbox)
+            const iframe = document.createElement('iframe');
+            iframe.style.position = 'fixed';
+            iframe.style.top = '0';
+            iframe.style.left = '0';
+            iframe.style.width = '800px';
+            iframe.style.height = '0'; // Altura será ajustada depois
+            iframe.style.opacity = '0';
+            iframe.style.pointerEvents = 'none';
+            iframe.style.zIndex = '-9999';
+            document.body.appendChild(iframe);
+
+            const doc = iframe.contentWindow.document;
+            
+            // 2. Montamos o HTML e CSS puro dentro do iframe
+            // Usamos CSS limpo para garantir que a biblioteca não se perca
+            doc.open();
+            doc.write(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+                    <style>
+                        body { margin: 0; padding: 40px; background-color: #070b14; font-family: 'Inter', sans-serif; width: 800px; box-sizing: border-box; }
+                        .header { text-align: center; margin-bottom: 30px; }
+                        .header h1 { font-family: 'Space Grotesk', sans-serif; color: #f1f5f9; font-size: 36px; margin: 0 0 10px 0; }
+                        .header p { color: #38bdf8; font-size: 22px; font-weight: 600; margin: 0; }
+                        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+                        .card { background-color: #111a2e; border: 1px solid #1e2a44; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; }
+                        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; }
+                        .card-title { color: #f1f5f9; font-weight: 700; font-size: 16px; margin: 0; }
+                        .card-subtitle { color: #64748b; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+                        .label { color: #64748b; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; display: block; }
+                        .select-box { background-color: #0b1324; color: #e2e8f0; border: 1px solid #1e2a44; border-radius: 8px; padding: 10px 12px; font-size: 14px; width: 100%; box-sizing: border-box; margin-bottom: 15px; }
+                        .checkbox-row { display: flex; align-items: center; border-top: 1px solid #1e2a44; padding-top: 15px; margin-top: auto; }
+                        .checkbox { width: 18px; height: 18px; margin-right: 10px; accent-color: #38bdf8; }
+                        .checkbox-text { color: #94a3b8; font-size: 12px; }
+                        .badge { background-color: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: bold; margin-right: 6px; border: 1px solid rgba(16, 185, 129, 0.2); }
+                    </style>
+                </head>
+                <body>
+                    <div class="header">
+                        <h1>Cronograma de Estudos</h1>
+                        <p>Aluno(a): ${studentName}</p>
+                    </div>
+                    <div class="grid" id="export-grid"></div>
+                </body>
+                </html>
+            `);
+            doc.close();
+
+            // 3. Preenchemos os dados copiando do cronograma real
+            const exportGrid = doc.getElementById('export-grid');
+            
+            BASE_SCHEDULE.forEach((item, i) => {
+                const taskValue = document.getElementById(`select-${i}`).value;
+                const duoChecked = document.getElementById(`duo-${i}`).checked ? "checked" : "";
+                const isToday = i === ((new Date().getDay() + 6) % 7);
+                
+                const cardHTML = `
+                    <div class="card" style="${isToday ? 'border-color: rgba(56,189,248,0.5); box-shadow: 0 0 20px -5px rgba(56,189,248,0.3);' : ''}">
+                        <div>
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">${item.day}</h3>
+                                    <div class="card-subtitle">${isToday ? '<span style="color:#38bdf8">HOJE</span>' : 'DIA'}</div>
+                                </div>
+                                <div style="width: 8px; height: 8px; border-radius: 50%; background-color: ${isToday ? '#38bdf8' : '#334155'};"></div>
+                            </div>
+                            <span class="label">Atividade Principal</span>
+                            <div class="select-box">${taskValue}</div>
+                        </div>
+                        <div class="checkbox-row">
+                            <input type="checkbox" class="checkbox" ${duoChecked} disabled>
+                            <span class="checkbox-text"><span class="badge">Duo</span> + Duolingo 15 min</span>
+                        </div>
+                    </div>
+                `;
+                exportGrid.innerHTML += cardHTML;
+            });
+
+            // 4. Aguardamos um pequeno delay para o iframe renderizar e tiramos a foto
+            setTimeout(() => {
+                // Ajusta a altura do iframe para o tamanho exato do conteúdo
+                iframe.style.height = doc.body.scrollHeight + 'px';
+
+                htmlToImage.toPng(doc.body, {
+                    backgroundColor: "#070b14",
+                    pixelRatio: 2
+                })
+                .then(function (dataUrl) {
+                    const link = document.createElement("a");
+                    link.download = `Cronograma_${studentName.replace(/\s+/g, "_")}.png`;
+                    link.href = dataUrl;
+                    link.click();
+
+                    // Limpa o iframe e restaura o botão
+                    document.body.removeChild(iframe);
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                    showToast();
+                })
+                .catch(function (error) {
+                    console.error('Erro ao gerar imagem:', error);
+                    alert("Ocorreu um erro ao gerar a imagem.");
+                    document.body.removeChild(iframe);
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                });
+            }, 500); // 500ms é tempo suficiente para as fontes carregarem
+        }
+
+        // Substitui a função loadSavedSchedule antiga
+        function loadSavedSchedule() {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (!raw) return null;
+                const parsed = JSON.parse(raw);
+                
+                if (parsed.schedule) {
+                    const nameInput = document.getElementById("student-name");
+                    if (nameInput && parsed.name) nameInput.value = parsed.name;
+                    return parsed.schedule;
+                }
+                return parsed;
+            } catch { return null; }
+        }
+
+
+        /* ==========================================================
+           TOAST
+        ========================================================== */
+        let toastTimer;
+        function showToast() {
+            const toast = document.getElementById("toast");
+            clearTimeout(toastTimer);
+            toast.classList.remove("toast-hide");
+            toast.classList.add("toast-show");
+            toastTimer = setTimeout(() => {
+                toast.classList.remove("toast-show");
+                toast.classList.add("toast-hide");
+            }, 2800);
+        }
+
+        /* ==========================================================
+           SCROLL PROGRESS
+        ========================================================== */
+        window.addEventListener("scroll", () => {
+            const h = document.documentElement;
+            const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight) * 100;
+            document.getElementById("scroll-progress").style.width = scrolled + "%";
+        }, { passive: true });
+
+        /* ==========================================================
+           INIT
+        ========================================================== */
+        document.addEventListener("DOMContentLoaded", () => {
+            renderResources();
+            renderSchedule();
+            applyFilters();
+
+            
+        });
+    </script>
+</body>
+</html>
