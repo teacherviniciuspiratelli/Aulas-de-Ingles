@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal de Aulas de Inglês do Vini · Dark Edition</title>
+    <title>Portal de Aulas de Inglês · Dark Edition</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -62,6 +62,8 @@
             padding: 1px;
             background: linear-gradient(135deg, var(--accent, #38bdf8), transparent 45%);
             -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor;
+                    mask-composite: exclude;
             opacity: 0;
             transition: opacity .28s;
             pointer-events: none;
@@ -216,18 +218,17 @@
         </section>
 
         <!-- A1-A2 -->
-<section class="mb-14 resource-section fade-up" style="animation-delay:.3s" data-cat="a1a2">
-    <div class="sec-head">
-        <div class="sec-icon bg-gradient-to-br from-emerald-500 to-teal-600 text-white"><i class="fa-solid fa-seedling"></i></div>
-        <div>
-            <h3 class="text-xl font-bold text-slate-100">A1 - A2 (Básico)</h3>
-            <p class="text-sm text-slate-500">Fundamentos do idioma</p>
-        </div>
-        <div class="sec-line"></div>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        
-        <!-- Aula: Verb to Be -->
+        <section class="mb-14 resource-section fade-up" style="animation-delay:.3s" data-cat="a1a2">
+            <div class="sec-head">
+                <div class="sec-icon bg-gradient-to-br from-emerald-500 to-teal-600 text-white"><i class="fa-solid fa-seedling"></i></div>
+                <div>
+                    <h3 class="text-xl font-bold text-slate-100">A1 - A2 (Básico)</h3>
+                    <p class="text-sm text-slate-500">Fundamentos do idioma</p>
+                </div>
+                <div class="sec-line"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Aula: Verb to Be -->
         <a href="./PAGES/Verb to Be.html" class="res-card p-5 group block search-item" style="--accent:#10b981">
             <div class="glow-dot"></div>
             <div class="relative flex items-start gap-4">
