@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Regras de Pronúncia em Inglês</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0 30px;
+        }
+        .stat-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .stat-card .number {
+            font-size: 2em;
+            font-weight: 700;
+        }
+        .stat-card .label {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .stat-card .number.purple { color: #8e44ad; }
+        .stat-card .number.blue { color: #2980b9; }
+        .stat-card .number.green { color: #27ae60; }
+        .stat-card .number.orange { color: #f39c12; }
+
+        .search-box {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .search-box input {
+            padding: 12px 20px;
+            width: 100%;
+            max-width: 500px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        .search-box input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .category-filter button {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: #ecf0f1;
+            color: #2c3e50;
+        }
+        .category-filter button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        .category-filter button.active {
+            background: #3498db;
+            color: white;
+        }
+        .category-filter button.btn-all { background: #3498db; color: white; }
+        .category-filter button.btn-all:hover { background: #2980b9; }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+        .legend-item .color-box {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+        .legend-item .color-box.vowels { background: #e74c3c; }
+        .legend-item .color-box.consonants { background: #2ecc71; }
+        .legend-item .color-box.ed { background: #3498db; }
+        .legend-item .color-box.es { background: #f39c12; }
+        .legend-item .color-box.stress { background: #8e44ad; }
+        .legend-item .color-box.silent { background: #e67e22; }
+
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 10px;
+            border: 1px solid #ecf0f1;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        thead {
+            background: #2c3e50;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        thead th {
+            padding: 12px 10px;
+            text-align: left;
+            font-weight: 600;
+            cursor: pointer;
+            user-select: none;
+            white-space: nowrap;
+        }
+        thead th:hover {
+            background: #34495e;
+        }
+        thead th:nth-child(1) { width: 5%; }
+        thead th:nth-child(2) { width: 20%; }
+        thead th:nth-child(3) { width: 30%; }
+        thead th:nth-child(4) { width: 30%; }
+        thead th:nth-child(5) { width: 15%; }
+
+        tbody tr {
+            border-bottom: 1px solid #ecf0f1;
+            transition: background 0.2s;
+        }
+        tbody tr:hover {
+            background: #f8f9fa;
+        }
+        tbody td {
+            padding: 10px 10px;
+            vertical-align: middle;
+        }
+        tbody td:first-child {
+            font-weight: 600;
+            color: #7f8c8d;
+        }
+        .rule-en {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        .rule-pt {
+            color: #7f8c8d;
+        }
+        .example-text {
+            color: #666;
+            font-style: italic;
+            font-size: 0.9em;
+        }
+        .example-text .highlight {
+            color: #e74c3c;
+            font-weight: 700;
+        }
+        .category-badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .category-badge.vowels { background: #f8d7da; color: #721c24; }
+        .category-badge.consonants { background: #d4edda; color: #155724; }
+        .category-badge.ed { background: #cce5ff; color: #004085; }
+        .category-badge.es { background: #fff3cd; color: #856404; }
+        .category-badge.stress { background: #e8d5f5; color: #6c3483; }
+        .category-badge.silent { background: #fdebd0; color: #935e38; }
+
+        .phonetic {
+            font-family: 'Courier New', monospace;
+            background: #ecf0f1;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 1.1em;
+            color: #2c3e50;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2em;
+            color: #7f8c8d;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            h1 { font-size: 1.8em; }
+            table { font-size: 11px; }
+            thead th, tbody td { padding: 6px 5px; }
+            .category-badge { font-size: 8px; padding: 2px 6px; }
+            .stats { grid-template-columns: repeat(2, 1fr); }
+            .category-filter button { padding: 6px 12px; font-size: 11px; }
+            thead th:nth-child(4) { display: none; }
+            tbody td:nth-child(4) { display: none; }
+            .phonetic { font-size: 0.9em; }
+        }
+        @media (max-width: 480px) {
+            table { font-size: 9px; }
+            thead th, tbody td { padding: 4px 3px; }
+            .legend { gap: 10px; font-size: 11px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔊 Regras de Pronúncia</h1>
+        <p class="subtitle">As principais regras de pronúncia do inglês com exemplos</p>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="number purple">60</div>
+                <div class="label">Total de regras</div>
+            </div>
+            <div class="stat-card">
+                <div class="number red" id="vowelsCount">0</div>
+                <div class="label">Vogais</div>
+            </div>
+            <div class="stat-card">
+                <div class="number green" id="consonantsCount">0</div>
+                <div class="label">Consoantes</div>
+            </div>
+            <div class="stat-card">
+                <div class="number blue" id="edCount">0</div>
+                <div class="label">Terminação -ed</div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item"><div class="color-box vowels"></div> Vogais</div>
+            <div class="legend-item"><div class="color-box consonants"></div> Consoantes</div>
+            <div class="legend-item"><div class="color-box ed"></div> Terminação -ed</div>
+            <div class="legend-item"><div class="color-box es"></div> Terminação -s/-es</div>
+            <div class="legend-item"><div class="color-box stress"></div> Sílaba Tônica</div>
+            <div class="legend-item"><div class="color-box silent"></div> Letras Mudas</div>
+        </div>
+
+        <div class="category-filter">
+            <button class="btn-all active" onclick="filterCategory('all')">📋 Todos</button>
+            <button onclick="filterCategory('vowels')">🔴 Vogais</button>
+            <button onclick="filterCategory('consonants')">🟢 Consoantes</button>
+            <button onclick="filterCategory('ed')">🔵 Terminação -ed</button>
+            <button onclick="filterCategory('es')">🟡 Terminação -s/-es</button>
+            <button onclick="filterCategory('stress')">🟣 Sílaba Tônica</button>
+            <button onclick="filterCategory('silent')">🟠 Letras Mudas</button>
+            <button onclick="resetFilter()">🔄 Resetar</button>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 Buscar regra ou palavra..." onkeyup="searchRule()">
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Regra</th>
+                        <th>Explicação</th>
+                        <th>Exemplos</th>
+                        <th>Categoria</th>
+                    </tr>
+                </thead>
+                <tbody id="pronunciationTable">
+                    <tr><td colspan="5" class="loading">Carregando regras de pronúncia...</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            💡 Clique no cabeçalho para ordenar • Use a busca para encontrar regras específicas
+        </div>
+    </div>
+
+    <script>
+        // ============================================================
+        // REGRAS DE PRONÚNCIA
+        // ============================================================
+        const rules = [
+            // ========== VOGAIS (1-20) ==========
+            { id: 1, en: 'Short "a"', pt: 'Som curto de "a"', category: 'vowels', example: 'cat /kæt/, hat /hæt/, man /mæn/' },
+            { id: 2, en: 'Short "e"', pt: 'Som curto de "e"', category: 'vowels', example: 'bed /bɛd/, red /rɛd/, pen /pɛn/' },
+            { id: 3, en: 'Short "i"', pt: 'Som curto de "i"', category: 'vowels', example: 'sit /sɪt/, big /bɪɡ/, fish /fɪʃ/' },
+            { id: 4, en: 'Short "o"', pt: 'Som curto de "o"', category: 'vowels', example: 'hot /hɒt/, dog /dɒɡ/, box /bɒks/' },
+            { id: 5, en: 'Short "u"', pt: 'Som curto de "u"', category: 'vowels', example: 'cup /kʌp/, sun /sʌn/, bus /bʌs/' },
+            { id: 6, en: 'Long "a" (silent e)', pt: '"a" longo (e mudo)', category: 'vowels', example: 'cake /keɪk/, make /meɪk/, name /neɪm/' },
+            { id: 7, en: 'Long "e" (ee/ea)', pt: '"e" longo (ee/ea)', category: 'vowels', example: 'see /siː/, meet /miːt/, beach /biːtʃ/' },
+            { id: 8, en: 'Long "i" (silent e)', pt: '"i" longo (e mudo)', category: 'vowels', example: 'bike /baɪk/, time /taɪm/, like /laɪk/' },
+            { id: 9, en: 'Long "o" (silent e)', pt: '"o" longo (e mudo)', category: 'vowels', example: 'home /hoʊm/, bone /boʊn/, note /noʊt/' },
+            { id: 10, en: 'Long "u" (silent e)', pt: '"u" longo (e mudo)', category: 'vowels', example: 'cute /kjuːt/, tube /tjuːb/, mute /mjuːt/' },
+            { id: 11, en: '"ai" sound', pt: 'Som de "ai"', category: 'vowels', example: 'rain /reɪn/, train /treɪn/, pain /peɪn/' },
+            { id: 12, en: '"ea" sound', pt: 'Som de "ea"', category: 'vowels', example: 'eat /iːt/, meat /miːt/, read /riːd/' },
+            { id: 13, en: '"ee" sound', pt: 'Som de "ee"', category: 'vowels', example: 'see /siː/, tree /triː/, free /friː/' },
+            { id: 14, en: '"oa" sound', pt: 'Som de "oa"', category: 'vowels', example: 'boat /boʊt/, coat /koʊt/, road /roʊd/' },
+            { id: 15, en: '"ou" sound', pt: 'Som de "ou"', category: 'vowels', example: 'house /haʊs/, mouse /maʊs/, out /aʊt/' },
+            { id: 16, en: '"ow" sound', pt: 'Som de "ow"', category: 'vowels', example: 'cow /kaʊ/, now /naʊ/, how /haʊ/' },
+            { id: 17, en: '"aw" sound', pt: 'Som de "aw"', category: 'vowels', example: 'saw /sɔː/, law /lɔː/, paw /pɔː/' },
+            { id: 18, en: '"oy" sound', pt: 'Som de "oy"', category: 'vowels', example: 'boy /bɔɪ/, toy /tɔɪ/, joy /dʒɔɪ/' },
+            { id: 19, en: 'Schwa sound (ə)', pt: 'Som neutro (ə)', category: 'vowels', example: 'about /əˈbaʊt/, sofa /ˈsoʊfə/, banana /bəˈnænə/' },
+            { id: 20, en: '"r" controlled vowels', pt: 'Vogais controladas por "r"', category: 'vowels', example: 'car /kɑːr/, bird /bɜːrd/, her /hɜːr/' },
+
+            // ========== CONSOANTES (21-38) ==========
+            { id: 21, en: '"th" voiced (ð)', pt: '"th" sonoro (ð)', category: 'consonants', example: 'this /ðɪs/, that /ðæt/, the /ðə/' },
+            { id: 22, en: '"th" voiceless (θ)', pt: '"th" surdo (θ)', category: 'consonants', example: 'thin /θɪn/, think /θɪŋk/, three /θriː/' },
+            { id: 23, en: '"sh" sound (ʃ)', pt: 'Som de "sh" (ʃ)', category: 'consonants', example: 'she /ʃiː/, ship /ʃɪp/, fish /fɪʃ/' },
+            { id: 24, en: '"ch" sound (tʃ)', pt: 'Som de "ch" (tʃ)', category: 'consonants', example: 'chair /tʃɛər/, child /tʃaɪld/, church /tʃɜːrtʃ/' },
+            { id: 25, en: '"j" sound (dʒ)', pt: 'Som de "j" (dʒ)', category: 'consonants', example: 'just /dʒʌst/, jump /dʒʌmp/, job /dʒɒb/' },
+            { id: 26, en: '"ng" sound (ŋ)', pt: 'Som de "ng" (ŋ)', category: 'consonants', example: 'sing /sɪŋ/, song /sɒŋ/, long /lɒŋ/' },
+            { id: 27, en: '"wh" sound (w/h)', pt: 'Som de "wh"', category: 'consonants', example: 'what /wɒt/, when /wɛn/, why /waɪ/' },
+            { id: 28, en: '"ph" sound (f)', pt: '"ph" tem som de "f"', category: 'consonants', example: 'phone /foʊn/, photo /ˈfoʊtoʊ/, phrase /freɪz/' },
+            { id: 29, en: '"gh" sound (f)', pt: '"gh" tem som de "f"', category: 'consonants', example: 'laugh /læf/, cough /kɒf/, tough /tʌf/' },
+            { id: 30, en: '"c" before e/i/y (s)', pt: '"c" antes de e/i/y soa como "s"', category: 'consonants', example: 'city /ˈsɪti/, cell /sɛl/, cycle /ˈsaɪkəl/' },
+            { id: 31, en: '"g" before e/i/y (dʒ)', pt: '"g" antes de e/i/y soa como "j"', category: 'consonants', example: 'gym /dʒɪm/, giant /ˈdʒaɪənt/, gentle /ˈdʒɛntl/' },
+            { id: 32, en: '"s" between vowels (z)', pt: '"s" entre vogais soa como "z"', category: 'consonants', example: 'music /ˈmjuːzɪk/, easy /ˈiːzi/, busy /ˈbɪzi/' },
+            { id: 33, en: '"x" at start (z)', pt: '"x" no início soa como "z"', category: 'consonants', example: 'xylophone /ˈzaɪləfoʊn/, xenial /ˈziːniəl/' },
+            { id: 34, en: '"x" in middle (ks/gz)', pt: '"x" no meio soa como "ks" ou "gz"', category: 'consonants', example: 'box /bɒks/, exam /ɪɡˈzæm/, ex /ɛks/' },
+            { id: 35, en: '"w" sound', pt: 'Som de "w"', category: 'consonants', example: 'we /wiː/, water /ˈwɔːtər/, window /ˈwɪndoʊ/' },
+            { id: 36, en: '"y" as consonant (j)', pt: '"y" como consoante (j)', category: 'consonants', example: 'yes /jɛs/, yellow /ˈjɛloʊ/, young /jʌŋ/' },
+            { id: 37, en: '"r" sound (ɹ)', pt: 'Som de "r" (ɹ)', category: 'consonants', example: 'red /rɛd/, run /rʌn/, right /raɪt/' },
+            { id: 38, en: '"l" sound (l)', pt: 'Som de "l" (l)', category: 'consonants', example: 'like /laɪk/, love /lʌv/, long /lɒŋ/' },
+
+            // ========== TERMINAÇÃO -ED (39-43) ==========
+            { id: 39, en: '-ed = /t/ after voiceless', pt: '-ed = /t/ após sons surdos', category: 'ed', example: 'walked /wɔːkt/, stopped /stɒpt/, laughed /læft/' },
+            { id: 40, en: '-ed = /d/ after voiced', pt: '-ed = /d/ após sons sonoros', category: 'ed', example: 'played /pleɪd/, loved /lʌvd/, called /kɔːld/' },
+            { id: 41, en: '-ed = /ɪd/ after t/d', pt: '-ed = /ɪd/ após t ou d', category: 'ed', example: 'wanted /ˈwɒntɪd/, needed /ˈniːdɪd/, started /ˈstɑːrtɪd/' },
+            { id: 42, en: '-ed = /t/ after p/k/f/s/ʃ/tʃ', pt: '-ed = /t/ após p,k,f,s,ʃ,tʃ', category: 'ed', example: 'hoped /hoʊpt/, laughed /læft/, watched /wɒtʃt/' },
+            { id: 43, en: '-ed = /d/ after b/g/v/ð/z/ʒ/dʒ', pt: '-ed = /d/ após b,g,v,ð,z,ʒ,dʒ', category: 'ed', example: 'loved /lʌvd/, used /juːzd/, changed /tʃeɪndʒd/' },
+
+            // ========== TERMINAÇÃO -S/-ES (44-47) ==========
+            { id: 44, en: '-s = /s/ after voiceless', pt: '-s = /s/ após sons surdos', category: 'es', example: 'cats /kæts/, books /bʊks/, stops /stɒps/' },
+            { id: 45, en: '-s = /z/ after voiced', pt: '-s = /z/ após sons sonoros', category: 'es', example: 'dogs /dɒɡz/, plays /pleɪz/, cars /kɑːrz/' },
+            { id: 46, en: '-s = /ɪz/ after s/z/ʃ/ʒ/tʃ/dʒ', pt: '-s = /ɪz/ após s,z,ʃ,ʒ,tʃ,dʒ', category: 'es', example: 'boxes /ˈbɒksɪz/, watches /ˈwɒtʃɪz/, judges /ˈdʒʌdʒɪz/' },
+            { id: 47, en: '-es = /ɪz/ after s/z/ʃ/ʒ/tʃ/dʒ', pt: '-es = /ɪz/ após s,z,ʃ,ʒ,tʃ,dʒ', category: 'es', example: 'buses /ˈbʌsɪz/, dresses /ˈdrɛsɪz/, dishes /ˈdɪʃɪz/' },
+
+            // ========== SÍLABA TÔNICA (48-52) ==========
+            { id: 48, en: '2-syllable nouns: stress 1st', pt: 'Substantivos de 2 sílabas: ênfase na 1ª', category: 'stress', example: 'PENcil /ˈpɛnsəl/, DOCtor /ˈdɒktər/, TABLE /ˈteɪbəl/' },
+            { id: 49, en: '2-syllable verbs: stress 2nd', pt: 'Verbos de 2 sílabas: ênfase na 2ª', category: 'stress', example: 'deCIDE /dɪˈsaɪd/, reCEIVE /rɪˈsiːv/, preTEND /prɪˈtɛnd/' },
+            { id: 50, en: 'Words ending in -tion/-sion', pt: 'Palavras com -tion/-sion', category: 'stress', example: 'nation /ˈneɪʃən/, decision /dɪˈsɪʒən/, television /ˈtɛlɪvɪʒən/' },
+            { id: 51, en: 'Words ending in -ic/-ical', pt: 'Palavras com -ic/-ical', category: 'stress', example: 'atlantic /ætˈlæntɪk/, political /pəˈlɪtɪkəl/, logical /ˈlɒdʒɪkəl/' },
+            { id: 52, en: 'Compound words: stress 1st', pt: 'Palavras compostas: ênfase na 1ª', category: 'stress', example: 'BEDroom /ˈbɛdruːm/, BLACKboard /ˈblækbɔːrd/, NOTEbook /ˈnoʊtbʊk/' },
+
+            // ========== LETRAS MUDAS (53-60) ==========
+            { id: 53, en: 'Silent "e" at the end', pt: '"e" mudo no final', category: 'silent', example: 'make /meɪk/, like /laɪk/, home /hoʊm/, have /hæv/' },
+            { id: 54, en: 'Silent "k" before "n"', pt: '"k" mudo antes de "n"', category: 'silent', example: 'knife /naɪf/, know /noʊ/, knee /niː/, knock /nɒk/' },
+            { id: 55, en: 'Silent "w" before "r"', pt: '"w" mudo antes de "r"', category: 'silent', example: 'write /raɪt/, wrong /rɒŋ/, wrist /rɪst/, wrap /ræp/' },
+            { id: 56, en: 'Silent "b" after "m"', pt: '"b" mudo depois de "m"', category: 'silent', example: 'climb /klaɪm/, thumb /θʌm/, comb /koʊm/, tomb /tuːm/' },
+            { id: 57, en: 'Silent "h" after "g"', pt: '"h" mudo depois de "g"', category: 'silent', example: 'ghost /ɡoʊst/, ghoul /ɡuːl/, gherkin /ˈɡɜːrkɪn/' },
+            { id: 58, en: 'Silent "p" before "s"', pt: '"p" mudo antes de "s"', category: 'silent', example: 'psychology /saɪˈkɒlədʒi/, psychiatrist /saɪˈkaɪətrɪst/, psalm /sɑːm/' },
+            { id: 59, en: 'Silent "t" in "sten/ stle"', pt: '"t" mudo em "sten/stle"', category: 'silent', example: 'listen /ˈlɪsən/, castle /ˈkɑːsəl/, whistle /ˈwɪsəl/, often /ˈɒfən/' },
+            { id: 60, en: 'Silent "gh" in "though/through"', pt: '"gh" mudo', category: 'silent', example: 'though /ðoʊ/, through /θruː/, light /laɪt/, night /naɪt/' }
+        ];
+
+        // ============================================================
+        // LÓGICA DE RENDERIZAÇÃO
+        // ============================================================
+
+        let currentFilter = 'all';
+        let currentSearch = '';
+
+        function getCategoryBadge(category) {
+            const map = {
+                'vowels': 'vowels',
+                'consonants': 'consonants',
+                'ed': 'ed',
+                'es': 'es',
+                'stress': 'stress',
+                'silent': 'silent'
+            };
+            const labels = {
+                'vowels': 'Vogais',
+                'consonants': 'Consoantes',
+                'ed': '-ed',
+                'es': '-s/-es',
+                'stress': 'Sílaba Tônica',
+                'silent': 'Letras Mudas'
+            };
+            return `<span class="category-badge ${map[category] || 'vowels'}">${labels[category] || 'Vogais'}</span>`;
+        }
+
+        function renderTable(filteredRules) {
+            const tbody = document.getElementById('pronunciationTable');
+            tbody.innerHTML = '';
+            if (filteredRules.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:40px;color:#7f8c8d;">Nenhuma regra encontrada.</td></tr>';
+                return;
+            }
+            filteredRules.forEach(rule => {
+                const tr = document.createElement('tr');
+                // Destacar palavras nos exemplos
+                let exampleHtml = rule.example;
+                // Destacar palavras com cores diferentes
+                const words = rule.example.split(', ');
+                let highlightedExample = words.map(w => {
+                    const parts = w.split(' ');
+                    return parts.map(p => {
+                        if (p.includes('/')) {
+                            return `<span class="highlight">${p}</span>`;
+                        }
+                        return p;
+                    }).join(' ');
+                }).join(', ');
+                
+                tr.innerHTML = `
+                    <td>${rule.id}</td>
+                    <td class="rule-en">${rule.en}</td>
+                    <td class="rule-pt">${rule.pt}</td>
+                    <td class="example-text">${highlightedExample}</td>
+                    <td>${getCategoryBadge(rule.category)}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+            updateStats(filteredRules);
+        }
+
+        function updateStats(rulesList) {
+            const vowels = rulesList.filter(r => r.category === 'vowels').length;
+            const consonants = rulesList.filter(r => r.category === 'consonants').length;
+            const ed = rulesList.filter(r => r.category === 'ed').length;
+            
+            document.getElementById('vowelsCount').textContent = vowels;
+            document.getElementById('consonantsCount').textContent = consonants;
+            document.getElementById('edCount').textContent = ed;
+        }
+
+        // ============================================================
+        // FILTROS
+        // ============================================================
+
+        function filterCategory(category) {
+            currentFilter = category;
+            document.querySelectorAll('.category-filter button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            const buttons = document.querySelectorAll('.category-filter button');
+            const index = ['all', 'vowels', 'consonants', 'ed', 'es', 'stress', 'silent'].indexOf(category);
+            if (buttons[index]) buttons[index].classList.add('active');
+            applyFilters();
+        }
+
+        function resetFilter() {
+            currentFilter = 'all';
+            document.getElementById('searchInput').value = '';
+            currentSearch = '';
+            document.querySelectorAll('.category-filter button').forEach(btn => btn.classList.remove('active'));
+            document.querySelector('.category-filter .btn-all').classList.add('active');
+            applyFilters();
+        }
+
+        function searchRule() {
+            const input = document.getElementById('searchInput');
+            currentSearch = input.value.toLowerCase().trim();
+            applyFilters();
+        }
+
+        function applyFilters() {
+            let filtered = [...rules];
+
+            if (currentFilter !== 'all') {
+                filtered = filtered.filter(r => r.category === currentFilter);
+            }
+
+            if (currentSearch) {
+                filtered = filtered.filter(r => 
+                    r.en.toLowerCase().includes(currentSearch) ||
+                    r.pt.toLowerCase().includes(currentSearch) ||
+                    r.example.toLowerCase().includes(currentSearch)
+                );
+            }
+
+            renderTable(filtered);
+        }
+
+        // ============================================================
+        // ORDENAÇÃO
+        // ============================================================
+
+        document.querySelectorAll('thead th').forEach((th, index) => {
+            if (index === 0) return;
+            th.addEventListener('click', () => {
+                const tbody = document.getElementById('pronunciationTable');
+                const rows = Array.from(tbody.querySelectorAll('tr'));
+                if (rows.length === 1 && rows[0].querySelector('td[colspan]')) return;
+                
+                const direction = th.dataset.direction === 'asc' ? 'desc' : 'asc';
+                th.dataset.direction = direction;
+
+                rows.sort((a, b) => {
+                    const aText = a.children[index].textContent.trim().toLowerCase();
+                    const bText = b.children[index].textContent.trim().toLowerCase();
+                    if (aText < bText) return direction === 'asc' ? -1 : 1;
+                    if (aText > bText) return direction === 'asc' ? 1 : -1;
+                    return 0;
+                });
+
+                rows.forEach(row => tbody.appendChild(row));
+            });
+        });
+
+        // ============================================================
+        // INICIALIZAÇÃO
+        // ============================================================
+
+        renderTable(rules);
+    </script>
+</body>
+</html>

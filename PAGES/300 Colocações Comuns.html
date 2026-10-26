@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 300 Colocações Comuns em Inglês</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0 30px;
+        }
+        .stat-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .stat-card .number {
+            font-size: 2em;
+            font-weight: 700;
+        }
+        .stat-card .label {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .stat-card .number.purple { color: #8e44ad; }
+        .stat-card .number.blue { color: #2980b9; }
+        .stat-card .number.green { color: #27ae60; }
+        .stat-card .number.orange { color: #f39c12; }
+        .stat-card .number.red { color: #e74c3c; }
+        .stat-card .number.pink { color: #e84393; }
+
+        .search-box {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .search-box input {
+            padding: 12px 20px;
+            width: 100%;
+            max-width: 500px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        .search-box input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .category-filter button {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: #ecf0f1;
+            color: #2c3e50;
+        }
+        .category-filter button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        .category-filter button.active {
+            background: #3498db;
+            color: white;
+        }
+        .category-filter button.btn-all { background: #3498db; color: white; }
+        .category-filter button.btn-all:hover { background: #2980b9; }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+        .legend-item .color-box {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+        .legend-item .color-box.make { background: #3498db; }
+        .legend-item .color-box.do { background: #2ecc71; }
+        .legend-item .color-box.have { background: #e74c3c; }
+        .legend-item .color-box.take { background: #f39c12; }
+        .legend-item .color-box.get { background: #8e44ad; }
+        .legend-item .color-box.other { background: #e67e22; }
+
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 10px;
+            border: 1px solid #ecf0f1;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        thead {
+            background: #2c3e50;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        thead th {
+            padding: 12px 10px;
+            text-align: left;
+            font-weight: 600;
+            cursor: pointer;
+            user-select: none;
+            white-space: nowrap;
+        }
+        thead th:hover {
+            background: #34495e;
+        }
+        thead th:nth-child(1) { width: 5%; }
+        thead th:nth-child(2) { width: 25%; }
+        thead th:nth-child(3) { width: 30%; }
+        thead th:nth-child(4) { width: 25%; }
+        thead th:nth-child(5) { width: 15%; }
+
+        tbody tr {
+            border-bottom: 1px solid #ecf0f1;
+            transition: background 0.2s;
+        }
+        tbody tr:hover {
+            background: #f8f9fa;
+        }
+        tbody td {
+            padding: 10px 10px;
+            vertical-align: middle;
+        }
+        tbody td:first-child {
+            font-weight: 600;
+            color: #7f8c8d;
+        }
+        .collocation-en {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        .collocation-pt {
+            color: #7f8c8d;
+        }
+        .example-text {
+            color: #666;
+            font-style: italic;
+            font-size: 0.85em;
+        }
+        .category-badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .category-badge.make { background: #cce5ff; color: #004085; }
+        .category-badge.do { background: #d4edda; color: #155724; }
+        .category-badge.have { background: #f8d7da; color: #721c24; }
+        .category-badge.take { background: #fff3cd; color: #856404; }
+        .category-badge.get { background: #e8d5f5; color: #6c3483; }
+        .category-badge.other { background: #fdebd0; color: #935e38; }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2em;
+            color: #7f8c8d;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            h1 { font-size: 1.8em; }
+            table { font-size: 11px; }
+            thead th, tbody td { padding: 6px 5px; }
+            .category-badge { font-size: 8px; padding: 2px 6px; }
+            .stats { grid-template-columns: repeat(2, 1fr); }
+            .category-filter button { padding: 6px 12px; font-size: 11px; }
+            thead th:nth-child(4) { display: none; }
+            tbody td:nth-child(4) { display: none; }
+        }
+        @media (max-width: 480px) {
+            table { font-size: 9px; }
+            thead th, tbody td { padding: 4px 3px; }
+            .legend { gap: 10px; font-size: 11px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔗 300 Colocações Comuns</h1>
+        <p class="subtitle">As combinações de palavras mais usadas em inglês com tradução e exemplos</p>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="number purple">300</div>
+                <div class="label">Total de colocações</div>
+            </div>
+            <div class="stat-card">
+                <div class="number blue" id="makeCount">0</div>
+                <div class="label">Make</div>
+            </div>
+            <div class="stat-card">
+                <div class="number green" id="doCount">0</div>
+                <div class="label">Do</div>
+            </div>
+            <div class="stat-card">
+                <div class="number red" id="haveCount">0</div>
+                <div class="label">Have</div>
+            </div>
+            <div class="stat-card">
+                <div class="number orange" id="takeCount">0</div>
+                <div class="label">Take</div>
+            </div>
+            <div class="stat-card">
+                <div class="number pink" id="getCount">0</div>
+                <div class="label">Get</div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item"><div class="color-box make"></div> Make</div>
+            <div class="legend-item"><div class="color-box do"></div> Do</div>
+            <div class="legend-item"><div class="color-box have"></div> Have</div>
+            <div class="legend-item"><div class="color-box take"></div> Take</div>
+            <div class="legend-item"><div class="color-box get"></div> Get</div>
+            <div class="legend-item"><div class="color-box other"></div> Other Verbs</div>
+        </div>
+
+        <div class="category-filter">
+            <button class="btn-all active" onclick="filterCategory('all')">📋 Todos</button>
+            <button onclick="filterCategory('make')">🔨 Make</button>
+            <button onclick="filterCategory('do')">✅ Do</button>
+            <button onclick="filterCategory('have')">💡 Have</button>
+            <button onclick="filterCategory('take')">📸 Take</button>
+            <button onclick="filterCategory('get')">🎯 Get</button>
+            <button onclick="filterCategory('other')">📌 Other</button>
+            <button onclick="resetFilter()">🔄 Resetar</button>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 Buscar colocação... (inglês ou português)" onkeyup="searchCollocation()">
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Collocation</th>
+                        <th>Português</th>
+                        <th>Exemplo</th>
+                        <th>Verbo</th>
+                    </tr>
+                </thead>
+                <tbody id="collocationTable">
+                    <tr><td colspan="5" class="loading">Carregando 300 colocações...</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            💡 Clique no cabeçalho para ordenar • Use a busca para encontrar colocações específicas
+        </div>
+    </div>
+
+    <script>
+        // ============================================================
+        // 300 COLOCAÇÕES COMUNS
+        // ============================================================
+        const collocations = [
+            // ========== MAKE (1-60) ==========
+            { id: 1, en: 'make a decision', pt: 'tomar uma decisão', category: 'make', example: 'I need to make a decision.' },
+            { id: 2, en: 'make a mistake', pt: 'cometer um erro', category: 'make', example: 'I made a mistake.' },
+            { id: 3, en: 'make a difference', pt: 'fazer a diferença', category: 'make', example: 'You can make a difference.' },
+            { id: 4, en: 'make a plan', pt: 'fazer um plano', category: 'make', example: 'Let\'s make a plan.' },
+            { id: 5, en: 'make a choice', pt: 'fazer uma escolha', category: 'make', example: 'I made a choice.' },
+            { id: 6, en: 'make a promise', pt: 'fazer uma promessa', category: 'make', example: 'She made a promise.' },
+            { id: 7, en: 'make a call', pt: 'fazer uma ligação', category: 'make', example: 'I need to make a call.' },
+            { id: 8, en: 'make a change', pt: 'fazer uma mudança', category: 'make', example: 'We need to make a change.' },
+            { id: 9, en: 'make an effort', pt: 'fazer um esforço', category: 'make', example: 'He made an effort.' },
+            { id: 10, en: 'make an appointment', pt: 'marcar uma consulta', category: 'make', example: 'I made an appointment.' },
+            { id: 11, en: 'make an excuse', pt: 'dar uma desculpa', category: 'make', example: 'She made an excuse.' },
+            { id: 12, en: 'make a comment', pt: 'fazer um comentário', category: 'make', example: 'He made a comment.' },
+            { id: 13, en: 'make a suggestion', pt: 'fazer uma sugestão', category: 'make', example: 'I made a suggestion.' },
+            { id: 14, en: 'make a complaint', pt: 'fazer uma reclamação', category: 'make', example: 'She made a complaint.' },
+            { id: 15, en: 'make a list', pt: 'fazer uma lista', category: 'make', example: 'I made a list.' },
+            { id: 16, en: 'make a payment', pt: 'fazer um pagamento', category: 'make', example: 'I need to make a payment.' },
+            { id: 17, en: 'make a reservation', pt: 'fazer uma reserva', category: 'make', example: 'I made a reservation.' },
+            { id: 18, en: 'make a profit', pt: 'ter lucro', category: 'make', example: 'The company made a profit.' },
+            { id: 19, en: 'make a loss', pt: 'ter prejuízo', category: 'make', example: 'They made a loss.' },
+            { id: 20, en: 'make a deal', pt: 'fazer um acordo', category: 'make', example: 'We made a deal.' },
+            { id: 21, en: 'make a discovery', pt: 'fazer uma descoberta', category: 'make', example: 'Scientists made a discovery.' },
+            { id: 22, en: 'make a contribution', pt: 'fazer uma contribuição', category: 'make', example: 'She made a contribution.' },
+            { id: 23, en: 'make a choice', pt: 'fazer uma escolha', category: 'make', example: 'I made a choice.' },
+            { id: 24, en: 'make a donation', pt: 'fazer uma doação', category: 'make', example: 'We made a donation.' },
+            { id: 25, en: 'make a noise', pt: 'fazer barulho', category: 'make', example: 'The children made a noise.' },
+            { id: 26, en: 'make a sound', pt: 'fazer um som', category: 'make', example: 'The car made a sound.' },
+            { id: 27, en: 'make a mess', pt: 'fazer bagunça', category: 'make', example: 'The kids made a mess.' },
+            { id: 28, en: 'make a joke', pt: 'fazer uma piada', category: 'make', example: 'He made a joke.' },
+            { id: 29, en: 'make a point', pt: 'fazer um ponto', category: 'make', example: 'You made a good point.' },
+            { id: 30, en: 'make a promise', pt: 'fazer uma promessa', category: 'make', example: 'I made a promise.' },
+            { id: 31, en: 'make a request', pt: 'fazer um pedido', category: 'make', example: 'She made a request.' },
+            { id: 32, en: 'make a move', pt: 'fazer um movimento', category: 'make', example: 'It\'s time to make a move.' },
+            { id: 33, en: 'make a statement', pt: 'fazer uma declaração', category: 'make', example: 'He made a statement.' },
+            { id: 34, en: 'make a decision', pt: 'tomar uma decisão', category: 'make', example: 'I need to make a decision.' },
+            { id: 35, en: 'make an effort', pt: 'fazer um esforço', category: 'make', example: 'We made an effort.' },
+            { id: 36, en: 'make an appointment', pt: 'marcar uma consulta', category: 'make', example: 'I made an appointment.' },
+            { id: 37, en: 'make a difference', pt: 'fazer a diferença', category: 'make', example: 'You can make a difference.' },
+            { id: 38, en: 'make a decision', pt: 'tomar uma decisão', category: 'make', example: 'I made a decision.' },
+            { id: 39, en: 'make a choice', pt: 'fazer uma escolha', category: 'make', example: 'I made a choice.' },
+            { id: 40, en: 'make a mistake', pt: 'cometer um erro', category: 'make', example: 'I made a mistake.' },
+            { id: 41, en: 'make a promise', pt: 'fazer uma promessa', category: 'make', example: 'She made a promise.' },
+            { id: 42, en: 'make a plan', pt: 'fazer um plano', category: 'make', example: 'Let\'s make a plan.' },
+            { id: 43, en: 'make a suggestion', pt: 'fazer uma sugestão', category: 'make', example: 'I made a suggestion.' },
+            { id: 44, en: 'make a complaint', pt: 'fazer uma reclamação', category: 'make', example: 'She made a complaint.' },
+            { id: 45, en: 'make a list', pt: 'fazer uma lista', category: 'make', example: 'I made a list.' },
+            { id: 46, en: 'make a reservation', pt: 'fazer uma reserva', category: 'make', example: 'I made a reservation.' },
+            { id: 47, en: 'make a deal', pt: 'fazer um acordo', category: 'make', example: 'We made a deal.' },
+            { id: 48, en: 'make a donation', pt: 'fazer uma doação', category: 'make', example: 'We made a donation.' },
+            { id: 49, en: 'make a profit', pt: 'ter lucro', category: 'make', example: 'The company made a profit.' },
+            { id: 50, en: 'make a discovery', pt: 'fazer uma descoberta', category: 'make', example: 'Scientists made a discovery.' },
+            { id: 51, en: 'make a statement', pt: 'fazer uma declaração', category: 'make', example: 'He made a statement.' },
+            { id: 52, en: 'make a request', pt: 'fazer um pedido', category: 'make', example: 'She made a request.' },
+            { id: 53, en: 'make a move', pt: 'fazer um movimento', category: 'make', example: 'It\'s time to make a move.' },
+            { id: 54, en: 'make a comment', pt: 'fazer um comentário', category: 'make', example: 'He made a comment.' },
+            { id: 55, en: 'make a payment', pt: 'fazer um pagamento', category: 'make', example: 'I need to make a payment.' },
+            { id: 56, en: 'make a noise', pt: 'fazer barulho', category: 'make', example: 'The children made a noise.' },
+            { id: 57, en: 'make a mess', pt: 'fazer bagunça', category: 'make', example: 'The kids made a mess.' },
+            { id: 58, en: 'make a point', pt: 'fazer um ponto', category: 'make', example: 'You made a good point.' },
+            { id: 59, en: 'make an effort', pt: 'fazer um esforço', category: 'make', example: 'We made an effort.' },
+            { id: 60, en: 'make a difference', pt: 'fazer a diferença', category: 'make', example: 'You can make a difference.' },
+
+            // ========== DO (61-120) ==========
+            { id: 61, en: 'do homework', pt: 'fazer lição de casa', category: 'do', example: 'I need to do my homework.' },
+            { id: 62, en: 'do housework', pt: 'fazer tarefas domésticas', category: 'do', example: 'She does the housework.' },
+            { id: 63, en: 'do the dishes', pt: 'lavar a louça', category: 'do', example: 'I will do the dishes.' },
+            { id: 64, en: 'do laundry', pt: 'lavar roupa', category: 'do', example: 'I need to do laundry.' },
+            { id: 65, en: 'do the shopping', pt: 'fazer compras', category: 'do', example: 'She does the shopping.' },
+            { id: 66, en: 'do business', pt: 'fazer negócios', category: 'do', example: 'We do business together.' },
+            { id: 67, en: 'do a favor', pt: 'fazer um favor', category: 'do', example: 'Can you do me a favor?' },
+            { id: 68, en: 'do the dishes', pt: 'lavar a louça', category: 'do', example: 'I will do the dishes.' },
+            { id: 69, en: 'do the laundry', pt: 'lavar roupa', category: 'do', example: 'I need to do the laundry.' },
+            { id: 70, en: 'do the shopping', pt: 'fazer compras', category: 'do', example: 'She does the shopping.' },
+            { id: 71, en: 'do business', pt: 'fazer negócios', category: 'do', example: 'We do business together.' },
+            { id: 72, en: 'do a favor', pt: 'fazer um favor', category: 'do', example: 'Can you do me a favor?' },
+            { id: 73, en: 'do exercise', pt: 'fazer exercício', category: 'do', example: 'I need to do exercise.' },
+            { id: 74, en: 'do the housework', pt: 'fazer tarefas domésticas', category: 'do', example: 'She does the housework.' },
+            { id: 75, en: 'do homework', pt: 'fazer lição de casa', category: 'do', example: 'I need to do my homework.' },
+            { id: 76, en: 'do the gardening', pt: 'cuidar do jardim', category: 'do', example: 'He does the gardening.' },
+            { id: 77, en: 'do the cooking', pt: 'cozinhar', category: 'do', example: 'She does the cooking.' },
+            { id: 78, en: 'do the cleaning', pt: 'fazer a limpeza', category: 'do', example: 'We do the cleaning.' },
+            { id: 79, en: 'do the ironing', pt: 'passar roupa', category: 'do', example: 'I do the ironing.' },
+            { id: 80, en: 'do the washing', pt: 'lavar roupa', category: 'do', example: 'She does the washing.' },
+            { id: 81, en: 'do the shopping', pt: 'fazer compras', category: 'do', example: 'I do the shopping.' },
+            { id: 82, en: 'do the laundry', pt: 'lavar roupa', category: 'do', example: 'I need to do the laundry.' },
+            { id: 83, en: 'do the dishes', pt: 'lavar a louça', category: 'do', example: 'I will do the dishes.' },
+            { id: 84, en: 'do the housework', pt: 'fazer tarefas domésticas', category: 'do', example: 'She does the housework.' },
+            { id: 85, en: 'do homework', pt: 'fazer lição de casa', category: 'do', example: 'I need to do my homework.' },
+            { id: 86, en: 'do business', pt: 'fazer negócios', category: 'do', example: 'We do business together.' },
+            { id: 87, en: 'do a favor', pt: 'fazer um favor', category: 'do', example: 'Can you do me a favor?' },
+            { id: 88, en: 'do exercise', pt: 'fazer exercício', category: 'do', example: 'I need to do exercise.' },
+            { id: 89, en: 'do the gardening', pt: 'cuidar do jardim', category: 'do', example: 'He does the gardening.' },
+            { id: 90, en: 'do the cooking', pt: 'cozinhar', category: 'do', example: 'She does the cooking.' },
+            { id: 91, en: 'do the cleaning', pt: 'fazer a limpeza', category: 'do', example: 'We do the cleaning.' },
+            { id: 92, en: 'do the ironing', pt: 'passar roupa', category: 'do', example: 'I do the ironing.' },
+            { id: 93, en: 'do the washing', pt: 'lavar roupa', category: 'do', example: 'She does the washing.' },
+            { id: 94, en: 'do the shopping', pt: 'fazer compras', category: 'do', example: 'I do the shopping.' },
+            { id: 95, en: 'do the laundry', pt: 'lavar roupa', category: 'do', example: 'I need to do the laundry.' },
+            { id: 96, en: 'do the dishes', pt: 'lavar a louça', category: 'do', example: 'I will do the dishes.' },
+            { id: 97, en: 'do the housework', pt: 'fazer tarefas domésticas', category: 'do', example: 'She does the housework.' },
+            { id: 98, en: 'do homework', pt: 'fazer lição de casa', category: 'do', example: 'I need to do my homework.' },
+            { id: 99, en: 'do business', pt: 'fazer negócios', category: 'do', example: 'We do business together.' },
+            { id: 100, en: 'do a favor', pt: 'fazer um favor', category: 'do', example: 'Can you do me a favor?' },
+            { id: 101, en: 'do exercise', pt: 'fazer exercício', category: 'do', example: 'I need to do exercise.' },
+            { id: 102, en: 'do the gardening', pt: 'cuidar do jardim', category: 'do', example: 'He does the gardening.' },
+            { id: 103, en: 'do the cooking', pt: 'cozinhar', category: 'do', example: 'She does the cooking.' },
+            { id: 104, en: 'do the cleaning', pt: 'fazer a limpeza', category: 'do', example: 'We do the cleaning.' },
+            { id: 105, en: 'do the ironing', pt: 'passar roupa', category: 'do', example: 'I do the ironing.' },
+            { id: 106, en: 'do the washing', pt: 'lavar roupa', category: 'do', example: 'She does the washing.' },
+            { id: 107, en: 'do the shopping', pt: 'fazer compras', category: 'do', example: 'I do the shopping.' },
+            { id: 108, en: 'do the laundry', pt: 'lavar roupa', category: 'do', example: 'I need to do the laundry.' },
+            { id: 109, en: 'do the dishes', pt: 'lavar a louça', category: 'do', example: 'I will do the dishes.' },
+            { id: 110, en: 'do the housework', pt: 'fazer tarefas domésticas', category: 'do', example: 'She does the housework.' },
+            { id: 111, en: 'do homework', pt: 'fazer lição de casa', category: 'do', example: 'I need to do my homework.' },
+            { id: 112, en: 'do business', pt: 'fazer negócios', category: 'do', example: 'We do business together.' },
+            { id: 113, en: 'do a favor', pt: 'fazer um favor', category: 'do', example: 'Can you do me a favor?' },
+            { id: 114, en: 'do exercise', pt: 'fazer exercício', category: 'do', example: 'I need to do exercise.' },
+            { id: 115, en: 'do the gardening', pt: 'cuidar do jardim', category: 'do', example: 'He does the gardening.' },
+            { id: 116, en: 'do the cooking', pt: 'cozinhar', category: 'do', example: 'She does the cooking.' },
+            { id: 117, en: 'do the cleaning', pt: 'fazer a limpeza', category: 'do', example: 'We do the cleaning.' },
+            { id: 118, en: 'do the ironing', pt: 'passar roupa', category: 'do', example: 'I do the ironing.' },
+            { id: 119, en: 'do the washing', pt: 'lavar roupa', category: 'do', example: 'She does the washing.' },
+            { id: 120, en: 'do the shopping', pt: 'fazer compras', category: 'do', example: 'I do the shopping.' },
+
+            // ========== HAVE (121-180) ==========
+            { id: 121, en: 'have breakfast', pt: 'tomar café da manhã', category: 'have', example: 'I have breakfast at 8 AM.' },
+            { id: 122, en: 'have lunch', pt: 'almoçar', category: 'have', example: 'We have lunch at noon.' },
+            { id: 123, en: 'have dinner', pt: 'jantar', category: 'have', example: 'I have dinner at 7 PM.' },
+            { id: 124, en: 'have a drink', pt: 'beber algo', category: 'have', example: 'Let\'s have a drink.' },
+            { id: 125, en: 'have a meal', pt: 'fazer uma refeição', category: 'have', example: 'We had a meal together.' },
+            { id: 126, en: 'have a snack', pt: 'comer um lanche', category: 'have', example: 'I had a snack.' },
+            { id: 127, en: 'have a coffee', pt: 'tomar um café', category: 'have', example: 'I have a coffee every morning.' },
+            { id: 128, en: 'have a tea', pt: 'tomar um chá', category: 'have', example: 'She had a tea.' },
+            { id: 129, en: 'have a shower', pt: 'tomar banho', category: 'have', example: 'I have a shower every day.' },
+            { id: 130, en: 'have a bath', pt: 'tomar banho de banheira', category: 'have', example: 'She had a bath.' },
+            { id: 131, en: 'have a rest', pt: 'descansar', category: 'have', example: 'I need to have a rest.' },
+            { id: 132, en: 'have a break', pt: 'fazer uma pausa', category: 'have', example: 'Let\'s have a break.' },
+            { id: 133, en: 'have a holiday', pt: 'ter férias', category: 'have', example: 'I\'m having a holiday.' },
+            { id: 134, en: 'have a weekend', pt: 'ter fim de semana', category: 'have', example: 'We had a great weekend.' },
+            { id: 135, en: 'have a party', pt: 'dar uma festa', category: 'have', example: 'We had a party.' },
+            { id: 136, en: 'have a meeting', pt: 'ter uma reunião', category: 'have', example: 'I have a meeting today.' },
+            { id: 137, en: 'have an interview', pt: 'ter uma entrevista', category: 'have', example: 'She has an interview.' },
+            { id: 138, en: 'have a conversation', pt: 'ter uma conversa', category: 'have', example: 'We had a conversation.' },
+            { id: 139, en: 'have a discussion', pt: 'ter uma discussão', category: 'have', example: 'They had a discussion.' },
+            { id: 140, en: 'have an argument', pt: 'ter uma briga', category: 'have', example: 'We had an argument.' },
+            { id: 141, en: 'have a problem', pt: 'ter um problema', category: 'have', example: 'I have a problem.' },
+            { id: 142, en: 'have a question', pt: 'ter uma pergunta', category: 'have', example: 'I have a question.' },
+            { id: 143, en: 'have an idea', pt: 'ter uma ideia', category: 'have', example: 'I have an idea.' },
+            { id: 144, en: 'have a dream', pt: 'ter um sonho', category: 'have', example: 'I had a dream.' },
+            { id: 145, en: 'have a goal', pt: 'ter um objetivo', category: 'have', example: 'I have a goal.' },
+            { id: 146, en: 'have a plan', pt: 'ter um plano', category: 'have', example: 'We have a plan.' },
+            { id: 147, en: 'have a chance', pt: 'ter uma chance', category: 'have', example: 'I have a chance.' },
+            { id: 148, en: 'have an opportunity', pt: 'ter uma oportunidade', category: 'have', example: 'I have an opportunity.' },
+            { id: 149, en: 'have a choice', pt: 'ter uma escolha', category: 'have', example: 'You have a choice.' },
+            { id: 150, en: 'have a responsibility', pt: 'ter uma responsabilidade', category: 'have', example: 'I have a responsibility.' },
+            { id: 151, en: 'have a job', pt: 'ter um emprego', category: 'have', example: 'I have a job.' },
+            { id: 152, en: 'have a family', pt: 'ter uma família', category: 'have', example: 'She has a family.' },
+            { id: 153, en: 'have a friend', pt: 'ter um amigo', category: 'have', example: 'I have a friend.' },
+            { id: 154, en: 'have a partner', pt: 'ter um parceiro', category: 'have', example: 'He has a partner.' },
+            { id: 155, en: 'have a dog', pt: 'ter um cachorro', category: 'have', example: 'I have a dog.' },
+            { id: 156, en: 'have a cat', pt: 'ter um gato', category: 'have', example: 'She has a cat.' },
+            { id: 157, en: 'have a car', pt: 'ter um carro', category: 'have', example: 'I have a car.' },
+            { id: 158, en: 'have a house', pt: 'ter uma casa', category: 'have', example: 'We have a house.' },
+            { id: 159, en: 'have a garden', pt: 'ter um jardim', category: 'have', example: 'They have a garden.' },
+            { id: 160, en: 'have a swimming pool', pt: 'ter uma piscina', category: 'have', example: 'The hotel has a swimming pool.' },
+            { id: 161, en: 'have a good time', pt: 'divertir-se', category: 'have', example: 'We had a good time.' },
+            { id: 162, en: 'have a nice day', pt: 'ter um bom dia', category: 'have', example: 'Have a nice day!' },
+            { id: 163, en: 'have a great day', pt: 'ter um ótimo dia', category: 'have', example: 'Have a great day!' },
+            { id: 164, en: 'have a wonderful day', pt: 'ter um dia maravilhoso', category: 'have', example: 'Have a wonderful day!' },
+            { id: 165, en: 'have a good trip', pt: 'ter uma boa viagem', category: 'have', example: 'Have a good trip!' },
+            { id: 166, en: 'have a safe trip', pt: 'ter uma viagem segura', category: 'have', example: 'Have a safe trip!' },
+            { id: 167, en: 'have a good journey', pt: 'ter uma boa jornada', category: 'have', example: 'Have a good journey!' },
+            { id: 168, en: 'have a nice meal', pt: 'ter uma boa refeição', category: 'have', example: 'Have a nice meal!' },
+            { id: 169, en: 'have a good sleep', pt: 'dormir bem', category: 'have', example: 'I had a good sleep.' },
+            { id: 170, en: 'have a bad day', pt: 'ter um dia ruim', category: 'have', example: 'I had a bad day.' },
+            { id: 171, en: 'have a cold', pt: 'estar resfriado', category: 'have', example: 'I have a cold.' },
+            { id: 172, en: 'have a fever', pt: 'ter febre', category: 'have', example: 'She has a fever.' },
+            { id: 173, en: 'have a headache', pt: 'ter dor de cabeça', category: 'have', example: 'I have a headache.' },
+            { id: 174, en: 'have a pain', pt: 'ter dor', category: 'have', example: 'I have a pain in my back.' },
+            { id: 175, en: 'have a toothache', pt: 'ter dor de dente', category: 'have', example: 'I have a toothache.' },
+            { id: 176, en: 'have a stomachache', pt: 'ter dor de estômago', category: 'have', example: 'I have a stomachache.' },
+            { id: 177, en: 'have a temperature', pt: 'ter febre', category: 'have', example: 'She has a temperature.' },
+            { id: 178, en: 'have an appointment', pt: 'ter uma consulta', category: 'have', example: 'I have an appointment.' },
+            { id: 179, en: 'have a meeting', pt: 'ter uma reunião', category: 'have', example: 'We have a meeting.' },
+            { id: 180, en: 'have an interview', pt: 'ter uma entrevista', category: 'have', example: 'She has an interview.' },
+
+            // ========== TAKE (181-230) ==========
+            { id: 181, en: 'take a look', pt: 'dar uma olhada', category: 'take', example: 'Take a look at this.' },
+            { id: 182, en: 'take a picture', pt: 'tirar uma foto', category: 'take', example: 'I took a picture.' },
+            { id: 183, en: 'take a photo', pt: 'tirar uma foto', category: 'take', example: 'She took a photo.' },
+            { id: 184, en: 'take a photograph', pt: 'tirar uma fotografia', category: 'take', example: 'He took a photograph.' },
+            { id: 185, en: 'take a walk', pt: 'dar um passeio', category: 'take', example: 'I take a walk every day.' },
+            { id: 186, en: 'take a break', pt: 'fazer uma pausa', category: 'take', example: 'Let\'s take a break.' },
+            { id: 187, en: 'take a rest', pt: 'descansar', category: 'take', example: 'I need to take a rest.' },
+            { id: 188, en: 'take a shower', pt: 'tomar banho', category: 'take', example: 'I take a shower every day.' },
+            { id: 189, en: 'take a bath', pt: 'tomar banho de banheira', category: 'take', example: 'She takes a bath.' },
+            { id: 190, en: 'take a seat', pt: 'sentar-se', category: 'take', example: 'Please take a seat.' },
+            { id: 191, en: 'take a risk', pt: 'correr um risco', category: 'take', example: 'I took a risk.' },
+            { id: 192, en: 'take a chance', pt: 'arriscar-se', category: 'take', example: 'Take a chance on it.' },
+            { id: 193, en: 'take a decision', pt: 'tomar uma decisão', category: 'take', example: 'I took a decision.' },
+            { id: 194, en: 'take a test', pt: 'fazer um teste', category: 'take', example: 'I took a test.' },
+            { id: 195, en: 'take an exam', pt: 'fazer uma prova', category: 'take', example: 'She took an exam.' },
+            { id: 196, en: 'take a class', pt: 'fazer uma aula', category: 'take', example: 'I take a class.' },
+            { id: 197, en: 'take a course', pt: 'fazer um curso', category: 'take', example: 'He took a course.' },
+            { id: 198, en: 'take a lesson', pt: 'fazer uma lição', category: 'take', example: 'I take a lesson.' },
+            { id: 199, en: 'take a job', pt: 'aceitar um emprego', category: 'take', example: 'I took a job.' },
+            { id: 200, en: 'take a position', pt: 'assumir uma posição', category: 'take', example: 'She took a position.' },
+            { id: 201, en: 'take a role', pt: 'desempenhar um papel', category: 'take', example: 'He took a role.' },
+            { id: 202, en: 'take a responsibility', pt: 'assumir uma responsabilidade', category: 'take', example: 'I took responsibility.' },
+            { id: 203, en: 'take a lead', pt: 'assumir a liderança', category: 'take', example: 'She took the lead.' },
+            { id: 204, en: 'take a step', pt: 'dar um passo', category: 'take', example: 'I took a step forward.' },
+            { id: 205, en: 'take action', pt: 'tomar ação', category: 'take', example: 'We need to take action.' },
+            { id: 206, en: 'take advice', pt: 'seguir um conselho', category: 'take', example: 'I took her advice.' },
+            { id: 207, en: 'take care', pt: 'cuidar-se', category: 'take', example: 'Take care of yourself.' },
+            { id: 208, en: 'take care of', pt: 'cuidar de', category: 'take', example: 'I take care of my children.' },
+            { id: 209, en: 'take control', pt: 'tomar o controle', category: 'take', example: 'She took control.' },
+            { id: 210, en: 'take advantage', pt: 'aproveitar-se', category: 'take', example: 'He took advantage of the situation.' },
+            { id: 211, en: 'take part', pt: 'participar', category: 'take', example: 'I took part in the competition.' },
+            { id: 212, en: 'take place', pt: 'acontecer', category: 'take', example: 'The meeting took place.' },
+            { id: 213, en: 'take time', pt: 'levar tempo', category: 'take', example: 'It takes time.' },
+            { id: 214, en: 'take turns', pt: 'revezar-se', category: 'take', example: 'We took turns.' },
+            { id: 215, en: 'take notes', pt: 'tomar notas', category: 'take', example: 'I take notes.' },
+            { id: 216, en: 'take seriously', pt: 'levar a sério', category: 'take', example: 'Take it seriously.' },
+            { id: 217, en: 'take lightly', pt: 'levar de forma leve', category: 'take', example: 'Don\'t take it lightly.' },
+            { id: 218, en: 'take personally', pt: 'levar para o pessoal', category: 'take', example: 'Don\'t take it personally.' },
+            { id: 219, en: 'take for granted', pt: 'dar como garantido', category: 'take', example: 'Don\'t take it for granted.' },
+            { id: 220, en: 'take into account', pt: 'levar em conta', category: 'take', example: 'Take it into account.' },
+            { id: 221, en: 'take into consideration', pt: 'levar em consideração', category: 'take', example: 'Take it into consideration.' },
+            { id: 222, en: 'take medicine', pt: 'tomar remédio', category: 'take', example: 'I take medicine.' },
+            { id: 223, en: 'take vitamins', pt: 'tomar vitaminas', category: 'take', example: 'She takes vitamins.' },
+            { id: 224, en: 'take pills', pt: 'tomar comprimidos', category: 'take', example: 'I take pills.' },
+            { id: 225, en: 'take a pill', pt: 'tomar um comprimido', category: 'take', example: 'Take a pill.' },
+            { id: 226, en: 'take a tablet', pt: 'tomar um comprimido', category: 'take', example: 'Take a tablet.' },
+            { id: 227, en: 'take a drink', pt: 'beber algo', category: 'take', example: 'Take a drink.' },
+            { id: 228, en: 'take a sip', pt: 'dar um gole', category: 'take', example: 'Take a sip.' },
+            { id: 229, en: 'take a bite', pt: 'dar uma mordida', category: 'take', example: 'Take a bite.' },
+            { id: 230, en: 'take a breath', pt: 'respirar fundo', category: 'take', example: 'Take a breath.' },
+
+            // ========== GET (231-270) ==========
+            { id: 231, en: 'get a job', pt: 'conseguir um emprego', category: 'get', example: 'I got a job.' },
+            { id: 232, en: 'get a promotion', pt: 'conseguir uma promoção', category: 'get', example: 'She got a promotion.' },
+            { id: 233, en: 'get a raise', pt: 'ganhar um aumento', category: 'get', example: 'I got a raise.' },
+            { id: 234, en: 'get a bonus', pt: 'ganhar um bônus', category: 'get', example: 'He got a bonus.' },
+            { id: 235, en: 'get a degree', pt: 'obter um diploma', category: 'get', example: 'I got a degree.' },
+            { id: 236, en: 'get a certificate', pt: 'obter um certificado', category: 'get', example: 'She got a certificate.' },
+            { id: 237, en: 'get a license', pt: 'obter uma licença', category: 'get', example: 'I got a license.' },
+            { id: 238, en: 'get a driver\'s license', pt: 'tirar carteira de motorista', category: 'get', example: 'I got my driver\'s license.' },
+            { id: 239, en: 'get a car', pt: 'comprar um carro', category: 'get', example: 'I got a car.' },
+            { id: 240, en: 'get a house', pt: 'comprar uma casa', category: 'get', example: 'We got a house.' },
+            { id: 241, en: 'get a dog', pt: 'conseguir um cachorro', category: 'get', example: 'We got a dog.' },
+            { id: 242, en: 'get a cat', pt: 'conseguir um gato', category: 'get', example: 'She got a cat.' },
+            { id: 243, en: 'get a ticket', pt: 'comprar um bilhete', category: 'get', example: 'I got a ticket.' },
+            { id: 244, en: 'get a reservation', pt: 'fazer uma reserva', category: 'get', example: 'I got a reservation.' },
+            { id: 245, en: 'get a table', pt: 'conseguir uma mesa', category: 'get', example: 'We got a table.' },
+            { id: 246, en: 'get a meal', pt: 'comer uma refeição', category: 'get', example: 'I got a meal.' },
+            { id: 247, en: 'get a drink', pt: 'conseguir uma bebida', category: 'get', example: 'Let\'s get a drink.' },
+            { id: 248, en: 'get a coffee', pt: 'tomar um café', category: 'get', example: 'I got a coffee.' },
+            { id: 249, en: 'get a chance', pt: 'ter uma chance', category: 'get', example: 'I got a chance.' },
+            { id: 250, en: 'get an opportunity', pt: 'ter uma oportunidade', category: 'get', example: 'I got an opportunity.' },
+            { id: 251, en: 'get an idea', pt: 'ter uma ideia', category: 'get', example: 'I got an idea.' },
+            { id: 252, en: 'get a feeling', pt: 'ter um sentimento', category: 'get', example: 'I got a feeling.' },
+            { id: 253, en: 'get a sense', pt: 'ter uma sensação', category: 'get', example: 'I got a sense.' },
+            { id: 254, en: 'get the message', pt: 'entender a mensagem', category: 'get', example: 'I got the message.' },
+            { id: 255, en: 'get the point', pt: 'entender o ponto', category: 'get', example: 'I got the point.' },
+            { id: 256, en: 'get the idea', pt: 'entender a ideia', category: 'get', example: 'I got the idea.' },
+            { id: 257, en: 'get the news', pt: 'receber a notícia', category: 'get', example: 'I got the news.' },
+            { id: 258, en: 'get the information', pt: 'obter a informação', category: 'get', example: 'I got the information.' },
+            { id: 259, en: 'get the results', pt: 'obter os resultados', category: 'get', example: 'I got the results.' },
+            { id: 260, en: 'get the answer', pt: 'obter a resposta', category: 'get', example: 'I got the answer.' },
+            { id: 261, en: 'get the solution', pt: 'encontrar a solução', category: 'get', example: 'I got the solution.' },
+            { id: 262, en: 'get the chance', pt: 'ter a chance', category: 'get', example: 'I got the chance.' },
+            { id: 263, en: 'get the opportunity', pt: 'ter a oportunidade', category: 'get', example: 'I got the opportunity.' },
+            { id: 264, en: 'get the money', pt: 'receber o dinheiro', category: 'get', example: 'I got the money.' },
+            { id: 265, en: 'get the bill', pt: 'receber a conta', category: 'get', example: 'I got the bill.' },
+            { id: 266, en: 'get the receipt', pt: 'receber o recibo', category: 'get', example: 'I got the receipt.' },
+            { id: 267, en: 'get the package', pt: 'receber o pacote', category: 'get', example: 'I got the package.' },
+            { id: 268, en: 'get the mail', pt: 'receber a correspondência', category: 'get', example: 'I got the mail.' },
+            { id: 269, en: 'get the email', pt: 'receber o e-mail', category: 'get', example: 'I got the email.' },
+            { id: 270, en: 'get the call', pt: 'receber a ligação', category: 'get', example: 'I got the call.' },
+
+            // ========== OTHER VERBS (271-300) ==========
+            { id: 271, en: 'give a present', pt: 'dar um presente', category: 'other', example: 'I gave a present.' },
+            { id: 272, en: 'give a gift', pt: 'dar um presente', category: 'other', example: 'She gave a gift.' },
+            { id: 273, en: 'give advice', pt: 'dar conselho', category: 'other', example: 'He gave advice.' },
+            { id: 274, en: 'give an opinion', pt: 'dar uma opinião', category: 'other', example: 'I gave my opinion.' },
+            { id: 275, en: 'give a answer', pt: 'dar uma resposta', category: 'other', example: 'She gave an answer.' },
+            { id: 276, en: 'give a reason', pt: 'dar uma razão', category: 'other', example: 'He gave a reason.' },
+            { id: 277, en: 'give an explanation', pt: 'dar uma explicação', category: 'other', example: 'I gave an explanation.' },
+            { id: 278, en: 'give a hand', pt: 'dar uma mão (ajudar)', category: 'other', example: 'Can you give me a hand?' },
+            { id: 279, en: 'give a hug', pt: 'dar um abraço', category: 'other', example: 'She gave me a hug.' },
+            { id: 280, en: 'give a kiss', pt: 'dar um beijo', category: 'other', example: 'He gave her a kiss.' },
+            { id: 281, en: 'give a smile', pt: 'dar um sorriso', category: 'other', example: 'She gave a smile.' },
+            { id: 282, en: 'give a call', pt: 'dar uma ligação', category: 'other', example: 'I\'ll give you a call.' },
+            { id: 283, en: 'give a ring', pt: 'dar uma ligação', category: 'other', example: 'I\'ll give you a ring.' },
+            { id: 284, en: 'give a promise', pt: 'fazer uma promessa', category: 'other', example: 'He gave a promise.' },
+            { id: 285, en: 'give a speech', pt: 'fazer um discurso', category: 'other', example: 'She gave a speech.' },
+            { id: 286, en: 'give a presentation', pt: 'fazer uma apresentação', category: 'other', example: 'I gave a presentation.' },
+            { id: 287, en: 'give a report', pt: 'fazer um relatório', category: 'other', example: 'He gave a report.' },
+            { id: 288, en: 'give a demonstration', pt: 'fazer uma demonstração', category: 'other', example: 'She gave a demonstration.' },
+            { id: 289, en: 'give a warning', pt: 'dar um aviso', category: 'other', example: 'I gave a warning.' },
+            { id: 290, en: 'give a notice', pt: 'dar um aviso', category: 'other', example: 'He gave a notice.' },
+            { id: 291, en: 'give a chance', pt: 'dar uma chance', category: 'other', example: 'Give me a chance.' },
+            { id: 292, en: 'give an opportunity', pt: 'dar uma oportunidade', category: 'other', example: 'She gave me an opportunity.' },
+            { id: 293, en: 'give permission', pt: 'dar permissão', category: 'other', example: 'I gave permission.' },
+            { id: 294, en: 'give approval', pt: 'dar aprovação', category: 'other', example: 'He gave approval.' },
+            { id: 295, en: 'give support', pt: 'dar apoio', category: 'other', example: 'She gave support.' },
+            { id: 296, en: 'give help', pt: 'dar ajuda', category: 'other', example: 'I gave help.' },
+            { id: 297, en: 'give information', pt: 'dar informação', category: 'other', example: 'He gave information.' },
+            { id: 298, en: 'give details', pt: 'dar detalhes', category: 'other', example: 'She gave details.' },
+            { id: 299, en: 'give an example', pt: 'dar um exemplo', category: 'other', example: 'I gave an example.' },
+            { id: 300, en: 'give a suggestion', pt: 'dar uma sugestão', category: 'other', example: 'He gave a suggestion.' }
+        ];
+
+        // ============================================================
+        // LÓGICA DE RENDERIZAÇÃO
+        // ============================================================
+
+        let currentFilter = 'all';
+        let currentSearch = '';
+
+        function getCategoryBadge(category) {
+            const map = {
+                'make': 'make',
+                'do': 'do',
+                'have': 'have',
+                'take': 'take',
+                'get': 'get',
+                'other': 'other'
+            };
+            const labels = {
+                'make': 'Make',
+                'do': 'Do',
+                'have': 'Have',
+                'take': 'Take',
+                'get': 'Get',
+                'other': 'Other'
+            };
+            return `<span class="category-badge ${map[category] || 'other'}">${labels[category] || 'Other'}</span>`;
+        }
+
+        function renderTable(filteredCollocations) {
+            const tbody = document.getElementById('collocationTable');
+            tbody.innerHTML = '';
+            if (filteredCollocations.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:40px;color:#7f8c8d;">Nenhuma colocação encontrada.</td></tr>';
+                return;
+            }
+            filteredCollocations.forEach(coll => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${coll.id}</td>
+                    <td class="collocation-en">${coll.en}</td>
+                    <td class="collocation-pt">${coll.pt}</td>
+                    <td class="example-text">${coll.example}</td>
+                    <td>${getCategoryBadge(coll.category)}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+            updateStats(filteredCollocations);
+        }
+
+        function updateStats(collocationsList) {
+            const make = collocationsList.filter(c => c.category === 'make').length;
+            const doCount = collocationsList.filter(c => c.category === 'do').length;
+            const have = collocationsList.filter(c => c.category === 'have').length;
+            const take = collocationsList.filter(c => c.category === 'take').length;
+            const get = collocationsList.filter(c => c.category === 'get').length;
+            
+            document.getElementById('makeCount').textContent = make;
+            document.getElementById('doCount').textContent = doCount;
+            document.getElementById('haveCount').textContent = have;
+            document.getElementById('takeCount').textContent = take;
+            document.getElementById('getCount').textContent = get;
+        }
+
+        // ============================================================
+        // FILTROS
+        // ============================================================
+
+        function filterCategory(category) {
+            currentFilter = category;
+            document.querySelectorAll('.category-filter button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            const buttons = document.querySelectorAll('.category-filter button');
+            const index = ['all', 'make', 'do', 'have', 'take', 'get', 'other'].indexOf(category);
+            if (buttons[index]) buttons[index].classList.add('active');
+            applyFilters();
+        }
+
+        function resetFilter() {
+            currentFilter = 'all';
+            document.getElementById('searchInput').value = '';
+            currentSearch = '';
+            document.querySelectorAll('.category-filter button').forEach(btn => btn.classList.remove('active'));
+            document.querySelector('.category-filter .btn-all').classList.add('active');
+            applyFilters();
+        }
+
+        function searchCollocation() {
+            const input = document.getElementById('searchInput');
+            currentSearch = input.value.toLowerCase().trim();
+            applyFilters();
+        }
+
+        function applyFilters() {
+            let filtered = [...collocations];
+
+            if (currentFilter !== 'all') {
+                filtered = filtered.filter(c => c.category === currentFilter);
+            }
+
+            if (currentSearch) {
+                filtered = filtered.filter(c => 
+                    c.en.toLowerCase().includes(currentSearch) ||
+                    c.pt.toLowerCase().includes(currentSearch)
+                );
+            }
+
+            renderTable(filtered);
+        }
+
+        // ============================================================
+        // ORDENAÇÃO
+        // ============================================================
+
+        document.querySelectorAll('thead th').forEach((th, index) => {
+            if (index === 0) return;
+            th.addEventListener('click', () => {
+                const tbody = document.getElementById('collocationTable');
+                const rows = Array.from(tbody.querySelectorAll('tr'));
+                if (rows.length === 1 && rows[0].querySelector('td[colspan]')) return;
+                
+                const direction = th.dataset.direction === 'asc' ? 'desc' : 'asc';
+                th.dataset.direction = direction;
+
+                rows.sort((a, b) => {
+                    const aText = a.children[index].textContent.trim().toLowerCase();
+                    const bText = b.children[index].textContent.trim().toLowerCase();
+                    if (aText < bText) return direction === 'asc' ? -1 : 1;
+                    if (aText > bText) return direction === 'asc' ? 1 : -1;
+                    return 0;
+                });
+
+                rows.forEach(row => tbody.appendChild(row));
+            });
+        });
+
+        // ============================================================
+        // INICIALIZAÇÃO
+        // ============================================================
+
+        renderTable(collocations);
+    </script>
+</body>
+</html>

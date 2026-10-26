@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Common Mistakes - Erros Comuns em Inglês</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0 30px;
+        }
+        .stat-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .stat-card .number {
+            font-size: 2em;
+            font-weight: 700;
+        }
+        .stat-card .label {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .stat-card .number.purple { color: #8e44ad; }
+        .stat-card .number.blue { color: #2980b9; }
+        .stat-card .number.green { color: #27ae60; }
+        .stat-card .number.red { color: #e74c3c; }
+
+        .search-box {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .search-box input {
+            padding: 12px 20px;
+            width: 100%;
+            max-width: 500px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        .search-box input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .category-filter button {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: #ecf0f1;
+            color: #2c3e50;
+        }
+        .category-filter button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        .category-filter button.active {
+            background: #3498db;
+            color: white;
+        }
+        .category-filter button.btn-all { background: #3498db; color: white; }
+        .category-filter button.btn-all:hover { background: #2980b9; }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+        .legend-item .color-box {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+        .legend-item .color-box.grammar { background: #e74c3c; }
+        .legend-item .color-box.vocabulary { background: #3498db; }
+        .legend-item .color-box.preposition { background: #2ecc71; }
+        .legend-item .color-box.pronunciation { background: #f39c12; }
+        .legend-item .color-box.false { background: #8e44ad; }
+
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 10px;
+            border: 1px solid #ecf0f1;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        thead {
+            background: #2c3e50;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        thead th {
+            padding: 12px 10px;
+            text-align: left;
+            font-weight: 600;
+            cursor: pointer;
+            user-select: none;
+            white-space: nowrap;
+        }
+        thead th:hover {
+            background: #34495e;
+        }
+        thead th:nth-child(1) { width: 5%; }
+        thead th:nth-child(2) { width: 25%; }
+        thead th:nth-child(3) { width: 25%; }
+        thead th:nth-child(4) { width: 30%; }
+        thead th:nth-child(5) { width: 15%; }
+
+        tbody tr {
+            border-bottom: 1px solid #ecf0f1;
+            transition: background 0.2s;
+        }
+        tbody tr:hover {
+            background: #f8f9fa;
+        }
+        tbody td {
+            padding: 10px 10px;
+            vertical-align: middle;
+        }
+        tbody td:first-child {
+            font-weight: 600;
+            color: #7f8c8d;
+        }
+        .mistake {
+            color: #e74c3c;
+            font-weight: 600;
+            text-decoration: line-through;
+            font-style: italic;
+        }
+        .correction {
+            color: #27ae60;
+            font-weight: 600;
+        }
+        .explanation {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .example-text {
+            color: #2c3e50;
+            font-style: italic;
+            font-size: 0.9em;
+        }
+        .category-badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .category-badge.grammar { background: #f8d7da; color: #721c24; }
+        .category-badge.vocabulary { background: #cce5ff; color: #004085; }
+        .category-badge.preposition { background: #d4edda; color: #155724; }
+        .category-badge.pronunciation { background: #fff3cd; color: #856404; }
+        .category-badge.false { background: #e8d5f5; color: #6c3483; }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2em;
+            color: #7f8c8d;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            h1 { font-size: 1.8em; }
+            table { font-size: 11px; }
+            thead th, tbody td { padding: 6px 5px; }
+            .category-badge { font-size: 8px; padding: 2px 6px; }
+            .stats { grid-template-columns: repeat(2, 1fr); }
+            .category-filter button { padding: 6px 12px; font-size: 11px; }
+            thead th:nth-child(4) { display: none; }
+            tbody td:nth-child(4) { display: none; }
+        }
+        @media (max-width: 480px) {
+            table { font-size: 9px; }
+            thead th, tbody td { padding: 4px 3px; }
+            .legend { gap: 10px; font-size: 11px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⚠️ Common Mistakes</h1>
+        <p class="subtitle">Os erros mais comuns de brasileiros ao falar inglês</p>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="number purple">80</div>
+                <div class="label">Total de erros</div>
+            </div>
+            <div class="stat-card">
+                <div class="number red" id="grammarCount">0</div>
+                <div class="label">Gramática</div>
+            </div>
+            <div class="stat-card">
+                <div class="number blue" id="vocabularyCount">0</div>
+                <div class="label">Vocabulário</div>
+            </div>
+            <div class="stat-card">
+                <div class="number green" id="prepositionCount">0</div>
+                <div class="label">Preposições</div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item"><div class="color-box grammar"></div> Gramática</div>
+            <div class="legend-item"><div class="color-box vocabulary"></div> Vocabulário</div>
+            <div class="legend-item"><div class="color-box preposition"></div> Preposições</div>
+            <div class="legend-item"><div class="color-box pronunciation"></div> Pronúncia</div>
+            <div class="legend-item"><div class="color-box false"></div> Falsos Cognatos</div>
+        </div>
+
+        <div class="category-filter">
+            <button class="btn-all active" onclick="filterCategory('all')">📋 Todos</button>
+            <button onclick="filterCategory('grammar')">📝 Gramática</button>
+            <button onclick="filterCategory('vocabulary')">📚 Vocabulário</button>
+            <button onclick="filterCategory('preposition')">📍 Preposições</button>
+            <button onclick="filterCategory('pronunciation')">🔊 Pronúncia</button>
+            <button onclick="filterCategory('false')">⚠️ Falsos Cognatos</button>
+            <button onclick="resetFilter()">🔄 Resetar</button>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 Buscar erro..." onkeyup="searchMistake()">
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Errado → Correto</th>
+                        <th>Explicação</th>
+                        <th>Exemplo</th>
+                        <th>Categoria</th>
+                    </tr>
+                </thead>
+                <tbody id="mistakeTable">
+                    <tr><td colspan="5" class="loading">Carregando erros comuns...</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            💡 Clique no cabeçalho para ordenar • Use a busca para encontrar erros específicos
+        </div>
+    </div>
+
+    <script>
+        // ============================================================
+        // COMMON MISTAKES
+        // ============================================================
+        const mistakes = [
+            // ========== GRAMÁTICA (1-25) ==========
+            { id: 1, wrong: 'I am agree', correct: 'I agree', explanation: '"Agree" é verbo, não adjetivo. Não use "am" com "agree".', example: '❌ I am agree with you. ✅ I agree with you.', category: 'grammar' },
+            { id: 2, wrong: 'I am married with', correct: 'I am married to', explanation: 'Em inglês, casado com = married TO, não "with".', example: '❌ She is married with John. ✅ She is married to John.', category: 'grammar' },
+            { id: 3, wrong: 'I have 25 years old', correct: 'I am 25 years old', explanation: 'Em inglês, usamos "to be" para idade, não "to have".', example: '❌ I have 25 years old. ✅ I am 25 years old.', category: 'grammar' },
+            { id: 4, wrong: 'I am liking', correct: 'I like', explanation: '"Like" é verbo de estado, não usa Present Continuous.', example: '❌ I am liking this book. ✅ I like this book.', category: 'grammar' },
+            { id: 5, wrong: 'I need go', correct: 'I need to go', explanation: 'Após "need", use "to" + verbo base.', example: '❌ I need go now. ✅ I need to go now.', category: 'grammar' },
+            { id: 6, wrong: 'I want study', correct: 'I want to study', explanation: 'Após "want", use "to" + verbo base.', example: '❌ I want study English. ✅ I want to study English.', category: 'grammar' },
+            { id: 7, wrong: 'I go to the home', correct: 'I go home', explanation: '"Home" não usa preposição. Também: "at home", "go home".', example: '❌ I go to home. ✅ I go home.', category: 'grammar' },
+            { id: 8, wrong: 'I have a headache', correct: 'I have a headache', explanation: 'Esta está correta! (Não confundir com "I am headache")', example: '❌ I am headache. ✅ I have a headache.', category: 'grammar' },
+            { id: 9, wrong: 'I don\'t know what is it', correct: 'I don\'t know what it is', explanation: 'Em perguntas indiretas, a ordem é sujeito + verbo.', example: '❌ I don\'t know what is it. ✅ I don\'t know what it is.', category: 'grammar' },
+            { id: 10, wrong: 'I am happy in the moment', correct: 'I am happy at the moment', explanation: '"At the moment" = no momento. "In the moment" = no momento presente (filosofia).', example: '❌ I am busy in the moment. ✅ I am busy at the moment.', category: 'grammar' },
+            { id: 11, wrong: 'I was borned', correct: 'I was born', explanation: '"Born" já é particípio passado, não acrescente "-ed".', example: '❌ I was borned in Brazil. ✅ I was born in Brazil.', category: 'grammar' },
+            { id: 12, wrong: 'She said me', correct: 'She told me / She said to me', explanation: '"Say" não usa objeto direto; "tell" sim.', example: '❌ She said me the news. ✅ She told me the news.', category: 'grammar' },
+            { id: 13, wrong: 'He came to Brazil with airplane', correct: 'He came to Brazil by plane', explanation: 'Meios de transporte usam "by" sem artigo.', example: '❌ I travel with car. ✅ I travel by car.', category: 'grammar' },
+            { id: 14, wrong: 'I will call to you', correct: 'I will call you', explanation: '"Call" é verbo transitivo, não usa preposição "to".', example: '❌ I will call to you. ✅ I will call you.', category: 'grammar' },
+            { id: 15, wrong: 'I am interesting in', correct: 'I am interested in', explanation: '"Interested" = interessado; "interesting" = interessante.', example: '❌ I am interesting in art. ✅ I am interested in art.', category: 'grammar' },
+            { id: 16, wrong: 'I feel myself', correct: 'I feel', explanation: '"Feel" já inclui a ideia de "si mesmo".', example: '❌ I feel myself tired. ✅ I feel tired.', category: 'grammar' },
+            { id: 17, wrong: 'I am going to the church', correct: 'I am going to church', explanation: 'Instituições (church, school, hospital) geralmente sem "the".', example: '❌ I go to the church on Sundays. ✅ I go to church on Sundays.', category: 'grammar' },
+            { id: 18, wrong: 'I am loving you', correct: 'I love you', explanation: '"Love" é verbo de estado, não usa Present Continuous.', example: '❌ I am loving this song. ✅ I love this song.', category: 'grammar' },
+            { id: 19, wrong: 'We are four people', correct: 'There are four of us', explanation: 'Em inglês, não dizemos "we are four" para indicar quantidade de pessoas.', example: '❌ We are four in my family. ✅ There are four in my family.', category: 'grammar' },
+            { id: 20, wrong: 'I am leaving of here', correct: 'I am leaving here', explanation: '"Leave" não usa preposição "of".', example: '❌ I am leaving of this city. ✅ I am leaving this city.', category: 'grammar' },
+            { id: 21, wrong: 'They are doctors', correct: 'They are doctors', explanation: 'Profissões em inglês NÃO usam artigo como em português.', example: '❌ She is an engineer. ✅ She is an engineer. (artigo só com singular)', category: 'grammar' },
+            { id: 22, wrong: 'You need to have patient', correct: 'You need to have patience', explanation: '"Patient" = paciente (pessoa); "patience" = paciência (qualidade).', example: '❌ I need patient. ✅ I need patience.', category: 'grammar' },
+            { id: 23, wrong: 'I am used with the heat', correct: 'I am used to the heat', explanation: '"Used to" é a expressão correta, não "used with".', example: '❌ I am used with the heat. ✅ I am used to the heat.', category: 'grammar' },
+            { id: 24, wrong: 'I was at the office in the morning', correct: 'I was at the office in the morning', explanation: 'Esta está correta! "In the morning", "at the office" estão corretos.', example: '✅ I was at the office in the morning.', category: 'grammar' },
+            { id: 25, wrong: 'We can to travel', correct: 'We can travel', explanation: 'Após verbos modais (can, could, should, must, may), use o verbo base sem "to".', example: '❌ We can to go. ✅ We can go.', category: 'grammar' },
+
+            // ========== VOCABULÁRIO (26-45) ==========
+            { id: 26, wrong: 'I am with hungry', correct: 'I am hungry', explanation: 'Em inglês, "hungry" é adjetivo; não use "com" como em português.', example: '❌ I am with hunger. ✅ I am hungry.', category: 'vocabulary' },
+            { id: 27, wrong: 'I am with thirsty', correct: 'I am thirsty', explanation: '"Thirsty" é adjetivo; não use "com" como em português.', example: '❌ I am with thirst. ✅ I am thirsty.', category: 'vocabulary' },
+            { id: 28, wrong: 'I will do the homework', correct: 'I will do the homework', explanation: 'Em inglês se faz a lição de casa: "do homework".', example: '✅ I always do my homework.', category: 'vocabulary' },
+            { id: 29, wrong: 'I will make a cake', correct: 'I will make a cake', explanation: 'Fazer um bolo = "make a cake".', example: '✅ I will make a cake for your birthday.', category: 'vocabulary' },
+            { id: 30, wrong: 'I will make the shopping', correct: 'I will do the shopping', explanation: '"Do the shopping" = fazer compras. "Make the shopping" não existe.', example: '❌ I need to make shopping. ✅ I need to do shopping.', category: 'vocabulary' },
+            { id: 31, wrong: 'I will make a photo', correct: 'I will take a photo', explanation: 'Tirar foto = "take a photo", não "make".', example: '❌ I made a photo of the beach. ✅ I took a photo of the beach.', category: 'vocabulary' },
+            { id: 32, wrong: 'I need a drink', correct: 'I need a drink', explanation: '"A drink" = uma bebida. Também pode ser "I need to drink" = preciso beber.', example: '✅ I\'m thirsty, I need a drink.', category: 'vocabulary' },
+            { id: 33, wrong: 'I want a coffee', correct: 'I want a coffee / I want some coffee', explanation: 'Ambas estão corretas: com artigo (uma xícara) ou sem (um pouco de).', example: '✅ I want a coffee, please.', category: 'vocabulary' },
+            { id: 34, wrong: 'I have a doubt', correct: 'I have a question', explanation: '"Doubt" = dúvida (incerteza, desconfiança). "Question" = pergunta.', example: '❌ I have a doubt about this topic. ✅ I have a question about this topic.', category: 'vocabulary' },
+            { id: 35, wrong: 'I will take a decision', correct: 'I will make a decision', explanation: 'Em inglês: "make a decision" (não "take").', example: '❌ I need to take a decision. ✅ I need to make a decision.', category: 'vocabulary' },
+            { id: 36, wrong: 'I will give a advice', correct: 'I will give advice', explanation: '"Advice" é incontável, não use "a" antes. (A piece of advice)', example: '❌ She gave me an advice. ✅ She gave me advice.', category: 'vocabulary' },
+            { id: 37, wrong: 'I have a news', correct: 'I have news', explanation: '"News" é incontável em inglês. (A piece of news)', example: '❌ I have a good news. ✅ I have good news.', category: 'vocabulary' },
+            { id: 38, wrong: 'I will travel at next month', correct: 'I will travel next month', explanation: '"Next month" não usa "at" ou "in".', example: '❌ I will travel in next month. ✅ I will travel next month.', category: 'vocabulary' },
+            { id: 39, wrong: 'I am living in Brazil since 2019', correct: 'I have been living in Brazil since 2019', explanation: 'Ação que começou no passado e continua no presente = Present Perfect Continuous.', example: '❌ I am living here since 2020. ✅ I have been living here since 2020.', category: 'vocabulary' },
+            { id: 40, wrong: 'I am married with a Brazilian', correct: 'I am married to a Brazilian', explanation: 'Em inglês: married TO (não "with").', example: '❌ She is married with a doctor. ✅ She is married to a doctor.', category: 'vocabulary' },
+            { id: 41, wrong: 'I work in the morning at weekdays', correct: 'I work in the morning on weekdays', explanation: '"On weekdays" = nos dias de semana. "At" para horas, "on" para dias.', example: '❌ I work at weekdays. ✅ I work on weekdays.', category: 'vocabulary' },
+            { id: 42, wrong: 'I am going to travel in the next week', correct: 'I am going to travel next week', explanation: '"Next week" não usa "in the".', example: '❌ I will travel in the next week. ✅ I will travel next week.', category: 'vocabulary' },
+            { id: 43, wrong: 'We made a party', correct: 'We had a party', explanation: 'Dar uma festa = "have a party" (não "make a party").', example: '❌ We made a party last Saturday. ✅ We had a party last Saturday.', category: 'vocabulary' },
+            { id: 44, wrong: 'She is a student of English', correct: 'She is an English student', explanation: 'Posição do adjetivo: "English student" (estudante de inglês).', example: '❌ She is a student of English. ✅ She is an English student.', category: 'vocabulary' },
+            { id: 45, wrong: 'My favorite hobby is to sleep', correct: 'My favorite hobby is sleeping', explanation: 'Após "is" com hobby, use gerúndio (-ing).', example: '❌ My favorite hobby is to read. ✅ My favorite hobby is reading.', category: 'vocabulary' },
+
+            // ========== PREPOSIÇÕES (46-60) ==========
+            { id: 46, wrong: 'I am in the bus', correct: 'I am on the bus', explanation: 'Para transporte público (bus, train, plane), use "on".', example: '❌ I am in the bus. ✅ I am on the bus.', category: 'preposition' },
+            { id: 47, wrong: 'I am in the car', correct: 'I am in the car', explanation: 'Para carro, use "in" (espaço fechado).', example: '✅ I am in the car, waiting.', category: 'preposition' },
+            { id: 48, wrong: 'I arrived in Brazil', correct: 'I arrived in Brazil', explanation: '"Arrive in" + país/cidade grande. "Arrive at" + lugar específico.', example: '✅ I arrived in São Paulo. ✅ I arrived at the airport.', category: 'preposition' },
+            { id: 49, wrong: 'I am good in English', correct: 'I am good at English', explanation: 'Bom em algo = "good AT" (não "in").', example: '❌ I am good in mathematics. ✅ I am good at mathematics.', category: 'preposition' },
+            { id: 50, wrong: 'I am interested in', correct: 'I am interested in', explanation: '"Interested in" está correto!', example: '✅ I am interested in learning English.', category: 'preposition' },
+            { id: 51, wrong: 'I am going to work', correct: 'I am going to work', explanation: '"Go to work" está correto.', example: '✅ I go to work every day.', category: 'preposition' },
+            { id: 52, wrong: 'I am going to home', correct: 'I am going home', explanation: '"Home" não usa preposição. "Go home", "stay home", "arrive home".', example: '❌ I am going to home. ✅ I am going home.', category: 'preposition' },
+            { id: 53, wrong: 'I work at the morning', correct: 'I work in the morning', explanation: '"In the morning" (partes do dia), "at night" (noite).', example: '❌ I work at the morning. ✅ I work in the morning.', category: 'preposition' },
+            { id: 54, wrong: 'I work on night', correct: 'I work at night', explanation: '"At night" (especificamente à noite).', example: '❌ I work on night. ✅ I work at night.', category: 'preposition' },
+            { id: 55, wrong: 'I will call on you', correct: 'I will call you', explanation: '"Call" não usa "on" no sentido de ligar para alguém.', example: '❌ I will call on you tonight. ✅ I will call you tonight.', category: 'preposition' },
+            { id: 56, wrong: 'We talked about the movie', correct: 'We talked about the movie', explanation: '"Talk about" está correto!', example: '✅ We talked about the movie all night.', category: 'preposition' },
+            { id: 57, wrong: 'I am afraid from spiders', correct: 'I am afraid of spiders', explanation: 'Medo de = "afraid OF" (não "from").', example: '❌ I am afraid from dogs. ✅ I am afraid of dogs.', category: 'preposition' },
+            { id: 58, wrong: 'I am proud for my son', correct: 'I am proud of my son', explanation: 'Orgulhoso de = "proud OF" (não "for").', example: '❌ I am proud for you. ✅ I am proud of you.', category: 'preposition' },
+            { id: 59, wrong: 'I am sorry for being late', correct: 'I am sorry for being late', explanation: '"Sorry for" está correto!', example: '✅ I am sorry for the delay.', category: 'preposition' },
+            { id: 60, wrong: 'I am waiting for you', correct: 'I am waiting for you', explanation: '"Wait for" está correto!', example: '✅ I am waiting for you at the station.', category: 'preposition' },
+
+            // ========== PRONÚNCIA (61-68) ==========
+            { id: 61, wrong: 'I am "exited"', correct: 'I am excited', explanation: '"Excited" (animado) tem som de "z" no meio, não "excited" com "x" forte.', example: '❌ I am "exited" for the party. ✅ I am excited for the party.', category: 'pronunciation' },
+            { id: 62, wrong: 'I am "interessed"', correct: 'I am interested', explanation: '"Interested" termina com "ed" (/ɪd/) e tem "es" no meio, não "ess".', example: '❌ I am "interessed" in art. ✅ I am interested in art.', category: 'pronunciation' },
+            { id: 63, wrong: '"Wednesdei"', correct: '"Wensdei"', explanation: '"Wednesday" se pronuncia "Wens-dei" (o "d" é mudo).', example: '❌ I will go on "Wednesdei". ✅ I will go on Wednesday.', category: 'pronunciation' },
+            { id: 64, wrong: '"Februari"', correct: '"Februeri"', explanation: '"February" se pronuncia "Feb-ru-er-ri", com o "r" pronunciado.', example: '❌ I was born in "Februari". ✅ I was born in February.', category: 'pronunciation' },
+            { id: 65, wrong: '"Comfortable" com "fort" forte', correct: '"Comftable"', explanation: '"Comfortable" se pronuncia "Comf-tá-bol", com "for" praticamente mudo.', example: '❌ I am "comfortable". ✅ I am comfortable.', category: 'pronunciation' },
+            { id: 66, wrong: '"Vegetable" com "g" forte', correct: '"Vej-tá-bol"', explanation: '"Vegetable" se pronuncia "Vej-tá-bol", com "g" como "j" e "e" quase mudo.', example: '❌ I eat "vegetables". ✅ I eat vegetables.', category: 'pronunciation' },
+            { id: 67, wrong: '"Chocolate" com "o" longo', correct: '"Choc-lat"', explanation: '"Chocolate" se pronuncia "Choc-lat", com o "o" do meio mudo.', example: '❌ I love "chocolate". ✅ I love chocolate.', category: 'pronunciation' },
+            { id: 68, wrong: '"Diamond" com som de "di"', correct: '"Dai-mond"', explanation: '"Diamond" se pronuncia "Dai-mond" (como "die").', example: '❌ I bought a "diamond". ✅ I bought a diamond.', category: 'pronunciation' },
+
+            // ========== FALSOS COGNATOS (69-80) ==========
+            { id: 69, wrong: '"Actual" = atual', correct: '"Actual" = real/de fato', explanation: '"Actual" não é "atual" (que é "current"). "Atual" = "current/up-to-date".', example: '❌ The "actual" price is high. ✅ The current price is high.', category: 'false' },
+            { id: 70, wrong: '"Pretend" = pretender', correct: '"Pretend" = fingir', explanation: '"Pretend" não é "pretender" (que é "intend" ou "plan").', example: '❌ I pretend to study law. ✅ I intend to study law.', category: 'false' },
+            { id: 71, wrong: '"Sensitive" = sensível', correct: '"Sensitive" = sensível', explanation: '"Sensitive" é "sensível" (emocional ou físico).', example: '✅ She is a sensitive person.', category: 'false' },
+            { id: 72, wrong: '"Sensible" = sensível', correct: '"Sensible" = sensato', explanation: '"Sensible" não é "sensível", é "sensato/razoável".', example: '❌ She is sensible (sensível). ✅ She is sensitive.', category: 'false' },
+            { id: 73, wrong: '"Fabric" = fábrica', correct: '"Fabric" = tecido', explanation: '"Fabric" é tecido. "Factory" é fábrica.', example: '❌ I work in a fabric. ✅ I work in a factory.', category: 'false' },
+            { id: 74, wrong: '"Ultimately" = ultimamente', correct: '"Ultimately" = em última análise', explanation: '"Ultimately" = finalmente/em última análise. "Recently" = ultimamente.', example: '❌ Ultimately I have been tired. ✅ Recently I have been tired.', category: 'false' },
+            { id: 75, wrong: '"Assist" = assistir', correct: '"Assist" = ajudar', explanation: '"Assist" é ajudar (dar assistência). "Watch" é assistir.', example: '❌ I assist TV at night. ✅ I watch TV at night.', category: 'false' },
+            { id: 76, wrong: '"Pasta" = pasta (de arquivo)', correct: '"Pasta" = massa (comida)', explanation: '"Pasta" é massa italiana. "Folder" é pasta de arquivo.', example: '❌ I put papers in a pasta. ✅ I put papers in a folder.', category: 'false' },
+            { id: 77, wrong: '"Collar" = colar', correct: '"Collar" = gola/coleira', explanation: '"Collar" é gola de roupa. "Necklace" é colar de joia.', example: '❌ She is wearing a collar. ✅ She is wearing a necklace.', category: 'false' },
+            { id: 78, wrong: '"Peculiar" = peculiar', correct: '"Peculiar" = peculiar (mas também: específico)', explanation: '"Peculiar" pode ser "peculiar" ou "característico".', example: '✅ This is a peculiar situation.', category: 'false' },
+            { id: 79, wrong: '"Stranger" = estrangeiro', correct: '"Stranger" = estranho/desconhecido', explanation: '"Stranger" é desconhecido. "Foreigner" é estrangeiro.', example: '❌ I am a stranger in Brazil. ✅ I am a foreigner in Brazil.', category: 'false' },
+            { id: 80, wrong: '"Exit" = êxito', correct: '"Exit" = saída', explanation: '"Exit" é saída. "Success" é êxito.', example: '❌ I had great exit. ✅ I had great success.', category: 'false' }
+        ];
+
+        // ============================================================
+        // LÓGICA DE RENDERIZAÇÃO
+        // ============================================================
+
+        let currentFilter = 'all';
+        let currentSearch = '';
+
+        function getCategoryBadge(category) {
+            const map = {
+                'grammar': 'grammar',
+                'vocabulary': 'vocabulary',
+                'preposition': 'preposition',
+                'pronunciation': 'pronunciation',
+                'false': 'false'
+            };
+            const labels = {
+                'grammar': 'Gramática',
+                'vocabulary': 'Vocabulário',
+                'preposition': 'Preposições',
+                'pronunciation': 'Pronúncia',
+                'false': 'Falsos Cognatos'
+            };
+            return `<span class="category-badge ${map[category] || 'grammar'}">${labels[category] || 'Gramática'}</span>`;
+        }
+
+        function renderTable(filteredMistakes) {
+            const tbody = document.getElementById('mistakeTable');
+            tbody.innerHTML = '';
+            if (filteredMistakes.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:40px;color:#7f8c8d;">Nenhum erro encontrado.</td></tr>';
+                return;
+            }
+            filteredMistakes.forEach(m => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${m.id}</td>
+                    <td><span class="mistake">${m.wrong}</span> → <span class="correction">${m.correct}</span></td>
+                    <td class="explanation">${m.explanation}</td>
+                    <td class="example-text">${m.example}</td>
+                    <td>${getCategoryBadge(m.category)}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+            updateStats(filteredMistakes);
+        }
+
+        function updateStats(mistakesList) {
+            const grammar = mistakesList.filter(m => m.category === 'grammar').length;
+            const vocabulary = mistakesList.filter(m => m.category === 'vocabulary').length;
+            const preposition = mistakesList.filter(m => m.category === 'preposition').length;
+            
+            document.getElementById('grammarCount').textContent = grammar;
+            document.getElementById('vocabularyCount').textContent = vocabulary;
+            document.getElementById('prepositionCount').textContent = preposition;
+        }
+
+        // ============================================================
+        // FILTROS
+        // ============================================================
+
+        function filterCategory(category) {
+            currentFilter = category;
+            document.querySelectorAll('.category-filter button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            const buttons = document.querySelectorAll('.category-filter button');
+            const index = ['all', 'grammar', 'vocabulary', 'preposition', 'pronunciation', 'false'].indexOf(category);
+            if (buttons[index]) buttons[index].classList.add('active');
+            applyFilters();
+        }
+
+        function resetFilter() {
+            currentFilter = 'all';
+            document.getElementById('searchInput').value = '';
+            currentSearch = '';
+            document.querySelectorAll('.category-filter button').forEach(btn => btn.classList.remove('active'));
+            document.querySelector('.category-filter .btn-all').classList.add('active');
+            applyFilters();
+        }
+
+        function searchMistake() {
+            const input = document.getElementById('searchInput');
+            currentSearch = input.value.toLowerCase().trim();
+            applyFilters();
+        }
+
+        function applyFilters() {
+            let filtered = [...mistakes];
+
+            if (currentFilter !== 'all') {
+                filtered = filtered.filter(m => m.category === currentFilter);
+            }
+
+            if (currentSearch) {
+                filtered = filtered.filter(m => 
+                    m.wrong.toLowerCase().includes(currentSearch) ||
+                    m.correct.toLowerCase().includes(currentSearch) ||
+                    m.explanation.toLowerCase().includes(currentSearch) ||
+                    m.example.toLowerCase().includes(currentSearch)
+                );
+            }
+
+            renderTable(filtered);
+        }
+
+        // ============================================================
+        // ORDENAÇÃO
+        // ============================================================
+
+        document.querySelectorAll('thead th').forEach((th, index) => {
+            if (index === 0) return;
+            th.addEventListener('click', () => {
+                const tbody = document.getElementById('mistakeTable');
+                const rows = Array.from(tbody.querySelectorAll('tr'));
+                if (rows.length === 1 && rows[0].querySelector('td[colspan]')) return;
+                
+                const direction = th.dataset.direction === 'asc' ? 'desc' : 'asc';
+                th.dataset.direction = direction;
+
+                rows.sort((a, b) => {
+                    const aText = a.children[index].textContent.trim().toLowerCase();
+                    const bText = b.children[index].textContent.trim().toLowerCase();
+                    if (aText < bText) return direction === 'asc' ? -1 : 1;
+                    if (aText > bText) return direction === 'asc' ? 1 : -1;
+                    return 0;
+                });
+
+                rows.forEach(row => tbody.appendChild(row));
+            });
+        });
+
+        // ============================================================
+        // INICIALIZAÇÃO
+        // ============================================================
+
+        renderTable(mistakes);
+    </script>
+</body>
+</html>

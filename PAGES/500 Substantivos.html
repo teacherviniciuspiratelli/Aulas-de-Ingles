@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 500 Substantivos Essenciais em Inglês</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0 30px;
+        }
+        .stat-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .stat-card .number {
+            font-size: 2em;
+            font-weight: 700;
+        }
+        .stat-card .label {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .stat-card .number.purple { color: #8e44ad; }
+        .stat-card .number.blue { color: #2980b9; }
+        .stat-card .number.green { color: #27ae60; }
+        .stat-card .number.orange { color: #f39c12; }
+
+        .search-box {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .search-box input {
+            padding: 12px 20px;
+            width: 100%;
+            max-width: 500px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        .search-box input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .category-filter button {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: #ecf0f1;
+            color: #2c3e50;
+        }
+        .category-filter button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        .category-filter button.active {
+            background: #3498db;
+            color: white;
+        }
+        .category-filter button.btn-all { background: #3498db; color: white; }
+        .category-filter button.btn-all:hover { background: #2980b9; }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+        .legend-item .color-box {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+        .legend-item .color-box.people { background: #e74c3c; }
+        .legend-item .color-box.place { background: #2ecc71; }
+        .legend-item .color-box.thing { background: #3498db; }
+        .legend-item .color-box.idea { background: #f39c12; }
+        .legend-item .color-box.food { background: #e67e22; }
+        .legend-item .color-box.body { background: #8e44ad; }
+        .legend-item .color-box.time { background: #1abc9c; }
+        .legend-item .color-box.nature { background: #27ae60; }
+
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 10px;
+            border: 1px solid #ecf0f1;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        thead {
+            background: #2c3e50;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        thead th {
+            padding: 12px 10px;
+            text-align: left;
+            font-weight: 600;
+            cursor: pointer;
+            user-select: none;
+            white-space: nowrap;
+        }
+        thead th:hover {
+            background: #34495e;
+        }
+        thead th:nth-child(1) { width: 5%; }
+        thead th:nth-child(2) { width: 30%; }
+        thead th:nth-child(3) { width: 30%; }
+        thead th:nth-child(4) { width: 20%; }
+        thead th:nth-child(5) { width: 15%; }
+
+        tbody tr {
+            border-bottom: 1px solid #ecf0f1;
+            transition: background 0.2s;
+        }
+        tbody tr:hover {
+            background: #f8f9fa;
+        }
+        tbody td {
+            padding: 10px 10px;
+            vertical-align: middle;
+        }
+        tbody td:first-child {
+            font-weight: 600;
+            color: #7f8c8d;
+        }
+        .word-en {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        .word-pt {
+            color: #7f8c8d;
+        }
+        .category-badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .category-badge.people { background: #f8d7da; color: #721c24; }
+        .category-badge.place { background: #d4edda; color: #155724; }
+        .category-badge.thing { background: #cce5ff; color: #004085; }
+        .category-badge.idea { background: #fff3cd; color: #856404; }
+        .category-badge.food { background: #fdebd0; color: #935e38; }
+        .category-badge.body { background: #e8d5f5; color: #6c3483; }
+        .category-badge.time { background: #d1f2eb; color: #0e6655; }
+        .category-badge.nature { background: #d5f5e3; color: #1a7a3a; }
+
+        .example-text {
+            color: #666;
+            font-style: italic;
+            font-size: 0.85em;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2em;
+            color: #7f8c8d;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            h1 { font-size: 1.8em; }
+            table { font-size: 11px; }
+            thead th, tbody td { padding: 6px 5px; }
+            .category-badge { font-size: 8px; padding: 2px 6px; }
+            .stats { grid-template-columns: repeat(2, 1fr); }
+            .category-filter button { padding: 6px 12px; font-size: 11px; }
+            thead th:nth-child(4) { display: none; }
+            tbody td:nth-child(4) { display: none; }
+        }
+        @media (max-width: 480px) {
+            table { font-size: 9px; }
+            thead th, tbody td { padding: 4px 3px; }
+            .legend { gap: 10px; font-size: 11px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 500 Substantivos</h1>
+        <p class="subtitle">Os substantivos mais comuns do inglês com tradução e exemplos</p>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="number purple">500</div>
+                <div class="label">Total de substantivos</div>
+            </div>
+            <div class="stat-card">
+                <div class="number blue" id="peopleCount">0</div>
+                <div class="label">Pessoas</div>
+            </div>
+            <div class="stat-card">
+                <div class="number green" id="placeCount">0</div>
+                <div class="label">Lugares</div>
+            </div>
+            <div class="stat-card">
+                <div class="number orange" id="thingCount">0</div>
+                <div class="label">Coisas</div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item"><div class="color-box people"></div> Pessoas</div>
+            <div class="legend-item"><div class="color-box place"></div> Lugares</div>
+            <div class="legend-item"><div class="color-box thing"></div> Coisas</div>
+            <div class="legend-item"><div class="color-box idea"></div> Ideias</div>
+            <div class="legend-item"><div class="color-box food"></div> Comida</div>
+            <div class="legend-item"><div class="color-box body"></div> Corpo</div>
+            <div class="legend-item"><div class="color-box time"></div> Tempo</div>
+            <div class="legend-item"><div class="color-box nature"></div> Natureza</div>
+        </div>
+
+        <div class="category-filter">
+            <button class="btn-all active" onclick="filterCategory('all')">📋 Todos</button>
+            <button onclick="filterCategory('people')">👤 Pessoas</button>
+            <button onclick="filterCategory('place')">📍 Lugares</button>
+            <button onclick="filterCategory('thing')">📦 Coisas</button>
+            <button onclick="filterCategory('idea')">💡 Ideias</button>
+            <button onclick="filterCategory('food')">🍕 Comida</button>
+            <button onclick="filterCategory('body')">🦴 Corpo</button>
+            <button onclick="filterCategory('time')">⏰ Tempo</button>
+            <button onclick="filterCategory('nature')">🌿 Natureza</button>
+            <button onclick="resetFilter()">🔄 Resetar</button>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 Buscar substantivo... (inglês ou português)" onkeyup="searchNoun()">
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>English</th>
+                        <th>Português</th>
+                        <th>Exemplo</th>
+                        <th>Categoria</th>
+                    </tr>
+                </thead>
+                <tbody id="nounTable">
+                    <tr><td colspan="5" class="loading">Carregando 500 substantivos...</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            💡 Clique no cabeçalho para ordenar • Use a busca para encontrar substantivos específicos
+        </div>
+    </div>
+
+    <script>
+        // ============================================================
+        // 500 SUBSTANTIVOS ESSENCIAIS
+        // ============================================================
+        const nouns = [
+            // ========== PESSOAS (1-70) ==========
+            { id: 1, en: 'person', pt: 'pessoa', category: 'people', example: 'She is a good person.' },
+            { id: 2, en: 'people', pt: 'pessoas', category: 'people', example: 'Many people came to the party.' },
+            { id: 3, en: 'man', pt: 'homem', category: 'people', example: 'The man is tall.' },
+            { id: 4, en: 'woman', pt: 'mulher', category: 'people', example: 'The woman is a doctor.' },
+            { id: 5, en: 'child', pt: 'criança', category: 'people', example: 'The child is playing.' },
+            { id: 6, en: 'children', pt: 'crianças', category: 'people', example: 'The children are at school.' },
+            { id: 7, en: 'family', pt: 'família', category: 'people', example: 'My family is big.' },
+            { id: 8, en: 'father', pt: 'pai', category: 'people', example: 'My father is a teacher.' },
+            { id: 9, en: 'mother', pt: 'mãe', category: 'people', example: 'My mother is a nurse.' },
+            { id: 10, en: 'parent', pt: 'pai/mãe', category: 'people', example: 'My parents are at home.' },
+            { id: 11, en: 'parents', pt: 'pais', category: 'people', example: 'My parents are at home.' },
+            { id: 12, en: 'son', pt: 'filho', category: 'people', example: 'She has a son.' },
+            { id: 13, en: 'daughter', pt: 'filha', category: 'people', example: 'He has a daughter.' },
+            { id: 14, en: 'brother', pt: 'irmão', category: 'people', example: 'I have a brother.' },
+            { id: 15, en: 'sister', pt: 'irmã', category: 'people', example: 'She is my sister.' },
+            { id: 16, en: 'friend', pt: 'amigo/amiga', category: 'people', example: 'He is my best friend.' },
+            { id: 17, en: 'neighbor', pt: 'vizinho', category: 'people', example: 'My neighbor is friendly.' },
+            { id: 18, en: 'teacher', pt: 'professor', category: 'people', example: 'The teacher explains well.' },
+            { id: 19, en: 'student', pt: 'estudante', category: 'people', example: 'The student studies hard.' },
+            { id: 20, en: 'doctor', pt: 'médico', category: 'people', example: 'The doctor is busy.' },
+            { id: 21, en: 'nurse', pt: 'enfermeiro', category: 'people', example: 'The nurse is kind.' },
+            { id: 22, en: 'engineer', pt: 'engenheiro', category: 'people', example: 'She is an engineer.' },
+            { id: 23, en: 'teacher', pt: 'professor(a)', category: 'people', example: 'The teacher is patient.' },
+            { id: 24, en: 'driver', pt: 'motorista', category: 'people', example: 'The driver is waiting.' },
+            { id: 25, en: 'worker', pt: 'trabalhador', category: 'people', example: 'The worker is tired.' },
+            { id: 26, en: 'boss', pt: 'chefe', category: 'people', example: 'My boss is strict.' },
+            { id: 27, en: 'manager', pt: 'gerente', category: 'people', example: 'The manager is in a meeting.' },
+            { id: 28, en: 'leader', pt: 'líder', category: 'people', example: 'He is a good leader.' },
+            { id: 29, en: 'president', pt: 'presidente', category: 'people', example: 'The president spoke.' },
+            { id: 30, en: 'king', pt: 'rei', category: 'people', example: 'The king is fair.' },
+            { id: 31, en: 'queen', pt: 'rainha', category: 'people', example: 'The queen waved.' },
+            { id: 32, en: 'prince', pt: 'príncipe', category: 'people', example: 'The prince is handsome.' },
+            { id: 33, en: 'princess', pt: 'princesa', category: 'people', example: 'The princess smiled.' },
+            { id: 34, en: 'hero', pt: 'herói', category: 'people', example: 'He is my hero.' },
+            { id: 35, en: 'villain', pt: 'vilão', category: 'people', example: 'The villain escaped.' },
+            { id: 36, en: 'baby', pt: 'bebê', category: 'people', example: 'The baby is sleeping.' },
+            { id: 37, en: 'boy', pt: 'menino', category: 'people', example: 'The boy is playing.' },
+            { id: 38, en: 'girl', pt: 'menina', category: 'people', example: 'The girl is reading.' },
+            { id: 39, en: 'teenager', pt: 'adolescente', category: 'people', example: 'The teenager is independent.' },
+            { id: 40, en: 'adult', pt: 'adulto', category: 'people', example: 'He is an adult.' },
+            { id: 41, en: 'senior', pt: 'idoso', category: 'people', example: 'The senior is wise.' },
+            { id: 42, en: 'couple', pt: 'casal', category: 'people', example: 'The couple is happy.' },
+            { id: 43, en: 'group', pt: 'grupo', category: 'people', example: 'The group is large.' },
+            { id: 44, en: 'team', pt: 'equipe', category: 'people', example: 'The team won.' },
+            { id: 45, en: 'crowd', pt: 'multidão', category: 'people', example: 'The crowd cheered.' },
+            { id: 46, en: 'audience', pt: 'plateia', category: 'people', example: 'The audience applauded.' },
+            { id: 47, en: 'guest', pt: 'convidado', category: 'people', example: 'The guest arrived.' },
+            { id: 48, en: 'host', pt: 'anfitrião', category: 'people', example: 'The host welcomed us.' },
+            { id: 49, en: 'tourist', pt: 'turista', category: 'people', example: 'The tourist took photos.' },
+            { id: 50, en: 'passenger', pt: 'passageiro', category: 'people', example: 'The passenger is waiting.' },
+            { id: 51, en: 'customer', pt: 'cliente', category: 'people', example: 'The customer is satisfied.' },
+            { id: 52, en: 'client', pt: 'cliente', category: 'people', example: 'The client is important.' },
+            { id: 53, en: 'patient', pt: 'paciente', category: 'people', example: 'The patient is waiting.' },
+            { id: 54, en: 'volunteer', pt: 'voluntário', category: 'people', example: 'The volunteer helps.' },
+            { id: 55, en: 'artist', pt: 'artista', category: 'people', example: 'The artist paints.' },
+            { id: 56, en: 'musician', pt: 'músico', category: 'people', example: 'The musician plays well.' },
+            { id: 57, en: 'actor', pt: 'ator', category: 'people', example: 'The actor is famous.' },
+            { id: 58, en: 'actress', pt: 'atriz', category: 'people', example: 'The actress is talented.' },
+            { id: 59, en: 'writer', pt: 'escritor', category: 'people', example: 'The writer published a book.' },
+            { id: 60, en: 'poet', pt: 'poeta', category: 'people', example: 'The poet writes beautifully.' },
+            { id: 61, en: 'singer', pt: 'cantor', category: 'people', example: 'The singer performs.' },
+            { id: 62, en: 'dancer', pt: 'dançarino', category: 'people', example: 'The dancer is graceful.' },
+            { id: 63, en: 'athlete', pt: 'atleta', category: 'people', example: 'The athlete trains hard.' },
+            { id: 64, en: 'coach', pt: 'treinador', category: 'people', example: 'The coach motivates the team.' },
+            { id: 65, en: 'captain', pt: 'capitão', category: 'people', example: 'The captain leads.' },
+            { id: 66, en: 'soldier', pt: 'soldado', category: 'people', example: 'The soldier is brave.' },
+            { id: 67, en: 'police', pt: 'polícia', category: 'people', example: 'The police arrived.' },
+            { id: 68, en: 'firefighter', pt: 'bombeiro', category: 'people', example: 'The firefighter saved them.' },
+            { id: 69, en: 'stranger', pt: 'desconhecido', category: 'people', example: 'He is a stranger.' },
+            { id: 70, en: 'relative', pt: 'parente', category: 'people', example: 'I have relatives in Brazil.' },
+
+            // ========== LUGARES (71-130) ==========
+            { id: 71, en: 'place', pt: 'lugar', category: 'place', example: 'This is a nice place.' },
+            { id: 72, en: 'city', pt: 'cidade', category: 'place', example: 'I live in a big city.' },
+            { id: 73, en: 'town', pt: 'cidade pequena', category: 'place', example: 'I live in a small town.' },
+            { id: 74, en: 'village', pt: 'vila', category: 'place', example: 'She comes from a village.' },
+            { id: 75, en: 'country', pt: 'país', category: 'place', example: 'Brazil is a beautiful country.' },
+            { id: 76, en: 'state', pt: 'estado', category: 'place', example: 'São Paulo is a state.' },
+            { id: 77, en: 'capital', pt: 'capital', category: 'place', example: 'Brasília is the capital.' },
+            { id: 78, en: 'neighborhood', pt: 'bairro', category: 'place', example: 'My neighborhood is safe.' },
+            { id: 79, en: 'street', pt: 'rua', category: 'place', example: 'The street is busy.' },
+            { id: 80, en: 'road', pt: 'estrada', category: 'place', example: 'Take the road to the left.' },
+            { id: 81, en: 'avenue', pt: 'avenida', category: 'place', example: 'Walk down the avenue.' },
+            { id: 82, en: 'square', pt: 'praça', category: 'place', example: 'The square is beautiful.' },
+            { id: 83, en: 'park', pt: 'parque', category: 'place', example: 'Let\'s go to the park.' },
+            { id: 84, en: 'garden', pt: 'jardim', category: 'place', example: 'The garden is full of flowers.' },
+            { id: 85, en: 'beach', pt: 'praia', category: 'place', example: 'Let\'s go to the beach.' },
+            { id: 86, en: 'sea', pt: 'mar', category: 'place', example: 'The sea is calm.' },
+            { id: 87, en: 'river', pt: 'rio', category: 'place', example: 'The river flows.' },
+            { id: 88, en: 'lake', pt: 'lago', category: 'place', example: 'The lake is peaceful.' },
+            { id: 89, en: 'mountain', pt: 'montanha', category: 'place', example: 'The mountain is high.' },
+            { id: 90, en: 'hill', pt: 'colina', category: 'place', example: 'We climbed the hill.' },
+            { id: 91, en: 'forest', pt: 'floresta', category: 'place', example: 'The forest is dense.' },
+            { id: 92, en: 'jungle', pt: 'selva', category: 'place', example: 'The jungle is dangerous.' },
+            { id: 93, en: 'desert', pt: 'deserto', category: 'place', example: 'The desert is hot.' },
+            { id: 94, en: 'island', pt: 'ilha', category: 'place', example: 'We visited an island.' },
+            { id: 95, en: 'continent', pt: 'continente', category: 'place', example: 'There are seven continents.' },
+            { id: 96, en: 'building', pt: 'edifício', category: 'place', example: 'The building is tall.' },
+            { id: 97, en: 'house', pt: 'casa', category: 'place', example: 'She has a big house.' },
+            { id: 98, en: 'home', pt: 'lar', category: 'place', example: 'I feel happy at home.' },
+            { id: 99, en: 'apartment', pt: 'apartamento', category: 'place', example: 'I live in an apartment.' },
+            { id: 100, en: 'room', pt: 'quarto', category: 'place', example: 'My room is clean.' },
+            { id: 101, en: 'bedroom', pt: 'quarto de dormir', category: 'place', example: 'The bedroom is cozy.' },
+            { id: 102, en: 'living room', pt: 'sala de estar', category: 'place', example: 'We sat in the living room.' },
+            { id: 103, en: 'kitchen', pt: 'cozinha', category: 'place', example: 'The kitchen is clean.' },
+            { id: 104, en: 'bathroom', pt: 'banheiro', category: 'place', example: 'The bathroom is small.' },
+            { id: 105, en: 'dining room', pt: 'sala de jantar', category: 'place', example: 'We ate in the dining room.' },
+            { id: 106, en: 'office', pt: 'escritório', category: 'place', example: 'The office is modern.' },
+            { id: 107, en: 'school', pt: 'escola', category: 'place', example: 'The school is good.' },
+            { id: 108, en: 'university', pt: 'universidade', category: 'place', example: 'She goes to university.' },
+            { id: 109, en: 'college', pt: 'faculdade', category: 'place', example: 'He studies at a college.' },
+            { id: 110, en: 'hospital', pt: 'hospital', category: 'place', example: 'The hospital is big.' },
+            { id: 111, en: 'clinic', pt: 'clínica', category: 'place', example: 'She works at a clinic.' },
+            { id: 112, en: 'bank', pt: 'banco', category: 'place', example: 'I went to the bank.' },
+            { id: 113, en: 'store', pt: 'loja', category: 'place', example: 'The store is open.' },
+            { id: 114, en: 'shop', pt: 'loja', category: 'place', example: 'I need to go to the shop.' },
+            { id: 115, en: 'market', pt: 'mercado', category: 'place', example: 'We went to the market.' },
+            { id: 116, en: 'supermarket', pt: 'supermercado', category: 'place', example: 'Let\'s go to the supermarket.' },
+            { id: 117, en: 'mall', pt: 'shopping', category: 'place', example: 'We went to the mall.' },
+            { id: 118, en: 'restaurant', pt: 'restaurante', category: 'place', example: 'We ate at a restaurant.' },
+            { id: 119, en: 'cafe', pt: 'cafeteria', category: 'place', example: 'Let\'s go to a cafe.' },
+            { id: 120, en: 'bar', pt: 'bar', category: 'place', example: 'He went to the bar.' },
+            { id: 121, en: 'hotel', pt: 'hotel', category: 'place', example: 'We stayed at a hotel.' },
+            { id: 122, en: 'airport', pt: 'aeroporto', category: 'place', example: 'She works at the airport.' },
+            { id: 123, en: 'station', pt: 'estação', category: 'place', example: 'The station is busy.' },
+            { id: 124, en: 'bus stop', pt: 'ponto de ônibus', category: 'place', example: 'Wait at the bus stop.' },
+            { id: 125, en: 'church', pt: 'igreja', category: 'place', example: 'We go to church.' },
+            { id: 126, en: 'museum', pt: 'museu', category: 'place', example: 'Let\'s visit the museum.' },
+            { id: 127, en: 'theater', pt: 'teatro', category: 'place', example: 'We went to the theater.' },
+            { id: 128, en: 'cinema', pt: 'cinema', category: 'place', example: 'I love going to the cinema.' },
+            { id: 129, en: 'library', pt: 'biblioteca', category: 'place', example: 'She studies at the library.' },
+            { id: 130, en: 'gym', pt: 'academia', category: 'place', example: 'I go to the gym.' },
+
+            // ========== COISAS (131-250) ==========
+            { id: 131, en: 'thing', pt: 'coisa', category: 'thing', example: 'What is that thing?' },
+            { id: 132, en: 'object', pt: 'objeto', category: 'thing', example: 'The object is round.' },
+            { id: 133, en: 'item', pt: 'item', category: 'thing', example: 'I need this item.' },
+            { id: 134, en: 'product', pt: 'produto', category: 'thing', example: 'This product is good.' },
+            { id: 135, en: 'tool', pt: 'ferramenta', category: 'thing', example: 'A hammer is a tool.' },
+            { id: 136, en: 'machine', pt: 'máquina', category: 'thing', example: 'The machine is broken.' },
+            { id: 137, en: 'device', pt: 'dispositivo', category: 'thing', example: 'This device is helpful.' },
+            { id: 138, en: 'phone', pt: 'telefone', category: 'thing', example: 'My phone is new.' },
+            { id: 139, en: 'computer', pt: 'computador', category: 'thing', example: 'I use a computer.' },
+            { id: 140, en: 'keyboard', pt: 'teclado', category: 'thing', example: 'My keyboard is noisy.' },
+            { id: 141, en: 'screen', pt: 'tela', category: 'thing', example: 'The screen is bright.' },
+            { id: 142, en: 'camera', pt: 'câmera', category: 'thing', example: 'I bought a new camera.' },
+            { id: 143, en: 'television', pt: 'televisão', category: 'thing', example: 'I watch television.' },
+            { id: 144, en: 'radio', pt: 'rádio', category: 'thing', example: 'I listen to the radio.' },
+            { id: 145, en: 'music', pt: 'música', category: 'thing', example: 'I love music.' },
+            { id: 146, en: 'movie', pt: 'filme', category: 'thing', example: 'Let\'s watch a movie.' },
+            { id: 147, en: 'book', pt: 'livro', category: 'thing', example: 'I read a book.' },
+            { id: 148, en: 'magazine', pt: 'revista', category: 'thing', example: 'I read a magazine.' },
+            { id: 149, en: 'newspaper', pt: 'jornal', category: 'thing', example: 'I read the newspaper.' },
+            { id: 150, en: 'letter', pt: 'carta', category: 'thing', example: 'I wrote a letter.' },
+            { id: 151, en: 'email', pt: 'e-mail', category: 'thing', example: 'I sent an email.' },
+            { id: 152, en: 'message', pt: 'mensagem', category: 'thing', example: 'I got a message.' },
+            { id: 153, en: 'note', pt: 'nota', category: 'thing', example: 'I left a note.' },
+            { id: 154, en: 'paper', pt: 'papel', category: 'thing', example: 'I need paper.' },
+            { id: 155, en: 'pen', pt: 'caneta', category: 'thing', example: 'I need a pen.' },
+            { id: 156, en: 'pencil', pt: 'lápis', category: 'thing', example: 'I use a pencil.' },
+            { id: 157, en: 'bag', pt: 'bolsa', category: 'thing', example: 'I carry a bag.' },
+            { id: 158, en: 'backpack', pt: 'mochila', category: 'thing', example: 'I wear a backpack.' },
+            { id: 159, en: 'box', pt: 'caixa', category: 'thing', example: 'The box is big.' },
+            { id: 160, en: 'container', pt: 'recipiente', category: 'thing', example: 'The container is full.' },
+            { id: 161, en: 'cup', pt: 'xícara', category: 'thing', example: 'I need a cup of coffee.' },
+            { id: 162, en: 'glass', pt: 'copo', category: 'thing', example: 'I drink from a glass.' },
+            { id: 163, en: 'plate', pt: 'prato', category: 'thing', example: 'The plate is clean.' },
+            { id: 164, en: 'bowl', pt: 'tigela', category: 'thing', example: 'I eat from a bowl.' },
+            { id: 165, en: 'knife', pt: 'faca', category: 'thing', example: 'I need a knife.' },
+            { id: 166, en: 'fork', pt: 'garfo', category: 'thing', example: 'I use a fork.' },
+            { id: 167, en: 'spoon', pt: 'colher', category: 'thing', example: 'I need a spoon.' },
+            { id: 168, en: 'chair', pt: 'cadeira', category: 'thing', example: 'I sit on a chair.' },
+            { id: 169, en: 'table', pt: 'mesa', category: 'thing', example: 'The table is wooden.' },
+            { id: 170, en: 'desk', pt: 'escrivaninha', category: 'thing', example: 'I work at a desk.' },
+            { id: 171, en: 'door', pt: 'porta', category: 'thing', example: 'Close the door.' },
+            { id: 172, en: 'window', pt: 'janela', category: 'thing', example: 'Open the window.' },
+            { id: 173, en: 'wall', pt: 'parede', category: 'thing', example: 'The wall is white.' },
+            { id: 174, en: 'floor', pt: 'chão', category: 'thing', example: 'The floor is clean.' },
+            { id: 175, en: 'ceiling', pt: 'teto', category: 'thing', example: 'The ceiling is high.' },
+            { id: 176, en: 'stairs', pt: 'escadas', category: 'thing', example: 'I climb the stairs.' },
+            { id: 177, en: 'elevator', pt: 'elevador', category: 'thing', example: 'I take the elevator.' },
+            { id: 178, en: 'bed', pt: 'cama', category: 'thing', example: 'I sleep in a bed.' },
+            { id: 179, en: 'pillow', pt: 'travesseiro', category: 'thing', example: 'I need a pillow.' },
+            { id: 180, en: 'blanket', pt: 'cobertor', category: 'thing', example: 'I use a blanket.' },
+            { id: 181, en: 'light', pt: 'luz', category: 'thing', example: 'Turn on the light.' },
+            { id: 182, en: 'lamp', pt: 'lâmpada', category: 'thing', example: 'The lamp is bright.' },
+            { id: 183, en: 'mirror', pt: 'espelho', category: 'thing', example: 'I look in the mirror.' },
+            { id: 184, en: 'clock', pt: 'relógio', category: 'thing', example: 'Look at the clock.' },
+            { id: 185, en: 'watch', pt: 'relógio de pulso', category: 'thing', example: 'I wear a watch.' },
+            { id: 186, en: 'calendar', pt: 'calendário', category: 'thing', example: 'Check the calendar.' },
+            { id: 187, en: 'key', pt: 'chave', category: 'thing', example: 'I lost my key.' },
+            { id: 188, en: 'lock', pt: 'cadeado', category: 'thing', example: 'I need a lock.' },
+            { id: 189, en: 'money', pt: 'dinheiro', category: 'thing', example: 'I need money.' },
+            { id: 190, en: 'coin', pt: 'moeda', category: 'thing', example: 'I have a coin.' },
+            { id: 191, en: 'card', pt: 'cartão', category: 'thing', example: 'I use a card.' },
+            { id: 192, en: 'check', pt: 'cheque', category: 'thing', example: 'I wrote a check.' },
+            { id: 193, en: 'ticket', pt: 'bilhete', category: 'thing', example: 'I bought a ticket.' },
+            { id: 194, en: 'passport', pt: 'passaporte', category: 'thing', example: 'I have a passport.' },
+            { id: 195, en: 'umbrella', pt: 'guarda-chuva', category: 'thing', example: 'I need an umbrella.' },
+            { id: 196, en: 'hat', pt: 'chapéu', category: 'thing', example: 'I wear a hat.' },
+            { id: 197, en: 'shirt', pt: 'camisa', category: 'thing', example: 'I wear a shirt.' },
+            { id: 198, en: 'pants', pt: 'calças', category: 'thing', example: 'I wear pants.' },
+            { id: 199, en: 'shoes', pt: 'sapatos', category: 'thing', example: 'I wear shoes.' },
+            { id: 200, en: 'jacket', pt: 'jaqueta', category: 'thing', example: 'I wear a jacket.' },
+            { id: 201, en: 'coat', pt: 'casaco', category: 'thing', example: 'I wear a coat.' },
+            { id: 202, en: 'dress', pt: 'vestido', category: 'thing', example: 'She wears a dress.' },
+            { id: 203, en: 'skirt', pt: 'saia', category: 'thing', example: 'She wears a skirt.' },
+            { id: 204, en: 'uniform', pt: 'uniforme', category: 'thing', example: 'She wears a uniform.' },
+            { id: 205, en: 'glasses', pt: 'óculos', category: 'thing', example: 'I wear glasses.' },
+            { id: 206, en: 'ring', pt: 'anel', category: 'thing', example: 'She wears a ring.' },
+            { id: 207, en: 'necklace', pt: 'colar', category: 'thing', example: 'She wears a necklace.' },
+            { id: 208, en: 'bracelet', pt: 'pulseira', category: 'thing', example: 'She wears a bracelet.' },
+            { id: 209, en: 'watch', pt: 'relógio', category: 'thing', example: 'I wear a watch.' },
+            { id: 210, en: 'toy', pt: 'brinquedo', category: 'thing', example: 'The child plays with a toy.' },
+            { id: 211, en: 'game', pt: 'jogo', category: 'thing', example: 'Let\'s play a game.' },
+            { id: 212, en: 'ball', pt: 'bola', category: 'thing', example: 'The ball is round.' },
+            { id: 213, en: 'gift', pt: 'presente', category: 'thing', example: 'I got a gift.' },
+            { id: 214, en: 'present', pt: 'presente', category: 'thing', example: 'I have a present for you.' },
+            { id: 215, en: 'flower', pt: 'flor', category: 'thing', example: 'The flower is beautiful.' },
+            { id: 216, en: 'plant', pt: 'planta', category: 'thing', example: 'I water the plant.' },
+            { id: 217, en: 'tree', pt: 'árvore', category: 'thing', example: 'The tree is tall.' },
+            { id: 218, en: 'rock', pt: 'pedra', category: 'thing', example: 'The rock is heavy.' },
+            { id: 219, en: 'stone', pt: 'pedra', category: 'thing', example: 'I picked up a stone.' },
+            { id: 220, en: 'wood', pt: 'madeira', category: 'thing', example: 'The wood is hard.' },
+            { id: 221, en: 'metal', pt: 'metal', category: 'thing', example: 'The metal is strong.' },
+            { id: 222, en: 'glass', pt: 'vidro', category: 'thing', example: 'The glass is fragile.' },
+            { id: 223, en: 'plastic', pt: 'plástico', category: 'thing', example: 'The plastic is cheap.' },
+            { id: 224, en: 'paper', pt: 'papel', category: 'thing', example: 'The paper is thin.' },
+            { id: 225, en: 'cloth', pt: 'pano', category: 'thing', example: 'I need a cloth.' },
+            { id: 226, en: 'soap', pt: 'sabão', category: 'thing', example: 'I use soap.' },
+            { id: 227, en: 'shampoo', pt: 'xampu', category: 'thing', example: 'I use shampoo.' },
+            { id: 228, en: 'towel', pt: 'toalha', category: 'thing', example: 'I use a towel.' },
+            { id: 229, en: 'brush', pt: 'escova', category: 'thing', example: 'I use a brush.' },
+            { id: 230, en: 'comb', pt: 'pente', category: 'thing', example: 'I use a comb.' },
+            { id: 231, en: 'mirror', pt: 'espelho', category: 'thing', example: 'I look in the mirror.' },
+            { id: 232, en: 'lotion', pt: 'loção', category: 'thing', example: 'I use lotion.' },
+            { id: 233, en: 'perfume', pt: 'perfume', category: 'thing', example: 'I wear perfume.' },
+            { id: 234, en: 'makeup', pt: 'maquiagem', category: 'thing', example: 'She wears makeup.' },
+            { id: 235, en: 'baggage', pt: 'bagagem', category: 'thing', example: 'I carry my baggage.' },
+            { id: 236, en: 'luggage', pt: 'bagagem', category: 'thing', example: 'I have luggage.' },
+            { id: 237, en: 'suitcase', pt: 'mala', category: 'thing', example: 'I pack my suitcase.' },
+            { id: 238, en: 'box', pt: 'caixa', category: 'thing', example: 'I need a box.' },
+            { id: 239, en: 'package', pt: 'pacote', category: 'thing', example: 'I received a package.' },
+            { id: 240, en: 'envelope', pt: 'envelope', category: 'thing', example: 'I need an envelope.' },
+            { id: 241, en: 'stamp', pt: 'selo', category: 'thing', example: 'I need a stamp.' },
+            { id: 242, en: 'photo', pt: 'foto', category: 'thing', example: 'I take a photo.' },
+            { id: 243, en: 'picture', pt: 'quadro', category: 'thing', example: 'I hang a picture.' },
+            { id: 244, en: 'map', pt: 'mapa', category: 'thing', example: 'I have a map.' },
+            { id: 245, en: 'flag', pt: 'bandeira', category: 'thing', example: 'The flag is waving.' },
+            { id: 246, en: 'sign', pt: 'placa', category: 'thing', example: 'I see the sign.' },
+            { id: 247, en: 'poster', pt: 'pôster', category: 'thing', example: 'I have a poster.' },
+            { id: 248, en: 'advertisement', pt: 'anúncio', category: 'thing', example: 'I saw an advertisement.' },
+            { id: 249, en: 'bill', pt: 'conta', category: 'thing', example: 'I paid the bill.' },
+            { id: 250, en: 'receipt', pt: 'recibo', category: 'thing', example: 'I kept the receipt.' },
+
+            // ========== IDEIAS (251-310) ==========
+            { id: 251, en: 'idea', pt: 'ideia', category: 'idea', example: 'I have a good idea.' },
+            { id: 252, en: 'thought', pt: 'pensamento', category: 'idea', example: 'I had a thought.' },
+            { id: 253, en: 'mind', pt: 'mente', category: 'idea', example: 'I have a clear mind.' },
+            { id: 254, en: 'memory', pt: 'memória', category: 'idea', example: 'I have a good memory.' },
+            { id: 255, en: 'dream', pt: 'sonho', category: 'idea', example: 'I had a dream.' },
+            { id: 256, en: 'goal', pt: 'objetivo', category: 'idea', example: 'I achieved my goal.' },
+            { id: 257, en: 'plan', pt: 'plano', category: 'idea', example: 'I have a plan.' },
+            { id: 258, en: 'project', pt: 'projeto', category: 'idea', example: 'I worked on a project.' },
+            { id: 259, en: 'task', pt: 'tarefa', category: 'idea', example: 'I completed the task.' },
+            { id: 260, en: 'job', pt: 'trabalho', category: 'idea', example: 'I have a job.' },
+            { id: 261, en: 'work', pt: 'trabalho', category: 'idea', example: 'I go to work.' },
+            { id: 262, en: 'career', pt: 'carreira', category: 'idea', example: 'I am building my career.' },
+            { id: 263, en: 'business', pt: 'negócio', category: 'idea', example: 'I have a business.' },
+            { id: 264, en: 'company', pt: 'empresa', category: 'idea', example: 'I work for a company.' },
+            { id: 265, en: 'success', pt: 'sucesso', category: 'idea', example: 'I wish you success.' },
+            { id: 266, en: 'failure', pt: 'fracasso', category: 'idea', example: 'I learned from failure.' },
+            { id: 267, en: 'challenge', pt: 'desafio', category: 'idea', example: 'I accept the challenge.' },
+            { id: 268, en: 'opportunity', pt: 'oportunidade', category: 'idea', example: 'I have an opportunity.' },
+            { id: 269, en: 'risk', pt: 'risco', category: 'idea', example: 'I took a risk.' },
+            { id: 270, en: 'problem', pt: 'problema', category: 'idea', example: 'I have a problem.' },
+            { id: 271, en: 'solution', pt: 'solução', category: 'idea', example: 'I found a solution.' },
+            { id: 272, en: 'answer', pt: 'resposta', category: 'idea', example: 'I need an answer.' },
+            { id: 273, en: 'question', pt: 'pergunta', category: 'idea', example: 'I have a question.' },
+            { id: 274, en: 'fact', pt: 'fato', category: 'idea', example: 'That is a fact.' },
+            { id: 275, en: 'opinion', pt: 'opinião', category: 'idea', example: 'I have an opinion.' },
+            { id: 276, en: 'view', pt: 'visão', category: 'idea', example: 'I have a different view.' },
+            { id: 277, en: 'belief', pt: 'crença', category: 'idea', example: 'I have a strong belief.' },
+            { id: 278, en: 'faith', pt: 'fé', category: 'idea', example: 'I have faith.' },
+            { id: 279, en: 'hope', pt: 'esperança', category: 'idea', example: 'I have hope.' },
+            { id: 280, en: 'love', pt: 'amor', category: 'idea', example: 'I feel love.' },
+            { id: 281, en: 'happiness', pt: 'felicidade', category: 'idea', example: 'I wish you happiness.' },
+            { id: 282, en: 'sadness', pt: 'tristeza', category: 'idea', example: 'I feel sadness.' },
+            { id: 283, en: 'anger', pt: 'raiva', category: 'idea', example: 'I feel anger.' },
+            { id: 284, en: 'fear', pt: 'medo', category: 'idea', example: 'I have fear.' },
+            { id: 285, en: 'courage', pt: 'coragem', category: 'idea', example: 'I have courage.' },
+            { id: 286, en: 'confidence', pt: 'confiança', category: 'idea', example: 'I have confidence.' },
+            { id: 287, en: 'trust', pt: 'confiança', category: 'idea', example: 'I trust you.' },
+            { id: 288, en: 'honesty', pt: 'honestidade', category: 'idea', example: 'I value honesty.' },
+            { id: 289, en: 'respect', pt: 'respeito', category: 'idea', example: 'I have respect for you.' },
+            { id: 290, en: 'patience', pt: 'paciência', category: 'idea', example: 'I need patience.' },
+            { id: 291, en: 'wisdom', pt: 'sabedoria', category: 'idea', example: 'She has wisdom.' },
+            { id: 292, en: 'knowledge', pt: 'conhecimento', category: 'idea', example: 'I seek knowledge.' },
+            { id: 293, en: 'education', pt: 'educação', category: 'idea', example: 'Education is important.' },
+            { id: 294, en: 'experience', pt: 'experiência', category: 'idea', example: 'I have experience.' },
+            { id: 295, en: 'advice', pt: 'conselho', category: 'idea', example: 'I need advice.' },
+            { id: 296, en: 'decision', pt: 'decisão', category: 'idea', example: 'I made a decision.' },
+            { id: 297, en: 'choice', pt: 'escolha', category: 'idea', example: 'I have a choice.' },
+            { id: 298, en: 'reason', pt: 'razão', category: 'idea', example: 'I have a reason.' },
+            { id: 299, en: 'result', pt: 'resultado', category: 'idea', example: 'I saw the result.' },
+            { id: 300, en: 'effect', pt: 'efeito', category: 'idea', example: 'I saw the effect.' },
+            { id: 301, en: 'cause', pt: 'causa', category: 'idea', example: 'I support the cause.' },
+            { id: 302, en: 'power', pt: 'poder', category: 'idea', example: 'I have power.' },
+            { id: 303, en: 'strength', pt: 'força', category: 'idea', example: 'I have strength.' },
+            { id: 304, en: 'peace', pt: 'paz', category: 'idea', example: 'I wish for peace.' },
+            { id: 305, en: 'freedom', pt: 'liberdade', category: 'idea', example: 'I value freedom.' },
+            { id: 306, en: 'justice', pt: 'justiça', category: 'idea', example: 'I believe in justice.' },
+            { id: 307, en: 'truth', pt: 'verdade', category: 'idea', example: 'I tell the truth.' },
+            { id: 308, en: 'beauty', pt: 'beleza', category: 'idea', example: 'I appreciate beauty.' },
+            { id: 309, en: 'quality', pt: 'qualidade', category: 'idea', example: 'I value quality.' },
+            { id: 310, en: 'value', pt: 'valor', category: 'idea', example: 'I know its value.' },
+
+            // ========== COMIDA (311-360) ==========
+            { id: 311, en: 'food', pt: 'comida', category: 'food', example: 'I love food.' },
+            { id: 312, en: 'meal', pt: 'refeição', category: 'food', example: 'I had a meal.' },
+            { id: 313, en: 'breakfast', pt: 'café da manhã', category: 'food', example: 'I eat breakfast.' },
+            { id: 314, en: 'lunch', pt: 'almoço', category: 'food', example: 'I eat lunch.' },
+            { id: 315, en: 'dinner', pt: 'jantar', category: 'food', example: 'I eat dinner.' },
+            { id: 316, en: 'snack', pt: 'lanche', category: 'food', example: 'I eat a snack.' },
+            { id: 317, en: 'fruit', pt: 'fruta', category: 'food', example: 'I eat fruit.' },
+            { id: 318, en: 'apple', pt: 'maçã', category: 'food', example: 'I eat an apple.' },
+            { id: 319, en: 'banana', pt: 'banana', category: 'food', example: 'I eat a banana.' },
+            { id: 320, en: 'orange', pt: 'laranja', category: 'food', example: 'I eat an orange.' },
+            { id: 321, en: 'grape', pt: 'uva', category: 'food', example: 'I eat grapes.' },
+            { id: 322, en: 'strawberry', pt: 'morango', category: 'food', example: 'I eat strawberries.' },
+            { id: 323, en: 'watermelon', pt: 'melancia', category: 'food', example: 'I eat watermelon.' },
+            { id: 324, en: 'lemon', pt: 'limão', category: 'food', example: 'I eat lemon.' },
+            { id: 325, en: 'vegetable', pt: 'vegetal', category: 'food', example: 'I eat vegetables.' },
+            { id: 326, en: 'potato', pt: 'batata', category: 'food', example: 'I eat potatoes.' },
+            { id: 327, en: 'tomato', pt: 'tomate', category: 'food', example: 'I eat tomatoes.' },
+            { id: 328, en: 'onion', pt: 'cebola', category: 'food', example: 'I use onion.' },
+            { id: 329, en: 'garlic', pt: 'alho', category: 'food', example: 'I use garlic.' },
+            { id: 330, en: 'rice', pt: 'arroz', category: 'food', example: 'I eat rice.' },
+            { id: 331, en: 'bread', pt: 'pão', category: 'food', example: 'I eat bread.' },
+            { id: 332, en: 'pasta', pt: 'massa', category: 'food', example: 'I eat pasta.' },
+            { id: 333, en: 'meat', pt: 'carne', category: 'food', example: 'I eat meat.' },
+            { id: 334, en: 'chicken', pt: 'frango', category: 'food', example: 'I eat chicken.' },
+            { id: 335, en: 'beef', pt: 'carne bovina', category: 'food', example: 'I eat beef.' },
+            { id: 336, en: 'pork', pt: 'carne de porco', category: 'food', example: 'I eat pork.' },
+            { id: 337, en: 'fish', pt: 'peixe', category: 'food', example: 'I eat fish.' },
+            { id: 338, en: 'seafood', pt: 'frutos do mar', category: 'food', example: 'I love seafood.' },
+            { id: 339, en: 'egg', pt: 'ovo', category: 'food', example: 'I eat eggs.' },
+            { id: 340, en: 'cheese', pt: 'queijo', category: 'food', example: 'I eat cheese.' },
+            { id: 341, en: 'milk', pt: 'leite', category: 'food', example: 'I drink milk.' },
+            { id: 342, en: 'butter', pt: 'manteiga', category: 'food', example: 'I use butter.' },
+            { id: 343, en: 'yogurt', pt: 'iogurte', category: 'food', example: 'I eat yogurt.' },
+            { id: 344, en: 'coffee', pt: 'café', category: 'food', example: 'I drink coffee.' },
+            { id: 345, en: 'tea', pt: 'chá', category: 'food', example: 'I drink tea.' },
+            { id: 346, en: 'water', pt: 'água', category: 'food', example: 'I drink water.' },
+            { id: 347, en: 'juice', pt: 'suco', category: 'food', example: 'I drink juice.' },
+            { id: 348, en: 'soda', pt: 'refrigerante', category: 'food', example: 'I drink soda.' },
+            { id: 349, en: 'cake', pt: 'bolo', category: 'food', example: 'I eat cake.' },
+            { id: 350, en: 'pie', pt: 'torta', category: 'food', example: 'I eat pie.' },
+            { id: 351, en: 'cookie', pt: 'biscoito', category: 'food', example: 'I eat cookies.' },
+            { id: 352, en: 'chocolate', pt: 'chocolate', category: 'food', example: 'I love chocolate.' },
+            { id: 353, en: 'ice cream', pt: 'sorvete', category: 'food', example: 'I eat ice cream.' },
+            { id: 354, en: 'sugar', pt: 'açúcar', category: 'food', example: 'I use sugar.' },
+            { id: 355, en: 'salt', pt: 'sal', category: 'food', example: 'I use salt.' },
+            { id: 356, en: 'pepper', pt: 'pimenta', category: 'food', example: 'I use pepper.' },
+            { id: 357, en: 'sauce', pt: 'molho', category: 'food', example: 'I use sauce.' },
+            { id: 358, en: 'oil', pt: 'óleo', category: 'food', example: 'I use oil.' },
+            { id: 359, en: 'vinegar', pt: 'vinagre', category: 'food', example: 'I use vinegar.' },
+            { id: 360, en: 'spice', pt: 'tempero', category: 'food', example: 'I use spices.' },
+
+            // ========== CORPO (361-410) ==========
+            { id: 361, en: 'body', pt: 'corpo', category: 'body', example: 'I take care of my body.' },
+            { id: 362, en: 'head', pt: 'cabeça', category: 'body', example: 'I have a head.' },
+            { id: 363, en: 'hair', pt: 'cabelo', category: 'body', example: 'I have long hair.' },
+            { id: 364, en: 'face', pt: 'rosto', category: 'body', example: 'I have a face.' },
+            { id: 365, en: 'eye', pt: 'olho', category: 'body', example: 'I have eyes.' },
+            { id: 366, en: 'ear', pt: 'orelha', category: 'body', example: 'I have ears.' },
+            { id: 367, en: 'nose', pt: 'nariz', category: 'body', example: 'I have a nose.' },
+            { id: 368, en: 'mouth', pt: 'boca', category: 'body', example: 'I have a mouth.' },
+            { id: 369, en: 'tooth', pt: 'dente', category: 'body', example: 'I have teeth.' },
+            { id: 370, en: 'teeth', pt: 'dentes', category: 'body', example: 'I have teeth.' },
+            { id: 371, en: 'tongue', pt: 'língua', category: 'body', example: 'I have a tongue.' },
+            { id: 372, en: 'neck', pt: 'pescoço', category: 'body', example: 'I have a neck.' },
+            { id: 373, en: 'shoulder', pt: 'ombro', category: 'body', example: 'I have shoulders.' },
+            { id: 374, en: 'arm', pt: 'braço', category: 'body', example: 'I have arms.' },
+            { id: 375, en: 'hand', pt: 'mão', category: 'body', example: 'I have hands.' },
+            { id: 376, en: 'finger', pt: 'dedo', category: 'body', example: 'I have fingers.' },
+            { id: 377, en: 'chest', pt: 'peito', category: 'body', example: 'I have a chest.' },
+            { id: 378, en: 'back', pt: 'costas', category: 'body', example: 'I have a back.' },
+            { id: 379, en: 'leg', pt: 'perna', category: 'body', example: 'I have legs.' },
+            { id: 380, en: 'knee', pt: 'joelho', category: 'body', example: 'I have knees.' },
+            { id: 381, en: 'foot', pt: 'pé', category: 'body', example: 'I have feet.' },
+            { id: 382, en: 'feet', pt: 'pés', category: 'body', example: 'I have feet.' },
+            { id: 383, en: 'toe', pt: 'dedo do pé', category: 'body', example: 'I have toes.' },
+            { id: 384, en: 'skin', pt: 'pele', category: 'body', example: 'I have skin.' },
+            { id: 385, en: 'bone', pt: 'osso', category: 'body', example: 'I have bones.' },
+            { id: 386, en: 'muscle', pt: 'músculo', category: 'body', example: 'I have muscles.' },
+            { id: 387, en: 'heart', pt: 'coração', category: 'body', example: 'My heart beats.' },
+            { id: 388, en: 'blood', pt: 'sangue', category: 'body', example: 'I have blood.' },
+            { id: 389, en: 'brain', pt: 'cérebro', category: 'body', example: 'I have a brain.' },
+            { id: 390, en: 'mind', pt: 'mente', category: 'body', example: 'I have a mind.' },
+            { id: 391, en: 'smile', pt: 'sorriso', category: 'body', example: 'She has a beautiful smile.' },
+            { id: 392, en: 'voice', pt: 'voz', category: 'body', example: 'She has a nice voice.' },
+            { id: 393, en: 'breath', pt: 'respiração', category: 'body', example: 'I take a breath.' },
+            { id: 394, en: 'health', pt: 'saúde', category: 'body', example: 'I care about my health.' },
+            { id: 395, en: 'pain', pt: 'dor', category: 'body', example: 'I feel pain.' },
+            { id: 396, en: 'sleep', pt: 'sono', category: 'body', example: 'I need sleep.' },
+            { id: 397, en: 'strength', pt: 'força', category: 'body', example: 'I have strength.' },
+            { id: 398, en: 'energy', pt: 'energia', category: 'body', example: 'I have energy.' },
+            { id: 399, en: 'rest', pt: 'descanso', category: 'body', example: 'I need rest.' },
+            { id: 400, en: 'movement', pt: 'movimento', category: 'body', example: 'I make movement.' },
+
+            // ========== TEMPO (401-440) ==========
+            { id: 401, en: 'time', pt: 'tempo', category: 'time', example: 'I have time.' },
+            { id: 402, en: 'year', pt: 'ano', category: 'time', example: 'This year is good.' },
+            { id: 403, en: 'month', pt: 'mês', category: 'time', example: 'This month is busy.' },
+            { id: 404, en: 'week', pt: 'semana', category: 'time', example: 'This week is long.' },
+            { id: 405, en: 'day', pt: 'dia', category: 'time', example: 'It is a beautiful day.' },
+            { id: 406, en: 'hour', pt: 'hora', category: 'time', example: 'I have an hour.' },
+            { id: 407, en: 'minute', pt: 'minuto', category: 'time', example: 'Wait a minute.' },
+            { id: 408, en: 'second', pt: 'segundo', category: 'time', example: 'Give me a second.' },
+            { id: 409, en: 'morning', pt: 'manhã', category: 'time', example: 'Good morning!' },
+            { id: 410, en: 'afternoon', pt: 'tarde', category: 'time', example: 'Good afternoon!' },
+            { id: 411, en: 'evening', pt: 'noite', category: 'time', example: 'Good evening!' },
+            { id: 412, en: 'night', pt: 'noite', category: 'time', example: 'Good night!' },
+            { id: 413, en: 'weekend', pt: 'fim de semana', category: 'time', example: 'I love the weekend.' },
+            { id: 414, en: 'holiday', pt: 'feriado', category: 'time', example: 'I enjoy holidays.' },
+            { id: 415, en: 'birthday', pt: 'aniversário', category: 'time', example: 'Happy birthday!' },
+            { id: 416, en: 'age', pt: 'idade', category: 'time', example: 'What is your age?' },
+            { id: 417, en: 'season', pt: 'estação', category: 'time', example: 'I love summer season.' },
+            { id: 418, en: 'spring', pt: 'primavera', category: 'time', example: 'Spring is beautiful.' },
+            { id: 419, en: 'summer', pt: 'verão', category: 'time', example: 'I love summer.' },
+            { id: 420, en: 'autumn', pt: 'outono', category: 'time', example: 'Autumn is colorful.' },
+            { id: 421, en: 'winter', pt: 'inverno', category: 'time', example: 'Winter is cold.' },
+            { id: 422, en: 'date', pt: 'data', category: 'time', example: 'What is the date?' },
+            { id: 423, en: 'period', pt: 'período', category: 'time', example: 'I have a busy period.' },
+            { id: 424, en: 'moment', pt: 'momento', category: 'time', example: 'Wait a moment.' },
+            { id: 425, en: 'future', pt: 'futuro', category: 'time', example: 'I think about the future.' },
+            { id: 426, en: 'past', pt: 'passado', category: 'time', example: 'I remember the past.' },
+            { id: 427, en: 'present', pt: 'presente', category: 'time', example: 'I live in the present.' },
+            { id: 428, en: 'today', pt: 'hoje', category: 'time', example: 'Today is a good day.' },
+            { id: 429, en: 'yesterday', pt: 'ontem', category: 'time', example: 'Yesterday was rainy.' },
+            { id: 430, en: 'tomorrow', pt: 'amanhã', category: 'time', example: 'Tomorrow is another day.' },
+            { id: 431, en: 'morning', pt: 'manhã', category: 'time', example: 'I work in the morning.' },
+            { id: 432, en: 'afternoon', pt: 'tarde', category: 'time', example: 'I rest in the afternoon.' },
+            { id: 433, en: 'evening', pt: 'noite', category: 'time', example: 'I relax in the evening.' },
+            { id: 434, en: 'night', pt: 'noite', category: 'time', example: 'I sleep at night.' },
+            { id: 435, en: 'midnight', pt: 'meia-noite', category: 'time', example: 'I stay up until midnight.' },
+            { id: 436, en: 'noon', pt: 'meio-dia', category: 'time', example: 'I eat lunch at noon.' },
+            { id: 437, en: 'schedule', pt: 'cronograma', category: 'time', example: 'I have a schedule.' },
+            { id: 438, en: 'deadline', pt: 'prazo', category: 'time', example: 'I have a deadline.' },
+            { id: 439, en: 'delay', pt: 'atraso', category: 'time', example: 'I apologize for the delay.' },
+            { id: 440, en: 'rush', pt: 'correria', category: 'time', example: 'I am in a rush.' },
+
+            // ========== NATUREZA (441-500) ==========
+            { id: 441, en: 'nature', pt: 'natureza', category: 'nature', example: 'I love nature.' },
+            { id: 442, en: 'world', pt: 'mundo', category: 'nature', example: 'The world is big.' },
+            { id: 443, en: 'earth', pt: 'Terra', category: 'nature', example: 'We live on Earth.' },
+            { id: 444, en: 'sun', pt: 'sol', category: 'nature', example: 'The sun is bright.' },
+            { id: 445, en: 'moon', pt: 'lua', category: 'nature', example: 'The moon is beautiful.' },
+            { id: 446, en: 'star', pt: 'estrela', category: 'nature', example: 'I see a star.' },
+            { id: 447, en: 'sky', pt: 'céu', category: 'nature', example: 'The sky is blue.' },
+            { id: 448, en: 'cloud', pt: 'nuvem', category: 'nature', example: 'The cloud is white.' },
+            { id: 449, en: 'rain', pt: 'chuva', category: 'nature', example: 'I like rain.' },
+            { id: 450, en: 'snow', pt: 'neve', category: 'nature', example: 'I love snow.' },
+            { id: 451, en: 'wind', pt: 'vento', category: 'nature', example: 'The wind is strong.' },
+            { id: 452, en: 'storm', pt: 'tempestade', category: 'nature', example: 'The storm is coming.' },
+            { id: 453, en: 'lightning', pt: 'relâmpago', category: 'nature', example: 'I see lightning.' },
+            { id: 454, en: 'thunder', pt: 'trovão', category: 'nature', example: 'I hear thunder.' },
+            { id: 455, en: 'weather', pt: 'clima', category: 'nature', example: 'The weather is nice.' },
+            { id: 456, en: 'temperature', pt: 'temperatura', category: 'nature', example: 'The temperature is high.' },
+            { id: 457, en: 'air', pt: 'ar', category: 'nature', example: 'I breathe air.' },
+            { id: 458, en: 'water', pt: 'água', category: 'nature', example: 'I drink water.' },
+            { id: 459, en: 'fire', pt: 'fogo', category: 'nature', example: 'The fire is warm.' },
+            { id: 460, en: 'earth', pt: 'terra', category: 'nature', example: 'I plant in the earth.' },
+            { id: 461, en: 'soil', pt: 'solo', category: 'nature', example: 'The soil is fertile.' },
+            { id: 462, en: 'sand', pt: 'areia', category: 'nature', example: 'I walk on sand.' },
+            { id: 463, en: 'rock', pt: 'rocha', category: 'nature', example: 'The rock is big.' },
+            { id: 464, en: 'crystal', pt: 'cristal', category: 'nature', example: 'The crystal is clear.' },
+            { id: 465, en: 'flower', pt: 'flor', category: 'nature', example: 'The flower is pretty.' },
+            { id: 466, en: 'plant', pt: 'planta', category: 'nature', example: 'I water the plant.' },
+            { id: 467, en: 'tree', pt: 'árvore', category: 'nature', example: 'The tree is tall.' },
+            { id: 468, en: 'grass', pt: 'grama', category: 'nature', example: 'I sit on the grass.' },
+            { id: 469, en: 'leaf', pt: 'folha', category: 'nature', example: 'The leaf is green.' },
+            { id: 470, en: 'forest', pt: 'floresta', category: 'nature', example: 'I walk in the forest.' },
+            { id: 471, en: 'jungle', pt: 'selva', category: 'nature', example: 'The jungle is dense.' },
+            { id: 472, en: 'desert', pt: 'deserto', category: 'nature', example: 'The desert is dry.' },
+            { id: 473, en: 'ocean', pt: 'oceano', category: 'nature', example: 'The ocean is deep.' },
+            { id: 474, en: 'sea', pt: 'mar', category: 'nature', example: 'I swim in the sea.' },
+            { id: 475, en: 'river', pt: 'rio', category: 'nature', example: 'The river flows.' },
+            { id: 476, en: 'lake', pt: 'lago', category: 'nature', example: 'I swim in the lake.' },
+            { id: 477, en: 'waterfall', pt: 'cachoeira', category: 'nature', example: 'The waterfall is beautiful.' },
+            { id: 478, en: 'mountain', pt: 'montanha', category: 'nature', example: 'I climb the mountain.' },
+            { id: 479, en: 'hill', pt: 'colina', category: 'nature', example: 'I walk up the hill.' },
+            { id: 480, en: 'valley', pt: 'vale', category: 'nature', example: 'The valley is green.' },
+            { id: 481, en: 'cave', pt: 'caverna', category: 'nature', example: 'I explore the cave.' },
+            { id: 482, en: 'island', pt: 'ilha', category: 'nature', example: 'I visit the island.' },
+            { id: 483, en: 'beach', pt: 'praia', category: 'nature', example: 'I walk on the beach.' },
+            { id: 484, en: 'coast', pt: 'costa', category: 'nature', example: 'I live on the coast.' },
+            { id: 485, en: 'shore', pt: 'costa', category: 'nature', example: 'I stand on the shore.' },
+            { id: 486, en: 'animal', pt: 'animal', category: 'nature', example: 'I love animals.' },
+            { id: 487, en: 'bird', pt: 'pássaro', category: 'nature', example: 'The bird flies.' },
+            { id: 488, en: 'fish', pt: 'peixe', category: 'nature', example: 'I see fish.' },
+            { id: 489, en: 'insect', pt: 'inseto', category: 'nature', example: 'I see an insect.' },
+            { id: 490, en: 'butterfly', pt: 'borboleta', category: 'nature', example: 'The butterfly is pretty.' },
+            { id: 491, en: 'bee', pt: 'abelha', category: 'nature', example: 'The bee works.' },
+            { id: 492, en: 'ant', pt: 'formiga', category: 'nature', example: 'The ant is small.' },
+            { id: 493, en: 'spider', pt: 'aranha', category: 'nature', example: 'I see a spider.' },
+            { id: 494, en: 'dog', pt: 'cachorro', category: 'nature', example: 'I love dogs.' },
+            { id: 495, en: 'cat', pt: 'gato', category: 'nature', example: 'I love cats.' },
+            { id: 496, en: 'horse', pt: 'cavalo', category: 'nature', example: 'I ride a horse.' },
+            { id: 497, en: 'cow', pt: 'vaca', category: 'nature', example: 'I see a cow.' },
+            { id: 498, en: 'sheep', pt: 'ovelha', category: 'nature', example: 'I see a sheep.' },
+            { id: 499, en: 'pig', pt: 'porco', category: 'nature', example: 'I see a pig.' },
+            { id: 500, en: 'elephant', pt: 'elefante', category: 'nature', example: 'The elephant is big.' }
+        ];
+
+        // ============================================================
+        // LÓGICA DE RENDERIZAÇÃO
+        // ============================================================
+
+        let currentFilter = 'all';
+        let currentSearch = '';
+
+        function getCategoryBadge(category) {
+            const map = {
+                'people': 'people',
+                'place': 'place',
+                'thing': 'thing',
+                'idea': 'idea',
+                'food': 'food',
+                'body': 'body',
+                'time': 'time',
+                'nature': 'nature'
+            };
+            const labels = {
+                'people': 'Pessoas',
+                'place': 'Lugares',
+                'thing': 'Coisas',
+                'idea': 'Ideias',
+                'food': 'Comida',
+                'body': 'Corpo',
+                'time': 'Tempo',
+                'nature': 'Natureza'
+            };
+            return `<span class="category-badge ${map[category] || 'thing'}">${labels[category] || 'Coisas'}</span>`;
+        }
+
+        function renderTable(filteredNouns) {
+            const tbody = document.getElementById('nounTable');
+            tbody.innerHTML = '';
+            if (filteredNouns.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:40px;color:#7f8c8d;">Nenhum substantivo encontrado.</td></tr>';
+                return;
+            }
+            filteredNouns.forEach(noun => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${noun.id}</td>
+                    <td class="word-en">${noun.en}</td>
+                    <td class="word-pt">${noun.pt}</td>
+                    <td class="example-text">${noun.example}</td>
+                    <td>${getCategoryBadge(noun.category)}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+            updateStats(filteredNouns);
+        }
+
+        function updateStats(nounsList) {
+            const total = nounsList.length;
+            const people = nounsList.filter(n => n.category === 'people').length;
+            const place = nounsList.filter(n => n.category === 'place').length;
+            const thing = nounsList.filter(n => n.category === 'thing').length;
+            const idea = nounsList.filter(n => n.category === 'idea').length;
+            const food = nounsList.filter(n => n.category === 'food').length;
+            const body = nounsList.filter(n => n.category === 'body').length;
+            const time = nounsList.filter(n => n.category === 'time').length;
+            const nature = nounsList.filter(n => n.category === 'nature').length;
+            
+            document.getElementById('peopleCount').textContent = people;
+            document.getElementById('placeCount').textContent = place;
+            document.getElementById('thingCount').textContent = thing;
+        }
+
+        // ============================================================
+        // FILTROS
+        // ============================================================
+
+        function filterCategory(category) {
+            currentFilter = category;
+            // Atualizar botões
+            document.querySelectorAll('.category-filter button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            const buttons = document.querySelectorAll('.category-filter button');
+            const index = ['all', 'people', 'place', 'thing', 'idea', 'food', 'body', 'time', 'nature'].indexOf(category);
+            if (buttons[index]) buttons[index].classList.add('active');
+            applyFilters();
+        }
+
+        function resetFilter() {
+            currentFilter = 'all';
+            document.getElementById('searchInput').value = '';
+            currentSearch = '';
+            document.querySelectorAll('.category-filter button').forEach(btn => btn.classList.remove('active'));
+            document.querySelector('.category-filter .btn-all').classList.add('active');
+            applyFilters();
+        }
+
+        function searchNoun() {
+            const input = document.getElementById('searchInput');
+            currentSearch = input.value.toLowerCase().trim();
+            applyFilters();
+        }
+
+        function applyFilters() {
+            let filtered = [...nouns];
+
+            if (currentFilter !== 'all') {
+                filtered = filtered.filter(n => n.category === currentFilter);
+            }
+
+            if (currentSearch) {
+                filtered = filtered.filter(n => 
+                    n.en.toLowerCase().includes(currentSearch) ||
+                    n.pt.toLowerCase().includes(currentSearch)
+                );
+            }
+
+            renderTable(filtered);
+        }
+
+        // ============================================================
+        // ORDENAÇÃO
+        // ============================================================
+
+        document.querySelectorAll('thead th').forEach((th, index) => {
+            if (index === 0) return;
+            th.addEventListener('click', () => {
+                const tbody = document.getElementById('nounTable');
+                const rows = Array.from(tbody.querySelectorAll('tr'));
+                if (rows.length === 1 && rows[0].querySelector('td[colspan]')) return;
+                
+                const direction = th.dataset.direction === 'asc' ? 'desc' : 'asc';
+                th.dataset.direction = direction;
+
+                rows.sort((a, b) => {
+                    const aText = a.children[index].textContent.trim().toLowerCase();
+                    const bText = b.children[index].textContent.trim().toLowerCase();
+                    if (aText < bText) return direction === 'asc' ? -1 : 1;
+                    if (aText > bText) return direction === 'asc' ? 1 : -1;
+                    return 0;
+                });
+
+                rows.forEach(row => tbody.appendChild(row));
+            });
+        });
+
+        // ============================================================
+        // INICIALIZAÇÃO
+        // ============================================================
+
+        renderTable(nouns);
+    </script>
+</body>
+</html>

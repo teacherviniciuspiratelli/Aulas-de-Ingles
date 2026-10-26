@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 500 Adjetivos Essenciais em Inglês</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0 30px;
+        }
+        .stat-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .stat-card .number {
+            font-size: 2em;
+            font-weight: 700;
+        }
+        .stat-card .label {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .stat-card .number.purple { color: #8e44ad; }
+        .stat-card .number.blue { color: #2980b9; }
+        .stat-card .number.green { color: #27ae60; }
+        .stat-card .number.orange { color: #f39c12; }
+        .stat-card .number.red { color: #e74c3c; }
+        .stat-card .number.pink { color: #e84393; }
+        .stat-card .number.teal { color: #1abc9c; }
+
+        .search-box {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .search-box input {
+            padding: 12px 20px;
+            width: 100%;
+            max-width: 500px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        .search-box input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .category-filter button {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: #ecf0f1;
+            color: #2c3e50;
+        }
+        .category-filter button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        .category-filter button.active {
+            background: #3498db;
+            color: white;
+        }
+        .category-filter button.btn-all { background: #3498db; color: white; }
+        .category-filter button.btn-all:hover { background: #2980b9; }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+        .legend-item .color-box {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+        .legend-item .color-box.quality { background: #3498db; }
+        .legend-item .color-box.size { background: #2ecc71; }
+        .legend-item .color-box.color { background: #e74c3c; }
+        .legend-item .color-box.feeling { background: #f39c12; }
+        .legend-item .color-box.personality { background: #8e44ad; }
+        .legend-item .color-box.condition { background: #e67e22; }
+        .legend-item .color-box.time { background: #1abc9c; }
+        .legend-item .color-box.shape { background: #e84393; }
+
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 10px;
+            border: 1px solid #ecf0f1;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        thead {
+            background: #2c3e50;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        thead th {
+            padding: 12px 10px;
+            text-align: left;
+            font-weight: 600;
+            cursor: pointer;
+            user-select: none;
+            white-space: nowrap;
+        }
+        thead th:hover {
+            background: #34495e;
+        }
+        thead th:nth-child(1) { width: 5%; }
+        thead th:nth-child(2) { width: 25%; }
+        thead th:nth-child(3) { width: 25%; }
+        thead th:nth-child(4) { width: 30%; }
+        thead th:nth-child(5) { width: 15%; }
+
+        tbody tr {
+            border-bottom: 1px solid #ecf0f1;
+            transition: background 0.2s;
+        }
+        tbody tr:hover {
+            background: #f8f9fa;
+        }
+        tbody td {
+            padding: 10px 10px;
+            vertical-align: middle;
+        }
+        tbody td:first-child {
+            font-weight: 600;
+            color: #7f8c8d;
+        }
+        .word-en {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        .word-pt {
+            color: #7f8c8d;
+        }
+        .example-text {
+            color: #666;
+            font-style: italic;
+            font-size: 0.85em;
+        }
+        .category-badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .category-badge.quality { background: #cce5ff; color: #004085; }
+        .category-badge.size { background: #d4edda; color: #155724; }
+        .category-badge.color { background: #f8d7da; color: #721c24; }
+        .category-badge.feeling { background: #fff3cd; color: #856404; }
+        .category-badge.personality { background: #e8d5f5; color: #6c3483; }
+        .category-badge.condition { background: #fdebd0; color: #935e38; }
+        .category-badge.time { background: #d1f2eb; color: #0e6655; }
+        .category-badge.shape { background: #fadbd8; color: #922b21; }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2em;
+            color: #7f8c8d;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            h1 { font-size: 1.8em; }
+            table { font-size: 11px; }
+            thead th, tbody td { padding: 6px 5px; }
+            .category-badge { font-size: 8px; padding: 2px 6px; }
+            .stats { grid-template-columns: repeat(2, 1fr); }
+            .category-filter button { padding: 6px 12px; font-size: 11px; }
+            thead th:nth-child(4) { display: none; }
+            tbody td:nth-child(4) { display: none; }
+        }
+        @media (max-width: 480px) {
+            table { font-size: 9px; }
+            thead th, tbody td { padding: 4px 3px; }
+            .legend { gap: 10px; font-size: 11px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 500 Adjetivos</h1>
+        <p class="subtitle">Os adjetivos mais comuns do inglês com tradução e exemplos</p>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="number purple">500</div>
+                <div class="label">Total de adjetivos</div>
+            </div>
+            <div class="stat-card">
+                <div class="number blue" id="qualityCount">0</div>
+                <div class="label">Qualidade</div>
+            </div>
+            <div class="stat-card">
+                <div class="number green" id="sizeCount">0</div>
+                <div class="label">Tamanho</div>
+            </div>
+            <div class="stat-card">
+                <div class="number red" id="colorCount">0</div>
+                <div class="label">Cores</div>
+            </div>
+            <div class="stat-card">
+                <div class="number orange" id="feelingCount">0</div>
+                <div class="label">Sentimentos</div>
+            </div>
+            <div class="stat-card">
+                <div class="number pink" id="personalityCount">0</div>
+                <div class="label">Personalidade</div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item"><div class="color-box quality"></div> Qualidade</div>
+            <div class="legend-item"><div class="color-box size"></div> Tamanho</div>
+            <div class="legend-item"><div class="color-box color"></div> Cores</div>
+            <div class="legend-item"><div class="color-box feeling"></div> Sentimentos</div>
+            <div class="legend-item"><div class="color-box personality"></div> Personalidade</div>
+            <div class="legend-item"><div class="color-box condition"></div> Condição</div>
+            <div class="legend-item"><div class="color-box time"></div> Tempo</div>
+            <div class="legend-item"><div class="color-box shape"></div> Forma</div>
+        </div>
+
+        <div class="category-filter">
+            <button class="btn-all active" onclick="filterCategory('all')">📋 Todos</button>
+            <button onclick="filterCategory('quality')">⭐ Qualidade</button>
+            <button onclick="filterCategory('size')">📏 Tamanho</button>
+            <button onclick="filterCategory('color')">🎨 Cores</button>
+            <button onclick="filterCategory('feeling')">😊 Sentimentos</button>
+            <button onclick="filterCategory('personality')">🧠 Personalidade</button>
+            <button onclick="filterCategory('condition')">🔧 Condição</button>
+            <button onclick="filterCategory('time')">⏰ Tempo</button>
+            <button onclick="filterCategory('shape')">🔷 Forma</button>
+            <button onclick="resetFilter()">🔄 Resetar</button>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 Buscar adjetivo... (inglês ou português)" onkeyup="searchAdjective()">
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>English</th>
+                        <th>Português</th>
+                        <th>Exemplo</th>
+                        <th>Categoria</th>
+                    </tr>
+                </thead>
+                <tbody id="adjTable">
+                    <tr><td colspan="5" class="loading">Carregando 500 adjetivos...</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            💡 Clique no cabeçalho para ordenar • Use a busca para encontrar adjetivos específicos
+        </div>
+    </div>
+
+    <script>
+        // ============================================================
+        // 500 ADJETIVOS ESSENCIAIS
+        // ============================================================
+        const adjectives = [
+            // ========== QUALIDADE (1-80) ==========
+            { id: 1, en: 'good', pt: 'bom', category: 'quality', example: 'She is a good person.' },
+            { id: 2, en: 'bad', pt: 'ruim', category: 'quality', example: 'The weather is bad.' },
+            { id: 3, en: 'great', pt: 'ótimo', category: 'quality', example: 'We had a great time.' },
+            { id: 4, en: 'excellent', pt: 'excelente', category: 'quality', example: 'The food was excellent.' },
+            { id: 5, en: 'perfect', pt: 'perfeito', category: 'quality', example: 'Everything is perfect.' },
+            { id: 6, en: 'wonderful', pt: 'maravilhoso', category: 'quality', example: 'It was a wonderful day.' },
+            { id: 7, en: 'amazing', pt: 'incrível', category: 'quality', example: 'The view is amazing.' },
+            { id: 8, en: 'fantastic', pt: 'fantástico', category: 'quality', example: 'You look fantastic!' },
+            { id: 9, en: 'terrible', pt: 'terrível', category: 'quality', example: 'The service was terrible.' },
+            { id: 10, en: 'awful', pt: 'horrível', category: 'quality', example: 'The weather is awful.' },
+            { id: 11, en: 'nice', pt: 'agradável', category: 'quality', example: 'She is a nice person.' },
+            { id: 12, en: 'kind', pt: 'gentil', category: 'quality', example: 'She is very kind.' },
+            { id: 13, en: 'helpful', pt: 'prestativo', category: 'quality', example: 'The staff was helpful.' },
+            { id: 14, en: 'friendly', pt: 'amigável', category: 'quality', example: 'Everyone is friendly.' },
+            { id: 15, en: 'honest', pt: 'honesto', category: 'quality', example: 'He is an honest person.' },
+            { id: 16, en: 'fair', pt: 'justo', category: 'quality', example: 'That is not fair.' },
+            { id: 17, en: 'true', pt: 'verdadeiro', category: 'quality', example: 'Is it true?' },
+            { id: 18, en: 'false', pt: 'falso', category: 'quality', example: 'That information is false.' },
+            { id: 19, en: 'right', pt: 'certo', category: 'quality', example: 'You are right.' },
+            { id: 20, en: 'wrong', pt: 'errado', category: 'quality', example: 'You are wrong.' },
+            { id: 21, en: 'important', pt: 'importante', category: 'quality', example: 'This is important.' },
+            { id: 22, en: 'necessary', pt: 'necessário', category: 'quality', example: 'It is necessary.' },
+            { id: 23, en: 'possible', pt: 'possível', category: 'quality', example: 'It is possible.' },
+            { id: 24, en: 'impossible', pt: 'impossível', category: 'quality', example: 'It is impossible.' },
+            { id: 25, en: 'easy', pt: 'fácil', category: 'quality', example: 'This is easy.' },
+            { id: 26, en: 'difficult', pt: 'difícil', category: 'quality', example: 'This is difficult.' },
+            { id: 27, en: 'simple', pt: 'simples', category: 'quality', example: 'It is simple.' },
+            { id: 28, en: 'complex', pt: 'complexo', category: 'quality', example: 'It is complex.' },
+            { id: 29, en: 'clear', pt: 'claro', category: 'quality', example: 'The explanation is clear.' },
+            { id: 30, en: 'confusing', pt: 'confuso', category: 'quality', example: 'This is confusing.' },
+            { id: 31, en: 'useful', pt: 'útil', category: 'quality', example: 'This tool is useful.' },
+            { id: 32, en: 'useless', pt: 'inútil', category: 'quality', example: 'This is useless.' },
+            { id: 33, en: 'safe', pt: 'seguro', category: 'quality', example: 'This place is safe.' },
+            { id: 34, en: 'dangerous', pt: 'perigoso', category: 'quality', example: 'The road is dangerous.' },
+            { id: 35, en: 'clean', pt: 'limpo', category: 'quality', example: 'The house is clean.' },
+            { id: 36, en: 'dirty', pt: 'sujo', category: 'quality', example: 'The floor is dirty.' },
+            { id: 37, en: 'new', pt: 'novo', category: 'quality', example: 'I bought a new car.' },
+            { id: 38, en: 'old', pt: 'velho', category: 'quality', example: 'This is an old building.' },
+            { id: 39, en: 'young', pt: 'jovem', category: 'quality', example: 'She is young.' },
+            { id: 40, en: 'modern', pt: 'moderno', category: 'quality', example: 'This is a modern design.' },
+            { id: 41, en: 'traditional', pt: 'tradicional', category: 'quality', example: 'This is a traditional dish.' },
+            { id: 42, en: 'popular', pt: 'popular', category: 'quality', example: 'This is a popular song.' },
+            { id: 43, en: 'famous', pt: 'famoso', category: 'quality', example: 'She is a famous actress.' },
+            { id: 44, en: 'common', pt: 'comum', category: 'quality', example: 'This is a common mistake.' },
+            { id: 45, en: 'rare', pt: 'raro', category: 'quality', example: 'This is a rare gem.' },
+            { id: 46, en: 'special', pt: 'especial', category: 'quality', example: 'Today is a special day.' },
+            { id: 47, en: 'ordinary', pt: 'comum', category: 'quality', example: 'It was an ordinary day.' },
+            { id: 48, en: 'unique', pt: 'único', category: 'quality', example: 'This is unique.' },
+            { id: 49, en: 'original', pt: 'original', category: 'quality', example: 'This is the original version.' },
+            { id: 50, en: 'fake', pt: 'falso', category: 'quality', example: 'This is a fake watch.' },
+            { id: 51, en: 'real', pt: 'real', category: 'quality', example: 'This is a real diamond.' },
+            { id: 52, en: 'natural', pt: 'natural', category: 'quality', example: 'The color is natural.' },
+            { id: 53, en: 'artificial', pt: 'artificial', category: 'quality', example: 'This is artificial.' },
+            { id: 54, en: 'cheap', pt: 'barato', category: 'quality', example: 'This product is cheap.' },
+            { id: 55, en: 'expensive', pt: 'caro', category: 'quality', example: 'This is expensive.' },
+            { id: 56, en: 'free', pt: 'grátis', category: 'quality', example: 'The ticket is free.' },
+            { id: 57, en: 'priceless', pt: 'inestimável', category: 'quality', example: 'This is priceless.' },
+            { id: 58, en: 'valuable', pt: 'valioso', category: 'quality', example: 'This is valuable.' },
+            { id: 59, en: 'worthless', pt: 'sem valor', category: 'quality', example: 'This is worthless.' },
+            { id: 60, en: 'strong', pt: 'forte', category: 'quality', example: 'He is strong.' },
+            { id: 61, en: 'weak', pt: 'fraco', category: 'quality', example: 'She feels weak.' },
+            { id: 62, en: 'powerful', pt: 'poderoso', category: 'quality', example: 'This is powerful.' },
+            { id: 63, en: 'fragile', pt: 'frágil', category: 'quality', example: 'This glass is fragile.' },
+            { id: 64, en: 'durable', pt: 'durável', category: 'quality', example: 'This is durable.' },
+            { id: 65, en: 'flexible', pt: 'flexível', category: 'quality', example: 'This is flexible.' },
+            { id: 66, en: 'rigid', pt: 'rígido', category: 'quality', example: 'The rules are rigid.' },
+            { id: 67, en: 'soft', pt: 'macio', category: 'quality', example: 'The fabric is soft.' },
+            { id: 68, en: 'hard', pt: 'duro', category: 'quality', example: 'The wood is hard.' },
+            { id: 69, en: 'smooth', pt: 'liso', category: 'quality', example: 'The surface is smooth.' },
+            { id: 70, en: 'rough', pt: 'áspero', category: 'quality', example: 'The surface is rough.' },
+            { id: 71, en: 'sharp', pt: 'afiado', category: 'quality', example: 'The knife is sharp.' },
+            { id: 72, en: 'dull', pt: 'sem graça', category: 'quality', example: 'The movie was dull.' },
+            { id: 73, en: 'bright', pt: 'brilhante', category: 'quality', example: 'The sun is bright.' },
+            { id: 74, en: 'dark', pt: 'escuro', category: 'quality', example: 'The room is dark.' },
+            { id: 75, en: 'full', pt: 'cheio', category: 'quality', example: 'The glass is full.' },
+            { id: 76, en: 'empty', pt: 'vazio', category: 'quality', example: 'The box is empty.' },
+            { id: 77, en: 'loud', pt: 'alto', category: 'quality', example: 'The music is loud.' },
+            { id: 78, en: 'quiet', pt: 'quieto', category: 'quality', example: 'The room is quiet.' },
+            { id: 79, en: 'noisy', pt: 'barulhento', category: 'quality', example: 'The street is noisy.' },
+            { id: 80, en: 'calm', pt: 'calmo', category: 'quality', example: 'The sea is calm.' },
+
+            // ========== TAMANHO (81-120) ==========
+            { id: 81, en: 'big', pt: 'grande', category: 'size', example: 'This is a big house.' },
+            { id: 82, en: 'small', pt: 'pequeno', category: 'size', example: 'This is a small car.' },
+            { id: 83, en: 'large', pt: 'grande', category: 'size', example: 'A large building.' },
+            { id: 84, en: 'tiny', pt: 'minúsculo', category: 'size', example: 'A tiny insect.' },
+            { id: 85, en: 'huge', pt: 'enorme', category: 'size', example: 'A huge elephant.' },
+            { id: 86, en: 'gigantic', pt: 'gigantesco', category: 'size', example: 'A gigantic statue.' },
+            { id: 87, en: 'enormous', pt: 'enorme', category: 'size', example: 'An enormous building.' },
+            { id: 88, en: 'massive', pt: 'massivo', category: 'size', example: 'A massive project.' },
+            { id: 89, en: 'miniature', pt: 'miniatura', category: 'size', example: 'A miniature model.' },
+            { id: 90, en: 'long', pt: 'longo', category: 'size', example: 'A long road.' },
+            { id: 91, en: 'short', pt: 'curto', category: 'size', example: 'A short story.' },
+            { id: 92, en: 'tall', pt: 'alto', category: 'size', example: 'A tall person.' },
+            { id: 93, en: 'high', pt: 'alto', category: 'size', example: 'A high mountain.' },
+            { id: 94, en: 'low', pt: 'baixo', category: 'size', example: 'A low price.' },
+            { id: 95, en: 'wide', pt: 'largo', category: 'size', example: 'A wide street.' },
+            { id: 96, en: 'narrow', pt: 'estreito', category: 'size', example: 'A narrow road.' },
+            { id: 97, en: 'thick', pt: 'grosso', category: 'size', example: 'A thick book.' },
+            { id: 98, en: 'thin', pt: 'fino', category: 'size', example: 'A thin piece of paper.' },
+            { id: 99, en: 'deep', pt: 'profundo', category: 'size', example: 'A deep river.' },
+            { id: 100, en: 'shallow', pt: 'raso', category: 'size', example: 'A shallow pool.' },
+            { id: 101, en: 'broad', pt: 'amplo', category: 'size', example: 'A broad shoulder.' },
+            { id: 102, en: 'massive', pt: 'macigo', category: 'size', example: 'A massive wall.' },
+            { id: 103, en: 'spacious', pt: 'espaçoso', category: 'size', example: 'A spacious room.' },
+            { id: 104, en: 'cramped', pt: 'apertado', category: 'size', example: 'A cramped space.' },
+            { id: 105, en: 'extensive', pt: 'extenso', category: 'size', example: 'An extensive garden.' },
+            { id: 106, en: 'limited', pt: 'limitado', category: 'size', example: 'A limited budget.' },
+            { id: 107, en: 'unlimited', pt: 'ilimitado', category: 'size', example: 'Unlimited access.' },
+            { id: 108, en: 'infinite', pt: 'infinito', category: 'size', example: 'Infinite space.' },
+            { id: 109, en: 'average', pt: 'médio', category: 'size', example: 'An average size.' },
+            { id: 110, en: 'medium', pt: 'médio', category: 'size', example: 'A medium pizza.' },
+            { id: 111, en: 'compact', pt: 'compacto', category: 'size', example: 'A compact car.' },
+            { id: 112, en: 'bulky', pt: 'volumoso', category: 'size', example: 'A bulky package.' },
+            { id: 113, en: 'slim', pt: 'magro', category: 'size', example: 'A slim person.' },
+            { id: 114, en: 'plump', pt: 'gordinho', category: 'size', example: 'A plump baby.' },
+            { id: 115, en: 'fat', pt: 'gordo', category: 'size', example: 'A fat cat.' },
+            { id: 116, en: 'skinny', pt: 'magro', category: 'size', example: 'A skinny person.' },
+            { id: 117, en: 'oversized', pt: 'grande demais', category: 'size', example: 'An oversized shirt.' },
+            { id: 118, en: 'undersized', pt: 'pequeno demais', category: 'size', example: 'An undersized dog.' },
+            { id: 119, en: 'giant', pt: 'gigante', category: 'size', example: 'A giant monster.' },
+            { id: 120, en: 'dwarf', pt: 'anão', category: 'size', example: 'A dwarf planet.' },
+
+            // ========== CORES (121-160) ==========
+            { id: 121, en: 'red', pt: 'vermelho', category: 'color', example: 'A red apple.' },
+            { id: 122, en: 'blue', pt: 'azul', category: 'color', example: 'A blue sky.' },
+            { id: 123, en: 'green', pt: 'verde', category: 'color', example: 'Green grass.' },
+            { id: 124, en: 'yellow', pt: 'amarelo', category: 'color', example: 'A yellow flower.' },
+            { id: 125, en: 'black', pt: 'preto', category: 'color', example: 'A black car.' },
+            { id: 126, en: 'white', pt: 'branco', category: 'color', example: 'A white dress.' },
+            { id: 127, en: 'gray', pt: 'cinza', category: 'color', example: 'A gray sky.' },
+            { id: 128, en: 'brown', pt: 'marrom', category: 'color', example: 'Brown hair.' },
+            { id: 129, en: 'pink', pt: 'rosa', category: 'color', example: 'A pink rose.' },
+            { id: 130, en: 'purple', pt: 'roxo', category: 'color', example: 'A purple flower.' },
+            { id: 131, en: 'orange', pt: 'laranja', category: 'color', example: 'An orange fruit.' },
+            { id: 132, en: 'gold', pt: 'dourado', category: 'color', example: 'Gold jewelry.' },
+            { id: 133, en: 'silver', pt: 'prateado', category: 'color', example: 'Silver hair.' },
+            { id: 134, en: 'bronze', pt: 'bronzeado', category: 'color', example: 'Bronze medal.' },
+            { id: 135, en: 'beige', pt: 'bege', category: 'color', example: 'Beige walls.' },
+            { id: 136, en: 'cream', pt: 'creme', category: 'color', example: 'Cream color.' },
+            { id: 137, en: 'navy', pt: 'azul marinho', category: 'color', example: 'A navy suit.' },
+            { id: 138, en: 'maroon', pt: 'bordô', category: 'color', example: 'Maroon dress.' },
+            { id: 139, en: 'coral', pt: 'coral', category: 'color', example: 'Coral reef.' },
+            { id: 140, en: 'turquoise', pt: 'turquesa', category: 'color', example: 'Turquoise water.' },
+            { id: 141, en: 'emerald', pt: 'esmeralda', category: 'color', example: 'Emerald green.' },
+            { id: 142, en: 'ruby', pt: 'rubi', category: 'color', example: 'Ruby red.' },
+            { id: 143, en: 'sapphire', pt: 'safira', category: 'color', example: 'Sapphire blue.' },
+            { id: 144, en: 'ivory', pt: 'marfim', category: 'color', example: 'Ivory color.' },
+            { id: 145, en: 'charcoal', pt: 'carvão', category: 'color', example: 'Charcoal gray.' },
+            { id: 146, en: 'mauve', pt: 'malva', category: 'color', example: 'Mauve flower.' },
+            { id: 147, en: 'lavender', pt: 'lavanda', category: 'color', example: 'Lavender field.' },
+            { id: 148, en: 'peach', pt: 'pêssego', category: 'color', example: 'Peach color.' },
+            { id: 149, en: 'lime', pt: 'lima', category: 'color', example: 'Lime green.' },
+            { id: 150, en: 'mint', pt: 'menta', category: 'color', example: 'Mint green.' },
+            { id: 151, en: 'crimson', pt: 'carmim', category: 'color', example: 'Crimson red.' },
+            { id: 152, en: 'scarlet', pt: 'escarlate', category: 'color', example: 'Scarlet letter.' },
+            { id: 153, en: 'violet', pt: 'violeta', category: 'color', example: 'Violet flower.' },
+            { id: 154, en: 'indigo', pt: 'anil', category: 'color', example: 'Indigo color.' },
+            { id: 155, en: 'magenta', pt: 'magenta', category: 'color', example: 'Magenta shirt.' },
+            { id: 156, en: 'teal', pt: 'verde-azulado', category: 'color', example: 'Teal dress.' },
+            { id: 157, en: 'olive', pt: 'verde-oliva', category: 'color', example: 'Olive green.' },
+            { id: 158, en: 'mustard', pt: 'mostarda', category: 'color', example: 'Mustard yellow.' },
+            { id: 159, en: 'blonde', pt: 'loiro', category: 'color', example: 'Blonde hair.' },
+            { id: 160, en: 'brunette', pt: 'moreno', category: 'color', example: 'Brunette woman.' },
+
+            // ========== SENTIMENTOS (161-220) ==========
+            { id: 161, en: 'happy', pt: 'feliz', category: 'feeling', example: 'She is happy.' },
+            { id: 162, en: 'sad', pt: 'triste', category: 'feeling', example: 'He is sad.' },
+            { id: 163, en: 'angry', pt: 'bravo', category: 'feeling', example: 'She is angry.' },
+            { id: 164, en: 'excited', pt: 'empolgado', category: 'feeling', example: 'I am excited.' },
+            { id: 165, en: 'nervous', pt: 'nervoso', category: 'feeling', example: 'He is nervous.' },
+            { id: 166, en: 'scared', pt: 'assustado', category: 'feeling', example: 'She is scared.' },
+            { id: 167, en: 'tired', pt: 'cansado', category: 'feeling', example: 'I am tired.' },
+            { id: 168, en: 'relaxed', pt: 'relaxado', category: 'feeling', example: 'I feel relaxed.' },
+            { id: 169, en: 'stressed', pt: 'estressado', category: 'feeling', example: 'He is stressed.' },
+            { id: 170, en: 'worried', pt: 'preocupado', category: 'feeling', example: 'She is worried.' },
+            { id: 171, en: 'surprised', pt: 'surpreso', category: 'feeling', example: 'I was surprised.' },
+            { id: 172, en: 'confused', pt: 'confuso', category: 'feeling', example: 'He looks confused.' },
+            { id: 173, en: 'proud', pt: 'orgulhoso', category: 'feeling', example: 'I am proud of you.' },
+            { id: 174, en: 'ashamed', pt: 'envergonhado', category: 'feeling', example: 'She felt ashamed.' },
+            { id: 175, en: 'grateful', pt: 'grato', category: 'feeling', example: 'I am grateful.' },
+            { id: 176, en: 'thankful', pt: 'agradecido', category: 'feeling', example: 'I am thankful.' },
+            { id: 177, en: 'hopeful', pt: 'esperançoso', category: 'feeling', example: 'I am hopeful.' },
+            { id: 178, en: 'desperate', pt: 'desesperado', category: 'feeling', example: 'He is desperate.' },
+            { id: 179, en: 'lonely', pt: 'solitário', category: 'feeling', example: 'She feels lonely.' },
+            { id: 180, en: 'loved', pt: 'amado', category: 'feeling', example: 'I feel loved.' },
+            { id: 181, en: 'hated', pt: 'odiado', category: 'feeling', example: 'He feels hated.' },
+            { id: 182, en: 'jealous', pt: 'com ciúmes', category: 'feeling', example: 'She is jealous.' },
+            { id: 183, en: 'envious', pt: 'invejoso', category: 'feeling', example: 'He is envious.' },
+            { id: 184, en: 'content', pt: 'satisfeito', category: 'feeling', example: 'I am content.' },
+            { id: 185, en: 'satisfied', pt: 'satisfeito', category: 'feeling', example: 'I am satisfied.' },
+            { id: 186, en: 'disappointed', pt: 'decepcionado', category: 'feeling', example: 'She is disappointed.' },
+            { id: 187, en: 'frustrated', pt: 'frustrado', category: 'feeling', example: 'He feels frustrated.' },
+            { id: 188, en: 'bored', pt: 'entediado', category: 'feeling', example: 'I am bored.' },
+            { id: 189, en: 'interested', pt: 'interessado', category: 'feeling', example: 'I am interested.' },
+            { id: 190, en: 'curious', pt: 'curioso', category: 'feeling', example: 'She is curious.' },
+            { id: 191, en: 'fearful', pt: 'medroso', category: 'feeling', example: 'He is fearful.' },
+            { id: 192, en: 'brave', pt: 'corajoso', category: 'feeling', example: 'She is brave.' },
+            { id: 193, en: 'calm', pt: 'calmo', category: 'feeling', example: 'I feel calm.' },
+            { id: 194, en: 'anxious', pt: 'ansioso', category: 'feeling', example: 'He is anxious.' },
+            { id: 195, en: 'peaceful', pt: 'pacífico', category: 'feeling', example: 'A peaceful place.' },
+            { id: 196, en: 'restless', pt: 'inquieto', category: 'feeling', example: 'She is restless.' },
+            { id: 197, en: 'cheerful', pt: 'alegre', category: 'feeling', example: 'A cheerful person.' },
+            { id: 198, en: 'gloomy', pt: 'sombrio', category: 'feeling', example: 'A gloomy day.' },
+            { id: 199, en: 'optimistic', pt: 'otimista', category: 'feeling', example: 'She is optimistic.' },
+            { id: 200, en: 'pessimistic', pt: 'pessimista', category: 'feeling', example: 'He is pessimistic.' },
+            { id: 201, en: 'confident', pt: 'confiante', category: 'feeling', example: 'I am confident.' },
+            { id: 202, en: 'insecure', pt: 'inseguro', category: 'feeling', example: 'He feels insecure.' },
+            { id: 203, en: 'lucky', pt: 'sortudo', category: 'feeling', example: 'I feel lucky.' },
+            { id: 204, en: 'unlucky', pt: 'azarado', category: 'feeling', example: 'He is unlucky.' },
+            { id: 205, en: 'blessed', pt: 'abençoado', category: 'feeling', example: 'I feel blessed.' },
+            { id: 206, en: 'cursed', pt: 'amaldiçoado', category: 'feeling', example: 'He feels cursed.' },
+            { id: 207, en: 'heartbroken', pt: 'com o coração partido', category: 'feeling', example: 'She is heartbroken.' },
+            { id: 208, en: 'overjoyed', pt: 'radiante', category: 'feeling', example: 'I am overjoyed.' },
+            { id: 209, en: 'miserable', pt: 'miserável', category: 'feeling', example: 'He is miserable.' },
+            { id: 210, en: 'delighted', pt: 'encantado', category: 'feeling', example: 'I am delighted.' },
+            { id: 211, en: 'horrified', pt: 'horrorizado', category: 'feeling', example: 'She was horrified.' },
+            { id: 212, en: 'amused', pt: 'divertido', category: 'feeling', example: 'I am amused.' },
+            { id: 213, en: 'annoyed', pt: 'irritado', category: 'feeling', example: 'He is annoyed.' },
+            { id: 214, en: 'guilty', pt: 'culpado', category: 'feeling', example: 'She feels guilty.' },
+            { id: 215, en: 'innocent', pt: 'inocente', category: 'feeling', example: 'He is innocent.' },
+            { id: 216, en: 'shy', pt: 'tímido', category: 'feeling', example: 'She is shy.' },
+            { id: 217, en: 'bold', pt: 'ousado', category: 'feeling', example: 'He is bold.' },
+            { id: 218, en: 'timid', pt: 'tímido', category: 'feeling', example: 'She is timid.' },
+            { id: 219, en: 'fierce', pt: 'feroz', category: 'feeling', example: 'A fierce lion.' },
+            { id: 220, en: 'gentle', pt: 'suave', category: 'feeling', example: 'A gentle touch.' },
+
+            // ========== PERSONALIDADE (221-300) ==========
+            { id: 221, en: 'kind', pt: 'gentil', category: 'personality', example: 'She is very kind.' },
+            { id: 222, en: 'mean', pt: 'malvado', category: 'personality', example: 'He is mean.' },
+            { id: 223, en: 'generous', pt: 'generoso', category: 'personality', example: 'She is generous.' },
+            { id: 224, en: 'selfish', pt: 'egoísta', category: 'personality', example: 'He is selfish.' },
+            { id: 225, en: 'patient', pt: 'paciente', category: 'personality', example: 'She is patient.' },
+            { id: 226, en: 'impatient', pt: 'impaciente', category: 'personality', example: 'He is impatient.' },
+            { id: 227, en: 'polite', pt: 'educado', category: 'personality', example: 'She is polite.' },
+            { id: 228, en: 'rude', pt: 'grosseiro', category: 'personality', example: 'He is rude.' },
+            { id: 229, en: 'honest', pt: 'honesto', category: 'personality', example: 'She is honest.' },
+            { id: 230, en: 'dishonest', pt: 'desonesto', category: 'personality', example: 'He is dishonest.' },
+            { id: 231, en: 'responsible', pt: 'responsável', category: 'personality', example: 'She is responsible.' },
+            { id: 232, en: 'irresponsible', pt: 'irresponsável', category: 'personality', example: 'He is irresponsible.' },
+            { id: 233, en: 'reliable', pt: 'confiável', category: 'personality', example: 'She is reliable.' },
+            { id: 234, en: 'unreliable', pt: 'não confiável', category: 'personality', example: 'He is unreliable.' },
+            { id: 235, en: 'hardworking', pt: 'esforçado', category: 'personality', example: 'She is hardworking.' },
+            { id: 236, en: 'lazy', pt: 'preguiçoso', category: 'personality', example: 'He is lazy.' },
+            { id: 237, en: 'intelligent', pt: 'inteligente', category: 'personality', example: 'She is intelligent.' },
+            { id: 238, en: 'stupid', pt: 'estúpido', category: 'personality', example: 'He is stupid.' },
+            { id: 239, en: 'wise', pt: 'sábio', category: 'personality', example: 'She is wise.' },
+            { id: 240, en: 'foolish', pt: 'tolo', category: 'personality', example: 'He is foolish.' },
+            { id: 241, en: 'creative', pt: 'criativo', category: 'personality', example: 'She is creative.' },
+            { id: 242, en: 'uncreative', pt: 'não criativo', category: 'personality', example: 'He is uncreative.' },
+            { id: 243, en: 'ambitious', pt: 'ambicioso', category: 'personality', example: 'She is ambitious.' },
+            { id: 244, en: 'unambitious', pt: 'sem ambição', category: 'personality', example: 'He is unambitious.' },
+            { id: 245, en: 'outgoing', pt: 'extrovertido', category: 'personality', example: 'She is outgoing.' },
+            { id: 246, en: 'introverted', pt: 'introvertido', category: 'personality', example: 'He is introverted.' },
+            { id: 247, en: 'friendly', pt: 'amigável', category: 'personality', example: 'She is friendly.' },
+            { id: 248, en: 'unfriendly', pt: 'não amigável', category: 'personality', example: 'He is unfriendly.' },
+            { id: 249, en: 'sociable', pt: 'sociável', category: 'personality', example: 'She is sociable.' },
+            { id: 250, en: 'antisocial', pt: 'antissocial', category: 'personality', example: 'He is antisocial.' },
+            { id: 251, en: 'funny', pt: 'engraçado', category: 'personality', example: 'She is funny.' },
+            { id: 252, en: 'serious', pt: 'sério', category: 'personality', example: 'He is serious.' },
+            { id: 253, en: 'happy', pt: 'feliz', category: 'personality', example: 'She is a happy person.' },
+            { id: 254, en: 'sad', pt: 'triste', category: 'personality', example: 'He is a sad person.' },
+            { id: 255, en: 'optimistic', pt: 'otimista', category: 'personality', example: 'She is optimistic.' },
+            { id: 256, en: 'pessimistic', pt: 'pessimista', category: 'personality', example: 'He is pessimistic.' },
+            { id: 257, en: 'confident', pt: 'confiante', category: 'personality', example: 'She is confident.' },
+            { id: 258, en: 'insecure', pt: 'inseguro', category: 'personality', example: 'He is insecure.' },
+            { id: 259, en: 'independent', pt: 'independente', category: 'personality', example: 'She is independent.' },
+            { id: 260, en: 'dependent', pt: 'dependente', category: 'personality', example: 'He is dependent.' },
+            { id: 261, en: 'adventurous', pt: 'aventureiro', category: 'personality', example: 'She is adventurous.' },
+            { id: 262, en: 'cautious', pt: 'cauteloso', category: 'personality', example: 'He is cautious.' },
+            { id: 263, en: 'daring', pt: 'ousado', category: 'personality', example: 'She is daring.' },
+            { id: 264, en: 'careful', pt: 'cuidadoso', category: 'personality', example: 'He is careful.' },
+            { id: 265, en: 'careless', pt: 'descuidado', category: 'personality', example: 'She is careless.' },
+            { id: 266, en: 'organized', pt: 'organizado', category: 'personality', example: 'He is organized.' },
+            { id: 267, en: 'disorganized', pt: 'desorganizado', category: 'personality', example: 'She is disorganized.' },
+            { id: 268, en: 'neat', pt: 'arrumado', category: 'personality', example: 'He is neat.' },
+            { id: 269, en: 'messy', pt: 'bagunceiro', category: 'personality', example: 'She is messy.' },
+            { id: 270, en: 'punctual', pt: 'pontual', category: 'personality', example: 'He is punctual.' },
+            { id: 271, en: 'late', pt: 'atrasado', category: 'personality', example: 'She is always late.' },
+            { id: 272, en: 'diligent', pt: 'diligente', category: 'personality', example: 'He is diligent.' },
+            { id: 273, en: 'negligent', pt: 'negligente', category: 'personality', example: 'She is negligent.' },
+            { id: 274, en: 'modest', pt: 'modesto', category: 'personality', example: 'He is modest.' },
+            { id: 275, en: 'arrogant', pt: 'arrogante', category: 'personality', example: 'She is arrogant.' },
+            { id: 276, en: 'humble', pt: 'humilde', category: 'personality', example: 'He is humble.' },
+            { id: 277, en: 'proud', pt: 'orgulhoso', category: 'personality', example: 'She is proud.' },
+            { id: 278, en: 'charming', pt: 'encantador', category: 'personality', example: 'He is charming.' },
+            { id: 279, en: 'annoying', pt: 'irritante', category: 'personality', example: 'She is annoying.' },
+            { id: 280, en: 'charming', pt: 'carismático', category: 'personality', example: 'He is charming.' },
+            { id: 281, en: 'boring', pt: 'entediante', category: 'personality', example: 'She is boring.' },
+            { id: 282, en: 'interesting', pt: 'interessante', category: 'personality', example: 'He is interesting.' },
+            { id: 283, en: 'enthusiastic', pt: 'entusiasmado', category: 'personality', example: 'She is enthusiastic.' },
+            { id: 284, en: 'apathetic', pt: 'apático', category: 'personality', example: 'He is apathetic.' },
+            { id: 285, en: 'passionate', pt: 'apaixonado', category: 'personality', example: 'She is passionate.' },
+            { id: 286, en: 'cold', pt: 'frio', category: 'personality', example: 'He is cold.' },
+            { id: 287, en: 'warm', pt: 'caloroso', category: 'personality', example: 'She is warm.' },
+            { id: 288, en: 'sensitive', pt: 'sensível', category: 'personality', example: 'He is sensitive.' },
+            { id: 289, en: 'tough', pt: 'durão', category: 'personality', example: 'She is tough.' },
+            { id: 290, en: 'flexible', pt: 'flexível', category: 'personality', example: 'He is flexible.' },
+            { id: 291, en: 'stubborn', pt: 'teimoso', category: 'personality', example: 'She is stubborn.' },
+            { id: 292, en: 'open-minded', pt: 'mente aberta', category: 'personality', example: 'He is open-minded.' },
+            { id: 293, en: 'close-minded', pt: 'mente fechada', category: 'personality', example: 'She is close-minded.' },
+            { id: 294, en: 'generous', pt: 'generoso', category: 'personality', example: 'He is generous.' },
+            { id: 295, en: 'stingy', pt: 'pão-duro', category: 'personality', example: 'She is stingy.' },
+            { id: 296, en: 'brave', pt: 'corajoso', category: 'personality', example: 'He is brave.' },
+            { id: 297, en: 'cowardly', pt: 'covarde', category: 'personality', example: 'She is cowardly.' },
+            { id: 298, en: 'honest', pt: 'honesto', category: 'personality', example: 'He is honest.' },
+            { id: 299, en: 'deceitful', pt: 'enganador', category: 'personality', example: 'She is deceitful.' },
+            { id: 300, en: 'loyal', pt: 'leal', category: 'personality', example: 'He is loyal.' },
+
+            // ========== CONDIÇÃO (301-380) ==========
+            { id: 301, en: 'broken', pt: 'quebrado', category: 'condition', example: 'The glass is broken.' },
+            { id: 302, en: 'working', pt: 'funcionando', category: 'condition', example: 'The machine is working.' },
+            { id: 303, en: 'fixed', pt: 'consertado', category: 'condition', example: 'The car is fixed.' },
+            { id: 304, en: 'open', pt: 'aberto', category: 'condition', example: 'The store is open.' },
+            { id: 305, en: 'closed', pt: 'fechado', category: 'condition', example: 'The door is closed.' },
+            { id: 306, en: 'locked', pt: 'trancado', category: 'condition', example: 'The door is locked.' },
+            { id: 307, en: 'unlocked', pt: 'destrancado', category: 'condition', example: 'The door is unlocked.' },
+            { id: 308, en: 'ready', pt: 'pronto', category: 'condition', example: 'I am ready.' },
+            { id: 309, en: 'available', pt: 'disponível', category: 'condition', example: 'The room is available.' },
+            { id: 310, en: 'unavailable', pt: 'indisponível', category: 'condition', example: 'He is unavailable.' },
+            { id: 311, en: 'occupied', pt: 'ocupado', category: 'condition', example: 'The seat is occupied.' },
+            { id: 312, en: 'free', pt: 'livre', category: 'condition', example: 'I am free.' },
+            { id: 313, en: 'busy', pt: 'ocupado', category: 'condition', example: 'She is busy.' },
+            { id: 314, en: 'sick', pt: 'doente', category: 'condition', example: 'He is sick.' },
+            { id: 315, en: 'healthy', pt: 'saudável', category: 'condition', example: 'She is healthy.' },
+            { id: 316, en: 'well', pt: 'bem', category: 'condition', example: 'I am well.' },
+            { id: 317, en: 'ill', pt: 'doente', category: 'condition', example: 'He is ill.' },
+            { id: 318, en: 'better', pt: 'melhor', category: 'condition', example: 'I feel better.' },
+            { id: 319, en: 'worse', pt: 'pior', category: 'condition', example: 'It is getting worse.' },
+            { id: 320, en: 'fresh', pt: 'fresco', category: 'condition', example: 'Fresh food.' },
+            { id: 321, en: 'stale', pt: 'velho', category: 'condition', example: 'Stale bread.' },
+            { id: 322, en: 'raw', pt: 'cru', category: 'condition', example: 'Raw meat.' },
+            { id: 323, en: 'cooked', pt: 'cozido', category: 'condition', example: 'Cooked rice.' },
+            { id: 324, en: 'hot', pt: 'quente', category: 'condition', example: 'The soup is hot.' },
+            { id: 325, en: 'cold', pt: 'frio', category: 'condition', example: 'The water is cold.' },
+            { id: 326, en: 'warm', pt: 'quente', category: 'condition', example: 'The weather is warm.' },
+            { id: 327, en: 'cool', pt: 'fresco', category: 'condition', example: 'Cool breeze.' },
+            { id: 328, en: 'wet', pt: 'molhado', category: 'condition', example: 'The floor is wet.' },
+            { id: 329, en: 'dry', pt: 'seco', category: 'condition', example: 'The towel is dry.' },
+            { id: 330, en: 'clean', pt: 'limpo', category: 'condition', example: 'The room is clean.' },
+            { id: 331, en: 'dirty', pt: 'sujo', category: 'condition', example: 'The shirt is dirty.' },
+            { id: 332, en: 'tidy', pt: 'arrumado', category: 'condition', example: 'The desk is tidy.' },
+            { id: 333, en: 'messy', pt: 'bagunçado', category: 'condition', example: 'The room is messy.' },
+            { id: 334, en: 'neat', pt: 'organizado', category: 'condition', example: 'A neat desk.' },
+            { id: 335, en: 'organized', pt: 'organizado', category: 'condition', example: 'The files are organized.' },
+            { id: 336, en: 'disorganized', pt: 'desorganizado', category: 'condition', example: 'The papers are disorganized.' },
+            { id: 337, en: 'damaged', pt: 'danificado', category: 'condition', example: 'The product is damaged.' },
+            { id: 338, en: 'intact', pt: 'intacto', category: 'condition', example: 'The package is intact.' },
+            { id: 339, en: 'perfect', pt: 'perfeito', category: 'condition', example: 'Everything is perfect.' },
+            { id: 340, en: 'flawed', pt: 'com defeito', category: 'condition', example: 'The design is flawed.' },
+            { id: 341, en: 'pure', pt: 'puro', category: 'condition', example: 'Pure water.' },
+            { id: 342, en: 'contaminated', pt: 'contaminado', category: 'condition', example: 'The water is contaminated.' },
+            { id: 343, en: 'organic', pt: 'orgânico', category: 'condition', example: 'Organic food.' },
+            { id: 344, en: 'processed', pt: 'processado', category: 'condition', example: 'Processed food.' },
+            { id: 345, en: 'alive', pt: 'vivo', category: 'condition', example: 'The animal is alive.' },
+            { id: 346, en: 'dead', pt: 'morto', category: 'condition', example: 'The flower is dead.' },
+            { id: 347, en: 'sleeping', pt: 'dormindo', category: 'condition', example: 'The baby is sleeping.' },
+            { id: 348, en: 'awake', pt: 'acordado', category: 'condition', example: 'I am awake.' },
+            { id: 349, en: 'asleep', pt: 'adormecido', category: 'condition', example: 'He is asleep.' },
+            { id: 350, en: 'conscious', pt: 'consciente', category: 'condition', example: 'She is conscious.' },
+            { id: 351, en: 'unconscious', pt: 'inconsciente', category: 'condition', example: 'He is unconscious.' },
+            { id: 352, en: 'visible', pt: 'visível', category: 'condition', example: 'The sign is visible.' },
+            { id: 353, en: 'invisible', pt: 'invisível', category: 'condition', example: 'The microbe is invisible.' },
+            { id: 354, en: 'audible', pt: 'audível', category: 'condition', example: 'The sound is audible.' },
+            { id: 355, en: 'inaudible', pt: 'inaudível', category: 'condition', example: 'The whisper is inaudible.' },
+            { id: 356, en: 'active', pt: 'ativo', category: 'condition', example: 'He is active.' },
+            { id: 357, en: 'inactive', pt: 'inativo', category: 'condition', example: 'She is inactive.' },
+            { id: 358, en: 'alive', pt: 'vivo', category: 'condition', example: 'The plant is alive.' },
+            { id: 359, en: 'dead', pt: 'morto', category: 'condition', example: 'The battery is dead.' },
+            { id: 360, en: 'flat', pt: 'chato', category: 'condition', example: 'The tire is flat.' },
+            { id: 361, en: 'inflated', pt: 'inflado', category: 'condition', example: 'The balloon is inflated.' },
+            { id: 362, en: 'empty', pt: 'vazio', category: 'condition', example: 'The box is empty.' },
+            { id: 363, en: 'full', pt: 'cheio', category: 'condition', example: 'The glass is full.' },
+            { id: 364, en: 'half-empty', pt: 'meio vazio', category: 'condition', example: 'The glass is half-empty.' },
+            { id: 365, en: 'half-full', pt: 'meio cheio', category: 'condition', example: 'The glass is half-full.' },
+            { id: 366, en: 'loose', pt: 'solto', category: 'condition', example: 'The screw is loose.' },
+            { id: 367, en: 'tight', pt: 'apertado', category: 'condition', example: 'The knot is tight.' },
+            { id: 368, en: 'firm', pt: 'firme', category: 'condition', example: 'The mattress is firm.' },
+            { id: 369, en: 'soft', pt: 'macio', category: 'condition', example: 'The pillow is soft.' },
+            { id: 370, en: 'hard', pt: 'duro', category: 'condition', example: 'The floor is hard.' },
+            { id: 371, en: 'rough', pt: 'áspero', category: 'condition', example: 'The texture is rough.' },
+            { id: 372, en: 'smooth', pt: 'liso', category: 'condition', example: 'The surface is smooth.' },
+            { id: 373, en: 'sharp', pt: 'afiado', category: 'condition', example: 'The knife is sharp.' },
+            { id: 374, en: 'dull', pt: 'sem graça', category: 'condition', example: 'The knife is dull.' },
+            { id: 375, en: 'fresh', pt: 'fresco', category: 'condition', example: 'Fresh flowers.' },
+            { id: 376, en: 'rotten', pt: 'podre', category: 'condition', example: 'Rotten fruit.' },
+            { id: 377, en: 'ripe', pt: 'maduro', category: 'condition', example: 'Ripe bananas.' },
+            { id: 378, en: 'unripe', pt: 'verde', category: 'condition', example: 'Unripe tomatoes.' },
+            { id: 379, en: 'delicious', pt: 'delicioso', category: 'condition', example: 'Delicious food.' },
+            { id: 380, en: 'tasteless', pt: 'sem gosto', category: 'condition', example: 'Tasteless soup.' },
+
+            // ========== TEMPO (381-430) ==========
+            { id: 381, en: 'early', pt: 'cedo', category: 'time', example: 'I arrived early.' },
+            { id: 382, en: 'late', pt: 'tarde', category: 'time', example: 'I arrived late.' },
+            { id: 383, en: 'fast', pt: 'rápido', category: 'time', example: 'He runs fast.' },
+            { id: 384, en: 'slow', pt: 'lento', category: 'time', example: 'He walks slow.' },
+            { id: 385, en: 'quick', pt: 'rápido', category: 'time', example: 'A quick response.' },
+            { id: 386, en: 'rapid', pt: 'rápido', category: 'time', example: 'Rapid growth.' },
+            { id: 387, en: 'sudden', pt: 'repentino', category: 'time', example: 'A sudden change.' },
+            { id: 388, en: 'gradual', pt: 'gradual', category: 'time', example: 'A gradual improvement.' },
+            { id: 389, en: 'temporary', pt: 'temporário', category: 'time', example: 'A temporary solution.' },
+            { id: 390, en: 'permanent', pt: 'permanente', category: 'time', example: 'A permanent job.' },
+            { id: 391, en: 'brief', pt: 'breve', category: 'time', example: 'A brief visit.' },
+            { id: 392, en: 'long', pt: 'longo', category: 'time', example: 'A long time.' },
+            { id: 393, en: 'short', pt: 'curto', category: 'time', example: 'A short time.' },
+            { id: 394, en: 'ancient', pt: 'antigo', category: 'time', example: 'Ancient history.' },
+            { id: 395, en: 'modern', pt: 'moderno', category: 'time', example: 'Modern technology.' },
+            { id: 396, en: 'future', pt: 'futuro', category: 'time', example: 'Future plans.' },
+            { id: 397, en: 'past', pt: 'passado', category: 'time', example: 'Past experiences.' },
+            { id: 398, en: 'present', pt: 'presente', category: 'time', example: 'The present moment.' },
+            { id: 399, en: 'current', pt: 'atual', category: 'time', example: 'Current events.' },
+            { id: 400, en: 'previous', pt: 'anterior', category: 'time', example: 'The previous day.' },
+            { id: 401, en: 'next', pt: 'próximo', category: 'time', example: 'Next week.' },
+            { id: 402, en: 'last', pt: 'último', category: 'time', example: 'Last year.' },
+            { id: 403, en: 'first', pt: 'primeiro', category: 'time', example: 'The first time.' },
+            { id: 404, en: 'second', pt: 'segundo', category: 'time', example: 'A second chance.' },
+            { id: 405, en: 'final', pt: 'final', category: 'time', example: 'The final day.' },
+            { id: 406, en: 'initial', pt: 'inicial', category: 'time', example: 'The initial stage.' },
+            { id: 407, en: 'delayed', pt: 'atrasado', category: 'time', example: 'The flight is delayed.' },
+            { id: 408, en: 'on-time', pt: 'pontual', category: 'time', example: 'The train is on-time.' },
+            { id: 409, en: 'ancient', pt: 'antigo', category: 'time', example: 'Ancient ruins.' },
+            { id: 410, en: 'vintage', pt: 'vintage', category: 'time', example: 'Vintage clothes.' },
+            { id: 411, en: 'old-fashioned', pt: 'antiquado', category: 'time', example: 'Old-fashioned values.' },
+            { id: 412, en: 'outdated', pt: 'ultrapassado', category: 'time', example: 'Outdated technology.' },
+            { id: 413, en: 'up-to-date', pt: 'atualizado', category: 'time', example: 'Up-to-date information.' },
+            { id: 414, en: 'timely', pt: 'oportuno', category: 'time', example: 'A timely reminder.' },
+            { id: 415, en: 'untimely', pt: 'inoportuno', category: 'time', example: 'An untimely death.' },
+            { id: 416, en: 'yearly', pt: 'anual', category: 'time', example: 'A yearly subscription.' },
+            { id: 417, en: 'monthly', pt: 'mensal', category: 'time', example: 'A monthly payment.' },
+            { id: 418, en: 'weekly', pt: 'semanal', category: 'time', example: 'A weekly meeting.' },
+            { id: 419, en: 'daily', pt: 'diário', category: 'time', example: 'A daily routine.' },
+            { id: 420, en: 'hourly', pt: 'cada hora', category: 'time', example: 'An hourly rate.' },
+            { id: 421, en: 'frequent', pt: 'frequente', category: 'time', example: 'Frequent visits.' },
+            { id: 422, en: 'rare', pt: 'raro', category: 'time', example: 'A rare occurrence.' },
+            { id: 423, en: 'occasional', pt: 'ocasional', category: 'time', example: 'An occasional treat.' },
+            { id: 424, en: 'constant', pt: 'constante', category: 'time', example: 'Constant attention.' },
+            { id: 425, en: 'continuous', pt: 'contínuo', category: 'time', example: 'Continuous improvement.' },
+            { id: 426, en: 'intermittent', pt: 'intermitente', category: 'time', example: 'Intermittent rain.' },
+            { id: 427, en: 'immediate', pt: 'imediato', category: 'time', example: 'An immediate response.' },
+            { id: 428, en: 'instant', pt: 'instantâneo', category: 'time', example: 'Instant coffee.' },
+            { id: 429, en: 'ancient', pt: 'antigo', category: 'time', example: 'Ancient civilizations.' },
+            { id: 430, en: 'recent', pt: 'recente', category: 'time', example: 'Recent news.' },
+
+            // ========== FORMA (431-500) ==========
+            { id: 431, en: 'round', pt: 'redondo', category: 'shape', example: 'A round table.' },
+            { id: 432, en: 'square', pt: 'quadrado', category: 'shape', example: 'A square box.' },
+            { id: 433, en: 'triangular', pt: 'triangular', category: 'shape', example: 'A triangular piece.' },
+            { id: 434, en: 'rectangular', pt: 'retangular', category: 'shape', example: 'A rectangular room.' },
+            { id: 435, en: 'oval', pt: 'oval', category: 'shape', example: 'An oval mirror.' },
+            { id: 436, en: 'circular', pt: 'circular', category: 'shape', example: 'A circular path.' },
+            { id: 437, en: 'spherical', pt: 'esférico', category: 'shape', example: 'A spherical ball.' },
+            { id: 438, en: 'flat', pt: 'plano', category: 'shape', example: 'A flat surface.' },
+            { id: 439, en: 'curved', pt: 'curvo', category: 'shape', example: 'A curved road.' },
+            { id: 440, en: 'straight', pt: 'reto', category: 'shape', example: 'A straight line.' },
+            { id: 441, en: 'twisted', pt: 'torcido', category: 'shape', example: 'A twisted wire.' },
+            { id: 442, en: 'bent', pt: 'dobrado', category: 'shape', example: 'A bent nail.' },
+            { id: 443, en: 'folded', pt: 'dobrado', category: 'shape', example: 'A folded paper.' },
+            { id: 444, en: 'wrinkled', pt: 'enrugado', category: 'shape', example: 'Wrinkled clothes.' },
+            { id: 445, en: 'smooth', pt: 'liso', category: 'shape', example: 'A smooth stone.' },
+            { id: 446, en: 'rough', pt: 'áspero', category: 'shape', example: 'Rough texture.' },
+            { id: 447, en: 'pointed', pt: 'pontudo', category: 'shape', example: 'A pointed pencil.' },
+            { id: 448, en: 'blunt', pt: 'sem ponta', category: 'shape', example: 'A blunt knife.' },
+            { id: 449, en: 'hollow', pt: 'oco', category: 'shape', example: 'A hollow tree.' },
+            { id: 450, en: 'solid', pt: 'sólido', category: 'shape', example: 'A solid wall.' },
+            { id: 451, en: 'porous', pt: 'poroso', category: 'shape', example: 'Porous material.' },
+            { id: 452, en: 'dense', pt: 'denso', category: 'shape', example: 'Dense forest.' },
+            { id: 453, en: 'thin', pt: 'fino', category: 'shape', example: 'Thin paper.' },
+            { id: 454, en: 'thick', pt: 'grosso', category: 'shape', example: 'Thick glass.' },
+            { id: 455, en: 'narrow', pt: 'estreito', category: 'shape', example: 'Narrow street.' },
+            { id: 456, en: 'wide', pt: 'largo', category: 'shape', example: 'Wide road.' },
+            { id: 457, en: 'broad', pt: 'amplo', category: 'shape', example: 'Broad shoulders.' },
+            { id: 458, en: 'deep', pt: 'profundo', category: 'shape', example: 'Deep hole.' },
+            { id: 459, en: 'shallow', pt: 'raso', category: 'shape', example: 'Shallow water.' },
+            { id: 460, en: 'high', pt: 'alto', category: 'shape', example: 'High mountain.' },
+            { id: 461, en: 'low', pt: 'baixo', category: 'shape', example: 'Low ceiling.' },
+            { id: 462, en: 'steep', pt: 'íngreme', category: 'shape', example: 'Steep hill.' },
+            { id: 463, en: 'level', pt: 'nivelado', category: 'shape', example: 'Level ground.' },
+            { id: 464, en: 'uneven', pt: 'desnivelado', category: 'shape', example: 'Uneven floor.' },
+            { id: 465, en: 'symmetrical', pt: 'simétrico', category: 'shape', example: 'Symmetrical design.' },
+            { id: 466, en: 'asymmetrical', pt: 'assimétrico', category: 'shape', example: 'Asymmetrical pattern.' },
+            { id: 467, en: 'regular', pt: 'regular', category: 'shape', example: 'Regular shape.' },
+            { id: 468, en: 'irregular', pt: 'irregular', category: 'shape', example: 'Irregular shape.' },
+            { id: 469, en: 'perfect', pt: 'perfeito', category: 'shape', example: 'Perfect circle.' },
+            { id: 470, en: 'imperfect', pt: 'imperfeito', category: 'shape', example: 'Imperfect shape.' },
+            { id: 471, en: 'angled', pt: 'angular', category: 'shape', example: 'Angled cut.' },
+            { id: 472, en: 'rounded', pt: 'arredondado', category: 'shape', example: 'Rounded edges.' },
+            { id: 473, en: 'sharp', pt: 'afiado', category: 'shape', example: 'Sharp angle.' },
+            { id: 474, en: 'blunt', pt: 'rombo', category: 'shape', example: 'Blunt edge.' },
+            { id: 475, en: 'spiral', pt: 'espiral', category: 'shape', example: 'Spiral staircase.' },
+            { id: 476, en: 'conical', pt: 'cônico', category: 'shape', example: 'Conical hat.' },
+            { id: 477, en: 'cylindrical', pt: 'cilíndrico', category: 'shape', example: 'Cylindrical container.' },
+            { id: 478, en: 'pyramidal', pt: 'piramidal', category: 'shape', example: 'Pyramidal structure.' },
+            { id: 479, en: 'cubic', pt: 'cúbico', category: 'shape', example: 'Cubic shape.' },
+            { id: 480, en: 'elongated', pt: 'alongado', category: 'shape', example: 'Elongated body.' },
+            { id: 481, en: 'compressed', pt: 'comprimido', category: 'shape', example: 'Compressed air.' },
+            { id: 482, en: 'expanded', pt: 'expandido', category: 'shape', example: 'Expanded metal.' },
+            { id: 483, en: 'flattened', pt: 'achatado', category: 'shape', example: 'Flattened can.' },
+            { id: 484, en: 'bulging', pt: 'abaulado', category: 'shape', example: 'Bulging eyes.' },
+            { id: 485, en: 'concave', pt: 'côncavo', category: 'shape', example: 'Concave lens.' },
+            { id: 486, en: 'convex', pt: 'convexo', category: 'shape', example: 'Convex mirror.' },
+            { id: 487, en: 'ridged', pt: 'com sulcos', category: 'shape', example: 'Ridged surface.' },
+            { id: 488, en: 'grooved', pt: 'ranhurado', category: 'shape', example: 'Grooved design.' },
+            { id: 489, en: 'perforated', pt: 'perfurado', category: 'shape', example: 'Perforated paper.' },
+            { id: 490, en: 'solid', pt: 'sólido', category: 'shape', example: 'Solid structure.' },
+            { id: 491, en: 'hollow', pt: 'oco', category: 'shape', example: 'Hollow tube.' },
+            { id: 492, en: 'translucent', pt: 'translúcido', category: 'shape', example: 'Translucent glass.' },
+            { id: 493, en: 'transparent', pt: 'transparente', category: 'shape', example: 'Transparent plastic.' },
+            { id: 494, en: 'opaque', pt: 'opaco', category: 'shape', example: 'Opaque material.' },
+            { id: 495, en: 'glossy', pt: 'brilhante', category: 'shape', example: 'Glossy finish.' },
+            { id: 496, en: 'matte', pt: 'fosco', category: 'shape', example: 'Matte surface.' },
+            { id: 497, en: 'shiny', pt: 'brilhante', category: 'shape', example: 'Shiny hair.' },
+            { id: 498, en: 'dull', pt: 'opaco', category: 'shape', example: 'Dull finish.' },
+            { id: 499, en: 'sleek', pt: 'elegante', category: 'shape', example: 'Sleek design.' },
+            { id: 500, en: 'bulky', pt: 'volumoso', category: 'shape', example: 'Bulky package.' }
+        ];
+
+        // ============================================================
+        // LÓGICA DE RENDERIZAÇÃO
+        // ============================================================
+
+        let currentFilter = 'all';
+        let currentSearch = '';
+
+        function getCategoryBadge(category) {
+            const map = {
+                'quality': 'quality',
+                'size': 'size',
+                'color': 'color',
+                'feeling': 'feeling',
+                'personality': 'personality',
+                'condition': 'condition',
+                'time': 'time',
+                'shape': 'shape'
+            };
+            const labels = {
+                'quality': 'Qualidade',
+                'size': 'Tamanho',
+                'color': 'Cores',
+                'feeling': 'Sentimentos',
+                'personality': 'Personalidade',
+                'condition': 'Condição',
+                'time': 'Tempo',
+                'shape': 'Forma'
+            };
+            return `<span class="category-badge ${map[category] || 'quality'}">${labels[category] || 'Qualidade'}</span>`;
+        }
+
+        function renderTable(filteredAdjs) {
+            const tbody = document.getElementById('adjTable');
+            tbody.innerHTML = '';
+            if (filteredAdjs.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:40px;color:#7f8c8d;">Nenhum adjetivo encontrado.</td></tr>';
+                return;
+            }
+            filteredAdjs.forEach(adj => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${adj.id}</td>
+                    <td class="word-en">${adj.en}</td>
+                    <td class="word-pt">${adj.pt}</td>
+                    <td class="example-text">${adj.example}</td>
+                    <td>${getCategoryBadge(adj.category)}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+            updateStats(filteredAdjs);
+        }
+
+        function updateStats(adjsList) {
+            const quality = adjsList.filter(a => a.category === 'quality').length;
+            const size = adjsList.filter(a => a.category === 'size').length;
+            const color = adjsList.filter(a => a.category === 'color').length;
+            const feeling = adjsList.filter(a => a.category === 'feeling').length;
+            const personality = adjsList.filter(a => a.category === 'personality').length;
+            
+            document.getElementById('qualityCount').textContent = quality;
+            document.getElementById('sizeCount').textContent = size;
+            document.getElementById('colorCount').textContent = color;
+            document.getElementById('feelingCount').textContent = feeling;
+            document.getElementById('personalityCount').textContent = personality;
+        }
+
+        // ============================================================
+        // FILTROS
+        // ============================================================
+
+        function filterCategory(category) {
+            currentFilter = category;
+            document.querySelectorAll('.category-filter button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            const buttons = document.querySelectorAll('.category-filter button');
+            const index = ['all', 'quality', 'size', 'color', 'feeling', 'personality', 'condition', 'time', 'shape'].indexOf(category);
+            if (buttons[index]) buttons[index].classList.add('active');
+            applyFilters();
+        }
+
+        function resetFilter() {
+            currentFilter = 'all';
+            document.getElementById('searchInput').value = '';
+            currentSearch = '';
+            document.querySelectorAll('.category-filter button').forEach(btn => btn.classList.remove('active'));
+            document.querySelector('.category-filter .btn-all').classList.add('active');
+            applyFilters();
+        }
+
+        function searchAdjective() {
+            const input = document.getElementById('searchInput');
+            currentSearch = input.value.toLowerCase().trim();
+            applyFilters();
+        }
+
+        function applyFilters() {
+            let filtered = [...adjectives];
+
+            if (currentFilter !== 'all') {
+                filtered = filtered.filter(a => a.category === currentFilter);
+            }
+
+            if (currentSearch) {
+                filtered = filtered.filter(a => 
+                    a.en.toLowerCase().includes(currentSearch) ||
+                    a.pt.toLowerCase().includes(currentSearch)
+                );
+            }
+
+            renderTable(filtered);
+        }
+
+        // ============================================================
+        // ORDENAÇÃO
+        // ============================================================
+
+        document.querySelectorAll('thead th').forEach((th, index) => {
+            if (index === 0) return;
+            th.addEventListener('click', () => {
+                const tbody = document.getElementById('adjTable');
+                const rows = Array.from(tbody.querySelectorAll('tr'));
+                if (rows.length === 1 && rows[0].querySelector('td[colspan]')) return;
+                
+                const direction = th.dataset.direction === 'asc' ? 'desc' : 'asc';
+                th.dataset.direction = direction;
+
+                rows.sort((a, b) => {
+                    const aText = a.children[index].textContent.trim().toLowerCase();
+                    const bText = b.children[index].textContent.trim().toLowerCase();
+                    if (aText < bText) return direction === 'asc' ? -1 : 1;
+                    if (aText > bText) return direction === 'asc' ? 1 : -1;
+                    return 0;
+                });
+
+                rows.forEach(row => tbody.appendChild(row));
+            });
+        });
+
+        // ============================================================
+        // INICIALIZAÇÃO
+        // ============================================================
+
+        renderTable(adjectives);
+    </script>
+</body>
+</html>

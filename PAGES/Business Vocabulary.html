@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Business Vocabulary - Vocabulário de Negócios</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0 30px;
+        }
+        .stat-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .stat-card .number {
+            font-size: 2em;
+            font-weight: 700;
+        }
+        .stat-card .label {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .stat-card .number.purple { color: #8e44ad; }
+        .stat-card .number.blue { color: #2980b9; }
+        .stat-card .number.green { color: #27ae60; }
+        .stat-card .number.orange { color: #f39c12; }
+        .stat-card .number.red { color: #e74c3c; }
+
+        .search-box {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .search-box input {
+            padding: 12px 20px;
+            width: 100%;
+            max-width: 500px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        .search-box input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .category-filter button {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: #ecf0f1;
+            color: #2c3e50;
+        }
+        .category-filter button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        .category-filter button.active {
+            background: #3498db;
+            color: white;
+        }
+        .category-filter button.btn-all { background: #3498db; color: white; }
+        .category-filter button.btn-all:hover { background: #2980b9; }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+        .legend-item .color-box {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+        .legend-item .color-box.general { background: #3498db; }
+        .legend-item .color-box.finance { background: #2ecc71; }
+        .legend-item .color-box.meetings { background: #e74c3c; }
+        .legend-item .color-box.marketing { background: #f39c12; }
+        .legend-item .color-box.hr { background: #8e44ad; }
+        .legend-item .color-box.legal { background: #e67e22; }
+
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 10px;
+            border: 1px solid #ecf0f1;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        thead {
+            background: #2c3e50;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        thead th {
+            padding: 12px 10px;
+            text-align: left;
+            font-weight: 600;
+            cursor: pointer;
+            user-select: none;
+            white-space: nowrap;
+        }
+        thead th:hover {
+            background: #34495e;
+        }
+        thead th:nth-child(1) { width: 5%; }
+        thead th:nth-child(2) { width: 25%; }
+        thead th:nth-child(3) { width: 25%; }
+        thead th:nth-child(4) { width: 30%; }
+        thead th:nth-child(5) { width: 15%; }
+
+        tbody tr {
+            border-bottom: 1px solid #ecf0f1;
+            transition: background 0.2s;
+        }
+        tbody tr:hover {
+            background: #f8f9fa;
+        }
+        tbody td {
+            padding: 10px 10px;
+            vertical-align: middle;
+        }
+        tbody td:first-child {
+            font-weight: 600;
+            color: #7f8c8d;
+        }
+        .word-en {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        .word-pt {
+            color: #7f8c8d;
+        }
+        .example-text {
+            color: #666;
+            font-style: italic;
+            font-size: 0.85em;
+        }
+        .category-badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .category-badge.general { background: #cce5ff; color: #004085; }
+        .category-badge.finance { background: #d4edda; color: #155724; }
+        .category-badge.meetings { background: #f8d7da; color: #721c24; }
+        .category-badge.marketing { background: #fff3cd; color: #856404; }
+        .category-badge.hr { background: #e8d5f5; color: #6c3483; }
+        .category-badge.legal { background: #fdebd0; color: #935e38; }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2em;
+            color: #7f8c8d;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            h1 { font-size: 1.8em; }
+            table { font-size: 11px; }
+            thead th, tbody td { padding: 6px 5px; }
+            .category-badge { font-size: 8px; padding: 2px 6px; }
+            .stats { grid-template-columns: repeat(2, 1fr); }
+            .category-filter button { padding: 6px 12px; font-size: 11px; }
+            thead th:nth-child(4) { display: none; }
+            tbody td:nth-child(4) { display: none; }
+        }
+        @media (max-width: 480px) {
+            table { font-size: 9px; }
+            thead th, tbody td { padding: 4px 3px; }
+            .legend { gap: 10px; font-size: 11px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💼 Business Vocabulary</h1>
+        <p class="subtitle">Vocabulário essencial para o mundo dos negócios em inglês</p>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="number purple">150</div>
+                <div class="label">Total de termos</div>
+            </div>
+            <div class="stat-card">
+                <div class="number blue" id="generalCount">0</div>
+                <div class="label">Geral</div>
+            </div>
+            <div class="stat-card">
+                <div class="number green" id="financeCount">0</div>
+                <div class="label">Finanças</div>
+            </div>
+            <div class="stat-card">
+                <div class="number red" id="meetingsCount">0</div>
+                <div class="label">Reuniões</div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item"><div class="color-box general"></div> Geral</div>
+            <div class="legend-item"><div class="color-box finance"></div> Finanças</div>
+            <div class="legend-item"><div class="color-box meetings"></div> Reuniões</div>
+            <div class="legend-item"><div class="color-box marketing"></div> Marketing</div>
+            <div class="legend-item"><div class="color-box hr"></div> RH</div>
+            <div class="legend-item"><div class="color-box legal"></div> Jurídico</div>
+        </div>
+
+        <div class="category-filter">
+            <button class="btn-all active" onclick="filterCategory('all')">📋 Todos</button>
+            <button onclick="filterCategory('general')">📌 Geral</button>
+            <button onclick="filterCategory('finance')">💰 Finanças</button>
+            <button onclick="filterCategory('meetings')">🤝 Reuniões</button>
+            <button onclick="filterCategory('marketing')">📢 Marketing</button>
+            <button onclick="filterCategory('hr')">👥 RH</button>
+            <button onclick="filterCategory('legal')">⚖️ Jurídico</button>
+            <button onclick="resetFilter()">🔄 Resetar</button>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 Buscar termo de negócios... (inglês ou português)" onkeyup="searchTerm()">
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>English</th>
+                        <th>Português</th>
+                        <th>Exemplo</th>
+                        <th>Categoria</th>
+                    </tr>
+                </thead>
+                <tbody id="businessTable">
+                    <tr><td colspan="5" class="loading">Carregando vocabulário de negócios...</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            💡 Clique no cabeçalho para ordenar • Use a busca para encontrar termos específicos
+        </div>
+    </div>
+
+    <script>
+        // ============================================================
+        // BUSINESS VOCABULARY
+        // ============================================================
+        const businessTerms = [
+            // ========== GERAL (1-40) ==========
+            { id: 1, en: 'business', pt: 'negócios/empresa', category: 'general', example: 'We need to grow our business.' },
+            { id: 2, en: 'company', pt: 'empresa', category: 'general', example: 'She works for a large company.' },
+            { id: 3, en: 'corporation', pt: 'corporação', category: 'general', example: 'The corporation has offices worldwide.' },
+            { id: 4, en: 'enterprise', pt: 'empreendimento', category: 'general', example: 'He started his own enterprise.' },
+            { id: 5, en: 'startup', pt: 'startup/empresa emergente', category: 'general', example: 'They founded a tech startup.' },
+            { id: 6, en: 'firm', pt: 'empresa/escritório', category: 'general', example: 'She works for a law firm.' },
+            { id: 7, en: 'partner', pt: 'sócio/parceiro', category: 'general', example: 'We need a business partner.' },
+            { id: 8, en: 'stakeholder', pt: 'parte interessada', category: 'general', example: 'We need to consider all stakeholders.' },
+            { id: 9, en: 'shareholder', pt: 'acionista', category: 'general', example: 'The shareholders approved the deal.' },
+            { id: 10, en: 'investor', pt: 'investidor', category: 'general', example: 'We are looking for investors.' },
+            { id: 11, en: 'client', pt: 'cliente', category: 'general', example: 'We have a new client.' },
+            { id: 12, en: 'customer', pt: 'cliente/consumidor', category: 'general', example: 'The customer is always right.' },
+            { id: 13, en: 'consumer', pt: 'consumidor', category: 'general', example: 'Consumer behavior has changed.' },
+            { id: 14, en: 'supplier', pt: 'fornecedor', category: 'general', example: 'We have a reliable supplier.' },
+            { id: 15, en: 'vendor', pt: 'vendedor/fornecedor', category: 'general', example: 'The vendor delivered on time.' },
+            { id: 16, en: 'merger', pt: 'fusão', category: 'general', example: 'The merger was approved.' },
+            { id: 17, en: 'acquisition', pt: 'aquisição', category: 'general', example: 'The acquisition cost $1 billion.' },
+            { id: 18, en: 'joint venture', pt: 'empresa conjunta', category: 'general', example: 'They formed a joint venture.' },
+            { id: 19, en: 'subsidiary', pt: 'subsidiária', category: 'general', example: 'The subsidiary is based in Brazil.' },
+            { id: 20, en: 'headquarters', pt: 'sede', category: 'general', example: 'Our headquarters is in New York.' },
+            { id: 21, en: 'branch', pt: 'filial', category: 'general', example: 'We have a branch in London.' },
+            { id: 22, en: 'department', pt: 'departamento', category: 'general', example: 'She works in the sales department.' },
+            { id: 23, en: 'division', pt: 'divisão', category: 'general', example: 'The division is growing rapidly.' },
+            { id: 24, en: 'team', pt: 'equipe', category: 'general', example: 'We have a great team.' },
+            { id: 25, en: 'board', pt: 'conselho/diretoria', category: 'general', example: 'The board approved the plan.' },
+            { id: 26, en: 'CEO', pt: 'CEO/Diretor Executivo', category: 'general', example: 'The CEO gave a speech.' },
+            { id: 27, en: 'manager', pt: 'gerente', category: 'general', example: 'The manager is in a meeting.' },
+            { id: 28, en: 'supervisor', pt: 'supervisor', category: 'general', example: 'My supervisor is very helpful.' },
+            { id: 29, en: 'employee', pt: 'funcionário', category: 'general', example: 'The company has 500 employees.' },
+            { id: 30, en: 'staff', pt: 'equipe/funcionários', category: 'general', example: 'The staff is very professional.' },
+            { id: 31, en: 'workforce', pt: 'força de trabalho', category: 'general', example: 'Our workforce is diverse.' },
+            { id: 32, en: 'talent', pt: 'talento', category: 'general', example: 'We need to attract top talent.' },
+            { id: 33, en: 'strategy', pt: 'estratégia', category: 'general', example: 'We need a new strategy.' },
+            { id: 34, en: 'goal', pt: 'objetivo', category: 'general', example: 'Our goal is to increase sales.' },
+            { id: 35, en: 'objective', pt: 'objetivo', category: 'general', example: 'The main objective is clear.' },
+            { id: 36, en: 'mission', pt: 'missão', category: 'general', example: 'Our mission is to innovate.' },
+            { id: 37, en: 'vision', pt: 'visão', category: 'general', example: 'The vision is to become a global leader.' },
+            { id: 38, en: 'value', pt: 'valor', category: 'general', example: 'We value customer satisfaction.' },
+            { id: 39, en: 'culture', pt: 'cultura', category: 'general', example: 'Our company culture is inclusive.' },
+            { id: 40, en: 'ethics', pt: 'ética', category: 'general', example: 'We follow high ethical standards.' },
+
+            // ========== FINANÇAS (41-75) ==========
+            { id: 41, en: 'finance', pt: 'finanças', category: 'finance', example: 'She works in finance.' },
+            { id: 42, en: 'budget', pt: 'orçamento', category: 'finance', example: 'We need to stay within budget.' },
+            { id: 43, en: 'revenue', pt: 'receita', category: 'finance', example: 'Our revenue increased by 20%.' },
+            { id: 44, en: 'profit', pt: 'lucro', category: 'finance', example: 'The company made a profit.' },
+            { id: 45, en: 'loss', pt: 'prejuízo', category: 'finance', example: 'We reported a loss this quarter.' },
+            { id: 46, en: 'expense', pt: 'despesa', category: 'finance', example: 'We need to reduce expenses.' },
+            { id: 47, en: 'cost', pt: 'custo', category: 'finance', example: 'The cost of production is high.' },
+            { id: 48, en: 'investment', pt: 'investimento', category: 'finance', example: 'We are making a large investment.' },
+            { id: 49, en: 'return on investment', pt: 'retorno sobre investimento', category: 'finance', example: 'The ROI was 15%.' },
+            { id: 50, en: 'profit margin', pt: 'margem de lucro', category: 'finance', example: 'Our profit margin is 12%.' },
+            { id: 51, en: 'cash flow', pt: 'fluxo de caixa', category: 'finance', example: 'We need to improve cash flow.' },
+            { id: 52, en: 'balance sheet', pt: 'balanço patrimonial', category: 'finance', example: 'The balance sheet looks good.' },
+            { id: 53, en: 'income statement', pt: 'demonstração de resultados', category: 'finance', example: 'Check the income statement.' },
+            { id: 54, en: 'asset', pt: 'ativo', category: 'finance', example: 'The company has many assets.' },
+            { id: 55, en: 'liability', pt: 'passivo', category: 'finance', example: 'Our liabilities decreased.' },
+            { id: 56, en: 'equity', pt: 'patrimônio líquido', category: 'finance', example: 'Equity increased this year.' },
+            { id: 57, en: 'debt', pt: 'dívida', category: 'finance', example: 'The company has high debt.' },
+            { id: 58, en: 'loan', pt: 'empréstimo', category: 'finance', example: 'We need a loan from the bank.' },
+            { id: 59, en: 'credit', pt: 'crédito', category: 'finance', example: 'The company has good credit.' },
+            { id: 60, en: 'invoice', pt: 'fatura', category: 'finance', example: 'We sent the invoice yesterday.' },
+            { id: 61, en: 'bill', pt: 'conta', category: 'finance', example: 'We need to pay the bill.' },
+            { id: 62, en: 'payment', pt: 'pagamento', category: 'finance', example: 'The payment is due next week.' },
+            { id: 63, en: 'salary', pt: 'salário', category: 'finance', example: 'His salary is competitive.' },
+            { id: 64, en: 'wage', pt: 'salário/remuneração', category: 'finance', example: 'The minimum wage increased.' },
+            { id: 65, en: 'bonus', pt: 'bônus', category: 'finance', example: 'Employees received a bonus.' },
+            { id: 66, en: 'commission', pt: 'comissão', category: 'finance', example: 'She earns commission on sales.' },
+            { id: 67, en: 'tax', pt: 'imposto', category: 'finance', example: 'We need to pay taxes.' },
+            { id: 68, en: 'audit', pt: 'auditoria', category: 'finance', example: 'The financial audit is complete.' },
+            { id: 69, en: 'budget', pt: 'orçamento', category: 'finance', example: 'We are over budget.' },
+            { id: 70, en: 'forecast', pt: 'previsão', category: 'finance', example: 'Our sales forecast is optimistic.' },
+            { id: 71, en: 'quarterly', pt: 'trimestral', category: 'finance', example: 'We have quarterly reports.' },
+            { id: 72, en: 'annual', pt: 'anual', category: 'finance', example: 'The annual report is available.' },
+            { id: 73, en: 'fiscal year', pt: 'ano fiscal', category: 'finance', example: 'Our fiscal year starts in January.' },
+            { id: 74, en: 'dividend', pt: 'dividendo', category: 'finance', example: 'Shareholders received dividends.' },
+            { id: 75, en: 'stock', pt: 'ação/estoque', category: 'finance', example: 'The stock price increased.' },
+
+            // ========== REUNIÕES (76-105) ==========
+            { id: 76, en: 'meeting', pt: 'reunião', category: 'meetings', example: 'We have a meeting at 10 AM.' },
+            { id: 77, en: 'agenda', pt: 'pauta/agenda', category: 'meetings', example: 'The agenda is set for today.' },
+            { id: 78, en: 'minutes', pt: 'atas', category: 'meetings', example: 'Please take the minutes.' },
+            { id: 79, en: 'attendee', pt: 'participante', category: 'meetings', example: 'All attendees are present.' },
+            { id: 80, en: 'presentation', pt: 'apresentação', category: 'meetings', example: 'She gave an excellent presentation.' },
+            { id: 81, en: 'proposal', pt: 'proposta', category: 'meetings', example: 'We presented a new proposal.' },
+            { id: 82, en: 'negotiation', pt: 'negociação', category: 'meetings', example: 'The negotiation was successful.' },
+            { id: 83, en: 'agreement', pt: 'acordo', category: 'meetings', example: 'We reached an agreement.' },
+            { id: 84, en: 'contract', pt: 'contrato', category: 'meetings', example: 'We signed the contract.' },
+            { id: 85, en: 'deadline', pt: 'prazo', category: 'meetings', example: 'We need to meet the deadline.' },
+            { id: 86, en: 'milestone', pt: 'marco', category: 'meetings', example: 'This is a major milestone.' },
+            { id: 87, en: 'deliverable', pt: 'entregável', category: 'meetings', example: 'The deliverables are due Friday.' },
+            { id: 88, en: 'action item', pt: 'item de ação', category: 'meetings', example: 'We need to follow up on action items.' },
+            { id: 89, en: 'follow-up', pt: 'acompanhamento', category: 'meetings', example: 'We need a follow-up meeting.' },
+            { id: 90, en: 'feedback', pt: 'feedback', category: 'meetings', example: 'We received positive feedback.' },
+            { id: 91, en: 'approval', pt: 'aprovação', category: 'meetings', example: 'We need the manager\'s approval.' },
+            { id: 92, en: 'decision', pt: 'decisão', category: 'meetings', example: 'We made a decision.' },
+            { id: 93, en: 'resolution', pt: 'resolução', category: 'meetings', example: 'We need a resolution to this issue.' },
+            { id: 94, en: 'vote', pt: 'votação', category: 'meetings', example: 'Let\'s take a vote.' },
+            { id: 95, en: 'chairperson', pt: 'presidente da reunião', category: 'meetings', example: 'The chairperson called the meeting.' },
+            { id: 96, en: 'briefing', pt: 'briefing', category: 'meetings', example: 'We had a briefing this morning.' },
+            { id: 97, en: 'brainstorming', pt: 'brainstorming', category: 'meetings', example: 'We had a brainstorming session.' },
+            { id: 98, en: 'workshop', pt: 'workshop/oficina', category: 'meetings', example: 'We attended a workshop.' },
+            { id: 99, en: 'seminar', pt: 'seminário', category: 'meetings', example: 'The seminar was very informative.' },
+            { id: 100, en: 'conference', pt: 'conferência', category: 'meetings', example: 'We attended a business conference.' },
+            { id: 101, en: 'webinar', pt: 'webinar', category: 'meetings', example: 'We watched a webinar today.' },
+            { id: 102, en: 'pitch', pt: 'apresentação', category: 'meetings', example: 'He gave a great pitch to investors.' },
+            { id: 103, en: 'elevator pitch', pt: 'apresentação rápida', category: 'meetings', example: 'He prepared an elevator pitch.' },
+            { id: 104, en: 'collaboration', pt: 'colaboração', category: 'meetings', example: 'Collaboration is key to success.' },
+            { id: 105, en: 'synergy', pt: 'sinergia', category: 'meetings', example: 'We achieved great synergy.' },
+
+            // ========== MARKETING (106-125) ==========
+            { id: 106, en: 'marketing', pt: 'marketing', category: 'marketing', example: 'She works in marketing.' },
+            { id: 107, en: 'advertising', pt: 'publicidade', category: 'marketing', example: 'Our advertising campaign is working.' },
+            { id: 108, en: 'brand', pt: 'marca', category: 'marketing', example: 'We need to build our brand.' },
+            { id: 109, en: 'campaign', pt: 'campanha', category: 'marketing', example: 'The campaign was successful.' },
+            { id: 110, en: 'target audience', pt: 'público-alvo', category: 'marketing', example: 'We know our target audience.' },
+            { id: 111, en: 'market research', pt: 'pesquisa de mercado', category: 'marketing', example: 'We conducted market research.' },
+            { id: 112, en: 'customer loyalty', pt: 'fidelidade do cliente', category: 'marketing', example: 'We value customer loyalty.' },
+            { id: 113, en: 'lead generation', pt: 'geração de leads', category: 'marketing', example: 'We need better lead generation.' },
+            { id: 114, en: 'sales funnel', pt: 'funil de vendas', category: 'marketing', example: 'Optimize your sales funnel.' },
+            { id: 115, en: 'conversion rate', pt: 'taxa de conversão', category: 'marketing', example: 'Our conversion rate improved.' },
+            { id: 116, en: 'digital marketing', pt: 'marketing digital', category: 'marketing', example: 'Digital marketing is growing.' },
+            { id: 117, en: 'social media', pt: 'redes sociais', category: 'marketing', example: 'We use social media to promote.' },
+            { id: 118, en: 'SEO', pt: 'SEO', category: 'marketing', example: 'We need to improve SEO.' },
+            { id: 119, en: 'content marketing', pt: 'marketing de conteúdo', category: 'marketing', example: 'Content marketing is effective.' },
+            { id: 120, en: 'newsletter', pt: 'boletim informativo', category: 'marketing', example: 'We send a monthly newsletter.' },
+            { id: 121, en: 'endorsement', pt: 'endosso', category: 'marketing', example: 'We got an endorsement from a celebrity.' },
+            { id: 122, en: 'sponsorship', pt: 'patrocínio', category: 'marketing', example: 'We have a sponsorship deal.' },
+            { id: 123, en: 'promotion', pt: 'promoção', category: 'marketing', example: 'We are running a promotion.' },
+            { id: 124, en: 'discount', pt: 'desconto', category: 'marketing', example: 'We offer discounts to new customers.' },
+            { id: 125, en: 'distribution channel', pt: 'canal de distribuição', category: 'marketing', example: 'We are expanding our distribution channels.' },
+
+            // ========== RH (126-140) ==========
+            { id: 126, en: 'human resources', pt: 'recursos humanos', category: 'hr', example: 'She works in HR.' },
+            { id: 127, en: 'recruitment', pt: 'recrutamento', category: 'hr', example: 'We are doing recruitment for new positions.' },
+            { id: 128, en: 'hiring', pt: 'contratação', category: 'hr', example: 'We are hiring for a new role.' },
+            { id: 129, en: 'job description', pt: 'descrição do cargo', category: 'hr', example: 'The job description is clear.' },
+            { id: 130, en: 'interview', pt: 'entrevista', category: 'hr', example: 'I have an interview tomorrow.' },
+            { id: 131, en: 'candidate', pt: 'candidato', category: 'hr', example: 'We have a strong candidate.' },
+            { id: 132, en: 'resume', pt: 'currículo', category: 'hr', example: 'Please send your resume.' },
+            { id: 133, en: 'cover letter', pt: 'carta de apresentação', category: 'hr', example: 'She wrote a great cover letter.' },
+            { id: 134, en: 'onboarding', pt: 'integração', category: 'hr', example: 'Onboarding takes about a week.' },
+            { id: 135, en: 'training', pt: 'treinamento', category: 'hr', example: 'We provide training for new employees.' },
+            { id: 136, en: 'development', pt: 'desenvolvimento', category: 'hr', example: 'Professional development is encouraged.' },
+            { id: 137, en: 'performance review', pt: 'avaliação de desempenho', category: 'hr', example: 'We have annual performance reviews.' },
+            { id: 138, en: 'benefits', pt: 'benefícios', category: 'hr', example: 'The benefits package is excellent.' },
+            { id: 139, en: 'promotion', pt: 'promoção', category: 'hr', example: 'She received a promotion.' },
+            { id: 140, en: 'termination', pt: 'rescisão', category: 'hr', example: 'The termination was difficult.' },
+
+            // ========== JURÍDICO (141-150) ==========
+            { id: 141, en: 'legal', pt: 'jurídico/legal', category: 'legal', example: 'We need legal advice.' },
+            { id: 142, en: 'lawyer', pt: 'advogado', category: 'legal', example: 'We consulted with a lawyer.' },
+            { id: 143, en: 'contract', pt: 'contrato', category: 'legal', example: 'The contract was signed.' },
+            { id: 144, en: 'clause', pt: 'cláusula', category: 'legal', example: 'We added a new clause.' },
+            { id: 145, en: 'terms', pt: 'termos', category: 'legal', example: 'We agreed to the terms.' },
+            { id: 146, en: 'compliance', pt: 'conformidade', category: 'legal', example: 'We ensure compliance with the law.' },
+            { id: 147, en: 'liability', pt: 'responsabilidade', category: 'legal', example: 'We have limited liability.' },
+            { id: 148, en: 'intellectual property', pt: 'propriedade intelectual', category: 'legal', example: 'We protect our intellectual property.' },
+            { id: 149, en: 'trademark', pt: 'marca registrada', category: 'legal', example: 'We registered the trademark.' },
+            { id: 150, en: 'patent', pt: 'patente', category: 'legal', example: 'We filed for a patent.' }
+        ];
+
+        // ============================================================
+        // LÓGICA DE RENDERIZAÇÃO
+        // ============================================================
+
+        let currentFilter = 'all';
+        let currentSearch = '';
+
+        function getCategoryBadge(category) {
+            const map = {
+                'general': 'general',
+                'finance': 'finance',
+                'meetings': 'meetings',
+                'marketing': 'marketing',
+                'hr': 'hr',
+                'legal': 'legal'
+            };
+            const labels = {
+                'general': 'Geral',
+                'finance': 'Finanças',
+                'meetings': 'Reuniões',
+                'marketing': 'Marketing',
+                'hr': 'RH',
+                'legal': 'Jurídico'
+            };
+            return `<span class="category-badge ${map[category] || 'general'}">${labels[category] || 'Geral'}</span>`;
+        }
+
+        function renderTable(filteredTerms) {
+            const tbody = document.getElementById('businessTable');
+            tbody.innerHTML = '';
+            if (filteredTerms.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:40px;color:#7f8c8d;">Nenhum termo encontrado.</td></tr>';
+                return;
+            }
+            filteredTerms.forEach(term => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${term.id}</td>
+                    <td class="word-en">${term.en}</td>
+                    <td class="word-pt">${term.pt}</td>
+                    <td class="example-text">${term.example}</td>
+                    <td>${getCategoryBadge(term.category)}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+            updateStats(filteredTerms);
+        }
+
+        function updateStats(termsList) {
+            const general = termsList.filter(t => t.category === 'general').length;
+            const finance = termsList.filter(t => t.category === 'finance').length;
+            const meetings = termsList.filter(t => t.category === 'meetings').length;
+            
+            document.getElementById('generalCount').textContent = general;
+            document.getElementById('financeCount').textContent = finance;
+            document.getElementById('meetingsCount').textContent = meetings;
+        }
+
+        // ============================================================
+        // FILTROS
+        // ============================================================
+
+        function filterCategory(category) {
+            currentFilter = category;
+            document.querySelectorAll('.category-filter button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            const buttons = document.querySelectorAll('.category-filter button');
+            const index = ['all', 'general', 'finance', 'meetings', 'marketing', 'hr', 'legal'].indexOf(category);
+            if (buttons[index]) buttons[index].classList.add('active');
+            applyFilters();
+        }
+
+        function resetFilter() {
+            currentFilter = 'all';
+            document.getElementById('searchInput').value = '';
+            currentSearch = '';
+            document.querySelectorAll('.category-filter button').forEach(btn => btn.classList.remove('active'));
+            document.querySelector('.category-filter .btn-all').classList.add('active');
+            applyFilters();
+        }
+
+        function searchTerm() {
+            const input = document.getElementById('searchInput');
+            currentSearch = input.value.toLowerCase().trim();
+            applyFilters();
+        }
+
+        function applyFilters() {
+            let filtered = [...businessTerms];
+
+            if (currentFilter !== 'all') {
+                filtered = filtered.filter(t => t.category === currentFilter);
+            }
+
+            if (currentSearch) {
+                filtered = filtered.filter(t => 
+                    t.en.toLowerCase().includes(currentSearch) ||
+                    t.pt.toLowerCase().includes(currentSearch) ||
+                    t.example.toLowerCase().includes(currentSearch)
+                );
+            }
+
+            renderTable(filtered);
+        }
+
+        // ============================================================
+        // ORDENAÇÃO
+        // ============================================================
+
+        document.querySelectorAll('thead th').forEach((th, index) => {
+            if (index === 0) return;
+            th.addEventListener('click', () => {
+                const tbody = document.getElementById('businessTable');
+                const rows = Array.from(tbody.querySelectorAll('tr'));
+                if (rows.length === 1 && rows[0].querySelector('td[colspan]')) return;
+                
+                const direction = th.dataset.direction === 'asc' ? 'desc' : 'asc';
+                th.dataset.direction = direction;
+
+                rows.sort((a, b) => {
+                    const aText = a.children[index].textContent.trim().toLowerCase();
+                    const bText = b.children[index].textContent.trim().toLowerCase();
+                    if (aText < bText) return direction === 'asc' ? -1 : 1;
+                    if (aText > bText) return direction === 'asc' ? 1 : -1;
+                    return 0;
+                });
+
+                rows.forEach(row => tbody.appendChild(row));
+            });
+        });
+
+        // ============================================================
+        // INICIALIZAÇÃO
+        // ============================================================
+
+        renderTable(businessTerms);
+    </script>
+</body>
+</html>

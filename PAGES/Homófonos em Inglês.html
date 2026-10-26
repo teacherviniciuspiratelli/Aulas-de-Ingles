@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Homófonos em Inglês</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0 30px;
+        }
+        .stat-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .stat-card .number {
+            font-size: 2em;
+            font-weight: 700;
+        }
+        .stat-card .label {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .stat-card .number.purple { color: #8e44ad; }
+        .stat-card .number.blue { color: #2980b9; }
+        .stat-card .number.green { color: #27ae60; }
+        .stat-card .number.orange { color: #f39c12; }
+
+        .search-box {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .search-box input {
+            padding: 12px 20px;
+            width: 100%;
+            max-width: 500px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        .search-box input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .category-filter button {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: #ecf0f1;
+            color: #2c3e50;
+        }
+        .category-filter button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        .category-filter button.active {
+            background: #3498db;
+            color: white;
+        }
+        .category-filter button.btn-all { background: #3498db; color: white; }
+        .category-filter button.btn-all:hover { background: #2980b9; }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+        .legend-item .color-box {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+        .legend-item .color-box.common { background: #3498db; }
+        .legend-item .color-box.advanced { background: #e74c3c; }
+        .legend-item .color-box.verbs { background: #2ecc71; }
+        .legend-item .color-box.nouns { background: #f39c12; }
+
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 10px;
+            border: 1px solid #ecf0f1;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        thead {
+            background: #2c3e50;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        thead th {
+            padding: 12px 10px;
+            text-align: left;
+            font-weight: 600;
+            cursor: pointer;
+            user-select: none;
+            white-space: nowrap;
+        }
+        thead th:hover {
+            background: #34495e;
+        }
+        thead th:nth-child(1) { width: 5%; }
+        thead th:nth-child(2) { width: 25%; }
+        thead th:nth-child(3) { width: 25%; }
+        thead th:nth-child(4) { width: 30%; }
+        thead th:nth-child(5) { width: 15%; }
+
+        tbody tr {
+            border-bottom: 1px solid #ecf0f1;
+            transition: background 0.2s;
+        }
+        tbody tr:hover {
+            background: #f8f9fa;
+        }
+        tbody td {
+            padding: 10px 10px;
+            vertical-align: middle;
+        }
+        tbody td:first-child {
+            font-weight: 600;
+            color: #7f8c8d;
+        }
+        .word-en {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        .word-en .pronunciation {
+            font-weight: 400;
+            color: #7f8c8d;
+            font-style: italic;
+            font-size: 0.85em;
+        }
+        .word-pt {
+            color: #7f8c8d;
+        }
+        .example-text {
+            color: #666;
+            font-style: italic;
+            font-size: 0.85em;
+        }
+        .example-text .highlight {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+        .category-badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .category-badge.common { background: #cce5ff; color: #004085; }
+        .category-badge.advanced { background: #f8d7da; color: #721c24; }
+        .category-badge.verbs { background: #d4edda; color: #155724; }
+        .category-badge.nouns { background: #fff3cd; color: #856404; }
+
+        .homophone-pair {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        .homophone-pair .word1 {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        .homophone-pair .word2 {
+            color: #2980b9;
+            font-weight: 600;
+        }
+        .homophone-pair .sep {
+            color: #bdc3c7;
+            font-size: 0.8em;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2em;
+            color: #7f8c8d;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            h1 { font-size: 1.8em; }
+            table { font-size: 11px; }
+            thead th, tbody td { padding: 6px 5px; }
+            .category-badge { font-size: 8px; padding: 2px 6px; }
+            .stats { grid-template-columns: repeat(2, 1fr); }
+            .category-filter button { padding: 6px 12px; font-size: 11px; }
+            thead th:nth-child(4) { display: none; }
+            tbody td:nth-child(4) { display: none; }
+        }
+        @media (max-width: 480px) {
+            table { font-size: 9px; }
+            thead th, tbody td { padding: 4px 3px; }
+            .legend { gap: 10px; font-size: 11px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔊 Homófonos em Inglês</h1>
+        <p class="subtitle">Palavras que soam iguais mas têm significados diferentes</p>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="number purple">100</div>
+                <div class="label">Total de pares</div>
+            </div>
+            <div class="stat-card">
+                <div class="number blue" id="commonCount">0</div>
+                <div class="label">Comuns</div>
+            </div>
+            <div class="stat-card">
+                <div class="number red" id="advancedCount">0</div>
+                <div class="label">Avançados</div>
+            </div>
+            <div class="stat-card">
+                <div class="number green" id="verbsCount">0</div>
+                <div class="label">Verbos</div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item"><div class="color-box common"></div> Comuns</div>
+            <div class="legend-item"><div class="color-box advanced"></div> Avançados</div>
+            <div class="legend-item"><div class="color-box verbs"></div> Verbos</div>
+            <div class="legend-item"><div class="color-box nouns"></div> Substantivos</div>
+        </div>
+
+        <div class="category-filter">
+            <button class="btn-all active" onclick="filterCategory('all')">📋 Todos</button>
+            <button onclick="filterCategory('common')">⭐ Comuns</button>
+            <button onclick="filterCategory('advanced')">🔥 Avançados</button>
+            <button onclick="filterCategory('verbs')">🔨 Verbos</button>
+            <button onclick="filterCategory('nouns')">📦 Substantivos</button>
+            <button onclick="resetFilter()">🔄 Resetar</button>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 Buscar homófono... (inglês ou português)" onkeyup="searchHomophone()">
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Homófonos</th>
+                        <th>Significados</th>
+                        <th>Exemplos</th>
+                        <th>Categoria</th>
+                    </tr>
+                </thead>
+                <tbody id="homophoneTable">
+                    <tr><td colspan="5" class="loading">Carregando homófonos...</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            💡 Clique no cabeçalho para ordenar • Use a busca para encontrar homófonos específicos
+        </div>
+    </div>
+
+    <script>
+        // ============================================================
+        // HOMÓFONOS EM INGLÊS
+        // ============================================================
+        const homophones = [
+            // ========== COMUNS (1-50) ==========
+            { id: 1, word1: 'to', word2: 'too', word3: 'two', meaning1: 'para', meaning2: 'também/demais', meaning3: 'dois', category: 'common', example1: 'I go to school.', example2: 'I am too tired.', example3: 'I have two dogs.' },
+            { id: 2, word1: 'for', word2: 'four', meaning1: 'para/por', meaning2: 'quatro', category: 'common', example1: 'This is for you.', example2: 'I have four cats.' },
+            { id: 3, word1: 'see', word2: 'sea', meaning1: 'ver', meaning2: 'mar', category: 'common', example1: 'I see you.', example2: 'I love the sea.' },
+            { id: 4, word1: 'hear', word2: 'here', meaning1: 'ouvir', meaning2: 'aqui', category: 'common', example1: 'I can hear you.', example2: 'I am here.' },
+            { id: 5, word1: 'know', word2: 'no', meaning1: 'saber/conhecer', meaning2: 'não', category: 'common', example1: 'I know the answer.', example2: 'No, I don\'t.' },
+            { id: 6, word1: 'there', word2: 'their', word3: 'they\'re', meaning1: 'lá', meaning2: 'deles', meaning3: 'eles estão', category: 'common', example1: 'I went there.', example2: 'This is their house.', example3: 'They\'re coming.' },
+            { id: 7, word1: 'write', word2: 'right', meaning1: 'escrever', meaning2: 'certo/direita', category: 'common', example1: 'I write a letter.', example2: 'You are right.' },
+            { id: 8, word1: 'read', word2: 'red', meaning1: 'ler', meaning2: 'vermelho', category: 'common', example1: 'I read books.', example2: 'The car is red.' },
+            { id: 9, word1: 'meet', word2: 'meat', meaning1: 'encontrar', meaning2: 'carne', category: 'common', example1: 'Let\'s meet at 5.', example2: 'I eat meat.' },
+            { id: 10, word1: 'ate', word2: 'eight', meaning1: 'comeu', meaning2: 'oito', category: 'common', example1: 'I ate breakfast.', example2: 'I have eight apples.' },
+            { id: 11, word1: 'buy', word2: 'by', word3: 'bye', meaning1: 'comprar', meaning2: 'por/perto de', meaning3: 'tchau', category: 'common', example1: 'I buy a car.', example2: 'I sit by the window.', example3: 'Goodbye!' },
+            { id: 12, word1: 'one', word2: 'won', meaning1: 'um', meaning2: 'ganhou', category: 'common', example1: 'I have one dog.', example2: 'We won the game.' },
+            { id: 13, word1: 'hole', word2: 'whole', meaning1: 'buraco', meaning2: 'inteiro', category: 'common', example1: 'There is a hole.', example2: 'I ate the whole cake.' },
+            { id: 14, word1: 'son', word2: 'sun', meaning1: 'filho', meaning2: 'sol', category: 'common', example1: 'My son is young.', example2: 'The sun is hot.' },
+            { id: 15, word1: 'beat', word2: 'beet', meaning1: 'bater/derrotar', meaning2: 'beterraba', category: 'common', example1: 'I beat him at chess.', example2: 'I eat beet salad.' },
+            { id: 16, word1: 'beach', word2: 'beech', meaning1: 'praia', meaning2: 'faia (árvore)', category: 'common', example1: 'Let\'s go to the beach.', example2: 'The beech tree is tall.' },
+            { id: 17, word1: 'fair', word2: 'fare', meaning1: 'justo/feira', meaning2: 'tarifa', category: 'common', example1: 'That is not fair.', example2: 'The bus fare is expensive.' },
+            { id: 18, word1: 'hour', word2: 'our', meaning1: 'hora', meaning2: 'nosso', category: 'common', example1: 'I have an hour.', example2: 'This is our house.' },
+            { id: 19, word1: 'mail', word2: 'male', meaning1: 'correio', meaning2: 'masculino', category: 'common', example1: 'I got the mail.', example2: 'He is male.' },
+            { id: 20, word1: 'peace', word2: 'piece', meaning1: 'paz', meaning2: 'pedaço', category: 'common', example1: 'I want peace.', example2: 'I ate a piece of cake.' },
+            { id: 21, word1: 'plain', word2: 'plane', meaning1: 'simples/liso', meaning2: 'avião', category: 'common', example1: 'I like plain pizza.', example2: 'The plane is flying.' },
+            { id: 22, word1: 'rain', word2: 'reign', word3: 'rein', meaning1: 'chuva', meaning2: 'reinado', meaning3: 'rédea', category: 'common', example1: 'It is raining.', example2: 'The queen\'s reign.', example3: 'Hold the reins.' },
+            { id: 23, word1: 'sail', word2: 'sale', meaning1: 'vela/navegar', meaning2: 'venda', category: 'common', example1: 'We sail the boat.', example2: 'The shoes are on sale.' },
+            { id: 24, word1: 'stairs', word2: 'stares', meaning1: 'escadas', meaning2: 'olhares fixos', category: 'common', example1: 'I climb the stairs.', example2: 'She stares at me.' },
+            { id: 25, word1: 'tail', word2: 'tale', meaning1: 'rabo', meaning2: 'conto/história', category: 'common', example1: 'The dog wags its tail.', example2: 'I told a tale.' },
+            { id: 26, word1: 'weak', word2: 'week', meaning1: 'fraco', meaning2: 'semana', category: 'common', example1: 'I feel weak.', example2: 'I work all week.' },
+            { id: 27, word1: 'wood', word2: 'would', meaning1: 'madeira', meaning2: 'faria/iria', category: 'common', example1: 'The wood is hard.', example2: 'I would like that.' },
+            { id: 28, word1: 'waste', word2: 'waist', meaning1: 'desperdiçar', meaning2: 'cintura', category: 'common', example1: 'Don\'t waste food.', example2: 'I have a small waist.' },
+            { id: 29, word1: 'weather', word2: 'whether', meaning1: 'clima', meaning2: 'se (conjunção)', category: 'common', example1: 'The weather is nice.', example2: 'I don\'t know whether to go.' },
+            { id: 30, word1: 'which', word2: 'witch', meaning1: 'qual', meaning2: 'bruxa', category: 'common', example1: 'Which one do you want?', example2: 'The witch is scary.' },
+            { id: 31, word1: 'allowed', word2: 'aloud', meaning1: 'permitido', meaning2: 'em voz alta', category: 'common', example1: 'You are allowed to enter.', example2: 'Read the book aloud.' },
+            { id: 32, word1: 'break', word2: 'brake', meaning1: 'quebrar/pausa', meaning2: 'freio', category: 'common', example1: 'Don\'t break the glass.', example2: 'I press the brake.' },
+            { id: 33, word1: 'brews', word2: 'bruise', meaning1: 'prepara (chá/café)', meaning2: 'hematoma', category: 'common', example1: 'She brews coffee.', example2: 'I have a bruise on my leg.' },
+            { id: 34, word1: 'cell', word2: 'sell', meaning1: 'cela/célula', meaning2: 'vender', category: 'common', example1: 'The prisoner is in a cell.', example2: 'I sell cars.' },
+            { id: 35, word1: 'cereal', word2: 'serial', meaning1: 'cereal', meaning2: 'seriado', category: 'common', example1: 'I eat cereal for breakfast.', example2: 'I watch a serial drama.' },
+            { id: 36, word1: 'coarse', word2: 'course', meaning1: 'áspero/grosseiro', meaning2: 'curso/prato', category: 'common', example1: 'The sand is coarse.', example2: 'I am taking a course.' },
+            { id: 37, word1: 'complement', word2: 'compliment', meaning1: 'complemento', meaning2: 'elogio', category: 'common', example1: 'The wine complements the meal.', example2: 'She gave me a compliment.' },
+            { id: 38, word1: 'desert', word2: 'dessert', meaning1: 'deserto', meaning2: 'sobremesa', category: 'common', example1: 'The desert is hot.', example2: 'I love dessert.' },
+            { id: 39, word1: 'dye', word2: 'die', meaning1: 'tingir', meaning2: 'morrer', category: 'common', example1: 'I dye my hair.', example2: 'We will all die.' },
+            { id: 40, word1: 'eye', word2: 'I', meaning1: 'olho', meaning2: 'eu', category: 'common', example1: 'I have blue eyes.', example2: 'I am happy.' },
+            { id: 41, word1: 'feet', word2: 'feat', meaning1: 'pés', meaning2: 'proeza', category: 'common', example1: 'My feet hurt.', example2: 'That was a great feat.' },
+            { id: 42, word1: 'flour', word2: 'flower', meaning1: 'farinha', meaning2: 'flor', category: 'common', example1: 'I need flour for baking.', example2: 'I love this flower.' },
+            { id: 43, word1: 'foul', word2: 'fowl', meaning1: 'falta/sujo', meaning2: 'ave', category: 'common', example1: 'That was a foul ball.', example2: 'I saw a fowl.' },
+            { id: 44, word1: 'guest', word2: 'guessed', meaning1: 'convidado', meaning2: 'adivinhou', category: 'common', example1: 'We have a guest.', example2: 'She guessed the answer.' },
+            { id: 45, word1: 'hair', word2: 'hare', meaning1: 'cabelo', meaning2: 'lebre', category: 'common', example1: 'I brush my hair.', example2: 'The hare is fast.' },
+            { id: 46, word1: 'heal', word2: 'heel', meaning1: 'curar', meaning2: 'calcanhar', category: 'common', example1: 'The wound will heal.', example2: 'My heel hurts.' },
+            { id: 47, word1: 'him', word2: 'hymn', meaning1: 'ele (objeto)', meaning2: 'hino', category: 'common', example1: 'I see him.', example2: 'We sang a hymn.' },
+            { id: 48, word1: 'knight', word2: 'night', meaning1: 'cavaleiro', meaning2: 'noite', category: 'common', example1: 'The knight is brave.', example2: 'Good night!' },
+            { id: 49, word1: 'knot', word2: 'not', meaning1: 'nó', meaning2: 'não', category: 'common', example1: 'I tied a knot.', example2: 'I am not here.' },
+            { id: 50, word1: 'knows', word2: 'nose', meaning1: 'sabe', meaning2: 'nariz', category: 'common', example1: 'She knows the answer.', example2: 'My nose is cold.' },
+
+            // ========== AVANÇADOS (51-75) ==========
+            { id: 51, word1: 'ad', word2: 'add', meaning1: 'anúncio', meaning2: 'adicionar', category: 'advanced', example1: 'I saw an ad.', example2: 'I add sugar to coffee.' },
+            { id: 52, word1: 'affect', word2: 'effect', meaning1: 'afetar (verbo)', meaning2: 'efeito (substantivo)', category: 'advanced', example1: 'This will affect you.', example2: 'The effect is strong.' },
+            { id: 53, word1: 'aisle', word2: 'isle', meaning1: 'corredor', meaning2: 'ilha', category: 'advanced', example1: 'Walk down the aisle.', example2: 'I visited the isle.' },
+            { id: 54, word1: 'all ready', word2: 'already', meaning1: 'todos prontos', meaning2: 'já', category: 'advanced', example1: 'We are all ready.', example2: 'I already ate.' },
+            { id: 55, word1: 'ant', word2: 'aunt', meaning1: 'formiga', meaning2: 'tia', category: 'advanced', example1: 'The ant is small.', example2: 'My aunt is nice.' },
+            { id: 56, word1: 'bawl', word2: 'ball', meaning1: 'gritar/chorar alto', meaning2: 'bola', category: 'advanced', example1: 'She bawled loudly.', example2: 'I play ball.' },
+            { id: 57, word1: 'bazaar', word2: 'bizarre', meaning1: 'bazar', meaning2: 'bizarro', category: 'advanced', example1: 'I went to the bazaar.', example2: 'That is bizarre.' },
+            { id: 58, word1: 'bored', word2: 'board', meaning1: 'entediado', meaning2: 'tábua/quadro', category: 'advanced', example1: 'I am bored.', example2: 'The board is white.' },
+            { id: 59, word1: 'born', word2: 'borne', meaning1: 'nascido', meaning2: 'carregado/suportado', category: 'advanced', example1: 'I was born in Brazil.', example2: 'The burden was borne.' },
+            { id: 60, word1: 'brake', word2: 'break', meaning1: 'freio', meaning2: 'quebrar', category: 'advanced', example1: 'Press the brake.', example2: 'Don\'t break it.' },
+            { id: 61, word1: 'bridal', word2: 'bridle', meaning1: 'nupcial', meaning2: 'rédea', category: 'advanced', example1: 'I wore a bridal gown.', example2: 'Hold the bridle.' },
+            { id: 62, word1: 'canvas', word2: 'canvass', meaning1: 'tela (pintura)', meaning2: 'sondar', category: 'advanced', example1: 'I paint on canvas.', example2: 'I canvass for votes.' },
+            { id: 63, word1: 'censer', word2: 'censor', word3: 'sensor', meaning1: 'incensário', meaning2: 'censor', meaning3: 'sensor', category: 'advanced', example1: 'The censer burns.', example2: 'The censor approved it.', example3: 'The sensor detects light.' },
+            { id: 64, word1: 'cite', word2: 'sight', word3: 'site', meaning1: 'citar', meaning2: 'visão', meaning3: 'local/site', category: 'advanced', example1: 'Cite your sources.', example2: 'I lost my sight.', example3: 'I visit the site.' },
+            { id: 65, word1: 'corps', word2: 'core', meaning1: 'corpo (militares)', meaning2: 'núcleo', category: 'advanced', example1: 'The corps is deployed.', example2: 'The core is essential.' },
+            { id: 66, word1: 'creak', word2: 'creek', meaning1: 'ranger', meaning2: 'riacho', category: 'advanced', example1: 'The door creaks.', example2: 'I swim in the creek.' },
+            { id: 67, word1: 'dear', word2: 'deer', meaning1: 'querido', meaning2: 'veado', category: 'advanced', example1: 'My dear friend.', example2: 'I see a deer.' },
+            { id: 68, word1: 'dual', word2: 'duel', meaning1: 'duplo', meaning2: 'duelo', category: 'advanced', example1: 'I have dual citizenship.', example2: 'They fought a duel.' },
+            { id: 69, word1: 'ewe', word2: 'you', meaning1: 'ovelha fêmea', meaning2: 'você', category: 'advanced', example1: 'The ewe is white.', example2: 'You are kind.' },
+            { id: 70, word1: 'faint', word2: 'feint', meaning1: 'desmaiar', meaning2: 'finta', category: 'advanced', example1: 'I feel faint.', example2: 'He made a feint.' },
+            { id: 71, word1: 'fir', word2: 'fur', meaning1: 'abeto (árvore)', meaning2: 'pelo', category: 'advanced', example1: 'The fir tree is tall.', example2: 'The cat has fur.' },
+            { id: 72, word1: 'forbear', word2: 'forebear', meaning1: 'abster-se', meaning2: 'ancestral', category: 'advanced', example1: 'I forbear to judge.', example2: 'My forebears were brave.' },
+            { id: 73, word1: 'forth', word2: 'fourth', meaning1: 'adiante', meaning2: 'quarto', category: 'advanced', example1: 'Go forth!', example2: 'I am the fourth.' },
+            { id: 74, word1: 'gait', word2: 'gate', meaning1: 'andar/marcha', meaning2: 'portão', category: 'advanced', example1: 'He has a limp gait.', example2: 'Open the gate.' },
+            { id: 75, word1: 'gamble', word2: 'gambol', meaning1: 'apostar', meaning2: 'saltitar', category: 'advanced', example1: 'Don\'t gamble.', example2: 'Lambs gambol in the field.' },
+
+            // ========== VERBOS (76-90) ==========
+            { id: 76, word1: 'act', word2: 'axed', meaning1: 'agir', meaning2: 'demitido/cortado', category: 'verbs', example1: 'I act in the play.', example2: 'He was axed.' },
+            { id: 77, word1: 'base', word2: 'bass', meaning1: 'base/fundamento', meaning2: 'baixo (voz)', category: 'verbs', example1: 'I base my opinion.', example2: 'He sings bass.' },
+            { id: 78, word1: 'billed', word2: 'build', meaning1: 'faturado', meaning2: 'construir', category: 'verbs', example1: 'I was billed.', example2: 'I build houses.' },
+            { id: 79, word1: 'bridal', word2: 'bridle', meaning1: 'nupcial', meaning2: 'rédea', category: 'verbs', example1: 'It was bridal.', example2: 'I bridle the horse.' },
+            { id: 80, word1: 'canvass', word2: 'canvas', meaning1: 'sondar', meaning2: 'tela', category: 'verbs', example1: 'I canvass for votes.', example2: 'I paint on canvas.' },
+            { id: 81, word1: 'chews', word2: 'choose', meaning1: 'mastiga', meaning2: 'escolher', category: 'verbs', example1: 'She chews slowly.', example2: 'I choose wisely.' },
+            { id: 82, word1: 'creak', word2: 'creek', meaning1: 'ranger', meaning2: 'riacho', category: 'verbs', example1: 'The door creaks.', example2: 'I swim in the creek.' },
+            { id: 83, word1: 'dose', word2: 'doze', meaning1: 'dose', meaning2: 'cochilar', category: 'verbs', example1: 'I take a dose.', example2: 'I doze off.' },
+            { id: 84, word1: 'faze', word2: 'phase', meaning1: 'perturbar', meaning2: 'fase', category: 'verbs', example1: 'It doesn\'t faze me.', example2: 'This is a phase.' },
+            { id: 85, word1: 'forbear', word2: 'forebear', meaning1: 'abster-se', meaning2: 'ancestral', category: 'verbs', example1: 'I forbear to speak.', example2: 'My forebear was brave.' },
+            { id: 86, word1: 'gait', word2: 'gate', meaning1: 'andar', meaning2: 'portão', category: 'verbs', example1: 'I walk with a gait.', example2: 'I gate the entrance.' },
+            { id: 87, word1: 'gamble', word2: 'gambol', meaning1: 'apostar', meaning2: 'saltitar', category: 'verbs', example1: 'I don\'t gamble.', example2: 'The lambs gambol.' },
+            { id: 88, word1: 'hoard', word2: 'horde', meaning1: 'acumular', meaning2: 'horda', category: 'verbs', example1: 'I hoard money.', example2: 'A horde of people.' },
+            { id: 89, word1: 'join', word2: 'joyne', meaning1: 'juntar', meaning2: 'antigo para "join"', category: 'verbs', example1: 'I join the team.', example2: 'Obsolete.' },
+            { id: 90, word1: 'lead', word2: 'led', meaning1: 'chumbo/liderar', meaning2: 'liderou', category: 'verbs', example1: 'I lead the team.', example2: 'I led the team.' },
+
+            // ========== SUBSTANTIVOS (91-100) ==========
+            { id: 91, word1: 'air', word2: 'heir', meaning1: 'ar', meaning2: 'herdeiro', category: 'nouns', example1: 'I breathe air.', example2: 'He is the heir.' },
+            { id: 92, word1: 'aloud', word2: 'allowed', meaning1: 'em voz alta', meaning2: 'permitido', category: 'nouns', example1: 'Read aloud!', example2: 'It is allowed.' },
+            { id: 93, word1: 'bare', word2: 'bear', meaning1: 'nu', meaning2: 'urso', category: 'nouns', example1: 'I walk with bare feet.', example2: 'I see a bear.' },
+            { id: 94, word1: 'billed', word2: 'build', meaning1: 'faturado', meaning2: 'construir', category: 'nouns', example1: 'I paid the bill.', example2: 'I build houses.' },
+            { id: 95, word1: 'board', word2: 'bored', meaning1: 'tábua/quadro', meaning2: 'entediado', category: 'nouns', example1: 'The board is big.', example2: 'I am bored.' },
+            { id: 96, word1: 'bough', word2: 'bow', meaning1: 'galho', meaning2: 'arco/curvar-se', category: 'nouns', example1: 'The bough is heavy.', example2: 'I tie a bow.' },
+            { id: 97, word1: 'canvas', word2: 'canvass', meaning1: 'tela', meaning2: 'sondagem', category: 'nouns', example1: 'I paint on canvas.', example2: 'I do a canvass.' },
+            { id: 98, word1: 'coarse', word2: 'course', meaning1: 'áspero', meaning2: 'curso', category: 'nouns', example1: 'The fabric is coarse.', example2: 'I take a course.' },
+            { id: 99, word1: 'draft', word2: 'draught', meaning1: 'rascunho', meaning2: 'corrente de ar', category: 'nouns', example1: 'I write a draft.', example2: 'I feel a draught.' },
+            { id: 100, word1: 'fawn', word2: 'faun', meaning1: 'filhote de veado', meaning2: 'fauno (mitologia)', category: 'nouns', example1: 'I see a fawn.', example2: 'I read about a faun.' }
+        ];
+
+        // ============================================================
+        // LÓGICA DE RENDERIZAÇÃO
+        // ============================================================
+
+        let currentFilter = 'all';
+        let currentSearch = '';
+
+        function getCategoryBadge(category) {
+            const map = {
+                'common': 'common',
+                'advanced': 'advanced',
+                'verbs': 'verbs',
+                'nouns': 'nouns'
+            };
+            const labels = {
+                'common': 'Comum',
+                'advanced': 'Avançado',
+                'verbs': 'Verbo',
+                'nouns': 'Substantivo'
+            };
+            return `<span class="category-badge ${map[category] || 'common'}">${labels[category] || 'Comum'}</span>`;
+        }
+
+        function getHomophoneDisplay(h) {
+            let result = `<div class="homophone-pair">`;
+            result += `<span class="word1">${h.word1}</span>`;
+            if (h.word2) result += `<span class="sep"> / </span><span class="word2">${h.word2}</span>`;
+            if (h.word3) result += `<span class="sep"> / </span><span class="word2">${h.word3}</span>`;
+            result += `</div>`;
+            return result;
+        }
+
+        function getMeaningDisplay(h) {
+            let result = `<div class="homophone-pair">`;
+            result += `<span class="word1">${h.meaning1}</span>`;
+            if (h.meaning2) result += `<span class="sep"> / </span><span class="word2">${h.meaning2}</span>`;
+            if (h.meaning3) result += `<span class="sep"> / </span><span class="word2">${h.meaning3}</span>`;
+            result += `</div>`;
+            return result;
+        }
+
+        function getExampleDisplay(h) {
+            let result = `<div class="homophone-pair">`;
+            result += `<span class="word1">${h.example1}</span>`;
+            if (h.example2) result += `<br><span class="word2">${h.example2}</span>`;
+            if (h.example3) result += `<br><span class="word2">${h.example3}</span>`;
+            result += `</div>`;
+            return result;
+        }
+
+        function renderTable(filteredHomophones) {
+            const tbody = document.getElementById('homophoneTable');
+            tbody.innerHTML = '';
+            if (filteredHomophones.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:40px;color:#7f8c8d;">Nenhum homófono encontrado.</td></tr>';
+                return;
+            }
+            filteredHomophones.forEach(h => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${h.id}</td>
+                    <td>${getHomophoneDisplay(h)}</td>
+                    <td>${getMeaningDisplay(h)}</td>
+                    <td class="example-text">${getExampleDisplay(h)}</td>
+                    <td>${getCategoryBadge(h.category)}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+            updateStats(filteredHomophones);
+        }
+
+        function updateStats(homophonesList) {
+            const common = homophonesList.filter(h => h.category === 'common').length;
+            const advanced = homophonesList.filter(h => h.category === 'advanced').length;
+            const verbs = homophonesList.filter(h => h.category === 'verbs').length;
+            
+            document.getElementById('commonCount').textContent = common;
+            document.getElementById('advancedCount').textContent = advanced;
+            document.getElementById('verbsCount').textContent = verbs;
+        }
+
+        // ============================================================
+        // FILTROS
+        // ============================================================
+
+        function filterCategory(category) {
+            currentFilter = category;
+            document.querySelectorAll('.category-filter button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            const buttons = document.querySelectorAll('.category-filter button');
+            const index = ['all', 'common', 'advanced', 'verbs', 'nouns'].indexOf(category);
+            if (buttons[index]) buttons[index].classList.add('active');
+            applyFilters();
+        }
+
+        function resetFilter() {
+            currentFilter = 'all';
+            document.getElementById('searchInput').value = '';
+            currentSearch = '';
+            document.querySelectorAll('.category-filter button').forEach(btn => btn.classList.remove('active'));
+            document.querySelector('.category-filter .btn-all').classList.add('active');
+            applyFilters();
+        }
+
+        function searchHomophone() {
+            const input = document.getElementById('searchInput');
+            currentSearch = input.value.toLowerCase().trim();
+            applyFilters();
+        }
+
+        function applyFilters() {
+            let filtered = [...homophones];
+
+            if (currentFilter !== 'all') {
+                filtered = filtered.filter(h => h.category === currentFilter);
+            }
+
+            if (currentSearch) {
+                filtered = filtered.filter(h => 
+                    h.word1.toLowerCase().includes(currentSearch) ||
+                    h.word2.toLowerCase().includes(currentSearch) ||
+                    (h.word3 && h.word3.toLowerCase().includes(currentSearch)) ||
+                    h.meaning1.toLowerCase().includes(currentSearch) ||
+                    (h.meaning2 && h.meaning2.toLowerCase().includes(currentSearch)) ||
+                    (h.meaning3 && h.meaning3.toLowerCase().includes(currentSearch)) ||
+                    h.example1.toLowerCase().includes(currentSearch) ||
+                    (h.example2 && h.example2.toLowerCase().includes(currentSearch)) ||
+                    (h.example3 && h.example3.toLowerCase().includes(currentSearch))
+                );
+            }
+
+            renderTable(filtered);
+        }
+
+        // ============================================================
+        // ORDENAÇÃO
+        // ============================================================
+
+        document.querySelectorAll('thead th').forEach((th, index) => {
+            if (index === 0) return;
+            th.addEventListener('click', () => {
+                const tbody = document.getElementById('homophoneTable');
+                const rows = Array.from(tbody.querySelectorAll('tr'));
+                if (rows.length === 1 && rows[0].querySelector('td[colspan]')) return;
+                
+                const direction = th.dataset.direction === 'asc' ? 'desc' : 'asc';
+                th.dataset.direction = direction;
+
+                rows.sort((a, b) => {
+                    const aText = a.children[index].textContent.trim().toLowerCase();
+                    const bText = b.children[index].textContent.trim().toLowerCase();
+                    if (aText < bText) return direction === 'asc' ? -1 : 1;
+                    if (aText > bText) return direction === 'asc' ? 1 : -1;
+                    return 0;
+                });
+
+                rows.forEach(row => tbody.appendChild(row));
+            });
+        });
+
+        // ============================================================
+        // INICIALIZAÇÃO
+        // ============================================================
+
+        renderTable(homophones);
+    </script>
+</body>
+</html>

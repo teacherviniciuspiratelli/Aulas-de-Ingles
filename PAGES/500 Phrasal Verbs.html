@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 500 Phrasal Verbs em Inglês</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0 30px;
+        }
+        .stat-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .stat-card .number {
+            font-size: 2em;
+            font-weight: 700;
+        }
+        .stat-card .label {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .stat-card .number.purple { color: #8e44ad; }
+        .stat-card .number.blue { color: #2980b9; }
+        .stat-card .number.green { color: #27ae60; }
+        .stat-card .number.orange { color: #f39c12; }
+
+        .search-box {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .search-box input {
+            padding: 12px 20px;
+            width: 100%;
+            max-width: 500px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        .search-box input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .controls button {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .controls button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .btn-all { background: #3498db; color: white; }
+        .btn-separable { background: #2ecc71; color: white; }
+        .btn-inseparable { background: #e74c3c; color: white; }
+        .btn-three { background: #f39c12; color: white; }
+        .btn-reset { background: #95a5a6; color: white; }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+        .legend-item .color-box {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+        .legend-item .color-box.separable { background: #2ecc71; }
+        .legend-item .color-box.inseparable { background: #e74c3c; }
+        .legend-item .color-box.three { background: #f39c12; }
+
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 10px;
+            border: 1px solid #ecf0f1;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        thead {
+            background: #2c3e50;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        thead th {
+            padding: 12px 10px;
+            text-align: left;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        thead th:nth-child(1) { width: 4%; }
+        thead th:nth-child(2) { width: 14%; }
+        thead th:nth-child(3) { width: 12%; }
+        thead th:nth-child(4) { width: 12%; }
+        thead th:nth-child(5) { width: 12%; }
+        thead th:nth-child(6) { width: 12%; }
+        thead th:nth-child(7) { width: 10%; }
+        thead th:nth-child(8) { width: 24%; }
+        thead th {
+            cursor: pointer;
+            user-select: none;
+        }
+        thead th:hover {
+            background: #34495e;
+        }
+        tbody tr {
+            border-bottom: 1px solid #ecf0f1;
+            transition: background 0.2s;
+        }
+        tbody tr:hover {
+            background: #f8f9fa;
+        }
+        tbody td {
+            padding: 10px 8px;
+            vertical-align: middle;
+        }
+        tbody td:first-child {
+            font-weight: 600;
+            color: #7f8c8d;
+        }
+        .phrasal { font-weight: 600; color: #2c3e50; }
+        .past { color: #e74c3c; font-weight: 600; }
+        .pastpart { color: #2980b9; font-weight: 600; }
+        .present { color: #27ae60; font-weight: 600; }
+        .future { color: #8e44ad; font-weight: 600; }
+        .meaning { color: #2c3e50; }
+        .badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .badge.separable { background: #d4edda; color: #155724; }
+        .badge.inseparable { background: #f8d7da; color: #721c24; }
+        .badge.three { background: #fff3cd; color: #856404; }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2em;
+            color: #7f8c8d;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            h1 { font-size: 1.8em; }
+            table { font-size: 11px; }
+            thead th, tbody td { padding: 6px 4px; }
+            .badge { font-size: 8px; padding: 2px 6px; }
+            .stats { grid-template-columns: repeat(2, 1fr); }
+            .controls button { padding: 6px 12px; font-size: 11px; }
+        }
+        @media (max-width: 480px) {
+            table { font-size: 9px; }
+            thead th, tbody td { padding: 4px 2px; }
+            .legend { gap: 10px; font-size: 11px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 500 Phrasal Verbs</h1>
+        <p class="subtitle">Os phrasal verbs mais comuns do inglês — todos os tempos e significados</p>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="number purple">500</div>
+                <div class="label">Total de Phrasal Verbs</div>
+            </div>
+            <div class="stat-card">
+                <div class="number green" id="separableCount">0</div>
+                <div class="label">Separáveis</div>
+            </div>
+            <div class="stat-card">
+                <div class="number red" id="inseparableCount">0</div>
+                <div class="label">Inseparáveis</div>
+            </div>
+            <div class="stat-card">
+                <div class="number orange" id="threeCount">0</div>
+                <div class="label">Três palavras</div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item"><div class="color-box separable"></div> Separável</div>
+            <div class="legend-item"><div class="color-box inseparable"></div> Inseparável</div>
+            <div class="legend-item"><div class="color-box three"></div> Três palavras</div>
+        </div>
+
+        <div class="controls">
+            <button class="btn-all" onclick="filterAll()">📋 Todos</button>
+            <button class="btn-separable" onclick="filterSeparable()">✅ Separáveis</button>
+            <button class="btn-inseparable" onclick="filterInseparable()">🔄 Inseparáveis</button>
+            <button class="btn-three" onclick="filterThree()">🟡 Três palavras</button>
+            <button class="btn-reset" onclick="resetFilter()">🔄 Resetar</button>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 Buscar phrasal verb... (inglês ou português)" onkeyup="searchVerb()">
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Phrasal Verb</th>
+                        <th>Presente</th>
+                        <th>Passado</th>
+                        <th>Particípio</th>
+                        <th>Futuro</th>
+                        <th>Tipo</th>
+                        <th>Significado</th>
+                    </tr>
+                </thead>
+                <tbody id="verbTable">
+                    <tr><td colspan="8" class="loading">Carregando 500 phrasal verbs...</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            💡 Clique no cabeçalho para ordenar • Use a busca para encontrar phrasal verbs específicos
+        </div>
+    </div>
+
+    <script>
+        // ============================================================
+        // 500 PHRASAL VERBS MAIS COMUNS
+        // ============================================================
+        const phrasalVerbs = [
+            // 1-20: Essenciais
+            { id: 1, phrasal: 'get up', present: 'get up', past: 'got up', participle: 'gotten up', future: 'will get up', type: 'inseparable', meaning: 'levantar-se' },
+            { id: 2, phrasal: 'wake up', present: 'wake up', past: 'woke up', participle: 'woken up', future: 'will wake up', type: 'separable', meaning: 'acordar' },
+            { id: 3, phrasal: 'go out', present: 'go out', past: 'went out', participle: 'gone out', future: 'will go out', type: 'inseparable', meaning: 'sair / apagar' },
+            { id: 4, phrasal: 'get on', present: 'get on', past: 'got on', participle: 'gotten on', future: 'will get on', type: 'inseparable', meaning: 'entrar (ônibus/avião)' },
+            { id: 5, phrasal: 'get off', present: 'get off', past: 'got off', participle: 'gotten off', future: 'will get off', type: 'inseparable', meaning: 'descer (ônibus/avião)' },
+            { id: 6, phrasal: 'turn on', present: 'turn on', past: 'turned on', participle: 'turned on', future: 'will turn on', type: 'separable', meaning: 'ligar' },
+            { id: 7, phrasal: 'turn off', present: 'turn off', past: 'turned off', participle: 'turned off', future: 'will turn off', type: 'separable', meaning: 'desligar' },
+            { id: 8, phrasal: 'put on', present: 'put on', past: 'put on', participle: 'put on', future: 'will put on', type: 'separable', meaning: 'colocar (roupa)' },
+            { id: 9, phrasal: 'take off', present: 'take off', past: 'took off', participle: 'taken off', future: 'will take off', type: 'separable', meaning: 'tirar (roupa) / decolar' },
+            { id: 10, phrasal: 'look for', present: 'look for', past: 'looked for', participle: 'looked for', future: 'will look for', type: 'inseparable', meaning: 'procurar' },
+            { id: 11, phrasal: 'look after', present: 'look after', past: 'looked after', participle: 'looked after', future: 'will look after', type: 'inseparable', meaning: 'cuidar de' },
+            { id: 12, phrasal: 'look up', present: 'look up', past: 'looked up', participle: 'looked up', future: 'will look up', type: 'separable', meaning: 'procurar (informação)' },
+            { id: 13, phrasal: 'look forward to', present: 'look forward to', past: 'looked forward to', participle: 'looked forward to', future: 'will look forward to', type: 'three', meaning: 'esperar ansiosamente' },
+            { id: 14, phrasal: 'give up', present: 'give up', past: 'gave up', participle: 'given up', future: 'will give up', type: 'separable', meaning: 'desistir' },
+            { id: 15, phrasal: 'give in', present: 'give in', past: 'gave in', participle: 'given in', future: 'will give in', type: 'inseparable', meaning: 'ceder' },
+            { id: 16, phrasal: 'give back', present: 'give back', past: 'gave back', participle: 'given back', future: 'will give back', type: 'separable', meaning: 'devolver' },
+            { id: 17, phrasal: 'take out', present: 'take out', past: 'took out', participle: 'taken out', future: 'will take out', type: 'separable', meaning: 'tirar / levar para fora' },
+            { id: 18, phrasal: 'take in', present: 'take in', past: 'took in', participle: 'taken in', future: 'will take in', type: 'separable', meaning: 'absorver / enganar' },
+            { id: 19, phrasal: 'take over', present: 'take over', past: 'took over', participle: 'taken over', future: 'will take over', type: 'separable', meaning: 'assumir / tomar posse' },
+            { id: 20, phrasal: 'come in', present: 'come in', past: 'came in', participle: 'come in', future: 'will come in', type: 'inseparable', meaning: 'entrar' },
+            // 21-40
+            { id: 21, phrasal: 'come on', present: 'come on', past: 'came on', participle: 'come on', future: 'will come on', type: 'inseparable', meaning: 'vamos lá / ligar' },
+            { id: 22, phrasal: 'come back', present: 'come back', past: 'came back', participle: 'come back', future: 'will come back', type: 'inseparable', meaning: 'voltar' },
+            { id: 23, phrasal: 'come out', present: 'come out', past: 'came out', participle: 'come out', future: 'will come out', type: 'inseparable', meaning: 'sair / aparecer' },
+            { id: 24, phrasal: 'go on', present: 'go on', past: 'went on', participle: 'gone on', future: 'will go on', type: 'inseparable', meaning: 'continuar / acontecer' },
+            { id: 25, phrasal: 'go away', present: 'go away', past: 'went away', participle: 'gone away', future: 'will go away', type: 'inseparable', meaning: 'ir embora' },
+            { id: 26, phrasal: 'go back', present: 'go back', past: 'went back', participle: 'gone back', future: 'will go back', type: 'inseparable', meaning: 'voltar' },
+            { id: 27, phrasal: 'go through', present: 'go through', past: 'went through', participle: 'gone through', future: 'will go through', type: 'inseparable', meaning: 'passar por / examinar' },
+            { id: 28, phrasal: 'go over', present: 'go over', past: 'went over', participle: 'gone over', future: 'will go over', type: 'separable', meaning: 'revisar / examinar' },
+            { id: 29, phrasal: 'hold on', present: 'hold on', past: 'held on', participle: 'held on', future: 'will hold on', type: 'inseparable', meaning: 'esperar / segurar' },
+            { id: 30, phrasal: 'hold back', present: 'hold back', past: 'held back', participle: 'held back', future: 'will hold back', type: 'separable', meaning: 'segurar / conter' },
+            { id: 31, phrasal: 'hold up', present: 'hold up', past: 'held up', participle: 'held up', future: 'will hold up', type: 'separable', meaning: 'segurar / atrasar / assaltar' },
+            { id: 32, phrasal: 'carry on', present: 'carry on', past: 'carried on', participle: 'carried on', future: 'will carry on', type: 'inseparable', meaning: 'continuar' },
+            { id: 33, phrasal: 'carry out', present: 'carry out', past: 'carried out', participle: 'carried out', future: 'will carry out', type: 'separable', meaning: 'realizar / executar' },
+            { id: 34, phrasal: 'break down', present: 'break down', past: 'broke down', participle: 'broken down', future: 'will break down', type: 'separable', meaning: 'quebrar / desmoronar' },
+            { id: 35, phrasal: 'break up', present: 'break up', past: 'broke up', participle: 'broken up', future: 'will break up', type: 'separable', meaning: 'terminar (relação)' },
+            { id: 36, phrasal: 'break in', present: 'break in', past: 'broke in', participle: 'broken in', future: 'will break in', type: 'separable', meaning: 'invadir / arrombar' },
+            { id: 37, phrasal: 'bring up', present: 'bring up', past: 'brought up', participle: 'brought up', future: 'will bring up', type: 'separable', meaning: 'criar (filhos) / mencionar' },
+            { id: 38, phrasal: 'bring back', present: 'bring back', past: 'brought back', participle: 'brought back', future: 'will bring back', type: 'separable', meaning: 'trazer de volta' },
+            { id: 39, phrasal: 'bring in', present: 'bring in', past: 'brought in', participle: 'brought in', future: 'will bring in', type: 'separable', meaning: 'trazer / introduzir' },
+            { id: 40, phrasal: 'call off', present: 'call off', past: 'called off', participle: 'called off', future: 'will call off', type: 'separable', meaning: 'cancelar' },
+            // 41-60
+            { id: 41, phrasal: 'call on', present: 'call on', past: 'called on', participle: 'called on', future: 'will call on', type: 'inseparable', meaning: 'visitar / recorrer a' },
+            { id: 42, phrasal: 'call back', present: 'call back', past: 'called back', participle: 'called back', future: 'will call back', type: 'separable', meaning: 'retornar ligação' },
+            { id: 43, phrasal: 'come up with', present: 'come up with', past: 'came up with', participle: 'come up with', future: 'will come up with', type: 'three', meaning: 'ter uma ideia / criar' },
+            { id: 44, phrasal: 'come across', present: 'come across', past: 'came across', participle: 'come across', future: 'will come across', type: 'inseparable', meaning: 'encontrar por acaso' },
+            { id: 45, phrasal: 'come over', present: 'come over', past: 'came over', participle: 'come over', future: 'will come over', type: 'inseparable', meaning: 'visitar / passar em casa' },
+            { id: 46, phrasal: 'cut off', present: 'cut off', past: 'cut off', participle: 'cut off', future: 'will cut off', type: 'separable', meaning: 'cortar / interromper' },
+            { id: 47, phrasal: 'cut down', present: 'cut down', past: 'cut down', participle: 'cut down', future: 'will cut down', type: 'separable', meaning: 'reduzir / cortar' },
+            { id: 48, phrasal: 'cut in', present: 'cut in', past: 'cut in', participle: 'cut in', future: 'will cut in', type: 'separable', meaning: 'interromper / cortar na frente' },
+            { id: 49, phrasal: 'do over', present: 'do over', past: 'did over', participle: 'done over', future: 'will do over', type: 'separable', meaning: 'refazer' },
+            { id: 50, phrasal: 'do away with', present: 'do away with', past: 'did away with', participle: 'done away with', future: 'will do away with', type: 'three', meaning: 'abolir / eliminar' },
+            { id: 51, phrasal: 'do up', present: 'do up', past: 'did up', participle: 'done up', future: 'will do up', type: 'separable', meaning: 'fechar / amarrar / reformar' },
+            { id: 52, phrasal: 'drop off', present: 'drop off', past: 'dropped off', participle: 'dropped off', future: 'will drop off', type: 'separable', meaning: 'deixar (alguém) / cair' },
+            { id: 53, phrasal: 'drop out', present: 'drop out', past: 'dropped out', participle: 'dropped out', future: 'will drop out', type: 'inseparable', meaning: 'abandonar (curso)' },
+            { id: 54, phrasal: 'drop in', present: 'drop in', past: 'dropped in', participle: 'dropped in', future: 'will drop in', type: 'inseparable', meaning: 'visitar sem avisar' },
+            { id: 55, phrasal: 'end up', present: 'end up', past: 'ended up', participle: 'ended up', future: 'will end up', type: 'inseparable', meaning: 'acabar (em algum lugar)' },
+            { id: 56, phrasal: 'face up to', present: 'face up to', past: 'faced up to', participle: 'faced up to', future: 'will face up to', type: 'three', meaning: 'enfrentar (problema)' },
+            { id: 57, phrasal: 'fall apart', present: 'fall apart', past: 'fell apart', participle: 'fallen apart', future: 'will fall apart', type: 'inseparable', meaning: 'desmoronar / despedaçar' },
+            { id: 58, phrasal: 'fall down', present: 'fall down', past: 'fell down', participle: 'fallen down', future: 'will fall down', type: 'inseparable', meaning: 'cair' },
+            { id: 59, phrasal: 'fall for', present: 'fall for', past: 'fell for', participle: 'fallen for', future: 'will fall for', type: 'inseparable', meaning: 'apaixonar-se por / cair no golpe' },
+            { id: 60, phrasal: 'figure out', present: 'figure out', past: 'figured out', participle: 'figured out', future: 'will figure out', type: 'separable', meaning: 'descobrir / entender' },
+            // 61-80
+            { id: 61, phrasal: 'fill in', present: 'fill in', past: 'filled in', participle: 'filled in', future: 'will fill in', type: 'separable', meaning: 'preencher / substituir' },
+            { id: 62, phrasal: 'fill out', present: 'fill out', past: 'filled out', participle: 'filled out', future: 'will fill out', type: 'separable', meaning: 'preencher (formulário)' },
+            { id: 63, phrasal: 'fill up', present: 'fill up', past: 'filled up', participle: 'filled up', future: 'will fill up', type: 'separable', meaning: 'encher / completar' },
+            { id: 64, phrasal: 'find out', present: 'find out', past: 'found out', participle: 'found out', future: 'will find out', type: 'separable', meaning: 'descobrir' },
+            { id: 65, phrasal: 'get along with', present: 'get along with', past: 'got along with', participle: 'gotten along with', future: 'will get along with', type: 'three', meaning: 'dar-se bem com' },
+            { id: 66, phrasal: 'get around', present: 'get around', past: 'got around', participle: 'gotten around', future: 'will get around', type: 'inseparable', meaning: 'circular / evitar' },
+            { id: 67, phrasal: 'get away', present: 'get away', past: 'got away', participle: 'gotten away', future: 'will get away', type: 'inseparable', meaning: 'escapar / fugir' },
+            { id: 68, phrasal: 'get back', present: 'get back', past: 'got back', participle: 'gotten back', future: 'will get back', type: 'inseparable', meaning: 'voltar / retornar' },
+            { id: 69, phrasal: 'get in', present: 'get in', past: 'got in', participle: 'gotten in', future: 'will get in', type: 'inseparable', meaning: 'entrar / chegar' },
+            { id: 70, phrasal: 'get into', present: 'get into', past: 'got into', participle: 'gotten into', future: 'will get into', type: 'inseparable', meaning: 'entrar em / interessar-se' },
+            { id: 71, phrasal: 'get out', present: 'get out', past: 'got out', participle: 'gotten out', future: 'will get out', type: 'inseparable', meaning: 'sair / tirar' },
+            { id: 72, phrasal: 'get over', present: 'get over', past: 'got over', participle: 'gotten over', future: 'will get over', type: 'inseparable', meaning: 'superar / recuperar-se' },
+            { id: 73, phrasal: 'get through', present: 'get through', past: 'got through', participle: 'gotten through', future: 'will get through', type: 'inseparable', meaning: 'concluir / comunicar-se' },
+            { id: 74, phrasal: 'get together', present: 'get together', past: 'got together', participle: 'gotten together', future: 'will get together', type: 'inseparable', meaning: 'reunir-se / encontrar-se' },
+            { id: 75, phrasal: 'give away', present: 'give away', past: 'gave away', participle: 'given away', future: 'will give away', type: 'separable', meaning: 'doar / revelar' },
+            { id: 76, phrasal: 'give out', present: 'give out', past: 'gave out', participle: 'given out', future: 'will give out', type: 'separable', meaning: 'distribuir / esgotar-se' },
+            { id: 77, phrasal: 'grow up', present: 'grow up', past: 'grew up', participle: 'grown up', future: 'will grow up', type: 'inseparable', meaning: 'crescer / tornar-se adulto' },
+            { id: 78, phrasal: 'hand in', present: 'hand in', past: 'handed in', participle: 'handed in', future: 'will hand in', type: 'separable', meaning: 'entregar (trabalho)' },
+            { id: 79, phrasal: 'hand out', present: 'hand out', past: 'handed out', participle: 'handed out', future: 'will hand out', type: 'separable', meaning: 'distribuir' },
+            { id: 80, phrasal: 'hand over', present: 'hand over', past: 'handed over', participle: 'handed over', future: 'will hand over', type: 'separable', meaning: 'entregar / ceder' },
+            // 81-100
+            { id: 81, phrasal: 'hang on', present: 'hang on', past: 'hung on', participle: 'hung on', future: 'will hang on', type: 'inseparable', meaning: 'esperar / segurar-se' },
+            { id: 82, phrasal: 'hang out', present: 'hang out', past: 'hung out', participle: 'hung out', future: 'will hang out', type: 'inseparable', meaning: 'sair / passar tempo' },
+            { id: 83, phrasal: 'hang up', present: 'hang up', past: 'hung up', participle: 'hung up', future: 'will hang up', type: 'separable', meaning: 'desligar (telefone)' },
+            { id: 84, phrasal: 'keep on', present: 'keep on', past: 'kept on', participle: 'kept on', future: 'will keep on', type: 'inseparable', meaning: 'continuar' },
+            { id: 85, phrasal: 'keep up', present: 'keep up', past: 'kept up', participle: 'kept up', future: 'will keep up', type: 'separable', meaning: 'manter / acompanhar' },
+            { id: 86, phrasal: 'keep away', present: 'keep away', past: 'kept away', participle: 'kept away', future: 'will keep away', type: 'separable', meaning: 'manter distância' },
+            { id: 87, phrasal: 'leave out', present: 'leave out', past: 'left out', participle: 'left out', future: 'will leave out', type: 'separable', meaning: 'deixar de fora / omitir' },
+            { id: 88, phrasal: 'let down', present: 'let down', past: 'let down', participle: 'let down', future: 'will let down', type: 'separable', meaning: 'decepcionar' },
+            { id: 89, phrasal: 'let in', present: 'let in', past: 'let in', participle: 'let in', future: 'will let in', type: 'separable', meaning: 'deixar entrar' },
+            { id: 90, phrasal: 'let out', present: 'let out', past: 'let out', participle: 'let out', future: 'will let out', type: 'separable', meaning: 'deixar sair / soltar' },
+            { id: 91, phrasal: 'live up to', present: 'live up to', past: 'lived up to', participle: 'lived up to', future: 'will live up to', type: 'three', meaning: 'estar à altura de' },
+            { id: 92, phrasal: 'look down on', present: 'look down on', past: 'looked down on', participle: 'looked down on', future: 'will look down on', type: 'three', meaning: 'menosprezar' },
+            { id: 93, phrasal: 'look out', present: 'look out', past: 'looked out', participle: 'looked out', future: 'will look out', type: 'inseparable', meaning: 'cuidar / tomar cuidado' },
+            { id: 94, phrasal: 'look over', present: 'look over', past: 'looked over', participle: 'looked over', future: 'will look over', type: 'separable', meaning: 'examinar rapidamente' },
+            { id: 95, phrasal: 'make up', present: 'make up', past: 'made up', participle: 'made up', future: 'will make up', type: 'separable', meaning: 'inventar / fazer as pazes' },
+            { id: 96, phrasal: 'make out', present: 'make out', past: 'made out', participle: 'made out', future: 'will make out', type: 'separable', meaning: 'distinguir / entender' },
+            { id: 97, phrasal: 'make up for', present: 'make up for', past: 'made up for', participle: 'made up for', future: 'will make up for', type: 'three', meaning: 'compensar' },
+            { id: 98, phrasal: 'pass out', present: 'pass out', past: 'passed out', participle: 'passed out', future: 'will pass out', type: 'inseparable', meaning: 'desmaiar / distribuir' },
+            { id: 99, phrasal: 'pass away', present: 'pass away', past: 'passed away', participle: 'passed away', future: 'will pass away', type: 'inseparable', meaning: 'falecer' },
+            { id: 100, phrasal: 'pay back', present: 'pay back', past: 'paid back', participle: 'paid back', future: 'will pay back', type: 'separable', meaning: 'pagar de volta / vingar-se' },
+            // 101-120
+            { id: 101, phrasal: 'pick up', present: 'pick up', past: 'picked up', participle: 'picked up', future: 'will pick up', type: 'separable', meaning: 'pegar / buscar / aprender' },
+            { id: 102, phrasal: 'pick out', present: 'pick out', past: 'picked out', participle: 'picked out', future: 'will pick out', type: 'separable', meaning: 'escolher / selecionar' },
+            { id: 103, phrasal: 'point out', present: 'point out', past: 'pointed out', participle: 'pointed out', future: 'will point out', type: 'separable', meaning: 'apontar / indicar' },
+            { id: 104, phrasal: 'put away', present: 'put away', past: 'put away', participle: 'put away', future: 'will put away', type: 'separable', meaning: 'guardar / economizar' },
+            { id: 105, phrasal: 'put back', present: 'put back', past: 'put back', participle: 'put back', future: 'will put back', type: 'separable', meaning: 'colocar de volta' },
+            { id: 106, phrasal: 'put down', present: 'put down', past: 'put down', participle: 'put down', future: 'will put down', type: 'separable', meaning: 'colocar / humilhar' },
+            { id: 107, phrasal: 'put off', present: 'put off', past: 'put off', participle: 'put off', future: 'will put off', type: 'separable', meaning: 'adiar / desencorajar' },
+            { id: 108, phrasal: 'put out', present: 'put out', past: 'put out', participle: 'put out', future: 'will put out', type: 'separable', meaning: 'apagar / estender' },
+            { id: 109, phrasal: 'put up', present: 'put up', past: 'put up', participle: 'put up', future: 'will put up', type: 'separable', meaning: 'erguer / hospedar' },
+            { id: 110, phrasal: 'put up with', present: 'put up with', past: 'put up with', participle: 'put up with', future: 'will put up with', type: 'three', meaning: 'tolerar / suportar' },
+            { id: 111, phrasal: 'run out', present: 'run out', past: 'ran out', participle: 'run out', future: 'will run out', type: 'inseparable', meaning: 'acabar / esgotar' },
+            { id: 112, phrasal: 'run out of', present: 'run out of', past: 'ran out of', participle: 'run out of', future: 'will run out of', type: 'three', meaning: 'ficar sem' },
+            { id: 113, phrasal: 'run into', present: 'run into', past: 'ran into', participle: 'run into', future: 'will run into', type: 'inseparable', meaning: 'encontrar / colidir' },
+            { id: 114, phrasal: 'run over', present: 'run over', past: 'ran over', participle: 'run over', future: 'will run over', type: 'separable', meaning: 'atropelar / revisar' },
+            { id: 115, phrasal: 'run away', present: 'run away', past: 'ran away', participle: 'run away', future: 'will run away', type: 'inseparable', meaning: 'fugir' },
+            { id: 116, phrasal: 'set up', present: 'set up', past: 'set up', participle: 'set up', future: 'will set up', type: 'separable', meaning: 'montar / estabelecer' },
+            { id: 117, phrasal: 'set off', present: 'set off', past: 'set off', participle: 'set off', future: 'will set off', type: 'separable', meaning: 'partir / acionar' },
+            { id: 118, phrasal: 'set out', present: 'set out', past: 'set out', participle: 'set out', future: 'will set out', type: 'inseparable', meaning: 'partir / estabelecer' },
+            { id: 119, phrasal: 'show up', present: 'show up', past: 'showed up', participle: 'shown up', future: 'will show up', type: 'inseparable', meaning: 'aparecer / comparecer' },
+            { id: 120, phrasal: 'show off', present: 'show off', past: 'showed off', participle: 'shown off', future: 'will show off', type: 'separable', meaning: 'exibir-se / mostrar' },
+            // 121-140
+            { id: 121, phrasal: 'sit down', present: 'sit down', past: 'sat down', participle: 'sat down', future: 'will sit down', type: 'inseparable', meaning: 'sentar-se' },
+            { id: 122, phrasal: 'stand up', present: 'stand up', past: 'stood up', participle: 'stood up', future: 'will stand up', type: 'inseparable', meaning: 'levantar-se' },
+            { id: 123, phrasal: 'stand by', present: 'stand by', past: 'stood by', participle: 'stood by', future: 'will stand by', type: 'inseparable', meaning: 'apoiar / esperar' },
+            { id: 124, phrasal: 'stand out', present: 'stand out', past: 'stood out', participle: 'stood out', future: 'will stand out', type: 'inseparable', meaning: 'destacar-se' },
+            { id: 125, phrasal: 'stick to', present: 'stick to', past: 'stuck to', participle: 'stuck to', future: 'will stick to', type: 'inseparable', meaning: 'aderir a / manter' },
+            { id: 126, phrasal: 'stick up', present: 'stick up', past: 'stuck up', participle: 'stuck up', future: 'will stick up', type: 'separable', meaning: 'levantar / assaltar' },
+            { id: 127, phrasal: 'take after', present: 'take after', past: 'took after', participle: 'taken after', future: 'will take after', type: 'inseparable', meaning: 'puxar (alguém na família)' },
+            { id: 128, phrasal: 'take back', present: 'take back', past: 'took back', participle: 'taken back', future: 'will take back', type: 'separable', meaning: 'devolver / retirar' },
+            { id: 129, phrasal: 'take care of', present: 'take care of', past: 'took care of', participle: 'taken care of', future: 'will take care of', type: 'three', meaning: 'cuidar de' },
+            { id: 130, phrasal: 'take down', present: 'take down', past: 'took down', participle: 'taken down', future: 'will take down', type: 'separable', meaning: 'anotar / derrubar' },
+            { id: 131, phrasal: 'take on', present: 'take on', past: 'took on', participle: 'taken on', future: 'will take on', type: 'separable', meaning: 'assumir / enfrentar' },
+            { id: 132, phrasal: 'take up', present: 'take up', past: 'took up', participle: 'taken up', future: 'will take up', type: 'separable', meaning: 'começar (atividade) / ocupar' },
+            { id: 133, phrasal: 'talk into', present: 'talk into', past: 'talked into', participle: 'talked into', future: 'will talk into', type: 'separable', meaning: 'convencer a fazer' },
+            { id: 134, phrasal: 'talk out of', present: 'talk out of', past: 'talked out of', participle: 'talked out of', future: 'will talk out of', type: 'separable', meaning: 'dissuadir' },
+            { id: 135, phrasal: 'tell off', present: 'tell off', past: 'told off', participle: 'told off', future: 'will tell off', type: 'separable', meaning: 'repreender' },
+            { id: 136, phrasal: 'think about', present: 'think about', past: 'thought about', participle: 'thought about', future: 'will think about', type: 'inseparable', meaning: 'pensar sobre' },
+            { id: 137, phrasal: 'think of', present: 'think of', past: 'thought of', participle: 'thought of', future: 'will think of', type: 'inseparable', meaning: 'pensar em / lembrar' },
+            { id: 138, phrasal: 'throw away', present: 'throw away', past: 'threw away', participle: 'thrown away', future: 'will throw away', type: 'separable', meaning: 'jogar fora' },
+            { id: 139, phrasal: 'try on', present: 'try on', past: 'tried on', participle: 'tried on', future: 'will try on', type: 'separable', meaning: 'experimentar (roupa)' },
+            { id: 140, phrasal: 'turn around', present: 'turn around', past: 'turned around', participle: 'turned around', future: 'will turn around', type: 'separable', meaning: 'virar-se / mudar' },
+            // 141-160
+            { id: 141, phrasal: 'turn down', present: 'turn down', past: 'turned down', participle: 'turned down', future: 'will turn down', type: 'separable', meaning: 'recusar / diminuir' },
+            { id: 142, phrasal: 'turn up', present: 'turn up', past: 'turned up', participle: 'turned up', future: 'will turn up', type: 'separable', meaning: 'aparecer / aumentar' },
+            { id: 143, phrasal: 'turn out', present: 'turn out', past: 'turned out', participle: 'turned out', future: 'will turn out', type: 'separable', meaning: 'descobrir-se / resultar' },
+            { id: 144, phrasal: 'use up', present: 'use up', past: 'used up', participle: 'used up', future: 'will use up', type: 'separable', meaning: 'usar completamente' },
+            { id: 145, phrasal: 'wait for', present: 'wait for', past: 'waited for', participle: 'waited for', future: 'will wait for', type: 'inseparable', meaning: 'esperar por' },
+            { id: 146, phrasal: 'wait on', present: 'wait on', past: 'waited on', participle: 'waited on', future: 'will wait on', type: 'inseparable', meaning: 'servir / atender' },
+            { id: 147, phrasal: 'wake up', present: 'wake up', past: 'woke up', participle: 'woken up', future: 'will wake up', type: 'separable', meaning: 'acordar' },
+            { id: 148, phrasal: 'watch out', present: 'watch out', past: 'watched out', participle: 'watched out', future: 'will watch out', type: 'inseparable', meaning: 'tomar cuidado' },
+            { id: 149, phrasal: 'wear out', present: 'wear out', past: 'wore out', participle: 'worn out', future: 'will wear out', type: 'separable', meaning: 'gastar / desgastar' },
+            { id: 150, phrasal: 'work out', present: 'work out', past: 'worked out', participle: 'worked out', future: 'will work out', type: 'separable', meaning: 'resolver / dar certo' },
+            { id: 151, phrasal: 'write down', present: 'write down', past: 'wrote down', participle: 'written down', future: 'will write down', type: 'separable', meaning: 'anotar' },
+            { id: 152, phrasal: 'zip up', present: 'zip up', past: 'zipped up', participle: 'zipped up', future: 'will zip up', type: 'separable', meaning: 'fechar (ziper)' },
+            { id: 153, phrasal: 'back up', present: 'back up', past: 'backed up', participle: 'backed up', future: 'will back up', type: 'separable', meaning: 'apoiar / fazer backup' },
+            { id: 154, phrasal: 'blow up', present: 'blow up', past: 'blew up', participle: 'blown up', future: 'will blow up', type: 'separable', meaning: 'explodir / inflar' },
+            { id: 155, phrasal: 'break out', present: 'break out', past: 'broke out', participle: 'broken out', future: 'will break out', type: 'inseparable', meaning: 'escapar / irromper' },
+            { id: 156, phrasal: 'bring about', present: 'bring about', past: 'brought about', participle: 'brought about', future: 'will bring about', type: 'separable', meaning: 'causar / provocar' },
+            { id: 157, phrasal: 'build up', present: 'build up', past: 'built up', participle: 'built up', future: 'will build up', type: 'separable', meaning: 'acumular / construir' },
+            { id: 158, phrasal: 'burn out', present: 'burn out', past: 'burned out', participle: 'burned out', future: 'will burn out', type: 'separable', meaning: 'queimar / esgotar' },
+            { id: 159, phrasal: 'call up', present: 'call up', past: 'called up', participle: 'called up', future: 'will call up', type: 'separable', meaning: 'telefonar / convocar' },
+            { id: 160, phrasal: 'carry forward', present: 'carry forward', past: 'carried forward', participle: 'carried forward', future: 'will carry forward', type: 'separable', meaning: 'continuar / transportar' },
+            // 161-180
+            { id: 161, phrasal: 'catch up', present: 'catch up', past: 'caught up', participle: 'caught up', future: 'will catch up', type: 'inseparable', meaning: 'alcançar / atualizar-se' },
+            { id: 162, phrasal: 'check in', present: 'check in', past: 'checked in', participle: 'checked in', future: 'will check in', type: 'inseparable', meaning: 'fazer check-in' },
+            { id: 163, phrasal: 'check out', present: 'check out', past: 'checked out', participle: 'checked out', future: 'will check out', type: 'separable', meaning: 'fazer check-out / verificar' },
+            { id: 164, phrasal: 'cheer up', present: 'cheer up', past: 'cheered up', participle: 'cheered up', future: 'will cheer up', type: 'separable', meaning: 'animar' },
+            { id: 165, phrasal: 'clean out', present: 'clean out', past: 'cleaned out', participle: 'cleaned out', future: 'will clean out', type: 'separable', meaning: 'limpar completamente' },
+            { id: 166, phrasal: 'clean up', present: 'clean up', past: 'cleaned up', participle: 'cleaned up', future: 'will clean up', type: 'separable', meaning: 'limpar / arrumar' },
+            { id: 167, phrasal: 'clear up', present: 'clear up', past: 'cleared up', participle: 'cleared up', future: 'will clear up', type: 'separable', meaning: 'esclarecer / melhorar' },
+            { id: 168, phrasal: 'close down', present: 'close down', past: 'closed down', participle: 'closed down', future: 'will close down', type: 'separable', meaning: 'fechar (permanentemente)' },
+            { id: 169, phrasal: 'come about', present: 'come about', past: 'came about', participle: 'come about', future: 'will come about', type: 'inseparable', meaning: 'acontecer / ocorrer' },
+            { id: 170, phrasal: 'come along', present: 'come along', past: 'came along', participle: 'come along', future: 'will come along', type: 'inseparable', meaning: 'vir junto / progredir' },
+            { id: 171, phrasal: 'come apart', present: 'come apart', past: 'came apart', participle: 'come apart', future: 'will come apart', type: 'inseparable', meaning: 'desmontar / despedaçar' },
+            { id: 172, phrasal: 'come down', present: 'come down', past: 'came down', participle: 'come down', future: 'will come down', type: 'inseparable', meaning: 'descer / cair' },
+            { id: 173, phrasal: 'come from', present: 'come from', past: 'came from', participle: 'come from', future: 'will come from', type: 'inseparable', meaning: 'vir de / ser originário' },
+            { id: 174, phrasal: 'come off', present: 'come off', past: 'came off', participle: 'come off', future: 'will come off', type: 'inseparable', meaning: 'sair / desprender' },
+            { id: 175, phrasal: 'come round', present: 'come round', past: 'came round', participle: 'come round', future: 'will come round', type: 'inseparable', meaning: 'recuperar-se / visitar' },
+            { id: 176, phrasal: 'come through', present: 'come through', past: 'came through', participle: 'come through', future: 'will come through', type: 'inseparable', meaning: 'sobreviver / entregar' },
+            { id: 177, phrasal: 'count on', present: 'count on', past: 'counted on', participle: 'counted on', future: 'will count on', type: 'inseparable', meaning: 'contar com / depender' },
+            { id: 178, phrasal: 'cross out', present: 'cross out', past: 'crossed out', participle: 'crossed out', future: 'will cross out', type: 'separable', meaning: 'riscar' },
+            { id: 179, phrasal: 'cut back', present: 'cut back', past: 'cut back', participle: 'cut back', future: 'will cut back', type: 'separable', meaning: 'reduzir / cortar gastos' },
+            { id: 180, phrasal: 'deal with', present: 'deal with', past: 'dealt with', participle: 'dealt with', future: 'will deal with', type: 'inseparable', meaning: 'lidar com / tratar' },
+            // 181-200
+            { id: 181, phrasal: 'depend on', present: 'depend on', past: 'depended on', participle: 'depended on', future: 'will depend on', type: 'inseparable', meaning: 'depender de' },
+            { id: 182, phrasal: 'die out', present: 'die out', past: 'died out', participle: 'died out', future: 'will die out', type: 'inseparable', meaning: 'extinguir-se' },
+            { id: 183, phrasal: 'dress up', present: 'dress up', past: 'dressed up', participle: 'dressed up', future: 'will dress up', type: 'separable', meaning: 'vestir-se bem / fantasiar' },
+            { id: 184, phrasal: 'drive away', present: 'drive away', past: 'drove away', participle: 'driven away', future: 'will drive away', type: 'separable', meaning: 'afugentar / ir embora de carro' },
+            { id: 185, phrasal: 'drop by', present: 'drop by', past: 'dropped by', participle: 'dropped by', future: 'will drop by', type: 'inseparable', meaning: 'visitar rapidamente' },
+            { id: 186, phrasal: 'eat out', present: 'eat out', past: 'ate out', participle: 'eaten out', future: 'will eat out', type: 'inseparable', meaning: 'comer fora' },
+            { id: 187, phrasal: 'figure on', present: 'figure on', past: 'figured on', participle: 'figured on', future: 'will figure on', type: 'inseparable', meaning: 'contar com / planejar' },
+            { id: 188, phrasal: 'fill out', present: 'fill out', past: 'filled out', participle: 'filled out', future: 'will fill out', type: 'separable', meaning: 'preencher' },
+            { id: 189, phrasal: 'find out', present: 'find out', past: 'found out', participle: 'found out', future: 'will find out', type: 'separable', meaning: 'descobrir' },
+            { id: 190, phrasal: 'fix up', present: 'fix up', past: 'fixed up', participle: 'fixed up', future: 'will fix up', type: 'separable', meaning: 'arrumar / consertar' },
+            { id: 191, phrasal: 'fly over', present: 'fly over', past: 'flew over', participle: 'flown over', future: 'will fly over', type: 'inseparable', meaning: 'sobrevoar / voar por cima' },
+            { id: 192, phrasal: 'get across', present: 'get across', past: 'got across', participle: 'gotten across', future: 'will get across', type: 'separable', meaning: 'fazer entender / atravessar' },
+            { id: 193, phrasal: 'get ahead', present: 'get ahead', past: 'got ahead', participle: 'gotten ahead', future: 'will get ahead', type: 'inseparable', meaning: 'progredir / avançar' },
+            { id: 194, phrasal: 'get by', present: 'get by', past: 'got by', participle: 'gotten by', future: 'will get by', type: 'inseparable', meaning: 'sobreviver / passar' },
+            { id: 195, phrasal: 'get down', present: 'get down', past: 'got down', participle: 'gotten down', future: 'will get down', type: 'inseparable', meaning: 'descer / deprimir' },
+            { id: 196, phrasal: 'get in', present: 'get in', past: 'got in', participle: 'gotten in', future: 'will get in', type: 'inseparable', meaning: 'entrar / chegar' },
+            { id: 197, phrasal: 'get on with', present: 'get on with', past: 'got on with', participle: 'gotten on with', future: 'will get on with', type: 'three', meaning: 'dar-se bem com / continuar' },
+            { id: 198, phrasal: 'get round to', present: 'get round to', past: 'got round to', participle: 'gotten round to', future: 'will get round to', type: 'three', meaning: 'arranjar tempo para' },
+            { id: 199, phrasal: 'get through', present: 'get through', past: 'got through', participle: 'gotten through', future: 'will get through', type: 'inseparable', meaning: 'concluir / passar por' },
+            { id: 200, phrasal: 'give back', present: 'give back', past: 'gave back', participle: 'given back', future: 'will give back', type: 'separable', meaning: 'devolver' },
+            // 201-220
+            { id: 201, phrasal: 'go ahead', present: 'go ahead', past: 'went ahead', participle: 'gone ahead', future: 'will go ahead', type: 'inseparable', meaning: 'prosseguir / continuar' },
+            { id: 202, phrasal: 'go along', present: 'go along', past: 'went along', participle: 'gone along', future: 'will go along', type: 'inseparable', meaning: 'acompanhar / concordar' },
+            { id: 203, phrasal: 'go around', present: 'go around', past: 'went around', participle: 'gone around', future: 'will go around', type: 'inseparable', meaning: 'circular / espalhar' },
+            { id: 204, phrasal: 'go by', present: 'go by', past: 'went by', participle: 'gone by', future: 'will go by', type: 'inseparable', meaning: 'passar (tempo) / julgar por' },
+            { id: 205, phrasal: 'go down', present: 'go down', past: 'went down', participle: 'gone down', future: 'will go down', type: 'inseparable', meaning: 'descer / diminuir' },
+            { id: 206, phrasal: 'go for', present: 'go for', past: 'went for', participle: 'gone for', future: 'will go for', type: 'inseparable', meaning: 'escolher / tentar / gostar' },
+            { id: 207, phrasal: 'go off', present: 'go off', past: 'went off', participle: 'gone off', future: 'will go off', type: 'inseparable', meaning: 'disparar / estragar / sair' },
+            { id: 208, phrasal: 'go out with', present: 'go out with', past: 'went out with', participle: 'gone out with', future: 'will go out with', type: 'three', meaning: 'namorar / sair com' },
+            { id: 209, phrasal: 'go up', present: 'go up', past: 'went up', participle: 'gone up', future: 'will go up', type: 'inseparable', meaning: 'subir / aumentar' },
+            { id: 210, phrasal: 'grow apart', present: 'grow apart', past: 'grew apart', participle: 'grown apart', future: 'will grow apart', type: 'inseparable', meaning: 'afastar-se (relacionamento)' },
+            { id: 211, phrasal: 'hang around', present: 'hang around', past: 'hung around', participle: 'hung around', future: 'will hang around', type: 'inseparable', meaning: 'ficar por perto / vagar' },
+            { id: 212, phrasal: 'hang on to', present: 'hang on to', past: 'hung on to', participle: 'hung on to', future: 'will hang on to', type: 'three', meaning: 'segurar / manter' },
+            { id: 213, phrasal: 'hold out', present: 'hold out', past: 'held out', participle: 'held out', future: 'will hold out', type: 'separable', meaning: 'oferecer / resistir' },
+            { id: 214, phrasal: 'hold over', present: 'hold over', past: 'held over', participle: 'held over', future: 'will hold over', type: 'separable', meaning: 'adiar / estender' },
+            { id: 215, phrasal: 'hurry up', present: 'hurry up', past: 'hurried up', participle: 'hurried up', future: 'will hurry up', type: 'inseparable', meaning: 'apressar-se' },
+            { id: 216, phrasal: 'join in', present: 'join in', past: 'joined in', participle: 'joined in', future: 'will join in', type: 'inseparable', meaning: 'participar / juntar-se' },
+            { id: 217, phrasal: 'jump off', present: 'jump off', past: 'jumped off', participle: 'jumped off', future: 'will jump off', type: 'inseparable', meaning: 'saltar de' },
+            { id: 218, phrasal: 'keep back', present: 'keep back', past: 'kept back', participle: 'kept back', future: 'will keep back', type: 'separable', meaning: 'segurar / ocultar' },
+            { id: 219, phrasal: 'keep down', present: 'keep down', past: 'kept down', participle: 'kept down', future: 'will keep down', type: 'separable', meaning: 'manter baixo / suprimir' },
+            { id: 220, phrasal: 'keep off', present: 'keep off', past: 'kept off', participle: 'kept off', future: 'will keep off', type: 'separable', meaning: 'manter-se afastado' },
+            // 221-240
+            { id: 221, phrasal: 'keep up with', present: 'keep up with', past: 'kept up with', participle: 'kept up with', future: 'will keep up with', type: 'three', meaning: 'acompanhar / manter-se atualizado' },
+            { id: 222, phrasal: 'knock down', present: 'knock down', past: 'knocked down', participle: 'knocked down', future: 'will knock down', type: 'separable', meaning: 'derrubar / atropelar' },
+            { id: 223, phrasal: 'knock out', present: 'knock out', past: 'knocked out', participle: 'knocked out', future: 'will knock out', type: 'separable', meaning: 'nocaUTear / impressionar' },
+            { id: 224, phrasal: 'laugh at', present: 'laugh at', past: 'laughed at', participle: 'laughed at', future: 'will laugh at', type: 'inseparable', meaning: 'rir de / zombar' },
+            { id: 225, phrasal: 'lay off', present: 'lay off', past: 'laid off', participle: 'laid off', future: 'will lay off', type: 'separable', meaning: 'demitir / despedir' },
+            { id: 226, phrasal: 'leave behind', present: 'leave behind', past: 'left behind', participle: 'left behind', future: 'will leave behind', type: 'separable', meaning: 'deixar para trás' },
+            { id: 227, phrasal: 'let go', present: 'let go', past: 'let go', participle: 'let go', future: 'will let go', type: 'inseparable', meaning: 'soltar / desistir' },
+            { id: 228, phrasal: 'listen to', present: 'listen to', past: 'listened to', participle: 'listened to', future: 'will listen to', type: 'inseparable', meaning: 'ouvir / escutar' },
+            { id: 229, phrasal: 'live on', present: 'live on', past: 'lived on', participle: 'lived on', future: 'will live on', type: 'inseparable', meaning: 'sobreviver com / continuar' },
+            { id: 230, phrasal: 'look around', present: 'look around', past: 'looked around', participle: 'looked around', future: 'will look around', type: 'inseparable', meaning: 'olhar ao redor / explorar' },
+            { id: 231, phrasal: 'look down', present: 'look down', past: 'looked down', participle: 'looked down', future: 'will look down', type: 'inseparable', meaning: 'olhar para baixo' },
+            { id: 232, phrasal: 'look up to', present: 'look up to', past: 'looked up to', participle: 'looked up to', future: 'will look up to', type: 'three', meaning: 'admirar / respeitar' },
+            { id: 233, phrasal: 'make for', present: 'make for', past: 'made for', participle: 'made for', future: 'will make for', type: 'inseparable', meaning: 'dirigir-se a / contribuir para' },
+            { id: 234, phrasal: 'make of', present: 'make of', past: 'made of', participle: 'made of', future: 'will make of', type: 'inseparable', meaning: 'compreender / interpretar' },
+            { id: 235, phrasal: 'make over', present: 'make over', past: 'made over', participle: 'made over', future: 'will make over', type: 'separable', meaning: 'transformar / remodelar' },
+            { id: 236, phrasal: 'mix up', present: 'mix up', past: 'mixed up', participle: 'mixed up', future: 'will mix up', type: 'separable', meaning: 'confundir / misturar' },
+            { id: 237, phrasal: 'move in', present: 'move in', past: 'moved in', participle: 'moved in', future: 'will move in', type: 'inseparable', meaning: 'mudar-se (para)' },
+            { id: 238, phrasal: 'move out', present: 'move out', past: 'moved out', participle: 'moved out', future: 'will move out', type: 'inseparable', meaning: 'mudar-se (de)' },
+            { id: 239, phrasal: 'name after', present: 'name after', past: 'named after', participle: 'named after', future: 'will name after', type: 'inseparable', meaning: 'dar nome em homenagem a' },
+            { id: 240, phrasal: 'open up', present: 'open up', past: 'opened up', participle: 'opened up', future: 'will open up', type: 'separable', meaning: 'abrir / desabafar' },
+            // 241-260
+            { id: 241, phrasal: 'own up', present: 'own up', past: 'owned up', participle: 'owned up', future: 'will own up', type: 'inseparable', meaning: 'confessar / admitir' },
+            { id: 242, phrasal: 'pass by', present: 'pass by', past: 'passed by', participle: 'passed by', future: 'will pass by', type: 'inseparable', meaning: 'passar por / ignorar' },
+            { id: 243, phrasal: 'pass on', present: 'pass on', past: 'passed on', participle: 'passed on', future: 'will pass on', type: 'separable', meaning: 'transmitir / falecer' },
+            { id: 244, phrasal: 'pay for', present: 'pay for', past: 'paid for', participle: 'paid for', future: 'will pay for', type: 'inseparable', meaning: 'pagar por' },
+            { id: 245, phrasal: 'pick on', present: 'pick on', past: 'picked on', participle: 'picked on', future: 'will pick on', type: 'inseparable', meaning: 'implicar com / provocar' },
+            { id: 246, phrasal: 'plan on', present: 'plan on', past: 'planned on', participle: 'planned on', future: 'will plan on', type: 'inseparable', meaning: 'planejar / pretender' },
+            { id: 247, phrasal: 'plug in', present: 'plug in', past: 'plugged in', participle: 'plugged in', future: 'will plug in', type: 'separable', meaning: 'conectar (aparelho)' },
+            { id: 248, phrasal: 'point at', present: 'point at', past: 'pointed at', participle: 'pointed at', future: 'will point at', type: 'inseparable', meaning: 'apontar para' },
+            { id: 249, phrasal: 'pull over', present: 'pull over', past: 'pulled over', participle: 'pulled over', future: 'will pull over', type: 'separable', meaning: 'encostar (carro)' },
+            { id: 250, phrasal: 'push around', present: 'push around', past: 'pushed around', participle: 'pushed around', future: 'will push around', type: 'separable', meaning: 'intimidar / mandar' },
+            { id: 251, phrasal: 'put across', present: 'put across', past: 'put across', participle: 'put across', future: 'will put across', type: 'separable', meaning: 'comunicar / fazer entender' },
+            { id: 252, phrasal: 'put aside', present: 'put aside', past: 'put aside', participle: 'put aside', future: 'will put aside', type: 'separable', meaning: 'reservar / deixar de lado' },
+            { id: 253, phrasal: 'put forward', present: 'put forward', past: 'put forward', participle: 'put forward', future: 'will put forward', type: 'separable', meaning: 'propor / sugerir' },
+            { id: 254, phrasal: 'put together', present: 'put together', past: 'put together', participle: 'put together', future: 'will put together', type: 'separable', meaning: 'montar / juntar' },
+            { id: 255, phrasal: 'rely on', present: 'rely on', past: 'relied on', participle: 'relied on', future: 'will rely on', type: 'inseparable', meaning: 'confiar em / depender' },
+            { id: 256, phrasal: 'ring up', present: 'ring up', past: 'rang up', participle: 'rung up', future: 'will ring up', type: 'separable', meaning: 'telefonar / registar' },
+            { id: 257, phrasal: 'round up', present: 'round up', past: 'rounded up', participle: 'rounded up', future: 'will round up', type: 'separable', meaning: 'reunir / arreBendar' },
+            { id: 258, phrasal: 'rule out', present: 'rule out', past: 'ruled out', participle: 'ruled out', future: 'will rule out', type: 'separable', meaning: 'descartar / excluir' },
+            { id: 259, phrasal: 'run across', present: 'run across', past: 'ran across', participle: 'run across', future: 'will run across', type: 'inseparable', meaning: 'encontrar por acaso' },
+            { id: 260, phrasal: 'run after', present: 'run after', past: 'ran after', participle: 'run after', future: 'will run after', type: 'inseparable', meaning: 'correr atrás / perseguir' },
+            // 261-280
+            { id: 261, phrasal: 'run down', present: 'run down', past: 'ran down', participle: 'run down', future: 'will run down', type: 'separable', meaning: 'atropelar / diminuir' },
+            { id: 262, phrasal: 'run for', present: 'run for', past: 'ran for', participle: 'run for', future: 'will run for', type: 'inseparable', meaning: 'candidatar-se a' },
+            { id: 263, phrasal: 'run through', present: 'run through', past: 'ran through', participle: 'run through', future: 'will run through', type: 'separable', meaning: 'gastar / ensaiar' },
+            { id: 264, phrasal: 'see about', present: 'see about', past: 'saw about', participle: 'seen about', future: 'will see about', type: 'inseparable', meaning: 'cuidar de / verificar' },
+            { id: 265, phrasal: 'see off', present: 'see off', past: 'saw off', participle: 'seen off', future: 'will see off', type: 'separable', meaning: 'despedir-se (no aeroporto)' },
+            { id: 266, phrasal: 'see through', present: 'see through', past: 'saw through', participle: 'seen through', future: 'will see through', type: 'separable', meaning: 'perceber / levar até o fim' },
+            { id: 267, phrasal: 'send for', present: 'send for', past: 'sent for', participle: 'sent for', future: 'will send for', type: 'inseparable', meaning: 'mandar buscar' },
+            { id: 268, phrasal: 'send off', present: 'send off', past: 'sent off', participle: 'sent off', future: 'will send off', type: 'separable', meaning: 'enviar / despedir' },
+            { id: 269, phrasal: 'set about', present: 'set about', past: 'set about', participle: 'set about', future: 'will set about', type: 'inseparable', meaning: 'começar / empreender' },
+            { id: 270, phrasal: 'set aside', present: 'set aside', past: 'set aside', participle: 'set aside', future: 'will set aside', type: 'separable', meaning: 'reservar / ignorar' },
+            { id: 271, phrasal: 'set back', present: 'set back', past: 'set back', participle: 'set back', future: 'will set back', type: 'separable', meaning: 'atrasar / custar' },
+            { id: 272, phrasal: 'set in', present: 'set in', past: 'set in', participle: 'set in', future: 'will set in', type: 'inseparable', meaning: 'instalar-se (ex: chuva)' },
+            { id: 273, phrasal: 'set upon', present: 'set upon', past: 'set upon', participle: 'set upon', future: 'will set upon', type: 'inseparable', meaning: 'atacar' },
+            { id: 274, phrasal: 'settle down', present: 'settle down', past: 'settled down', participle: 'settled down', future: 'will settle down', type: 'inseparable', meaning: 'estabelecer-se / acalmar' },
+            { id: 275, phrasal: 'settle for', present: 'settle for', past: 'settled for', participle: 'settled for', future: 'will settle for', type: 'inseparable', meaning: 'contentar-se com' },
+            { id: 276, phrasal: 'settle in', present: 'settle in', past: 'settled in', participle: 'settled in', future: 'will settle in', type: 'inseparable', meaning: 'adaptar-se / instalar-se' },
+            { id: 277, phrasal: 'shake off', present: 'shake off', past: 'shook off', participle: 'shaken off', future: 'will shake off', type: 'separable', meaning: 'livrar-se de / sacudir' },
+            { id: 278, phrasal: 'shout at', present: 'shout at', past: 'shouted at', participle: 'shouted at', future: 'will shout at', type: 'inseparable', meaning: 'gritar com' },
+            { id: 279, phrasal: 'shut down', present: 'shut down', past: 'shut down', participle: 'shut down', future: 'will shut down', type: 'separable', meaning: 'desligar / fechar' },
+            { id: 280, phrasal: 'shut up', present: 'shut up', past: 'shut up', participle: 'shut up', future: 'will shut up', type: 'separable', meaning: 'calar / calar-se' },
+            // 281-300
+            { id: 281, phrasal: 'sign up', present: 'sign up', past: 'signed up', participle: 'signed up', future: 'will sign up', type: 'separable', meaning: 'inscrever-se / alistar-se' },
+            { id: 282, phrasal: 'sit back', present: 'sit back', past: 'sat back', participle: 'sat back', future: 'will sit back', type: 'inseparable', meaning: 'recostar-se / relaxar' },
+            { id: 283, phrasal: 'sit out', present: 'sit out', past: 'sat out', participle: 'sat out', future: 'will sit out', type: 'separable', meaning: 'não participar / esperar' },
+            { id: 284, phrasal: 'slow down', present: 'slow down', past: 'slowed down', participle: 'slowed down', future: 'will slow down', type: 'separable', meaning: 'diminuir a velocidade' },
+            { id: 285, phrasal: 'sort out', present: 'sort out', past: 'sorted out', participle: 'sorted out', future: 'will sort out', type: 'separable', meaning: 'resolver / organizar' },
+            { id: 286, phrasal: 'speak up', present: 'speak up', past: 'spoke up', participle: 'spoken up', future: 'will speak up', type: 'inseparable', meaning: 'falar alto / manifestar-se' },
+            { id: 287, phrasal: 'stand for', present: 'stand for', past: 'stood for', participle: 'stood for', future: 'will stand for', type: 'inseparable', meaning: 'representar / tolerar' },
+            { id: 288, phrasal: 'stand up for', present: 'stand up for', past: 'stood up for', participle: 'stood up for', future: 'will stand up for', type: 'three', meaning: 'defender / apoiar' },
+            { id: 289, phrasal: 'start out', present: 'start out', past: 'started out', participle: 'started out', future: 'will start out', type: 'inseparable', meaning: 'começar / iniciar' },
+            { id: 290, phrasal: 'start over', present: 'start over', past: 'started over', participle: 'started over', future: 'will start over', type: 'inseparable', meaning: 'recomeçar' },
+            { id: 291, phrasal: 'stay away', present: 'stay away', past: 'stayed away', participle: 'stayed away', future: 'will stay away', type: 'inseparable', meaning: 'manter-se longe' },
+            { id: 292, phrasal: 'stay in', present: 'stay in', past: 'stayed in', participle: 'stayed in', future: 'will stay in', type: 'inseparable', meaning: 'ficar em casa' },
+            { id: 293, phrasal: 'stay out', present: 'stay out', past: 'stayed out', participle: 'stayed out', future: 'will stay out', type: 'inseparable', meaning: 'ficar fora / não voltar' },
+            { id: 294, phrasal: 'stay up', present: 'stay up', past: 'stayed up', participle: 'stayed up', future: 'will stay up', type: 'inseparable', meaning: 'ficar acordado' },
+            { id: 295, phrasal: 'step down', present: 'step down', past: 'stepped down', participle: 'stepped down', future: 'will step down', type: 'inseparable', meaning: 'renunciar / descer' },
+            { id: 296, phrasal: 'step in', present: 'step in', past: 'stepped in', participle: 'stepped in', future: 'will step in', type: 'inseparable', meaning: 'intervir / entrar' },
+            { id: 297, phrasal: 'step up', present: 'step up', past: 'stepped up', participle: 'stepped up', future: 'will step up', type: 'separable', meaning: 'intensificar / aumentar' },
+            { id: 298, phrasal: 'stick around', present: 'stick around', past: 'stuck around', participle: 'stuck around', future: 'will stick around', type: 'inseparable', meaning: 'ficar por perto' },
+            { id: 299, phrasal: 'stick out', present: 'stick out', past: 'stuck out', participle: 'stuck out', future: 'will stick out', type: 'separable', meaning: 'sobressair / esticar' },
+            { id: 300, phrasal: 'switch off', present: 'switch off', past: 'switched off', participle: 'switched off', future: 'will switch off', type: 'separable', meaning: 'desligar' },
+            // 301-320
+            { id: 301, phrasal: 'switch on', present: 'switch on', past: 'switched on', participle: 'switched on', future: 'will switch on', type: 'separable', meaning: 'ligar' },
+            { id: 302, phrasal: 'take after', present: 'take after', past: 'took after', participle: 'taken after', future: 'will take after', type: 'inseparable', meaning: 'puxar (alguém)' },
+            { id: 303, phrasal: 'take apart', present: 'take apart', past: 'took apart', participle: 'taken apart', future: 'will take apart', type: 'separable', meaning: 'desmontar / desmanchar' },
+            { id: 304, phrasal: 'take aside', present: 'take aside', past: 'took aside', participle: 'taken aside', future: 'will take aside', type: 'separable', meaning: 'levar à parte' },
+            { id: 305, phrasal: 'take away', present: 'take away', past: 'took away', participle: 'taken away', future: 'will take away', type: 'separable', meaning: 'levar embora / remover' },
+            { id: 306, phrasal: 'take back', present: 'take back', past: 'took back', participle: 'taken back', future: 'will take back', type: 'separable', meaning: 'devolver / retirar' },
+            { id: 307, phrasal: 'take off', present: 'take off', past: 'took off', participle: 'taken off', future: 'will take off', type: 'separable', meaning: 'tirar / decolar' },
+            { id: 308, phrasal: 'take on', present: 'take on', past: 'took on', participle: 'taken on', future: 'will take on', type: 'separable', meaning: 'assumir / enfrentar' },
+            { id: 309, phrasal: 'take out', present: 'take out', past: 'took out', participle: 'taken out', future: 'will take out', type: 'separable', meaning: 'tirar / levar' },
+            { id: 310, phrasal: 'take over', present: 'take over', past: 'took over', participle: 'taken over', future: 'will take over', type: 'separable', meaning: 'assumir / tomar posse' },
+            { id: 311, phrasal: 'take to', present: 'take to', past: 'took to', participle: 'taken to', future: 'will take to', type: 'inseparable', meaning: 'começar a gostar de' },
+            { id: 312, phrasal: 'take up', present: 'take up', past: 'took up', participle: 'taken up', future: 'will take up', type: 'separable', meaning: 'começar / ocupar' },
+            { id: 313, phrasal: 'talk about', present: 'talk about', past: 'talked about', participle: 'talked about', future: 'will talk about', type: 'inseparable', meaning: 'falar sobre' },
+            { id: 314, phrasal: 'talk back', present: 'talk back', past: 'talked back', participle: 'talked back', future: 'will talk back', type: 'inseparable', meaning: 'responder / replicar' },
+            { id: 315, phrasal: 'talk over', present: 'talk over', past: 'talked over', participle: 'talked over', future: 'will talk over', type: 'separable', meaning: 'discutir / conversar sobre' },
+            { id: 316, phrasal: 'team up', present: 'team up', past: 'teamed up', participle: 'teamed up', future: 'will team up', type: 'inseparable', meaning: 'fazer equipe / juntar-se' },
+            { id: 317, phrasal: 'tear down', present: 'tear down', past: 'tore down', participle: 'torn down', future: 'will tear down', type: 'separable', meaning: 'demolir / derrubar' },
+            { id: 318, phrasal: 'tear up', present: 'tear up', past: 'tore up', participle: 'torn up', future: 'will tear up', type: 'separable', meaning: 'rasgar / destruir' },
+            { id: 319, phrasal: 'tell apart', present: 'tell apart', past: 'told apart', participle: 'told apart', future: 'will tell apart', type: 'separable', meaning: 'distinguir / diferenciar' },
+            { id: 320, phrasal: 'think over', present: 'think over', past: 'thought over', participle: 'thought over', future: 'will think over', type: 'separable', meaning: 'considerar / refletir sobre' },
+            // 321-340
+            { id: 321, phrasal: 'think through', present: 'think through', past: 'thought through', participle: 'thought through', future: 'will think through', type: 'separable', meaning: 'pensar bem / analisar' },
+            { id: 322, phrasal: 'throw out', present: 'throw out', past: 'threw out', participle: 'thrown out', future: 'will throw out', type: 'separable', meaning: 'jogar fora / expulsar' },
+            { id: 323, phrasal: 'tidy up', present: 'tidy up', past: 'tidied up', participle: 'tidied up', future: 'will tidy up', type: 'separable', meaning: 'arrumar / organizar' },
+            { id: 324, phrasal: 'tie up', present: 'tie up', past: 'tied up', participle: 'tied up', future: 'will tie up', type: 'separable', meaning: 'amarrar / prender' },
+            { id: 325, phrasal: 'top up', present: 'top up', past: 'topped up', participle: 'topped up', future: 'will top up', type: 'separable', meaning: 'completar / reabastecer' },
+            { id: 326, phrasal: 'touch on', present: 'touch on', past: 'touched on', participle: 'touched on', future: 'will touch on', type: 'inseparable', meaning: 'tocar em (assunto)' },
+            { id: 327, phrasal: 'turn away', present: 'turn away', past: 'turned away', participle: 'turned away', future: 'will turn away', type: 'separable', meaning: 'afastar / recusar' },
+            { id: 328, phrasal: 'turn into', present: 'turn into', past: 'turned into', participle: 'turned into', future: 'will turn into', type: 'inseparable', meaning: 'transformar em' },
+            { id: 329, phrasal: 'turn over', present: 'turn over', past: 'turned over', participle: 'turned over', future: 'will turn over', type: 'separable', meaning: 'virar / entregar' },
+            { id: 330, phrasal: 'vote for', present: 'vote for', past: 'voted for', participle: 'voted for', future: 'will vote for', type: 'inseparable', meaning: 'votar em' },
+            { id: 331, phrasal: 'wait up', present: 'wait up', past: 'waited up', participle: 'waited up', future: 'will wait up', type: 'inseparable', meaning: 'esperar acordado' },
+            { id: 332, phrasal: 'walk out', present: 'walk out', past: 'walked out', participle: 'walked out', future: 'will walk out', type: 'inseparable', meaning: 'sair / fazer greve' },
+            { id: 333, phrasal: 'wash up', present: 'wash up', past: 'washed up', participle: 'washed up', future: 'will wash up', type: 'separable', meaning: 'lavar / fazer a barba' },
+            { id: 334, phrasal: 'watch over', present: 'watch over', past: 'watched over', participle: 'watched over', future: 'will watch over', type: 'inseparable', meaning: 'vigiar / cuidar de' },
+            { id: 335, phrasal: 'wear off', present: 'wear off', past: 'wore off', participle: 'worn off', future: 'will wear off', type: 'inseparable', meaning: 'desgastar / passar (efeito)' },
+            { id: 336, phrasal: 'wear on', present: 'wear on', past: 'wore on', participle: 'worn on', future: 'will wear on', type: 'inseparable', meaning: 'passar lentamente (tempo)' },
+            { id: 337, phrasal: 'wind up', present: 'wind up', past: 'wound up', participle: 'wound up', future: 'will wind up', type: 'separable', meaning: 'enrolar / terminar' },
+            { id: 338, phrasal: 'wipe off', present: 'wipe off', past: 'wiped off', participle: 'wiped off', future: 'will wipe off', type: 'separable', meaning: 'limpar / remover' },
+            { id: 339, phrasal: 'work on', present: 'work on', past: 'worked on', participle: 'worked on', future: 'will work on', type: 'inseparable', meaning: 'trabalhar em / melhorar' },
+            { id: 340, phrasal: 'write off', present: 'write off', past: 'wrote off', participle: 'written off', future: 'will write off', type: 'separable', meaning: 'cancelar / dar baixa' },
+            // 341-360
+            { id: 341, phrasal: 'act up', present: 'act up', past: 'acted up', participle: 'acted up', future: 'will act up', type: 'inseparable', meaning: 'comportar-se mal / funcionar mal' },
+            { id: 342, phrasal: 'add up', present: 'add up', past: 'added up', participle: 'added up', future: 'will add up', type: 'separable', meaning: 'somAR / fazer sentido' },
+            { id: 343, phrasal: 'ask for', present: 'ask for', past: 'asked for', participle: 'asked for', future: 'will ask for', type: 'inseparable', meaning: 'pedir / solicitar' },
+            { id: 344, phrasal: 'back away', present: 'back away', past: 'backed away', participle: 'backed away', future: 'will back away', type: 'inseparable', meaning: 'recuar / afastar-se' },
+            { id: 345, phrasal: 'back out', present: 'back out', past: 'backed out', participle: 'backed out', future: 'will back out', type: 'inseparable', meaning: 'desistir / voltar atrás' },
+            { id: 346, phrasal: 'bear with', present: 'bear with', past: 'bore with', participle: 'borne with', future: 'will bear with', type: 'inseparable', meaning: 'ter paciência com' },
+            { id: 347, phrasal: 'black out', present: 'black out', past: 'blacked out', participle: 'blacked out', future: 'will black out', type: 'separable', meaning: 'desmaiar / apagar' },
+            { id: 348, phrasal: 'block up', present: 'block up', past: 'blocked up', participle: 'blocked up', future: 'will block up', type: 'separable', meaning: 'bloquear / entupir' },
+            { id: 349, phrasal: 'blurt out', present: 'blurt out', past: 'blurted out', participle: 'blurted out', future: 'will blurt out', type: 'separable', meaning: 'falar sem pensar / disparar' },
+            { id: 350, phrasal: 'break away', present: 'break away', past: 'broke away', participle: 'broken away', future: 'will break away', from: 'inseparable', meaning: 'separar-se / libertar-se' },
+            { id: 351, phrasal: 'break into', present: 'break into', past: 'broke into', participle: 'broken into', future: 'will break into', type: 'inseparable', meaning: 'arrombar / irromper' },
+            { id: 352, phrasal: 'break off', present: 'break off', past: 'broke off', participle: 'broken off', future: 'will break off', type: 'separable', meaning: 'romper / interromper' },
+            { id: 353, phrasal: 'break through', present: 'break through', past: 'broke through', participle: 'broken through', future: 'will break through', type: 'inseparable', meaning: 'romper / transpor' },
+            { id: 354, phrasal: 'bring out', present: 'bring out', past: 'brought out', participle: 'brought out', future: 'will bring out', type: 'separable', meaning: 'lançar / revelar' },
+            { id: 355, phrasal: 'bring round', present: 'bring round', past: 'brought round', participle: 'brought round', future: 'will bring round', type: 'separable', meaning: 'trazer à consciência / convencer' },
+            { id: 356, phrasal: 'brush up', present: 'brush up', past: 'brushed up', participle: 'brushed up', future: 'will brush up', type: 'separable', meaning: 'aperfeiçoar / revisar' },
+            { id: 357, phrasal: 'build on', present: 'build on', past: 'built on', participle: 'built on', future: 'will build on', type: 'inseparable', meaning: 'construir sobre / basear' },
+            { id: 358, phrasal: 'bump into', present: 'bump into', past: 'bumped into', participle: 'bumped into', future: 'will bump into', type: 'inseparable', meaning: 'esbarrar em / encontrar' },
+            { id: 359, phrasal: 'burn down', present: 'burn down', past: 'burned down', participle: 'burned down', future: 'will burn down', type: 'separable', meaning: 'queimar (completamente)' },
+            { id: 360, phrasal: 'butt in', present: 'butt in', past: 'butted in', participle: 'butted in', future: 'will butt in', type: 'inseparable', meaning: 'interromper / intrometer-se' },
+            // 361-380
+            { id: 361, phrasal: 'call for', present: 'call for', past: 'called for', participle: 'called for', future: 'will call for', type: 'inseparable', meaning: 'exigir / buscar' },
+            { id: 362, phrasal: 'call out', present: 'call out', past: 'called out', participle: 'called out', future: 'will call out', type: 'separable', meaning: 'chamar / gritar' },
+            { id: 363, phrasal: 'calm down', present: 'calm down', past: 'calmed down', participle: 'calmed down', future: 'will calm down', type: 'separable', meaning: 'acalmar-se' },
+            { id: 364, phrasal: 'carry off', present: 'carry off', past: 'carried off', participle: 'carried off', future: 'will carry off', type: 'separable', meaning: 'conseguir / levar' },
+            { id: 365, phrasal: 'carry on', present: 'carry on', past: 'carried on', participle: 'carried on', future: 'will carry on', type: 'inseparable', meaning: 'continuar' },
+            { id: 366, phrasal: 'catch on', present: 'catch on', past: 'caught on', participle: 'caught on', future: 'will catch on', type: 'inseparable', meaning: 'entender / pegar (moda)' },
+            { id: 367, phrasal: 'catch out', present: 'catch out', past: 'caught out', participle: 'caught out', future: 'will catch out', type: 'separable', meaning: 'pegar em flagrante' },
+            { id: 368, phrasal: 'change over', present: 'change over', past: 'changed over', participle: 'changed over', future: 'will change over', type: 'separable', meaning: 'mudar / converter' },
+            { id: 369, phrasal: 'check over', present: 'check over', past: 'checked over', participle: 'checked over', future: 'will check over', type: 'separable', meaning: 'examinar / verificar' },
+            { id: 370, phrasal: 'check up on', present: 'check up on', past: 'checked up on', participle: 'checked up on', future: 'will check up on', type: 'three', meaning: 'verificar / fiscalizar' },
+            { id: 371, phrasal: 'chip in', present: 'chip in', past: 'chipped in', participle: 'chipped in', future: 'will chip in', type: 'inseparable', meaning: 'contribuir / participar' },
+            { id: 372, phrasal: 'clear out', present: 'clear out', past: 'cleared out', participle: 'cleared out', future: 'will clear out', type: 'separable', meaning: 'esvaziar / limpar' },
+            { id: 373, phrasal: 'come back', present: 'come back', past: 'came back', participle: 'come back', future: 'will come back', type: 'inseparable', meaning: 'voltar' },
+            { id: 374, phrasal: 'come down', present: 'come down', past: 'came down', participle: 'come down', future: 'will come down', type: 'inseparable', meaning: 'descer / cair' },
+            { id: 375, phrasal: 'come forward', present: 'come forward', past: 'came forward', participle: 'come forward', future: 'will come forward', type: 'inseparable', meaning: 'apresentar-se / oferecer-se' },
+            { id: 376, phrasal: 'come up', present: 'come up', past: 'came up', participle: 'come up', future: 'will come up', type: 'inseparable', meaning: 'aparecer / subir' },
+            { id: 377, phrasal: 'come up to', present: 'come up to', past: 'came up to', participle: 'come up to', future: 'will come up to', type: 'three', meaning: 'aproximar-se / igualar' },
+            { id: 378, phrasal: 'count in', present: 'count in', past: 'counted in', participle: 'counted in', future: 'will count in', type: 'separable', meaning: 'incluir / contar com' },
+            { id: 379, phrasal: 'crack down on', present: 'crack down on', past: 'cracked down on', participle: 'cracked down on', future: 'will crack down on', type: 'three', meaning: 'reprimir / tomar medidas severas' },
+            { id: 380, phrasal: 'cut across', present: 'cut across', past: 'cut across', participle: 'cut across', future: 'will cut across', type: 'inseparable', meaning: 'atravessar (atalho)' },
+            // 381-400
+            { id: 381, phrasal: 'cut down on', present: 'cut down on', past: 'cut down on', participle: 'cut down on', future: 'will cut down on', type: 'three', meaning: 'reduzir (consumo)' },
+            { id: 382, phrasal: 'cut in', present: 'cut in', past: 'cut in', participle: 'cut in', future: 'will cut in', type: 'inseparable', meaning: 'interromper / cortar na frente' },
+            { id: 383, phrasal: 'cut off', present: 'cut off', past: 'cut off', participle: 'cut off', future: 'will cut off', type: 'separable', meaning: 'cortar / interromper' },
+            { id: 384, phrasal: 'cut out', present: 'cut out', past: 'cut out', participle: 'cut out', future: 'will cut out', type: 'separable', meaning: 'recortar / parar' },
+            { id: 385, phrasal: 'die down', present: 'die down', past: 'died down', participle: 'died down', future: 'will die down', type: 'inseparable', meaning: 'diminuir / acalmar-se' },
+            { id: 386, phrasal: 'dig in', present: 'dig in', past: 'dug in', participle: 'dug in', future: 'will dig in', type: 'inseparable', meaning: 'começar a comer / cavar' },
+            { id: 387, phrasal: 'dip into', present: 'dip into', past: 'dipped into', participle: 'dipped into', future: 'will dip into', type: 'inseparable', meaning: 'mergulhar em / gastar' },
+            { id: 388, phrasal: 'drag on', present: 'drag on', past: 'dragged on', participle: 'dragged on', future: 'will drag on', type: 'inseparable', meaning: 'arrastar-se (tempo)' },
+            { id: 389, phrasal: 'draw back', present: 'draw back', past: 'drew back', participle: 'drawn back', future: 'will draw back', type: 'separable', meaning: 'recuar / retirar-se' },
+            { id: 390, phrasal: 'draw up', present: 'draw up', past: 'drew up', participle: 'drawn up', future: 'will draw up', type: 'separable', meaning: 'redigir / parar (veículo)' },
+            { id: 391, phrasal: 'dream of', present: 'dream of', past: 'dreamed of', participle: 'dreamed of', future: 'will dream of', type: 'inseparable', meaning: 'sonhar com' },
+            { id: 392, phrasal: 'dress down', present: 'dress down', past: 'dressed down', participle: 'dressed down', future: 'will dress down', type: 'separable', meaning: 'vestir-se casualmente / ralhar' },
+            { id: 393, phrasal: 'drink up', present: 'drink up', past: 'drank up', participle: 'drunk up', future: 'will drink up', type: 'separable', meaning: 'beber completamente' },
+            { id: 394, phrasal: 'drive at', present: 'drive at', past: 'drove at', participle: 'driven at', future: 'will drive at', type: 'inseparable', meaning: 'querer dizer / pretender' },
+            { id: 395, phrasal: 'dry out', present: 'dry out', past: 'dried out', participle: 'dried out', future: 'will dry out', type: 'separable', meaning: 'secar / desintoxicar' },
+            { id: 396, phrasal: 'dry up', present: 'dry up', past: 'dried up', participle: 'dried up', future: 'will dry up', type: 'separable', meaning: 'secar completamente' },
+            { id: 397, phrasal: 'dwell on', present: 'dwell on', past: 'dwelt on', participle: 'dwelt on', future: 'will dwell on', type: 'inseparable', meaning: 'insistir em / remoer' },
+            { id: 398, phrasal: 'ease off', present: 'ease off', past: 'eased off', participle: 'eased off', future: 'will ease off', type: 'inseparable', meaning: 'diminuir / aliviar' },
+            { id: 399, phrasal: 'eat up', present: 'eat up', past: 'ate up', participle: 'eaten up', future: 'will eat up', type: 'separable', meaning: 'comer tudo / consumir' },
+            { id: 400, phrasal: 'edge out', present: 'edge out', past: 'edged out', participle: 'edged out', future: 'will edge out', type: 'separable', meaning: 'superar / deslocar' },
+            // 401-420
+            { id: 401, phrasal: 'fade out', present: 'fade out', past: 'faded out', participle: 'faded out', future: 'will fade out', type: 'inseparable', meaning: 'desvanecer / desaparecer' },
+            { id: 402, phrasal: 'fall back on', present: 'fall back on', past: 'fell back on', participle: 'fallen back on', future: 'will fall back on', type: 'three', meaning: 'recorrer a / ter como recurso' },
+            { id: 403, phrasal: 'fall through', present: 'fall through', past: 'fell through', participle: 'fallen through', future: 'will fall through', type: 'inseparable', meaning: 'fracassar / não se realizar' },
+            { id: 404, phrasal: 'feel up to', present: 'feel up to', past: 'felt up to', participle: 'felt up to', future: 'will feel up to', type: 'three', meaning: 'sentir-se capaz de' },
+            { id: 405, phrasal: 'fight off', present: 'fight off', past: 'fought off', participle: 'fought off', future: 'will fight off', type: 'separable', meaning: 'repelir / resistir' },
+            { id: 406, phrasal: 'fill in for', present: 'fill in for', past: 'filled in for', participle: 'filled in for', future: 'will fill in for', type: 'three', meaning: 'substituir' },
+            { id: 407, phrasal: 'filter out', present: 'filter out', past: 'filtered out', participle: 'filtered out', future: 'will filter out', type: 'separable', meaning: 'filtrar / eliminar' },
+            { id: 408, phrasal: 'finish off', present: 'finish off', past: 'finished off', participle: 'finished off', future: 'will finish off', type: 'separable', meaning: 'terminar / acabar com' },
+            { id: 409, phrasal: 'flip out', present: 'flip out', past: 'flipped out', participle: 'flipped out', future: 'will flip out', type: 'inseparable', meaning: 'enlouquecer / perder o controle' },
+            { id: 410, phrasal: 'float around', present: 'float around', past: 'floated around', participle: 'floated around', future: 'will float around', type: 'inseparable', meaning: 'estar por aí / circular' },
+            { id: 411, phrasal: 'fool around', present: 'fool around', past: 'fooled around', participle: 'fooled around', future: 'will fool around', type: 'inseparable', meaning: 'brincar / fazer graça' },
+            { id: 412, phrasal: 'fork out', present: 'fork out', past: 'forked out', participle: 'forked out', future: 'will fork out', type: 'separable', meaning: 'desembolsar / pagar' },
+            { id: 413, phrasal: 'frown on', present: 'frown on', past: 'frowned on', participle: 'frowned on', future: 'will frown on', type: 'inseparable', meaning: 'desaprovar / reprovar' },
+            { id: 414, phrasal: 'gear up', present: 'gear up', past: 'geared up', participle: 'geared up', future: 'will gear up', type: 'separable', meaning: 'preparar-se' },
+            { id: 415, phrasal: 'get away with', present: 'get away with', past: 'got away with', participle: 'gotten away with', future: 'will get away with', type: 'three', meaning: 'sair impune de' },
+            { id: 416, phrasal: 'get back at', present: 'get back at', past: 'got back at', participle: 'gotten back at', future: 'will get back at', type: 'three', meaning: 'vingar-se de' },
+            { id: 417, phrasal: 'get on to', present: 'get on to', past: 'got on to', participle: 'gotten on to', future: 'will get on to', type: 'three', meaning: 'passar a tratar de / descobrir' },
+            { id: 418, phrasal: 'get out of', present: 'get out of', past: 'got out of', participle: 'gotten out of', future: 'will get out of', type: 'three', meaning: 'escapar de / evitar' },
+            { id: 419, phrasal: 'give over', present: 'give over', past: 'gave over', participle: 'given over', future: 'will give over', type: 'separable', meaning: 'dedicar / entregar' },
+            { id: 420, phrasal: 'go about', present: 'go about', past: 'went about', participle: 'gone about', future: 'will go about', type: 'inseparable', meaning: 'ocupar-se de / circular' },
+            // 421-440
+            { id: 421, phrasal: 'go against', present: 'go against', past: 'went against', participle: 'gone against', future: 'will go against', type: 'inseparable', meaning: 'ir contra / opor-se' },
+            { id: 422, phrasal: 'go along with', present: 'go along with', past: 'went along with', participle: 'gone along with', future: 'will go along with', type: 'three', meaning: 'concordar com / acompanhar' },
+            { id: 423, phrasal: 'go back on', present: 'go back on', past: 'went back on', participle: 'gone back on', future: 'will go back on', type: 'three', meaning: 'quebrar (promessa)' },
+            { id: 424, phrasal: 'go with', present: 'go with', past: 'went with', participle: 'gone with', future: 'will go with', type: 'inseparable', meaning: 'combinar com / acompanhar' },
+            { id: 425, phrasal: 'grow out of', present: 'grow out of', past: 'grew out of', participle: 'grown out of', future: 'will grow out of', type: 'three', meaning: 'crescer e não servir mais' },
+            { id: 426, phrasal: 'hand around', present: 'hand around', past: 'handed around', participle: 'handed around', future: 'will hand around', type: 'separable', meaning: 'distribuir / passar' },
+            { id: 427, phrasal: 'hand down', present: 'hand down', past: 'handed down', participle: 'handed down', future: 'will hand down', type: 'separable', meaning: 'transmitir / passar adiante' },
+            { id: 428, phrasal: 'hang about', present: 'hang about', past: 'hung about', participle: 'hung about', future: 'will hang about', type: 'inseparable', meaning: 'ficar à toa / vaguear' },
+            { id: 429, phrasal: 'hang back', present: 'hang back', past: 'hung back', participle: 'hung back', future: 'will hang back', type: 'inseparable', meaning: 'hesitar / ficar para trás' },
+            { id: 430, phrasal: 'have on', present: 'have on', past: 'had on', participle: 'had on', future: 'will have on', type: 'separable', meaning: 'estar vestindo / enganar' },
+            { id: 431, phrasal: 'head for', present: 'head for', past: 'headed for', participle: 'headed for', future: 'will head for', type: 'inseparable', meaning: 'dirigir-se para' },
+            { id: 432, phrasal: 'head off', present: 'head off', past: 'headed off', participle: 'headed off', future: 'will head off', type: 'separable', meaning: 'interceptar / evitar' },
+            { id: 433, phrasal: 'hear of', present: 'hear of', past: 'heard of', participle: 'heard of', future: 'will hear of', type: 'inseparable', meaning: 'ouvir falar de' },
+            { id: 434, phrasal: 'help out', present: 'help out', past: 'helped out', participle: 'helped out', future: 'will help out', type: 'separable', meaning: 'ajudar / dar uma mão' },
+            { id: 435, phrasal: 'hit on', present: 'hit on', past: 'hit on', participle: 'hit on', future: 'will hit on', type: 'inseparable', meaning: 'dar em cima de / ter uma ideia' },
+            { id: 436, phrasal: 'hit out at', present: 'hit out at', past: 'hit out at', participle: 'hit out at', future: 'will hit out at', type: 'three', meaning: 'atacar / criticar' },
+            { id: 437, phrasal: 'hold against', present: 'hold against', past: 'held against', participle: 'held against', future: 'will hold against', type: 'inseparable', meaning: 'guardar rancor de' },
+            { id: 438, phrasal: 'hold down', present: 'hold down', past: 'held down', participle: 'held down', future: 'will hold down', type: 'separable', meaning: 'segurar / manter (emprego)' },
+            { id: 439, phrasal: 'hold off', present: 'hold off', past: 'held off', participle: 'held off', future: 'will hold off', type: 'separable', meaning: 'adiar / manter distância' },
+            { id: 440, phrasal: 'hold out on', present: 'hold out on', past: 'held out on', participle: 'held out on', future: 'will hold out on', type: 'three', meaning: 'ocultar de / não compartilhar' },
+            // 441-460
+            { id: 441, phrasal: 'hunt down', present: 'hunt down', past: 'hunted down', participle: 'hunted down', future: 'will hunt down', type: 'separable', meaning: 'caçar / perseguir até capturar' },
+            { id: 442, phrasal: 'keep from', present: 'keep from', past: 'kept from', participle: 'kept from', future: 'will keep from', type: 'inseparable', meaning: 'impedir de' },
+            { id: 443, phrasal: 'keep to', present: 'keep to', past: 'kept to', participle: 'kept to', future: 'will keep to', type: 'inseparable', meaning: 'manter-se em / limitar-se a' },
+            { id: 444, phrasal: 'kick off', present: 'kick off', past: 'kicked off', participle: 'kicked off', future: 'will kick off', type: 'separable', meaning: 'começar / iniciar' },
+            { id: 445, phrasal: 'kick out', present: 'kick out', past: 'kicked out', participle: 'kicked out', future: 'will kick out', type: 'separable', meaning: 'expulsar / mandar embora' },
+            { id: 446, phrasal: 'knock over', present: 'knock over', past: 'knocked over', participle: 'knocked over', future: 'will knock over', type: 'separable', meaning: 'derrubar / assaltar' },
+            { id: 447, phrasal: 'lay down', present: 'lay down', past: 'laid down', participle: 'laid down', future: 'will lay down', type: 'separable', meaning: 'deitar / estabelecer' },
+            { id: 448, phrasal: 'lead to', present: 'lead to', past: 'led to', participle: 'led to', future: 'will lead to', type: 'inseparable', meaning: 'levar a / resultar em' },
+            { id: 449, phrasal: 'lean on', present: 'lean on', past: 'leaned on', participle: 'leaned on', future: 'will lean on', type: 'inseparable', meaning: 'apoiar-se em / pressionar' },
+            { id: 450, phrasal: 'leap out', present: 'leap out', past: 'leapt out', participle: 'leapt out', future: 'will leap out', type: 'inseparable', meaning: 'saltar para fora' },
+            { id: 451, phrasal: 'leave off', present: 'leave off', past: 'left off', participle: 'left off', future: 'will leave off', type: 'separable', meaning: 'parar / interromper' },
+            { id: 452, phrasal: 'let up', present: 'let up', past: 'let up', participle: 'let up', future: 'will let up', type: 'inseparable', meaning: 'diminuir / abrandar' },
+            { id: 453, phrasal: 'light up', present: 'light up', past: 'lit up', participle: 'lit up', future: 'will light up', type: 'separable', meaning: 'acender / iluminar' },
+            { id: 454, phrasal: 'line up', present: 'line up', past: 'lined up', participle: 'lined up', future: 'will line up', type: 'separable', meaning: 'fazer fila / alinhar' },
+            { id: 455, phrasal: 'listen in', present: 'listen in', past: 'listened in', participle: 'listened in', future: 'will listen in', type: 'inseparable', meaning: 'escutar (segredo)' },
+            { id: 456, phrasal: 'live through', present: 'live through', past: 'lived through', participle: 'lived through', future: 'will live through', type: 'inseparable', meaning: 'sobreviver a / passar por' },
+            { id: 457, phrasal: 'lock up', present: 'lock up', past: 'locked up', participle: 'locked up', future: 'will lock up', type: 'separable', meaning: 'trancar / prender' },
+            { id: 458, phrasal: 'look on', present: 'look on', past: 'looked on', participle: 'looked on', future: 'will look on', type: 'inseparable', meaning: 'observar / assistir' },
+            { id: 459, phrasal: 'look out for', present: 'look out for', past: 'looked out for', participle: 'looked out for', future: 'will look out for', type: 'three', meaning: 'cuidar de / procurar' },
+            { id: 460, phrasal: 'make after', present: 'make after', past: 'made after', participle: 'made after', future: 'will make after', type: 'inseparable', meaning: 'perseguir / ir atrás' },
+            // 461-480
+            { id: 461, phrasal: 'make off', present: 'make off', past: 'made off', participle: 'made off', future: 'will make off', type: 'inseparable', meaning: 'fugir / escapar' },
+            { id: 462, phrasal: 'measure up', present: 'measure up', past: 'measured up', participle: 'measured up', future: 'will measure up', type: 'separable', meaning: 'estar à altura' },
+            { id: 463, phrasal: 'move on', present: 'move on', past: 'moved on', participle: 'moved on', future: 'will move on', type: 'inseparable', meaning: 'seguir em frente / avançar' },
+            { id: 464, phrasal: 'narrow down', present: 'narrow down', past: 'narrowed down', participle: 'narrowed down', future: 'will narrow down', type: 'separable', meaning: 'reduzir / limitar' },
+            { id: 465, phrasal: 'nose around', present: 'nose around', past: 'nosed around', participle: 'nosed around', future: 'will nose around', type: 'inseparable', meaning: 'bisbilhotar / meter o nariz' },
+            { id: 466, phrasal: 'opt out', present: 'opt out', past: 'opted out', participle: 'opted out', future: 'will opt out', type: 'inseparable', meaning: 'optar por não participar' },
+            { id: 467, phrasal: 'own up to', present: 'own up to', past: 'owned up to', participle: 'owned up to', future: 'will own up to', type: 'three', meaning: 'confessar / admitir' },
+            { id: 468, phrasal: 'pass away', present: 'pass away', past: 'passed away', participle: 'passed away', future: 'will pass away', type: 'inseparable', meaning: 'falecer' },
+            { id: 469, phrasal: 'pass out', present: 'pass out', past: 'passed out', participle: 'passed out', future: 'will pass out', type: 'inseparable', meaning: 'desmaiar / distribuir' },
+            { id: 470, phrasal: 'pick at', present: 'pick at', past: 'picked at', participle: 'picked at', future: 'will pick at', type: 'inseparable', meaning: 'beliscar / implicar com' },
+            { id: 471, phrasal: 'pile up', present: 'pile up', past: 'piled up', participle: 'piled up', future: 'will pile up', type: 'separable', meaning: 'acumular / empilhar' },
+            { id: 472, phrasal: 'pin down', present: 'pin down', past: 'pinned down', participle: 'pinned down', future: 'will pin down', type: 'separable', meaning: 'definir / pressionar' },
+            { id: 473, phrasal: 'play down', present: 'play down', past: 'played down', participle: 'played down', future: 'will play down', type: 'separable', meaning: 'minimizar / diminuir importância' },
+            { id: 474, phrasal: 'play on', present: 'play on', past: 'played on', participle: 'played on', future: 'will play on', type: 'inseparable', meaning: 'explorar / tocar' },
+            { id: 475, phrasal: 'plug away', present: 'plug away', past: 'plugged away', participle: 'plugged away', future: 'will plug away', type: 'inseparable', meaning: 'trabalhar duro / persistir' },
+            { id: 476, phrasal: 'point to', present: 'point to', past: 'pointed to', participle: 'pointed to', future: 'will point to', type: 'inseparable', meaning: 'apontar para / indicar' },
+            { id: 477, phrasal: 'pounce on', present: 'pounce on', past: 'pounced on', participle: 'pounced on', future: 'will pounce on', type: 'inseparable', meaning: 'lançar-se sobre / aproveitar-se' },
+            { id: 478, phrasal: 'pull apart', present: 'pull apart', past: 'pulled apart', participle: 'pulled apart', future: 'will pull apart', type: 'separable', meaning: 'desmontar / separar' },
+            { id: 479, phrasal: 'pull down', present: 'pull down', past: 'pulled down', participle: 'pulled down', future: 'will pull down', type: 'separable', meaning: 'derrubar / receber' },
+            { id: 480, phrasal: 'pull through', present: 'pull through', past: 'pulled through', participle: 'pulled through', future: 'will pull through', type: 'inseparable', meaning: 'recuperar-se / sobreviver' },
+            // 481-500
+            { id: 481, phrasal: 'put through', present: 'put through', past: 'put through', participle: 'put through', future: 'will put through', type: 'separable', meaning: 'realizar / conectar (telefone)' },
+            { id: 482, phrasal: 'read up', present: 'read up', past: 'read up', participle: 'read up', future: 'will read up', type: 'separable', meaning: 'estudar / pesquisar' },
+            { id: 483, phrasal: 'ride out', present: 'ride out', past: 'rode out', participle: 'ridden out', future: 'will ride out', type: 'separable', meaning: 'superar / resistir' },
+            { id: 484, phrasal: 'ring off', present: 'ring off', past: 'rang off', participle: 'rung off', future: 'will ring off', type: 'inseparable', meaning: 'desligar (telefone)' },
+            { id: 485, phrasal: 'rub off', present: 'rub off', past: 'rubbed off', participle: 'rubbed off', future: 'will rub off', type: 'separable', meaning: 'sair / desbotar' },
+            { id: 486, phrasal: 'rule over', present: 'rule over', past: 'ruled over', participle: 'ruled over', future: 'will rule over', type: 'inseparable', meaning: 'governar / dominar' },
+            { id: 487, phrasal: 'run off', present: 'run off', past: 'ran off', participle: 'run off', future: 'will run off', type: 'separable', meaning: 'fugir / imprimir' },
+            { id: 488, phrasal: 'save up', present: 'save up', past: 'saved up', participle: 'saved up', future: 'will save up', type: 'separable', meaning: 'economizar / poupar' },
+            { id: 489, phrasal: 'send out', present: 'send out', past: 'sent out', participle: 'sent out', future: 'will send out', type: 'separable', meaning: 'enviar / distribuir' },
+            { id: 490, phrasal: 'set down', present: 'set down', past: 'set down', participle: 'set down', future: 'will set down', type: 'separable', meaning: 'colocar / estabelecer' },
+            { id: 491, phrasal: 'sew up', present: 'sew up', past: 'sewed up', participle: 'sewn up', future: 'will sew up', type: 'separable', meaning: 'costurar / concluir' },
+            { id: 492, phrasal: 'shower with', present: 'shower with', past: 'showered with', participle: 'showered with', future: 'will shower with', type: 'inseparable', meaning: 'cobrir de / presentear com' },
+            { id: 493, phrasal: 'shut out', present: 'shut out', past: 'shut out', participle: 'shut out', future: 'will shut out', type: 'separable', meaning: 'excluir / impedir' },
+            { id: 494, phrasal: 'single out', present: 'single out', past: 'singled out', participle: 'singled out', future: 'will single out', type: 'separable', meaning: 'escolher / selecionar' },
+            { id: 495, phrasal: 'size up', present: 'size up', past: 'sized up', participle: 'sized up', future: 'will size up', type: 'separable', meaning: 'avaliar / tomar medida' },
+            { id: 496, phrasal: 'slip up', present: 'slip up', past: 'slipped up', participle: 'slipped up', future: 'will slip up', type: 'inseparable', meaning: 'cometer um erro / escorregar' },
+            { id: 497, phrasal: 'sound out', present: 'sound out', past: 'sounded out', participle: 'sounded out', future: 'will sound out', type: 'separable', meaning: 'averiguar / sondar' },
+            { id: 498, phrasal: 'spell out', present: 'spell out', past: 'spelled out', participle: 'spelled out', future: 'will spell out', type: 'separable', meaning: 'soletrar / explicar claramente' },
+            { id: 499, phrasal: 'stand up to', present: 'stand up to', past: 'stood up to', participle: 'stood up to', future: 'will stand up to', type: 'three', meaning: 'enfrentar / resistir a' },
+            { id: 500, phrasal: 'stick up for', present: 'stick up for', past: 'stuck up for', participle: 'stuck up for', future: 'will stick up for', type: 'three', meaning: 'defender / apoiar' }
+        ];
+
+        // ============================================================
+        // LÓGICA DE RENDERIZAÇÃO
+        // ============================================================
+
+        function getTypeClass(verb) {
+            return verb.type;
+        }
+
+        function getBadge(verb) {
+            const type = verb.type;
+            if (type === 'separable') return '<span class="badge separable">Separável</span>';
+            if (type === 'three') return '<span class="badge three">3 palavras</span>';
+            return '<span class="badge inseparable">Inseparável</span>';
+        }
+
+        function renderTable(filteredVerbs) {
+            const tbody = document.getElementById('verbTable');
+            tbody.innerHTML = '';
+            if (filteredVerbs.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:40px;color:#7f8c8d;">Nenhum phrasal verb encontrado.</td></tr>';
+                return;
+            }
+            filteredVerbs.forEach(verb => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${verb.id}</td>
+                    <td class="phrasal">${verb.phrasal}</td>
+                    <td class="present">${verb.present}</td>
+                    <td class="past">${verb.past}</td>
+                    <td class="pastpart">${verb.participle}</td>
+                    <td class="future">${verb.future}</td>
+                    <td>${getBadge(verb)}</td>
+                    <td class="meaning">${verb.meaning}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+            updateStats(filteredVerbs);
+        }
+
+        function updateStats(verbsList) {
+            const total = verbsList.length;
+            const separable = verbsList.filter(v => v.type === 'separable').length;
+            const inseparable = verbsList.filter(v => v.type === 'inseparable').length;
+            const three = verbsList.filter(v => v.type === 'three').length;
+            
+            document.getElementById('separableCount').textContent = separable;
+            document.getElementById('inseparableCount').textContent = inseparable;
+            document.getElementById('threeCount').textContent = three;
+        }
+
+        // ============================================================
+        // FILTROS
+        // ============================================================
+
+        let currentFilter = 'all';
+        let currentSearch = '';
+
+        function filterAll() {
+            currentFilter = 'all';
+            applyFilters();
+        }
+
+        function filterSeparable() {
+            currentFilter = 'separable';
+            applyFilters();
+        }
+
+        function filterInseparable() {
+            currentFilter = 'inseparable';
+            applyFilters();
+        }
+
+        function filterThree() {
+            currentFilter = 'three';
+            applyFilters();
+        }
+
+        function resetFilter() {
+            currentFilter = 'all';
+            document.getElementById('searchInput').value = '';
+            currentSearch = '';
+            applyFilters();
+        }
+
+        function searchVerb() {
+            const input = document.getElementById('searchInput');
+            currentSearch = input.value.toLowerCase().trim();
+            applyFilters();
+        }
+
+        function applyFilters() {
+            let filtered = [...phrasalVerbs];
+
+            if (currentFilter === 'separable') {
+                filtered = filtered.filter(v => v.type === 'separable');
+            } else if (currentFilter === 'inseparable') {
+                filtered = filtered.filter(v => v.type === 'inseparable');
+            } else if (currentFilter === 'three') {
+                filtered = filtered.filter(v => v.type === 'three');
+            }
+
+            if (currentSearch) {
+                filtered = filtered.filter(v => 
+                    v.phrasal.toLowerCase().includes(currentSearch) ||
+                    v.present.toLowerCase().includes(currentSearch) ||
+                    v.past.toLowerCase().includes(currentSearch) ||
+                    v.participle.toLowerCase().includes(currentSearch) ||
+                    v.future.toLowerCase().includes(currentSearch) ||
+                    v.meaning.toLowerCase().includes(currentSearch)
+                );
+            }
+
+            renderTable(filtered);
+        }
+
+        // ============================================================
+        // ORDENAÇÃO
+        // ============================================================
+
+        document.querySelectorAll('thead th').forEach((th, index) => {
+            if (index === 0) return;
+            th.addEventListener('click', () => {
+                const tbody = document.getElementById('verbTable');
+                const rows = Array.from(tbody.querySelectorAll('tr'));
+                if (rows.length === 1 && rows[0].querySelector('td[colspan]')) return;
+                
+                const direction = th.dataset.direction === 'asc' ? 'desc' : 'asc';
+                th.dataset.direction = direction;
+
+                rows.sort((a, b) => {
+                    const aText = a.children[index].textContent.trim().toLowerCase();
+                    const bText = b.children[index].textContent.trim().toLowerCase();
+                    if (aText < bText) return direction === 'asc' ? -1 : 1;
+                    if (aText > bText) return direction === 'asc' ? 1 : -1;
+                    return 0;
+                });
+
+                rows.forEach(row => tbody.appendChild(row));
+            });
+        });
+
+        // ============================================================
+        // INICIALIZAÇÃO
+        // ============================================================
+
+        renderTable(phrasalVerbs);
+    </script>
+</body>
+</html>

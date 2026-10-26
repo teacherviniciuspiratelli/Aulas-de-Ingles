@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Formal vs Informal English</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0 30px;
+        }
+        .stat-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .stat-card .number {
+            font-size: 2em;
+            font-weight: 700;
+        }
+        .stat-card .label {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .stat-card .number.purple { color: #8e44ad; }
+        .stat-card .number.blue { color: #2980b9; }
+        .stat-card .number.green { color: #27ae60; }
+        .stat-card .number.orange { color: #f39c12; }
+
+        .search-box {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .search-box input {
+            padding: 12px 20px;
+            width: 100%;
+            max-width: 500px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        .search-box input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .category-filter button {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: #ecf0f1;
+            color: #2c3e50;
+        }
+        .category-filter button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        .category-filter button.active {
+            background: #3498db;
+            color: white;
+        }
+        .category-filter button.btn-all { background: #3498db; color: white; }
+        .category-filter button.btn-all:hover { background: #2980b9; }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+        .legend-item .color-box {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+        .legend-item .color-box.greetings { background: #3498db; }
+        .legend-item .color-box.words { background: #2ecc71; }
+        .legend-item .color-box.phrases { background: #e74c3c; }
+        .legend-item .color-box.contractions { background: #f39c12; }
+        .legend-item .color-box.writing { background: #8e44ad; }
+
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 10px;
+            border: 1px solid #ecf0f1;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        thead {
+            background: #2c3e50;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        thead th {
+            padding: 12px 10px;
+            text-align: left;
+            font-weight: 600;
+            cursor: pointer;
+            user-select: none;
+            white-space: nowrap;
+        }
+        thead th:hover {
+            background: #34495e;
+        }
+        thead th:nth-child(1) { width: 5%; }
+        thead th:nth-child(2) { width: 20%; }
+        thead th:nth-child(3) { width: 20%; }
+        thead th:nth-child(4) { width: 30%; }
+        thead th:nth-child(5) { width: 25%; }
+
+        tbody tr {
+            border-bottom: 1px solid #ecf0f1;
+            transition: background 0.2s;
+        }
+        tbody tr:hover {
+            background: #f8f9fa;
+        }
+        tbody td {
+            padding: 10px 10px;
+            vertical-align: middle;
+        }
+        tbody td:first-child {
+            font-weight: 600;
+            color: #7f8c8d;
+        }
+        .formal {
+            color: #2980b9;
+            font-weight: 600;
+        }
+        .informal {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+        .arrow {
+            color: #bdc3c7;
+            font-weight: 300;
+        }
+        .example-text {
+            color: #666;
+            font-style: italic;
+            font-size: 0.85em;
+        }
+        .category-badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .category-badge.greetings { background: #cce5ff; color: #004085; }
+        .category-badge.words { background: #d4edda; color: #155724; }
+        .category-badge.phrases { background: #f8d7da; color: #721c24; }
+        .category-badge.contractions { background: #fff3cd; color: #856404; }
+        .category-badge.writing { background: #e8d5f5; color: #6c3483; }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2em;
+            color: #7f8c8d;
+        }
+
+        .example-box {
+            background: #f8f9fa;
+            border-radius: 6px;
+            padding: 8px 12px;
+            margin: 4px 0;
+        }
+        .example-box .formal-example {
+            color: #2980b9;
+        }
+        .example-box .informal-example {
+            color: #e74c3c;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            h1 { font-size: 1.8em; }
+            table { font-size: 11px; }
+            thead th, tbody td { padding: 6px 5px; }
+            .category-badge { font-size: 8px; padding: 2px 6px; }
+            .stats { grid-template-columns: repeat(2, 1fr); }
+            .category-filter button { padding: 6px 12px; font-size: 11px; }
+            thead th:nth-child(4) { display: none; }
+            tbody td:nth-child(4) { display: none; }
+        }
+        @media (max-width: 480px) {
+            table { font-size: 9px; }
+            thead th, tbody td { padding: 4px 3px; }
+            .legend { gap: 10px; font-size: 11px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📝 Formal vs Informal English</h1>
+        <p class="subtitle">Aprenda a diferença entre linguagem formal e informal em inglês</p>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="number purple">120</div>
+                <div class="label">Total de pares</div>
+            </div>
+            <div class="stat-card">
+                <div class="number blue" id="greetingsCount">0</div>
+                <div class="label">Saudações</div>
+            </div>
+            <div class="stat-card">
+                <div class="number green" id="wordsCount">0</div>
+                <div class="label">Palavras</div>
+            </div>
+            <div class="stat-card">
+                <div class="number red" id="phrasesCount">0</div>
+                <div class="label">Frases</div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item"><div class="color-box greetings"></div> Saudações</div>
+            <div class="legend-item"><div class="color-box words"></div> Palavras</div>
+            <div class="legend-item"><div class="color-box phrases"></div> Frases</div>
+            <div class="legend-item"><div class="color-box contractions"></div> Contrações</div>
+            <div class="legend-item"><div class="color-box writing"></div> Escrita</div>
+        </div>
+
+        <div class="category-filter">
+            <button class="btn-all active" onclick="filterCategory('all')">📋 Todos</button>
+            <button onclick="filterCategory('greetings')">👋 Saudações</button>
+            <button onclick="filterCategory('words')">📚 Palavras</button>
+            <button onclick="filterCategory('phrases')">💬 Frases</button>
+            <button onclick="filterCategory('contractions')">📝 Contrações</button>
+            <button onclick="filterCategory('writing')">✍️ Escrita</button>
+            <button onclick="resetFilter()">🔄 Resetar</button>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 Buscar... (formal ou informal)" onkeyup="searchPair()">
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Formal</th>
+                        <th>Informal</th>
+                        <th>Exemplo / Contexto</th>
+                        <th>Categoria</th>
+                    </tr>
+                </thead>
+                <tbody id="styleTable">
+                    <tr><td colspan="5" class="loading">Carregando pares formal/informal...</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            💡 Clique no cabeçalho para ordenar • Use a busca para encontrar pares específicos
+        </div>
+    </div>
+
+    <script>
+        // ============================================================
+        // FORMAL VS INFORMAL ENGLISH
+        // ============================================================
+        const stylePairs = [
+            // ========== SAUDAÇÕES (1-15) ==========
+            { id: 1, formal: 'Good morning', informal: 'Morning / Hey', category: 'greetings', example: 'Formal: Good morning, Mr. Smith. / Informal: Morning, John!' },
+            { id: 2, formal: 'Good afternoon', informal: 'Afternoon / Hey', category: 'greetings', example: 'Formal: Good afternoon, everyone. / Informal: Afternoon, guys!' },
+            { id: 3, formal: 'Good evening', informal: 'Evening / Hey', category: 'greetings', example: 'Formal: Good evening, ladies and gentlemen. / Informal: Evening, folks!' },
+            { id: 4, formal: 'How do you do?', informal: 'How are you? / What\'s up?', category: 'greetings', example: 'Formal: How do you do? / Informal: What\'s up, man?' },
+            { id: 5, formal: 'Pleased to meet you', informal: 'Nice to meet you', category: 'greetings', example: 'Formal: Pleased to meet you, sir. / Informal: Nice to meet you, dude.' },
+            { id: 6, formal: 'It is a pleasure', informal: 'Great to see you', category: 'greetings', example: 'Formal: It is a pleasure to see you again. / Informal: Great to see you again!' },
+            { id: 7, formal: 'I bid you farewell', informal: 'See you later / Bye', category: 'greetings', example: 'Formal: I bid you farewell. / Informal: See you later, man!' },
+            { id: 8, formal: 'Until we meet again', informal: 'See you soon', category: 'greetings', example: 'Formal: Until we meet again. / Informal: See you soon, bro.' },
+            { id: 9, formal: 'Goodbye', informal: 'Bye / Later', category: 'greetings', example: 'Formal: Goodbye, Mr. Johnson. / Informal: Later, John.' },
+            { id: 10, formal: 'I trust you are well', informal: 'Hope you\'re good', category: 'greetings', example: 'Formal: I trust you are well. / Informal: Hope you\'re doing good.' },
+            { id: 11, formal: 'Allow me to introduce myself', informal: 'Hey, I\'m...', category: 'greetings', example: 'Formal: Allow me to introduce myself. / Informal: Hey, I\'m John.' },
+            { id: 12, formal: 'May I present...', informal: 'This is...', category: 'greetings', example: 'Formal: May I present Mr. Smith. / Informal: This is John.' },
+            { id: 13, formal: 'It is an honor', informal: 'It\'s awesome', category: 'greetings', example: 'Formal: It is an honor to meet you. / Informal: It\'s awesome to meet you.' },
+            { id: 14, formal: 'I appreciate your time', informal: 'Thanks for your time', category: 'greetings', example: 'Formal: I appreciate your time. / Informal: Thanks for your time, man.' },
+            { id: 15, formal: 'Take care of yourself', informal: 'Take care / Stay safe', category: 'greetings', example: 'Formal: Take care of yourself. / Informal: Take care, bro!' },
+
+            // ========== PALAVRAS (16-55) ==========
+            { id: 16, formal: 'assist', informal: 'help', category: 'words', example: 'Formal: I will assist you. / Informal: I can help you.' },
+            { id: 17, formal: 'purchase', informal: 'buy', category: 'words', example: 'Formal: I purchased a new car. / Informal: I bought a new car.' },
+            { id: 18, formal: 'depart', informal: 'leave', category: 'words', example: 'Formal: We will depart at 3 PM. / Informal: We\'ll leave at 3 PM.' },
+            { id: 19, formal: 'arrive', informal: 'get to', category: 'words', example: 'Formal: We arrived at the airport. / Informal: We got to the airport.' },
+            { id: 20, formal: 'inform', informal: 'tell', category: 'words', example: 'Formal: Please inform me. / Informal: Please tell me.' },
+            { id: 21, formal: 'request', informal: 'ask for', category: 'words', example: 'Formal: I request your assistance. / Informal: I\'m asking for your help.' },
+            { id: 22, formal: 'require', informal: 'need', category: 'words', example: 'Formal: We require your signature. / Informal: We need your signature.' },
+            { id: 23, formal: 'examine', informal: 'check', category: 'words', example: 'Formal: We will examine the documents. / Informal: We\'ll check the docs.' },
+            { id: 24, formal: 'investigate', informal: 'look into', category: 'words', example: 'Formal: We need to investigate. / Informal: We need to look into it.' },
+            { id: 25, formal: 'demonstrate', informal: 'show', category: 'words', example: 'Formal: Let me demonstrate. / Informal: Let me show you.' },
+            { id: 26, formal: 'obtain', informal: 'get', category: 'words', example: 'Formal: We obtained the results. / Informal: We got the results.' },
+            { id: 27, formal: 'consider', informal: 'think about', category: 'words', example: 'Formal: I will consider your offer. / Informal: I\'ll think about your offer.' },
+            { id: 28, formal: 'determine', informal: 'find out', category: 'words', example: 'Formal: We need to determine the cause. / Informal: We need to find out why.' },
+            { id: 29, formal: 'attempt', informal: 'try', category: 'words', example: 'Formal: I will attempt to solve it. / Informal: I\'ll try to solve it.' },
+            { id: 30, formal: 'utilize', informal: 'use', category: 'words', example: 'Formal: We utilize modern technology. / Informal: We use modern tech.' },
+            { id: 31, formal: 'commence', informal: 'start / begin', category: 'words', example: 'Formal: We will commence the project. / Informal: We\'ll start the project.' },
+            { id: 32, formal: 'cease', informal: 'stop / quit', category: 'words', example: 'Formal: We must cease production. / Informal: We need to stop production.' },
+            { id: 33, formal: 'locate', informal: 'find', category: 'words', example: 'Formal: We located the documents. / Informal: We found the documents.' },
+            { id: 34, formal: 'proceed', informal: 'go ahead', category: 'words', example: 'Formal: We will proceed with the plan. / Informal: We\'ll go ahead with the plan.' },
+            { id: 35, formal: 'inquire', informal: 'ask', category: 'words', example: 'Formal: I would like to inquire about... / Informal: I want to ask about...' },
+            { id: 36, formal: 'respond', informal: 'answer', category: 'words', example: 'Formal: Please respond to my email. / Informal: Please answer my email.' },
+            { id: 37, formal: 'resolve', informal: 'sort out', category: 'words', example: 'Formal: We resolved the issue. / Informal: We sorted out the issue.' },
+            { id: 38, formal: 'construct', informal: 'build', category: 'words', example: 'Formal: They constructed a new bridge. / Informal: They built a new bridge.' },
+            { id: 39, formal: 'consume', informal: 'eat / drink', category: 'words', example: 'Formal: I consume coffee daily. / Informal: I drink coffee every day.' },
+            { id: 40, formal: 'disclose', informal: 'reveal', category: 'words', example: 'Formal: We cannot disclose the information. / Informal: We can\'t reveal the info.' },
+            { id: 41, formal: 'encounter', informal: 'run into', category: 'words', example: 'Formal: We encountered a problem. / Informal: We ran into a problem.' },
+            { id: 42, formal: 'evaluate', informal: 'check out', category: 'words', example: 'Formal: We need to evaluate the results. / Informal: We need to check out the results.' },
+            { id: 43, formal: 'facilitate', informal: 'make easier', category: 'words', example: 'Formal: We facilitate the process. / Informal: We make the process easier.' },
+            { id: 44, formal: 'implement', informal: 'put in place', category: 'words', example: 'Formal: We will implement the plan. / Informal: We\'ll put the plan in place.' },
+            { id: 45, formal: 'eliminate', informal: 'get rid of', category: 'words', example: 'Formal: We need to eliminate waste. / Informal: We need to get rid of waste.' },
+            { id: 46, formal: 'comprehend', informal: 'understand', category: 'words', example: 'Formal: I cannot comprehend this. / Informal: I can\'t understand this.' },
+            { id: 47, formal: 'acquire', informal: 'get / buy', category: 'words', example: 'Formal: We acquired a new company. / Informal: We bought a new company.' },
+            { id: 48, formal: 'reside', informal: 'live', category: 'words', example: 'Formal: I reside in New York. / Informal: I live in New York.' },
+            { id: 49, formal: 'announce', informal: 'say / tell', category: 'words', example: 'Formal: We announce the winner. / Informal: We\'ll say the winner.' },
+            { id: 50, formal: 'appreciate', informal: 'thank', category: 'words', example: 'Formal: I appreciate your help. / Informal: Thanks for your help.' },
+            { id: 51, formal: 'convey', informal: 'send / give', category: 'words', example: 'Formal: Please convey my message. / Informal: Please give my message.' },
+            { id: 52, formal: 'distribute', informal: 'hand out', category: 'words', example: 'Formal: We will distribute the materials. / Informal: We\'ll hand out the materials.' },
+            { id: 53, formal: 'observe', informal: 'watch / see', category: 'words', example: 'Formal: We observed the phenomenon. / Informal: We saw what happened.' },
+            { id: 54, formal: 'remove', informal: 'take off', category: 'words', example: 'Formal: Please remove your shoes. / Informal: Please take off your shoes.' },
+            { id: 55, formal: 'submit', informal: 'send in', category: 'words', example: 'Formal: Please submit your application. / Informal: Please send in your application.' },
+
+            // ========== FRASES (56-80) ==========
+            { id: 56, formal: 'I would like', informal: 'I want', category: 'phrases', example: 'Formal: I would like a coffee. / Informal: I want a coffee.' },
+            { id: 57, formal: 'I am afraid that', informal: 'I\'m sorry but', category: 'phrases', example: 'Formal: I am afraid I cannot go. / Informal: I\'m sorry, I can\'t go.' },
+            { id: 58, formal: 'In my opinion', informal: 'I think', category: 'phrases', example: 'Formal: In my opinion, this is wrong. / Informal: I think this is wrong.' },
+            { id: 59, formal: 'Furthermore', informal: 'Also / Plus', category: 'phrases', example: 'Formal: Furthermore, we need more data. / Informal: Also, we need more data.' },
+            { id: 60, formal: 'However', informal: 'But', category: 'phrases', example: 'Formal: However, we must be careful. / Informal: But we must be careful.' },
+            { id: 61, formal: 'Therefore', informal: 'So', category: 'phrases', example: 'Formal: Therefore, we made a decision. / Informal: So we made a decision.' },
+            { id: 62, formal: 'In addition', informal: 'Also / And', category: 'phrases', example: 'Formal: In addition, we need more time. / Informal: Also, we need more time.' },
+            { id: 63, formal: 'I would suggest', informal: 'Maybe we should', category: 'phrases', example: 'Formal: I would suggest we wait. / Informal: Maybe we should wait.' },
+            { id: 64, formal: 'It is necessary to', informal: 'We need to', category: 'phrases', example: 'Formal: It is necessary to act. / Informal: We need to act.' },
+            { id: 65, formal: 'I would like to request', informal: 'Can I ask', category: 'phrases', example: 'Formal: I would like to request your help. / Informal: Can I ask for your help?' },
+            { id: 66, formal: 'I am writing to inform you', informal: 'Just a quick note', category: 'phrases', example: 'Formal: I am writing to inform you of the changes. / Informal: Just a quick note about the changes.' },
+            { id: 67, formal: 'Please be advised', informal: 'Just so you know', category: 'phrases', example: 'Formal: Please be advised that we are closed. / Informal: Just so you know, we\'re closed.' },
+            { id: 68, formal: 'I would appreciate it if', informal: 'It would be great if', category: 'phrases', example: 'Formal: I would appreciate it if you could help. / Informal: It would be great if you could help.' },
+            { id: 69, formal: 'Could you please', informal: 'Can you', category: 'phrases', example: 'Formal: Could you please send me the report? / Informal: Can you send me the report?' },
+            { id: 70, formal: 'I am writing in reference to', informal: 'I\'m writing about', category: 'phrases', example: 'Formal: I am writing in reference to your email. / Informal: I\'m writing about your email.' },
+            { id: 71, formal: 'I look forward to', informal: 'Can\'t wait to', category: 'phrases', example: 'Formal: I look forward to meeting you. / Informal: Can\'t wait to meet you.' },
+            { id: 72, formal: 'It has come to my attention', informal: 'I heard that', category: 'phrases', example: 'Formal: It has come to my attention that... / Informal: I heard that...' },
+            { id: 73, formal: 'Please do not hesitate to', informal: 'Feel free to', category: 'phrases', example: 'Formal: Please do not hesitate to contact me. / Informal: Feel free to call me.' },
+            { id: 74, formal: 'I trust this is acceptable', informal: 'I hope that\'s ok', category: 'phrases', example: 'Formal: I trust this is acceptable to you. / Informal: I hope that\'s ok with you.' },
+            { id: 75, formal: 'At your earliest convenience', informal: 'As soon as you can', category: 'phrases', example: 'Formal: Please respond at your earliest convenience. / Informal: Please respond as soon as you can.' },
+            { id: 76, formal: 'I would be grateful if', informal: 'I\'d really appreciate it if', category: 'phrases', example: 'Formal: I would be grateful if you could attend. / Informal: I\'d really appreciate it if you could come.' },
+            { id: 77, formal: 'It is my understanding that', informal: 'As I understand it', category: 'phrases', example: 'Formal: It is my understanding that you are leaving. / Informal: As I understand it, you\'re leaving.' },
+            { id: 78, formal: 'Please be mindful of', informal: 'Please remember', category: 'phrases', example: 'Formal: Please be mindful of the rules. / Informal: Please remember the rules.' },
+            { id: 79, formal: 'In accordance with', informal: 'According to', category: 'phrases', example: 'Formal: In accordance with the policy... / Informal: According to the policy...' },
+            { id: 80, formal: 'With regard to', informal: 'About / Regarding', category: 'phrases', example: 'Formal: With regard to your inquiry... / Informal: About your question...' },
+
+            // ========== CONTRAÇÕES (81-100) ==========
+            { id: 81, formal: 'I am', informal: 'I\'m', category: 'contractions', example: 'Formal: I am happy. / Informal: I\'m happy.' },
+            { id: 82, formal: 'you are', informal: 'you\'re', category: 'contractions', example: 'Formal: You are right. / Informal: You\'re right.' },
+            { id: 83, formal: 'he is', informal: 'he\'s', category: 'contractions', example: 'Formal: He is here. / Informal: He\'s here.' },
+            { id: 84, formal: 'she is', informal: 'she\'s', category: 'contractions', example: 'Formal: She is nice. / Informal: She\'s nice.' },
+            { id: 85, formal: 'it is', informal: 'it\'s', category: 'contractions', example: 'Formal: It is raining. / Informal: It\'s raining.' },
+            { id: 86, formal: 'we are', informal: 'we\'re', category: 'contractions', example: 'Formal: We are going. / Informal: We\'re going.' },
+            { id: 87, formal: 'they are', informal: 'they\'re', category: 'contractions', example: 'Formal: They are coming. / Informal: They\'re coming.' },
+            { id: 88, formal: 'I will', informal: 'I\'ll', category: 'contractions', example: 'Formal: I will go. / Informal: I\'ll go.' },
+            { id: 89, formal: 'you will', informal: 'you\'ll', category: 'contractions', example: 'Formal: You will see. / Informal: You\'ll see.' },
+            { id: 90, formal: 'he will', informal: 'he\'ll', category: 'contractions', example: 'Formal: He will call. / Informal: He\'ll call.' },
+            { id: 91, formal: 'she will', informal: 'she\'ll', category: 'contractions', example: 'Formal: She will come. / Informal: She\'ll come.' },
+            { id: 92, formal: 'we will', informal: 'we\'ll', category: 'contractions', example: 'Formal: We will wait. / Informal: We\'ll wait.' },
+            { id: 93, formal: 'they will', informal: 'they\'ll', category: 'contractions', example: 'Formal: They will arrive. / Informal: They\'ll arrive.' },
+            { id: 94, formal: 'I have', informal: 'I\'ve', category: 'contractions', example: 'Formal: I have seen it. / Informal: I\'ve seen it.' },
+            { id: 95, formal: 'you have', informal: 'you\'ve', category: 'contractions', example: 'Formal: You have finished. / Informal: You\'ve finished.' },
+            { id: 96, formal: 'we have', informal: 'we\'ve', category: 'contractions', example: 'Formal: We have arrived. / Informal: We\'ve arrived.' },
+            { id: 97, formal: 'they have', informal: 'they\'ve', category: 'contractions', example: 'Formal: They have left. / Informal: They\'ve left.' },
+            { id: 98, formal: 'I would', informal: 'I\'d', category: 'contractions', example: 'Formal: I would like that. / Informal: I\'d like that.' },
+            { id: 99, formal: 'you would', informal: 'you\'d', category: 'contractions', example: 'Formal: You would like it. / Informal: You\'d like it.' },
+            { id: 100, formal: 'he would', informal: 'he\'d', category: 'contractions', example: 'Formal: He would love it. / Informal: He\'d love it.' },
+
+            // ========== ESCRITA (101-120) ==========
+            { id: 101, formal: 'Dear Sir or Madam', informal: 'Hey / Hi there', category: 'writing', example: 'Formal: Dear Sir or Madam, / Informal: Hey John,' },
+            { id: 102, formal: 'Yours sincerely', informal: 'Best / Cheers', category: 'writing', example: 'Formal: Yours sincerely, John Smith / Informal: Cheers, John' },
+            { id: 103, formal: 'I am writing to inform you', informal: 'Just writing to let you know', category: 'writing', example: 'Formal: I am writing to inform you of our decision. / Informal: Just writing to let you know our decision.' },
+            { id: 104, formal: 'Please find attached', informal: 'I\'ve attached', category: 'writing', example: 'Formal: Please find attached the report. / Informal: I\'ve attached the report.' },
+            { id: 105, formal: 'For the attention of', informal: 'For', category: 'writing', example: 'Formal: For the attention of the Manager. / Informal: For John.' },
+            { id: 106, formal: 'Enclosed please find', informal: 'I\'ve enclosed', category: 'writing', example: 'Formal: Enclosed please find the documents. / Informal: I\'ve enclosed the documents.' },
+            { id: 107, formal: 'As per your request', informal: 'As you asked', category: 'writing', example: 'Formal: As per your request, I have sent the files. / Informal: As you asked, I sent the files.' },
+            { id: 108, formal: 'With reference to', informal: 'Regarding', category: 'writing', example: 'Formal: With reference to your email... / Informal: Regarding your email...' },
+            { id: 109, formal: 'I trust this finds you well', informal: 'Hope you\'re doing well', category: 'writing', example: 'Formal: I trust this finds you well. / Informal: Hope you\'re doing well.' },
+            { id: 110, formal: 'Further to our conversation', informal: 'Following up on our chat', category: 'writing', example: 'Formal: Further to our conversation, I... / Informal: Following up on our chat, I...' },
+            { id: 111, formal: 'I would like to bring to your attention', informal: 'I want to point out', category: 'writing', example: 'Formal: I would like to bring to your attention an issue. / Informal: I want to point out an issue.' },
+            { id: 112, formal: 'Please accept my apologies', informal: 'Sorry about that', category: 'writing', example: 'Formal: Please accept my apologies for the delay. / Informal: Sorry about the delay.' },
+            { id: 113, formal: 'I look forward to hearing from you', informal: 'Talk soon / Hope to hear from you', category: 'writing', example: 'Formal: I look forward to hearing from you. / Informal: Talk soon!' },
+            { id: 114, formal: 'Should you require any further information', informal: 'If you need anything else', category: 'writing', example: 'Formal: Should you require any further information, please contact me. / Informal: If you need anything else, just ask.' },
+            { id: 115, formal: 'We are in receipt of', informal: 'We have received', category: 'writing', example: 'Formal: We are in receipt of your payment. / Informal: We have received your payment.' },
+            { id: 116, formal: 'Prior to', informal: 'Before', category: 'writing', example: 'Formal: Prior to the meeting... / Informal: Before the meeting...' },
+            { id: 117, formal: 'Subsequently', informal: 'After that / Then', category: 'writing', example: 'Formal: Subsequently, we decided... / Informal: After that, we decided...' },
+            { id: 118, formal: 'In the event that', informal: 'If', category: 'writing', example: 'Formal: In the event that you need help... / Informal: If you need help...' },
+            { id: 119, formal: 'Please note that', informal: 'FYI / Just so you know', category: 'writing', example: 'Formal: Please note that the office is closed. / Informal: Just so you know, the office is closed.' },
+            { id: 120, formal: 'I trust this clarifies', informal: 'I hope that makes sense', category: 'writing', example: 'Formal: I trust this clarifies the situation. / Informal: I hope that makes sense.' }
+        ];
+
+        // ============================================================
+        // LÓGICA DE RENDERIZAÇÃO
+        // ============================================================
+
+        let currentFilter = 'all';
+        let currentSearch = '';
+
+        function getCategoryBadge(category) {
+            const map = {
+                'greetings': 'greetings',
+                'words': 'words',
+                'phrases': 'phrases',
+                'contractions': 'contractions',
+                'writing': 'writing'
+            };
+            const labels = {
+                'greetings': 'Saudações',
+                'words': 'Palavras',
+                'phrases': 'Frases',
+                'contractions': 'Contrações',
+                'writing': 'Escrita'
+            };
+            return `<span class="category-badge ${map[category] || 'words'}">${labels[category] || 'Palavras'}</span>`;
+        }
+
+        function renderTable(filteredPairs) {
+            const tbody = document.getElementById('styleTable');
+            tbody.innerHTML = '';
+            if (filteredPairs.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:40px;color:#7f8c8d;">Nenhum par encontrado.</td></tr>';
+                return;
+            }
+            filteredPairs.forEach(pair => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${pair.id}</td>
+                    <td class="formal">${pair.formal}</td>
+                    <td class="informal">${pair.informal}</td>
+                    <td class="example-text">${pair.example}</td>
+                    <td>${getCategoryBadge(pair.category)}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+            updateStats(filteredPairs);
+        }
+
+        function updateStats(pairsList) {
+            const greetings = pairsList.filter(p => p.category === 'greetings').length;
+            const words = pairsList.filter(p => p.category === 'words').length;
+            const phrases = pairsList.filter(p => p.category === 'phrases').length;
+            
+            document.getElementById('greetingsCount').textContent = greetings;
+            document.getElementById('wordsCount').textContent = words;
+            document.getElementById('phrasesCount').textContent = phrases;
+        }
+
+        // ============================================================
+        // FILTROS
+        // ============================================================
+
+        function filterCategory(category) {
+            currentFilter = category;
+            document.querySelectorAll('.category-filter button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            const buttons = document.querySelectorAll('.category-filter button');
+            const index = ['all', 'greetings', 'words', 'phrases', 'contractions', 'writing'].indexOf(category);
+            if (buttons[index]) buttons[index].classList.add('active');
+            applyFilters();
+        }
+
+        function resetFilter() {
+            currentFilter = 'all';
+            document.getElementById('searchInput').value = '';
+            currentSearch = '';
+            document.querySelectorAll('.category-filter button').forEach(btn => btn.classList.remove('active'));
+            document.querySelector('.category-filter .btn-all').classList.add('active');
+            applyFilters();
+        }
+
+        function searchPair() {
+            const input = document.getElementById('searchInput');
+            currentSearch = input.value.toLowerCase().trim();
+            applyFilters();
+        }
+
+        function applyFilters() {
+            let filtered = [...stylePairs];
+
+            if (currentFilter !== 'all') {
+                filtered = filtered.filter(p => p.category === currentFilter);
+            }
+
+            if (currentSearch) {
+                filtered = filtered.filter(p => 
+                    p.formal.toLowerCase().includes(currentSearch) ||
+                    p.informal.toLowerCase().includes(currentSearch) ||
+                    p.example.toLowerCase().includes(currentSearch)
+                );
+            }
+
+            renderTable(filtered);
+        }
+
+        // ============================================================
+        // ORDENAÇÃO
+        // ============================================================
+
+        document.querySelectorAll('thead th').forEach((th, index) => {
+            if (index === 0) return;
+            th.addEventListener('click', () => {
+                const tbody = document.getElementById('styleTable');
+                const rows = Array.from(tbody.querySelectorAll('tr'));
+                if (rows.length === 1 && rows[0].querySelector('td[colspan]')) return;
+                
+                const direction = th.dataset.direction === 'asc' ? 'desc' : 'asc';
+                th.dataset.direction = direction;
+
+                rows.sort((a, b) => {
+                    const aText = a.children[index].textContent.trim().toLowerCase();
+                    const bText = b.children[index].textContent.trim().toLowerCase();
+                    if (aText < bText) return direction === 'asc' ? -1 : 1;
+                    if (aText > bText) return direction === 'asc' ? 1 : -1;
+                    return 0;
+                });
+
+                rows.forEach(row => tbody.appendChild(row));
+            });
+        });
+
+        // ============================================================
+        // INICIALIZAÇÃO
+        // ============================================================
+
+        renderTable(stylePairs);
+    </script>
+</body>
+</html>

@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 200 Expressões de Tempo em Inglês</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0 30px;
+        }
+        .stat-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .stat-card .number {
+            font-size: 2em;
+            font-weight: 700;
+        }
+        .stat-card .label {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .stat-card .number.purple { color: #8e44ad; }
+        .stat-card .number.blue { color: #2980b9; }
+        .stat-card .number.green { color: #27ae60; }
+        .stat-card .number.orange { color: #f39c12; }
+        .stat-card .number.red { color: #e74c3c; }
+
+        .search-box {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .search-box input {
+            padding: 12px 20px;
+            width: 100%;
+            max-width: 500px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        .search-box input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .category-filter button {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: #ecf0f1;
+            color: #2c3e50;
+        }
+        .category-filter button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        .category-filter button.active {
+            background: #3498db;
+            color: white;
+        }
+        .category-filter button.btn-all { background: #3498db; color: white; }
+        .category-filter button.btn-all:hover { background: #2980b9; }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+        .legend-item .color-box {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+        .legend-item .color-box.general { background: #3498db; }
+        .legend-item .color-box.duration { background: #2ecc71; }
+        .legend-item .color-box.frequency { background: #e74c3c; }
+        .legend-item .color-box.sequence { background: #f39c12; }
+        .legend-item .color-box.point { background: #8e44ad; }
+        .legend-item .color-box.prepositions { background: #e67e22; }
+
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 10px;
+            border: 1px solid #ecf0f1;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        thead {
+            background: #2c3e50;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        thead th {
+            padding: 12px 10px;
+            text-align: left;
+            font-weight: 600;
+            cursor: pointer;
+            user-select: none;
+            white-space: nowrap;
+        }
+        thead th:hover {
+            background: #34495e;
+        }
+        thead th:nth-child(1) { width: 5%; }
+        thead th:nth-child(2) { width: 20%; }
+        thead th:nth-child(3) { width: 30%; }
+        thead th:nth-child(4) { width: 30%; }
+        thead th:nth-child(5) { width: 15%; }
+
+        tbody tr {
+            border-bottom: 1px solid #ecf0f1;
+            transition: background 0.2s;
+        }
+        tbody tr:hover {
+            background: #f8f9fa;
+        }
+        tbody td {
+            padding: 10px 10px;
+            vertical-align: middle;
+        }
+        tbody td:first-child {
+            font-weight: 600;
+            color: #7f8c8d;
+        }
+        .expression-en {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        .expression-pt {
+            color: #7f8c8d;
+        }
+        .example-text {
+            color: #666;
+            font-style: italic;
+            font-size: 0.85em;
+        }
+        .category-badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .category-badge.general { background: #cce5ff; color: #004085; }
+        .category-badge.duration { background: #d4edda; color: #155724; }
+        .category-badge.frequency { background: #f8d7da; color: #721c24; }
+        .category-badge.sequence { background: #fff3cd; color: #856404; }
+        .category-badge.point { background: #e8d5f5; color: #6c3483; }
+        .category-badge.prepositions { background: #fdebd0; color: #935e38; }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2em;
+            color: #7f8c8d;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            h1 { font-size: 1.8em; }
+            table { font-size: 11px; }
+            thead th, tbody td { padding: 6px 5px; }
+            .category-badge { font-size: 8px; padding: 2px 6px; }
+            .stats { grid-template-columns: repeat(2, 1fr); }
+            .category-filter button { padding: 6px 12px; font-size: 11px; }
+            thead th:nth-child(4) { display: none; }
+            tbody td:nth-child(4) { display: none; }
+        }
+        @media (max-width: 480px) {
+            table { font-size: 9px; }
+            thead th, tbody td { padding: 4px 3px; }
+            .legend { gap: 10px; font-size: 11px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⏰ 200 Expressões de Tempo</h1>
+        <p class="subtitle">As expressões temporais mais comuns do inglês com tradução e exemplos</p>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="number purple">200</div>
+                <div class="label">Total de expressões</div>
+            </div>
+            <div class="stat-card">
+                <div class="number blue" id="generalCount">0</div>
+                <div class="label">Geral</div>
+            </div>
+            <div class="stat-card">
+                <div class="number green" id="durationCount">0</div>
+                <div class="label">Duração</div>
+            </div>
+            <div class="stat-card">
+                <div class="number red" id="frequencyCount">0</div>
+                <div class="label">Frequência</div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item"><div class="color-box general"></div> Geral</div>
+            <div class="legend-item"><div class="color-box duration"></div> Duração</div>
+            <div class="legend-item"><div class="color-box frequency"></div> Frequência</div>
+            <div class="legend-item"><div class="color-box sequence"></div> Sequência</div>
+            <div class="legend-item"><div class="color-box point"></div> Ponto no Tempo</div>
+            <div class="legend-item"><div class="color-box prepositions"></div> Preposições</div>
+        </div>
+
+        <div class="category-filter">
+            <button class="btn-all active" onclick="filterCategory('all')">📋 Todos</button>
+            <button onclick="filterCategory('general')">📌 Geral</button>
+            <button onclick="filterCategory('duration')">⏱️ Duração</button>
+            <button onclick="filterCategory('frequency')">🔄 Frequência</button>
+            <button onclick="filterCategory('sequence')">🔢 Sequência</button>
+            <button onclick="filterCategory('point')">🎯 Ponto no Tempo</button>
+            <button onclick="filterCategory('prepositions')">📐 Preposições</button>
+            <button onclick="resetFilter()">🔄 Resetar</button>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 Buscar expressão... (inglês ou português)" onkeyup="searchExpression()">
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Expression</th>
+                        <th>Português</th>
+                        <th>Exemplo</th>
+                        <th>Categoria</th>
+                    </tr>
+                </thead>
+                <tbody id="timeTable">
+                    <tr><td colspan="5" class="loading">Carregando 200 expressões de tempo...</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            💡 Clique no cabeçalho para ordenar • Use a busca para encontrar expressões específicas
+        </div>
+    </div>
+
+    <script>
+        // ============================================================
+        // 200 EXPRESSÕES DE TEMPO
+        // ============================================================
+        const timeExpressions = [
+            // ========== EXPRESSÕES GERAIS (1-35) ==========
+            { id: 1, en: 'now', pt: 'agora', category: 'general', example: 'I am busy now.' },
+            { id: 2, en: 'right now', pt: 'agora mesmo', category: 'general', example: 'I need you right now.' },
+            { id: 3, en: 'at the moment', pt: 'no momento', category: 'general', example: 'She is studying at the moment.' },
+            { id: 4, en: 'currently', pt: 'atualmente', category: 'general', example: 'I am currently working on a project.' },
+            { id: 5, en: 'today', pt: 'hoje', category: 'general', example: 'I have a meeting today.' },
+            { id: 6, en: 'tomorrow', pt: 'amanhã', category: 'general', example: 'I will see you tomorrow.' },
+            { id: 7, en: 'yesterday', pt: 'ontem', category: 'general', example: 'I went to the store yesterday.' },
+            { id: 8, en: 'the day before yesterday', pt: 'anteontem', category: 'general', example: 'She arrived the day before yesterday.' },
+            { id: 9, en: 'the day after tomorrow', pt: 'depois de amanhã', category: 'general', example: 'We will leave the day after tomorrow.' },
+            { id: 10, en: 'this morning', pt: 'esta manhã', category: 'general', example: 'I woke up late this morning.' },
+            { id: 11, en: 'this afternoon', pt: 'esta tarde', category: 'general', example: 'I have a meeting this afternoon.' },
+            { id: 12, en: 'this evening', pt: 'esta noite', category: 'general', example: 'We are going out this evening.' },
+            { id: 13, en: 'tonight', pt: 'hoje à noite', category: 'general', example: 'I will call you tonight.' },
+            { id: 14, en: 'yesterday morning', pt: 'ontem de manhã', category: 'general', example: 'I went to the gym yesterday morning.' },
+            { id: 15, en: 'yesterday afternoon', pt: 'ontem à tarde', category: 'general', example: 'We had a meeting yesterday afternoon.' },
+            { id: 16, en: 'yesterday evening', pt: 'ontem à noite', category: 'general', example: 'She arrived yesterday evening.' },
+            { id: 17, en: 'last night', pt: 'ontem à noite', category: 'general', example: 'I slept well last night.' },
+            { id: 18, en: 'tomorrow morning', pt: 'amanhã de manhã', category: 'general', example: 'I will go to the doctor tomorrow morning.' },
+            { id: 19, en: 'tomorrow afternoon', pt: 'amanhã à tarde', category: 'general', example: 'We have a test tomorrow afternoon.' },
+            { id: 20, en: 'tomorrow evening', pt: 'amanhã à noite', category: 'general', example: 'I will call you tomorrow evening.' },
+            { id: 21, en: 'tomorrow night', pt: 'amanhã à noite', category: 'general', example: 'We are going out tomorrow night.' },
+            { id: 22, en: 'soon', pt: 'em breve', category: 'general', example: 'I will come soon.' },
+            { id: 23, en: 'later', pt: 'mais tarde', category: 'general', example: 'I will do it later.' },
+            { id: 24, en: 'earlier', pt: 'mais cedo', category: 'general', example: 'I arrived earlier.' },
+            { id: 25, en: 'early', pt: 'cedo', category: 'general', example: 'I wake up early.' },
+            { id: 26, en: 'late', pt: 'tarde', category: 'general', example: 'I arrived late.' },
+            { id: 27, en: 'before', pt: 'antes', category: 'general', example: 'I will see you before.' },
+            { id: 28, en: 'after', pt: 'depois', category: 'general', example: 'I will see you after.' },
+            { id: 29, en: 'meanwhile', pt: 'enquanto isso', category: 'general', example: 'I will work meanwhile.' },
+            { id: 30, en: 'in the meantime', pt: 'entretanto', category: 'general', example: 'In the meantime, I will wait.' },
+            { id: 31, en: 'at the same time', pt: 'ao mesmo tempo', category: 'general', example: 'We arrived at the same time.' },
+            { id: 32, en: 'at once', pt: 'imediatamente', category: 'general', example: 'Come here at once!' },
+            { id: 33, en: 'immediately', pt: 'imediatamente', category: 'general', example: 'I will do it immediately.' },
+            { id: 34, en: 'instantly', pt: 'instantaneamente', category: 'general', example: 'The water froze instantly.' },
+            { id: 35, en: 'eventually', pt: 'finalmente', category: 'general', example: 'We will get there eventually.' },
+
+            // ========== DURAÇÃO (36-70) ==========
+            { id: 36, en: 'for a long time', pt: 'por muito tempo', category: 'duration', example: 'I have been here for a long time.' },
+            { id: 37, en: 'for a short time', pt: 'por pouco tempo', category: 'duration', example: 'I lived there for a short time.' },
+            { id: 38, en: 'for a while', pt: 'por um tempo', category: 'duration', example: 'I will stay for a while.' },
+            { id: 39, en: 'for a moment', pt: 'por um momento', category: 'duration', example: 'Wait for a moment.' },
+            { id: 40, en: 'for a second', pt: 'por um segundo', category: 'duration', example: 'Give me a second.' },
+            { id: 41, en: 'for a minute', pt: 'por um minuto', category: 'duration', example: 'Wait for a minute.' },
+            { id: 42, en: 'for an hour', pt: 'por uma hora', category: 'duration', example: 'I waited for an hour.' },
+            { id: 43, en: 'for a day', pt: 'por um dia', category: 'duration', example: 'I stayed there for a day.' },
+            { id: 44, en: 'for a week', pt: 'por uma semana', category: 'duration', example: 'I was on vacation for a week.' },
+            { id: 45, en: 'for a month', pt: 'por um mês', category: 'duration', example: 'I worked there for a month.' },
+            { id: 46, en: 'for a year', pt: 'por um ano', category: 'duration', example: 'I lived in London for a year.' },
+            { id: 47, en: 'for hours', pt: 'por horas', category: 'duration', example: 'I waited for hours.' },
+            { id: 48, en: 'for days', pt: 'por dias', category: 'duration', example: 'It rained for days.' },
+            { id: 49, en: 'for weeks', pt: 'por semanas', category: 'duration', example: 'I was sick for weeks.' },
+            { id: 50, en: 'for months', pt: 'por meses', category: 'duration', example: 'He studied for months.' },
+            { id: 51, en: 'for years', pt: 'por anos', category: 'duration', example: 'I have been teaching for years.' },
+            { id: 52, en: 'since', pt: 'desde', category: 'duration', example: 'I have been here since 2019.' },
+            { id: 53, en: 'since then', pt: 'desde então', category: 'duration', example: 'I have changed since then.' },
+            { id: 54, en: 'ever since', pt: 'desde que', category: 'duration', example: 'I have been happy ever since.' },
+            { id: 55, en: 'from...to...', pt: 'de...até...', category: 'duration', example: 'I work from 9 to 5.' },
+            { id: 56, en: 'from...until...', pt: 'de...até...', category: 'duration', example: 'I will stay from Monday until Friday.' },
+            { id: 57, en: 'up to', pt: 'até', category: 'duration', example: 'I can stay up to 10 days.' },
+            { id: 58, en: 'until', pt: 'até', category: 'duration', example: 'I will wait until you come.' },
+            { id: 59, en: 'till', pt: 'até', category: 'duration', example: 'I will work till 6 PM.' },
+            { id: 60, en: 'through', pt: 'através de', category: 'duration', example: 'I studied through the night.' },
+            { id: 61, en: 'throughout', pt: 'durante todo', category: 'duration', example: 'I worked throughout the day.' },
+            { id: 62, en: 'during', pt: 'durante', category: 'duration', example: 'I slept during the movie.' },
+            { id: 63, en: 'over', pt: 'durante', category: 'duration', example: 'I will think about it over the weekend.' },
+            { id: 64, en: 'overnight', pt: 'durante a noite', category: 'duration', example: 'I stayed overnight.' },
+            { id: 65, en: 'all day', pt: 'o dia todo', category: 'duration', example: 'I worked all day.' },
+            { id: 66, en: 'all night', pt: 'a noite toda', category: 'duration', example: 'I studied all night.' },
+            { id: 67, en: 'all week', pt: 'a semana toda', category: 'duration', example: 'I was sick all week.' },
+            { id: 68, en: 'all month', pt: 'o mês todo', category: 'duration', example: 'It rained all month.' },
+            { id: 69, en: 'all year', pt: 'o ano todo', category: 'duration', example: 'I worked hard all year.' },
+            { id: 70, en: 'all my life', pt: 'toda a minha vida', category: 'duration', example: 'I have lived here all my life.' },
+
+            // ========== FREQUÊNCIA (71-115) ==========
+            { id: 71, en: 'always', pt: 'sempre', category: 'frequency', example: 'I always wake up early.' },
+            { id: 72, en: 'usually', pt: 'geralmente', category: 'frequency', example: 'I usually have coffee in the morning.' },
+            { id: 73, en: 'normally', pt: 'normalmente', category: 'frequency', example: 'I normally go to work by bus.' },
+            { id: 74, en: 'generally', pt: 'geralmente', category: 'frequency', example: 'I generally arrive on time.' },
+            { id: 75, en: 'frequently', pt: 'frequentemente', category: 'frequency', example: 'I frequently visit my grandmother.' },
+            { id: 76, en: 'often', pt: 'frequentemente', category: 'frequency', example: 'I often go to the gym.' },
+            { id: 77, en: 'sometimes', pt: 'às vezes', category: 'frequency', example: 'I sometimes eat pizza.' },
+            { id: 78, en: 'occasionally', pt: 'ocasionalmente', category: 'frequency', example: 'I occasionally travel to Brazil.' },
+            { id: 79, en: 'rarely', pt: 'raramente', category: 'frequency', example: 'I rarely eat fast food.' },
+            { id: 80, en: 'seldom', pt: 'raramente', category: 'frequency', example: 'I seldom go to the movies.' },
+            { id: 81, en: 'hardly ever', pt: 'quase nunca', category: 'frequency', example: 'I hardly ever drink coffee.' },
+            { id: 82, en: 'never', pt: 'nunca', category: 'frequency', example: 'I never eat meat.' },
+            { id: 83, en: 'every day', pt: 'todos os dias', category: 'frequency', example: 'I exercise every day.' },
+            { id: 84, en: 'every week', pt: 'toda semana', category: 'frequency', example: 'I have a meeting every week.' },
+            { id: 85, en: 'every month', pt: 'todo mês', category: 'frequency', example: 'I pay my bills every month.' },
+            { id: 86, en: 'every year', pt: 'todo ano', category: 'frequency', example: 'We travel every year.' },
+            { id: 87, en: 'every weekend', pt: 'todo fim de semana', category: 'frequency', example: 'I go to the beach every weekend.' },
+            { id: 88, en: 'every morning', pt: 'toda manhã', category: 'frequency', example: 'I drink coffee every morning.' },
+            { id: 89, en: 'every afternoon', pt: 'toda tarde', category: 'frequency', example: 'I take a walk every afternoon.' },
+            { id: 90, en: 'every evening', pt: 'toda noite', category: 'frequency', example: 'I watch TV every evening.' },
+            { id: 91, en: 'once a day', pt: 'uma vez por dia', category: 'frequency', example: 'I take this medicine once a day.' },
+            { id: 92, en: 'once a week', pt: 'uma vez por semana', category: 'frequency', example: 'I go to the gym once a week.' },
+            { id: 93, en: 'once a month', pt: 'uma vez por mês', category: 'frequency', example: 'I visit my parents once a month.' },
+            { id: 94, en: 'once a year', pt: 'uma vez por ano', category: 'frequency', example: 'I go to the beach once a year.' },
+            { id: 95, en: 'twice a day', pt: 'duas vezes por dia', category: 'frequency', example: 'I brush my teeth twice a day.' },
+            { id: 96, en: 'twice a week', pt: 'duas vezes por semana', category: 'frequency', example: 'I have piano lessons twice a week.' },
+            { id: 97, en: 'twice a month', pt: 'duas vezes por mês', category: 'frequency', example: 'I get paid twice a month.' },
+            { id: 98, en: 'twice a year', pt: 'duas vezes por ano', category: 'frequency', example: 'I travel twice a year.' },
+            { id: 99, en: 'three times a day', pt: 'três vezes por dia', category: 'frequency', example: 'I eat three times a day.' },
+            { id: 100, en: 'three times a week', pt: 'três vezes por semana', category: 'frequency', example: 'I exercise three times a week.' },
+            { id: 101, en: 'daily', pt: 'diariamente', category: 'frequency', example: 'I do daily exercises.' },
+            { id: 102, en: 'weekly', pt: 'semanalmente', category: 'frequency', example: 'I have a weekly meeting.' },
+            { id: 103, en: 'monthly', pt: 'mensalmente', category: 'frequency', example: 'I receive a monthly salary.' },
+            { id: 104, en: 'yearly', pt: 'anualmente', category: 'frequency', example: 'We have a yearly review.' },
+            { id: 105, en: 'on weekdays', pt: 'nos dias de semana', category: 'frequency', example: 'I work on weekdays.' },
+            { id: 106, en: 'on weekends', pt: 'nos fins de semana', category: 'frequency', example: 'I relax on weekends.' },
+            { id: 107, en: 'on Mondays', pt: 'às segundas-feiras', category: 'frequency', example: 'I have a class on Mondays.' },
+            { id: 108, en: 'on Tuesday mornings', pt: 'às terças-feiras de manhã', category: 'frequency', example: 'I have a meeting on Tuesday mornings.' },
+            { id: 109, en: 'in the morning', pt: 'de manhã', category: 'frequency', example: 'I study in the morning.' },
+            { id: 110, en: 'in the afternoon', pt: 'à tarde', category: 'frequency', example: 'I work in the afternoon.' },
+            { id: 111, en: 'in the evening', pt: 'à noite', category: 'frequency', example: 'I relax in the evening.' },
+            { id: 112, en: 'at night', pt: 'à noite', category: 'frequency', example: 'I sleep at night.' },
+            { id: 113, en: 'at noon', pt: 'ao meio-dia', category: 'frequency', example: 'I have lunch at noon.' },
+            { id: 114, en: 'at midnight', pt: 'à meia-noite', category: 'frequency', example: 'I go to bed at midnight.' },
+            { id: 115, en: 'at dawn', pt: 'ao amanhecer', category: 'frequency', example: 'I wake up at dawn.' },
+
+            // ========== SEQUÊNCIA (116-150) ==========
+            { id: 116, en: 'first', pt: 'primeiro', category: 'sequence', example: 'First, I woke up.' },
+            { id: 117, en: 'firstly', pt: 'primeiramente', category: 'sequence', example: 'Firstly, I want to thank everyone.' },
+            { id: 118, en: 'second', pt: 'segundo', category: 'sequence', example: 'Second, I had breakfast.' },
+            { id: 119, en: 'secondly', pt: 'em segundo lugar', category: 'sequence', example: 'Secondly, we need a plan.' },
+            { id: 120, en: 'third', pt: 'terceiro', category: 'sequence', example: 'Third, I went to work.' },
+            { id: 121, en: 'thirdly', pt: 'em terceiro lugar', category: 'sequence', example: 'Thirdly, we need more people.' },
+            { id: 122, en: 'next', pt: 'próximo', category: 'sequence', example: 'Next, I took a shower.' },
+            { id: 123, en: 'then', pt: 'então', category: 'sequence', example: 'I woke up. Then, I had breakfast.' },
+            { id: 124, en: 'after that', pt: 'depois disso', category: 'sequence', example: 'I studied. After that, I went to bed.' },
+            { id: 125, en: 'afterwards', pt: 'depois', category: 'sequence', example: 'We had dinner. Afterwards, we watched TV.' },
+            { id: 126, en: 'later on', pt: 'mais tarde', category: 'sequence', example: 'I will talk to you later on.' },
+            { id: 127, en: 'soon after', pt: 'logo depois', category: 'sequence', example: 'He arrived soon after I left.' },
+            { id: 128, en: 'shortly after', pt: 'pouco depois', category: 'sequence', example: 'Shortly after, she called me.' },
+            { id: 129, en: 'before that', pt: 'antes disso', category: 'sequence', example: 'I had studied before that.' },
+            { id: 130, en: 'previously', pt: 'anteriormente', category: 'sequence', example: 'Previously, I lived in Brazil.' },
+            { id: 131, en: 'previously', pt: 'anteriormente', category: 'sequence', example: 'I had seen that movie previously.' },
+            { id: 132, en: 'finally', pt: 'finalmente', category: 'sequence', example: 'Finally, I went to bed.' },
+            { id: 133, en: 'lastly', pt: 'por último', category: 'sequence', example: 'Lastly, I want to say thank you.' },
+            { id: 134, en: 'eventually', pt: 'eventualmente', category: 'sequence', example: 'Eventually, we arrived.' },
+            { id: 135, en: 'ultimately', pt: 'em última análise', category: 'sequence', example: 'Ultimately, it was my decision.' },
+            { id: 136, en: 'meanwhile', pt: 'enquanto isso', category: 'sequence', example: 'I worked. Meanwhile, she slept.' },
+            { id: 137, en: 'in the meantime', pt: 'no entretanto', category: 'sequence', example: 'I will wait in the meantime.' },
+            { id: 138, en: 'at the same time', pt: 'ao mesmo tempo', category: 'sequence', example: 'They arrived at the same time.' },
+            { id: 139, en: 'simultaneously', pt: 'simultaneamente', category: 'sequence', example: 'The two events happened simultaneously.' },
+            { id: 140, en: 'subsequently', pt: 'subsequentemente', category: 'sequence', example: 'He left, and subsequently, she arrived.' },
+            { id: 141, en: 'consequently', pt: 'consequentemente', category: 'sequence', example: 'It rained; consequently, we stayed home.' },
+            { id: 142, en: 'therefore', pt: 'portanto', category: 'sequence', example: 'I was tired; therefore, I went to bed.' },
+            { id: 143, en: 'thus', pt: 'assim', category: 'sequence', example: 'I studied hard; thus, I passed.' },
+            { id: 144, en: 'hence', pt: 'daí', category: 'sequence', example: 'It was late; hence, I left.' },
+            { id: 145, en: 'in the end', pt: 'no final', category: 'sequence', example: 'In the end, we decided to go.' },
+            { id: 146, en: 'at the end', pt: 'no fim', category: 'sequence', example: 'I went to bed at the end of the night.' },
+            { id: 147, en: 'by the time', pt: 'quando', category: 'sequence', example: 'By the time I arrived, she had left.' },
+            { id: 148, en: 'by then', pt: 'nesse momento', category: 'sequence', example: 'I will be ready by then.' },
+            { id: 149, en: 'from then on', pt: 'desde então', category: 'sequence', example: 'From then on, everything changed.' },
+            { id: 150, en: 'thereafter', pt: 'depois disso', category: 'sequence', example: 'We went home; thereafter, we slept.' },
+
+            // ========== PONTO NO TEMPO (151-180) ==========
+            { id: 151, en: 'at 5 o\'clock', pt: 'às 5 horas', category: 'point', example: 'I wake up at 5 o\'clock.' },
+            { id: 152, en: 'at 8 AM', pt: 'às 8 da manhã', category: 'point', example: 'The meeting starts at 8 AM.' },
+            { id: 153, en: 'at 3 PM', pt: 'às 3 da tarde', category: 'point', example: 'I have a class at 3 PM.' },
+            { id: 154, en: 'at 10:30', pt: 'às 10:30', category: 'point', example: 'I will call you at 10:30.' },
+            { id: 155, en: 'at noon', pt: 'ao meio-dia', category: 'point', example: 'I have lunch at noon.' },
+            { id: 156, en: 'at midnight', pt: 'à meia-noite', category: 'point', example: 'I go to bed at midnight.' },
+            { id: 157, en: 'at dawn', pt: 'ao amanhecer', category: 'point', example: 'I wake up at dawn.' },
+            { id: 158, en: 'at sunrise', pt: 'ao nascer do sol', category: 'point', example: 'I run at sunrise.' },
+            { id: 159, en: 'at sunset', pt: 'ao pôr do sol', category: 'point', example: 'We walked at sunset.' },
+            { id: 160, en: 'at the moment', pt: 'no momento', category: 'point', example: 'I am busy at the moment.' },
+            { id: 161, en: 'at this time', pt: 'neste momento', category: 'point', example: 'I am working at this time.' },
+            { id: 162, en: 'at that time', pt: 'naquele momento', category: 'point', example: 'I was sleeping at that time.' },
+            { id: 163, en: 'at the beginning', pt: 'no começo', category: 'point', example: 'At the beginning, I was nervous.' },
+            { id: 164, en: 'at the start', pt: 'no início', category: 'point', example: 'At the start, everything was fine.' },
+            { id: 165, en: 'at the end', pt: 'no fim', category: 'point', example: 'At the end, we were tired.' },
+            { id: 166, en: 'at the finish', pt: 'no final', category: 'point', example: 'At the finish, we celebrated.' },
+            { id: 167, en: 'on Monday', pt: 'na segunda-feira', category: 'point', example: 'I have a meeting on Monday.' },
+            { id: 168, en: 'on Tuesday', pt: 'na terça-feira', category: 'point', example: 'I will call you on Tuesday.' },
+            { id: 169, en: 'on Wednesday', pt: 'na quarta-feira', category: 'point', example: 'We have a test on Wednesday.' },
+            { id: 170, en: 'on Thursday', pt: 'na quinta-feira', category: 'point', example: 'I travel on Thursday.' },
+            { id: 171, en: 'on Friday', pt: 'na sexta-feira', category: 'point', example: 'I will see you on Friday.' },
+            { id: 172, en: 'on Saturday', pt: 'no sábado', category: 'point', example: 'I go to the gym on Saturday.' },
+            { id: 173, en: 'on Sunday', pt: 'no domingo', category: 'point', example: 'I rest on Sunday.' },
+            { id: 174, en: 'in January', pt: 'em janeiro', category: 'point', example: 'I will travel in January.' },
+            { id: 175, en: 'in February', pt: 'em fevereiro', category: 'point', example: 'She was born in February.' },
+            { id: 176, en: 'in March', pt: 'em março', category: 'point', example: 'We have a holiday in March.' },
+            { id: 177, en: 'in April', pt: 'em abril', category: 'point', example: 'I will finish in April.' },
+            { id: 178, en: 'in May', pt: 'em maio', category: 'point', example: 'I will start in May.' },
+            { id: 179, en: 'in June', pt: 'em junho', category: 'point', example: 'Summer starts in June.' },
+            { id: 180, en: 'in July', pt: 'em julho', category: 'point', example: 'I will travel in July.' },
+            { id: 181, en: 'in August', pt: 'em agosto', category: 'point', example: 'My birthday is in August.' },
+            { id: 182, en: 'in September', pt: 'em setembro', category: 'point', example: 'School starts in September.' },
+            { id: 183, en: 'in October', pt: 'em outubro', category: 'point', example: 'We have a holiday in October.' },
+            { id: 184, en: 'in November', pt: 'em novembro', category: 'point', example: 'I will finish in November.' },
+            { id: 185, en: 'in December', pt: 'em dezembro', category: 'point', example: 'Christmas is in December.' },
+            { id: 186, en: 'in the morning', pt: 'de manhã', category: 'point', example: 'I work in the morning.' },
+            { id: 187, en: 'in the afternoon', pt: 'à tarde', category: 'point', example: 'I rest in the afternoon.' },
+            { id: 188, en: 'in the evening', pt: 'à noite', category: 'point', example: 'I relax in the evening.' },
+            { id: 189, en: 'at night', pt: 'à noite', category: 'point', example: 'I sleep at night.' },
+            { id: 190, en: 'in summer', pt: 'no verão', category: 'point', example: 'I travel in summer.' },
+
+            // ========== PREPOSIÇÕES DE TEMPO (191-200) ==========
+            { id: 191, en: 'at', pt: 'em/às (horas específicas)', category: 'prepositions', example: 'I wake up at 7 AM.' },
+            { id: 192, en: 'in', pt: 'em (meses, anos, partes do dia)', category: 'prepositions', example: 'I work in the morning.' },
+            { id: 193, en: 'on', pt: 'em (dias da semana, datas)', category: 'prepositions', example: 'I work on Monday.' },
+            { id: 194, en: 'by', pt: 'até', category: 'prepositions', example: 'I will be there by 5 PM.' },
+            { id: 195, en: 'until', pt: 'até', category: 'prepositions', example: 'I will stay until 6 PM.' },
+            { id: 196, en: 'during', pt: 'durante', category: 'prepositions', example: 'I slept during the movie.' },
+            { id: 197, en: 'since', pt: 'desde', category: 'prepositions', example: 'I have been here since Monday.' },
+            { id: 198, en: 'for', pt: 'por (duração)', category: 'prepositions', example: 'I have been here for 3 years.' },
+            { id: 199, en: 'from', pt: 'de (início)', category: 'prepositions', example: 'I work from 9 to 5.' },
+            { id: 200, en: 'to', pt: 'até (fim)', category: 'prepositions', example: 'I work from 9 to 5.' }
+        ];
+
+        // ============================================================
+        // LÓGICA DE RENDERIZAÇÃO
+        // ============================================================
+
+        let currentFilter = 'all';
+        let currentSearch = '';
+
+        function getCategoryBadge(category) {
+            const map = {
+                'general': 'general',
+                'duration': 'duration',
+                'frequency': 'frequency',
+                'sequence': 'sequence',
+                'point': 'point',
+                'prepositions': 'prepositions'
+            };
+            const labels = {
+                'general': 'Geral',
+                'duration': 'Duração',
+                'frequency': 'Frequência',
+                'sequence': 'Sequência',
+                'point': 'Ponto no Tempo',
+                'prepositions': 'Preposições'
+            };
+            return `<span class="category-badge ${map[category] || 'general'}">${labels[category] || 'Geral'}</span>`;
+        }
+
+        function renderTable(filteredExpressions) {
+            const tbody = document.getElementById('timeTable');
+            tbody.innerHTML = '';
+            if (filteredExpressions.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:40px;color:#7f8c8d;">Nenhuma expressão encontrada.</td></tr>';
+                return;
+            }
+            filteredExpressions.forEach(exp => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${exp.id}</td>
+                    <td class="expression-en">${exp.en}</td>
+                    <td class="expression-pt">${exp.pt}</td>
+                    <td class="example-text">${exp.example}</td>
+                    <td>${getCategoryBadge(exp.category)}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+            updateStats(filteredExpressions);
+        }
+
+        function updateStats(expressionsList) {
+            const general = expressionsList.filter(e => e.category === 'general').length;
+            const duration = expressionsList.filter(e => e.category === 'duration').length;
+            const frequency = expressionsList.filter(e => e.category === 'frequency').length;
+            
+            document.getElementById('generalCount').textContent = general;
+            document.getElementById('durationCount').textContent = duration;
+            document.getElementById('frequencyCount').textContent = frequency;
+        }
+
+        // ============================================================
+        // FILTROS
+        // ============================================================
+
+        function filterCategory(category) {
+            currentFilter = category;
+            document.querySelectorAll('.category-filter button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            const buttons = document.querySelectorAll('.category-filter button');
+            const index = ['all', 'general', 'duration', 'frequency', 'sequence', 'point', 'prepositions'].indexOf(category);
+            if (buttons[index]) buttons[index].classList.add('active');
+            applyFilters();
+        }
+
+        function resetFilter() {
+            currentFilter = 'all';
+            document.getElementById('searchInput').value = '';
+            currentSearch = '';
+            document.querySelectorAll('.category-filter button').forEach(btn => btn.classList.remove('active'));
+            document.querySelector('.category-filter .btn-all').classList.add('active');
+            applyFilters();
+        }
+
+        function searchExpression() {
+            const input = document.getElementById('searchInput');
+            currentSearch = input.value.toLowerCase().trim();
+            applyFilters();
+        }
+
+        function applyFilters() {
+            let filtered = [...timeExpressions];
+
+            if (currentFilter !== 'all') {
+                filtered = filtered.filter(e => e.category === currentFilter);
+            }
+
+            if (currentSearch) {
+                filtered = filtered.filter(e => 
+                    e.en.toLowerCase().includes(currentSearch) ||
+                    e.pt.toLowerCase().includes(currentSearch)
+                );
+            }
+
+            renderTable(filtered);
+        }
+
+        // ============================================================
+        // ORDENAÇÃO
+        // ============================================================
+
+        document.querySelectorAll('thead th').forEach((th, index) => {
+            if (index === 0) return;
+            th.addEventListener('click', () => {
+                const tbody = document.getElementById('timeTable');
+                const rows = Array.from(tbody.querySelectorAll('tr'));
+                if (rows.length === 1 && rows[0].querySelector('td[colspan]')) return;
+                
+                const direction = th.dataset.direction === 'asc' ? 'desc' : 'asc';
+                th.dataset.direction = direction;
+
+                rows.sort((a, b) => {
+                    const aText = a.children[index].textContent.trim().toLowerCase();
+                    const bText = b.children[index].textContent.trim().toLowerCase();
+                    if (aText < bText) return direction === 'asc' ? -1 : 1;
+                    if (aText > bText) return direction === 'asc' ? 1 : -1;
+                    return 0;
+                });
+
+                rows.forEach(row => tbody.appendChild(row));
+            });
+        });
+
+        // ============================================================
+        // INICIALIZAÇÃO
+        // ============================================================
+
+        renderTable(timeExpressions);
+    </script>
+</body>
+</html>

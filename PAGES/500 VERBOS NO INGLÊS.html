@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 500 Verbos em Inglês</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0 30px;
+        }
+        .stat-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .stat-card .number {
+            font-size: 2em;
+            font-weight: 700;
+        }
+        .stat-card .label {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .stat-card .number.green { color: #27ae60; }
+        .stat-card .number.red { color: #e74c3c; }
+        .stat-card .number.blue { color: #2980b9; }
+        .stat-card .number.orange { color: #f39c12; }
+        .stat-card .number.purple { color: #8e44ad; }
+
+        .search-box {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .search-box input {
+            padding: 12px 20px;
+            width: 100%;
+            max-width: 500px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        .search-box input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .controls button {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .controls button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .btn-all { background: #3498db; color: white; }
+        .btn-regular { background: #2ecc71; color: white; }
+        .btn-irregular { background: #e74c3c; color: white; }
+        .btn-same { background: #f39c12; color: white; }
+        .btn-reset { background: #95a5a6; color: white; }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+        .legend-item .color-box {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+        .legend-item .color-box.regular { background: #2ecc71; }
+        .legend-item .color-box.irregular { background: #e74c3c; }
+        .legend-item .color-box.same { background: #f39c12; }
+
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 10px;
+            border: 1px solid #ecf0f1;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        thead {
+            background: #2c3e50;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        thead th {
+            padding: 12px 10px;
+            text-align: left;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        thead th:nth-child(1) { width: 5%; }
+        thead th:nth-child(2) { width: 18%; }
+        thead th:nth-child(3) { width: 18%; }
+        thead th:nth-child(4) { width: 18%; }
+        thead th:nth-child(5) { width: 10%; }
+        thead th:nth-child(6) { width: 31%; }
+        thead th {
+            cursor: pointer;
+            user-select: none;
+        }
+        thead th:hover {
+            background: #34495e;
+        }
+        tbody tr {
+            border-bottom: 1px solid #ecf0f1;
+            transition: background 0.2s;
+        }
+        tbody tr:hover {
+            background: #f8f9fa;
+        }
+        tbody td {
+            padding: 10px 10px;
+            vertical-align: middle;
+        }
+        tbody td:first-child {
+            font-weight: 600;
+            color: #7f8c8d;
+        }
+        .present { font-weight: 600; color: #2c3e50; }
+        .past { color: #e74c3c; font-weight: 600; }
+        .participle { color: #2980b9; font-weight: 600; }
+        .meaning { color: #2c3e50; }
+        .badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .badge.regular { background: #d4edda; color: #155724; }
+        .badge.irregular { background: #f8d7da; color: #721c24; }
+        .badge.same { background: #fff3cd; color: #856404; }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2em;
+            color: #7f8c8d;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            h1 { font-size: 1.8em; }
+            table { font-size: 11px; }
+            thead th, tbody td { padding: 6px 5px; }
+            .badge { font-size: 8px; padding: 2px 6px; }
+            .stats { grid-template-columns: repeat(2, 1fr); }
+            .controls button { padding: 6px 12px; font-size: 11px; }
+            thead th:nth-child(6) { width: 20%; }
+        }
+        @media (max-width: 480px) {
+            table { font-size: 9px; }
+            thead th, tbody td { padding: 4px 3px; }
+            .legend { gap: 10px; font-size: 11px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 500 Verbos</h1>
+        <p class="subtitle">Os verbos mais comuns do inglês — presente, passado, particípio e significado</p>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="number purple">500</div>
+                <div class="label">Total de verbos</div>
+            </div>
+            <div class="stat-card">
+                <div class="number green" id="regularCount">0</div>
+                <div class="label">Regulares (-ed)</div>
+            </div>
+            <div class="stat-card">
+                <div class="number red" id="irregularCount">0</div>
+                <div class="label">Irregulares</div>
+            </div>
+            <div class="stat-card">
+                <div class="number orange" id="sameCount">0</div>
+                <div class="label">Todas as formas iguais</div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item"><div class="color-box regular"></div> Regular (-ed)</div>
+            <div class="legend-item"><div class="color-box irregular"></div> Irregular</div>
+            <div class="legend-item"><div class="color-box same"></div> Todas as formas iguais</div>
+        </div>
+
+        <div class="controls">
+            <button class="btn-all" onclick="filterAll()">📋 Todos</button>
+            <button class="btn-regular" onclick="filterRegular()">✅ Regulares (-ed)</button>
+            <button class="btn-irregular" onclick="filterIrregular()">🔄 Irregulares</button>
+            <button class="btn-same" onclick="filterSame()">🟡 Todas iguais</button>
+            <button class="btn-reset" onclick="resetFilter()">🔄 Resetar</button>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 Buscar verbo... (digite em inglês ou português)" onkeyup="searchVerb()">
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Presente (Infinitive)</th>
+                        <th>Passado (Past)</th>
+                        <th>Particípio (Past Participle)</th>
+                        <th>Tipo</th>
+                        <th>Significado</th>
+                    </tr>
+                </thead>
+                <tbody id="verbTable">
+                    <tr><td colspan="6" class="loading">Carregando 500 verbos...</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            💡 Clique no cabeçalho para ordenar • Use a busca para encontrar verbos específicos
+        </div>
+    </div>
+
+    <script>
+        // ============================================================
+        // 500 VERBOS MAIS COMUNS COM SIGNIFICADO
+        // ============================================================
+        const verbs = [
+            // 1-20: Verbos mais essenciais
+            { id: 1, present: 'be', past: 'was/were', participle: 'been', type: 'irregular', meaning: 'ser / estar' },
+            { id: 2, present: 'have', past: 'had', participle: 'had', type: 'irregular', meaning: 'ter' },
+            { id: 3, present: 'do', past: 'did', participle: 'done', type: 'irregular', meaning: 'fazer' },
+            { id: 4, present: 'say', past: 'said', participle: 'said', type: 'irregular', meaning: 'dizer' },
+            { id: 5, present: 'go', past: 'went', participle: 'gone', type: 'irregular', meaning: 'ir' },
+            { id: 6, present: 'get', past: 'got', participle: 'got/gotten', type: 'irregular', meaning: 'obter / conseguir' },
+            { id: 7, present: 'make', past: 'made', participle: 'made', type: 'irregular', meaning: 'fazer / criar' },
+            { id: 8, present: 'know', past: 'knew', participle: 'known', type: 'irregular', meaning: 'saber / conhecer' },
+            { id: 9, present: 'think', past: 'thought', participle: 'thought', type: 'irregular', meaning: 'pensar' },
+            { id: 10, present: 'see', past: 'saw', participle: 'seen', type: 'irregular', meaning: 'ver' },
+            { id: 11, present: 'come', past: 'came', participle: 'come', type: 'irregular', meaning: 'vir' },
+            { id: 12, present: 'take', past: 'took', participle: 'taken', type: 'irregular', meaning: 'pegar / levar' },
+            { id: 13, present: 'give', past: 'gave', participle: 'given', type: 'irregular', meaning: 'dar' },
+            { id: 14, present: 'find', past: 'found', participle: 'found', type: 'irregular', meaning: 'encontrar' },
+            { id: 15, present: 'tell', past: 'told', participle: 'told', type: 'irregular', meaning: 'contar / dizer' },
+            { id: 16, present: 'work', past: 'worked', participle: 'worked', type: 'regular', meaning: 'trabalhar' },
+            { id: 17, present: 'call', past: 'called', participle: 'called', type: 'regular', meaning: 'chamar' },
+            { id: 18, present: 'try', past: 'tried', participle: 'tried', type: 'regular', meaning: 'tentar' },
+            { id: 19, present: 'ask', past: 'asked', participle: 'asked', type: 'regular', meaning: 'perguntar / pedir' },
+            { id: 20, present: 'need', past: 'needed', participle: 'needed', type: 'regular', meaning: 'precisar' },
+            // 21-40
+            { id: 21, present: 'feel', past: 'felt', participle: 'felt', type: 'irregular', meaning: 'sentir' },
+            { id: 22, present: 'become', past: 'became', participle: 'become', type: 'irregular', meaning: 'tornar-se' },
+            { id: 23, present: 'leave', past: 'left', participle: 'left', type: 'irregular', meaning: 'sair / deixar' },
+            { id: 24, present: 'put', past: 'put', participle: 'put', type: 'irregular', meaning: 'colocar' },
+            { id: 25, present: 'mean', past: 'meant', participle: 'meant', type: 'irregular', meaning: 'significar' },
+            { id: 26, present: 'keep', past: 'kept', participle: 'kept', type: 'irregular', meaning: 'manter' },
+            { id: 27, present: 'let', past: 'let', participle: 'let', type: 'irregular', meaning: 'deixar / permitir' },
+            { id: 28, present: 'begin', past: 'began', participle: 'begun', type: 'irregular', meaning: 'começar' },
+            { id: 29, present: 'seem', past: 'seemed', participle: 'seemed', type: 'regular', meaning: 'parecer' },
+            { id: 30, present: 'help', past: 'helped', participle: 'helped', type: 'regular', meaning: 'ajudar' },
+            { id: 31, present: 'talk', past: 'talked', participle: 'talked', type: 'regular', meaning: 'conversar' },
+            { id: 32, present: 'turn', past: 'turned', participle: 'turned', type: 'regular', meaning: 'virar / girar' },
+            { id: 33, present: 'start', past: 'started', participle: 'started', type: 'regular', meaning: 'começar / iniciar' },
+            { id: 34, present: 'show', past: 'showed', participle: 'shown', type: 'irregular', meaning: 'mostrar' },
+            { id: 35, present: 'hear', past: 'heard', participle: 'heard', type: 'irregular', meaning: 'ouvir' },
+            { id: 36, present: 'play', past: 'played', participle: 'played', type: 'regular', meaning: 'jogar / tocar' },
+            { id: 37, present: 'run', past: 'ran', participle: 'run', type: 'irregular', meaning: 'correr' },
+            { id: 38, present: 'move', past: 'moved', participle: 'moved', type: 'regular', meaning: 'mover' },
+            { id: 39, present: 'like', past: 'liked', participle: 'liked', type: 'regular', meaning: 'gostar' },
+            { id: 40, present: 'live', past: 'lived', participle: 'lived', type: 'regular', meaning: 'viver / morar' },
+            // 41-60
+            { id: 41, present: 'believe', past: 'believed', participle: 'believed', type: 'regular', meaning: 'acreditar' },
+            { id: 42, present: 'hold', past: 'held', participle: 'held', type: 'irregular', meaning: 'segurar' },
+            { id: 43, present: 'bring', past: 'brought', participle: 'brought', type: 'irregular', meaning: 'trazer' },
+            { id: 44, present: 'happen', past: 'happened', participle: 'happened', type: 'regular', meaning: 'acontecer' },
+            { id: 45, present: 'write', past: 'wrote', participle: 'written', type: 'irregular', meaning: 'escrever' },
+            { id: 46, present: 'provide', past: 'provided', participle: 'provided', type: 'regular', meaning: 'fornecer' },
+            { id: 47, present: 'sit', past: 'sat', participle: 'sat', type: 'irregular', meaning: 'sentar' },
+            { id: 48, present: 'stand', past: 'stood', participle: 'stood', type: 'irregular', meaning: 'ficar em pé' },
+            { id: 49, present: 'lose', past: 'lost', participle: 'lost', type: 'irregular', meaning: 'perder' },
+            { id: 50, present: 'pay', past: 'paid', participle: 'paid', type: 'irregular', meaning: 'pagar' },
+            { id: 51, present: 'meet', past: 'met', participle: 'met', type: 'irregular', meaning: 'encontrar / conhecer' },
+            { id: 52, present: 'include', past: 'included', participle: 'included', type: 'regular', meaning: 'incluir' },
+            { id: 53, present: 'continue', past: 'continued', participle: 'continued', type: 'regular', meaning: 'continuar' },
+            { id: 54, present: 'set', past: 'set', participle: 'set', type: 'irregular', meaning: 'definir / colocar' },
+            { id: 55, present: 'learn', past: 'learned/learnt', participle: 'learned/learnt', type: 'irregular', meaning: 'aprender' },
+            { id: 56, present: 'change', past: 'changed', participle: 'changed', type: 'regular', meaning: 'mudar' },
+            { id: 57, present: 'lead', past: 'led', participle: 'led', type: 'irregular', meaning: 'liderar' },
+            { id: 58, present: 'understand', past: 'understood', participle: 'understood', type: 'irregular', meaning: 'entender' },
+            { id: 59, present: 'watch', past: 'watched', participle: 'watched', type: 'regular', meaning: 'assistir / observar' },
+            { id: 60, present: 'follow', past: 'followed', participle: 'followed', type: 'regular', meaning: 'seguir' },
+            // 61-80
+            { id: 61, present: 'stop', past: 'stopped', participle: 'stopped', type: 'regular', meaning: 'parar' },
+            { id: 62, present: 'create', past: 'created', participle: 'created', type: 'regular', meaning: 'criar' },
+            { id: 63, present: 'speak', past: 'spoke', participle: 'spoken', type: 'irregular', meaning: 'falar' },
+            { id: 64, present: 'read', past: 'read', participle: 'read', type: 'irregular', meaning: 'ler' },
+            { id: 65, present: 'allow', past: 'allowed', participle: 'allowed', type: 'regular', meaning: 'permitir' },
+            { id: 66, present: 'add', past: 'added', participle: 'added', type: 'regular', meaning: 'adicionar' },
+            { id: 67, present: 'spend', past: 'spent', participle: 'spent', type: 'irregular', meaning: 'gastar' },
+            { id: 68, present: 'grow', past: 'grew', participle: 'grown', type: 'irregular', meaning: 'crescer' },
+            { id: 69, present: 'open', past: 'opened', participle: 'opened', type: 'regular', meaning: 'abrir' },
+            { id: 70, present: 'walk', past: 'walked', participle: 'walked', type: 'regular', meaning: 'andar' },
+            { id: 71, present: 'win', past: 'won', participle: 'won', type: 'irregular', meaning: 'ganhar' },
+            { id: 72, present: 'offer', past: 'offered', participle: 'offered', type: 'regular', meaning: 'oferecer' },
+            { id: 73, present: 'remember', past: 'remembered', participle: 'remembered', type: 'regular', meaning: 'lembrar' },
+            { id: 74, present: 'love', past: 'loved', participle: 'loved', type: 'regular', meaning: 'amar' },
+            { id: 75, present: 'consider', past: 'considered', participle: 'considered', type: 'regular', meaning: 'considerar' },
+            { id: 76, present: 'appear', past: 'appeared', participle: 'appeared', type: 'regular', meaning: 'aparecer' },
+            { id: 77, present: 'buy', past: 'bought', participle: 'bought', type: 'irregular', meaning: 'comprar' },
+            { id: 78, present: 'wait', past: 'waited', participle: 'waited', type: 'regular', meaning: 'esperar' },
+            { id: 79, present: 'serve', past: 'served', participle: 'served', type: 'regular', meaning: 'servir' },
+            { id: 80, present: 'die', past: 'died', participle: 'died', type: 'regular', meaning: 'morrer' },
+            // 81-100
+            { id: 81, present: 'send', past: 'sent', participle: 'sent', type: 'irregular', meaning: 'enviar' },
+            { id: 82, present: 'expect', past: 'expected', participle: 'expected', type: 'regular', meaning: 'esperar / antecipar' },
+            { id: 83, present: 'build', past: 'built', participle: 'built', type: 'irregular', meaning: 'construir' },
+            { id: 84, present: 'stay', past: 'stayed', participle: 'stayed', type: 'regular', meaning: 'ficar / permanecer' },
+            { id: 85, present: 'fall', past: 'fell', participle: 'fallen', type: 'irregular', meaning: 'cair' },
+            { id: 86, present: 'cut', past: 'cut', participle: 'cut', type: 'irregular', meaning: 'cortar' },
+            { id: 87, present: 'reach', past: 'reached', participle: 'reached', type: 'regular', meaning: 'alcançar' },
+            { id: 88, present: 'kill', past: 'killed', participle: 'killed', type: 'regular', meaning: 'matar' },
+            { id: 89, present: 'remain', past: 'remained', participle: 'remained', type: 'regular', meaning: 'permanecer' },
+            { id: 90, present: 'suggest', past: 'suggested', participle: 'suggested', type: 'regular', meaning: 'sugerir' },
+            { id: 91, present: 'raise', past: 'raised', participle: 'raised', type: 'regular', meaning: 'levantar / criar' },
+            { id: 92, present: 'pass', past: 'passed', participle: 'passed', type: 'regular', meaning: 'passar' },
+            { id: 93, present: 'sell', past: 'sold', participle: 'sold', type: 'irregular', meaning: 'vender' },
+            { id: 94, present: 'require', past: 'required', participle: 'required', type: 'regular', meaning: 'exigir' },
+            { id: 95, present: 'report', past: 'reported', participle: 'reported', type: 'regular', meaning: 'relatar' },
+            { id: 96, present: 'decide', past: 'decided', participle: 'decided', type: 'regular', meaning: 'decidir' },
+            { id: 97, present: 'pull', past: 'pulled', participle: 'pulled', type: 'regular', meaning: 'puxar' },
+            { id: 98, present: 'break', past: 'broke', participle: 'broken', type: 'irregular', meaning: 'quebrar' },
+            { id: 99, present: 'choose', past: 'chose', participle: 'chosen', type: 'irregular', meaning: 'escolher' },
+            { id: 100, present: 'drive', past: 'drove', participle: 'driven', type: 'irregular', meaning: 'dirigir' },
+            // 101-120
+            { id: 101, present: 'wear', past: 'wore', participle: 'worn', type: 'irregular', meaning: 'usar / vestir' },
+            { id: 102, present: 'forget', past: 'forgot', participle: 'forgotten', type: 'irregular', meaning: 'esquecer' },
+            { id: 103, present: 'fly', past: 'flew', participle: 'flown', type: 'irregular', meaning: 'voar' },
+            { id: 104, present: 'sing', past: 'sang', participle: 'sung', type: 'irregular', meaning: 'cantar' },
+            { id: 105, present: 'ring', past: 'rang', participle: 'rung', type: 'irregular', meaning: 'tocar (campainha)' },
+            { id: 106, present: 'drink', past: 'drank', participle: 'drunk', type: 'irregular', meaning: 'beber' },
+            { id: 107, present: 'swim', past: 'swam', participle: 'swum', type: 'irregular', meaning: 'nadar' },
+            { id: 108, present: 'blow', past: 'blew', participle: 'blown', type: 'irregular', meaning: 'soprar' },
+            { id: 109, present: 'draw', past: 'drew', participle: 'drawn', type: 'irregular', meaning: 'desenhar / puxar' },
+            { id: 110, present: 'grow', past: 'grew', participle: 'grown', type: 'irregular', meaning: 'crescer / cultivar' },
+            { id: 111, present: 'throw', past: 'threw', participle: 'thrown', type: 'irregular', meaning: 'jogar / atirar' },
+            { id: 112, present: 'shake', past: 'shook', participle: 'shaken', type: 'irregular', meaning: 'sacudir' },
+            { id: 113, present: 'steal', past: 'stole', participle: 'stolen', type: 'irregular', meaning: 'roubar' },
+            { id: 114, present: 'tear', past: 'tore', participle: 'torn', type: 'irregular', meaning: 'rasgar' },
+            { id: 115, present: 'bear', past: 'bore', participle: 'borne', type: 'irregular', meaning: 'suportar / carregar' },
+            { id: 116, present: 'swear', past: 'swore', participle: 'sworn', type: 'irregular', meaning: 'jurar' },
+            { id: 117, present: 'freeze', past: 'froze', participle: 'frozen', type: 'irregular', meaning: 'congelar' },
+            { id: 118, present: 'wake', past: 'woke', participle: 'woken', type: 'irregular', meaning: 'acordar' },
+            { id: 119, present: 'bite', past: 'bit', participle: 'bitten', type: 'irregular', meaning: 'morder' },
+            { id: 120, present: 'hide', past: 'hid', participle: 'hidden', type: 'irregular', meaning: 'esconder' },
+            // 121-140
+            { id: 121, present: 'ride', past: 'rode', participle: 'ridden', type: 'irregular', meaning: 'andar (de bicicleta, etc.)' },
+            { id: 122, present: 'rise', past: 'rose', participle: 'risen', type: 'irregular', meaning: 'levantar-se / subir' },
+            { id: 123, present: 'write', past: 'wrote', participle: 'written', type: 'irregular', meaning: 'escrever' },
+            { id: 124, present: 'strive', past: 'strove', participle: 'striven', type: 'irregular', meaning: 'esforçar-se' },
+            { id: 125, present: 'weave', past: 'wove', participle: 'woven', type: 'irregular', meaning: 'tecer' },
+            { id: 126, present: 'climb', past: 'climbed', participle: 'climbed', type: 'regular', meaning: 'escalar' },
+            { id: 127, present: 'visit', past: 'visited', participle: 'visited', type: 'regular', meaning: 'visitar' },
+            { id: 128, present: 'travel', past: 'traveled', participle: 'traveled', type: 'regular', meaning: 'viajar' },
+            { id: 129, present: 'listen', past: 'listened', participle: 'listened', type: 'regular', meaning: 'ouvir / escutar' },
+            { id: 130, present: 'hope', past: 'hoped', participle: 'hoped', type: 'regular', meaning: 'esperar / torcer' },
+            { id: 131, present: 'wish', past: 'wished', participle: 'wished', type: 'regular', meaning: 'desejar' },
+            { id: 132, present: 'laugh', past: 'laughed', participle: 'laughed', type: 'regular', meaning: 'rir' },
+            { id: 133, present: 'cry', past: 'cried', participle: 'cried', type: 'regular', meaning: 'chorar / gritar' },
+            { id: 134, present: 'clean', past: 'cleaned', participle: 'cleaned', type: 'regular', meaning: 'limpar' },
+            { id: 135, present: 'wash', past: 'washed', participle: 'washed', type: 'regular', meaning: 'lavar' },
+            { id: 136, present: 'cook', past: 'cooked', participle: 'cooked', type: 'regular', meaning: 'cozinhar' },
+            { id: 137, present: 'finish', past: 'finished', participle: 'finished', type: 'regular', meaning: 'terminar' },
+            { id: 138, present: 'start', past: 'started', participle: 'started', type: 'regular', meaning: 'começar / iniciar' },
+            { id: 139, present: 'look', past: 'looked', participle: 'looked', type: 'regular', meaning: 'olhar' },
+            { id: 140, present: 'arrive', past: 'arrived', participle: 'arrived', type: 'regular', meaning: 'chegar' },
+            // 141-160
+            { id: 141, present: 'depart', past: 'departed', participle: 'departed', type: 'regular', meaning: 'partir' },
+            { id: 142, present: 'return', past: 'returned', participle: 'returned', type: 'regular', meaning: 'retornar' },
+            { id: 143, present: 'enter', past: 'entered', participle: 'entered', type: 'regular', meaning: 'entrar' },
+            { id: 144, present: 'cross', past: 'crossed', participle: 'crossed', type: 'regular', meaning: 'atravessar' },
+            { id: 145, present: 'jump', past: 'jumped', participle: 'jumped', type: 'regular', meaning: 'pular' },
+            { id: 146, present: 'push', past: 'push', participle: 'pushed', type: 'regular', meaning: 'empurrar' },
+            { id: 147, present: 'carry', past: 'carried', participle: 'carried', type: 'regular', meaning: 'carregar' },
+            { id: 148, present: 'brush', past: 'brushed', participle: 'brushed', type: 'regular', meaning: 'escovar' },
+            { id: 149, present: 'bake', past: 'baked', participle: 'baked', type: 'regular', meaning: 'assar' },
+            { id: 150, present: 'fix', past: 'fixed', participle: 'fixed', type: 'regular', meaning: 'consertar' },
+            { id: 151, present: 'miss', past: 'missed', participle: 'missed', type: 'regular', meaning: 'perder / sentir falta' },
+            { id: 152, present: 'worry', past: 'worried', participle: 'worried', type: 'regular', meaning: 'preocupar-se' },
+            { id: 153, present: 'marry', past: 'married', participle: 'married', type: 'regular', meaning: 'casar' },
+            { id: 154, present: 'dry', past: 'dried', participle: 'dried', type: 'regular', meaning: 'secar' },
+            { id: 155, present: 'apply', past: 'applied', participle: 'applied', type: 'regular', meaning: 'aplicar / candidatar-se' },
+            { id: 156, present: 'enjoy', past: 'enjoyed', participle: 'enjoyed', type: 'regular', meaning: 'aproveitar / gostar' },
+            { id: 157, present: 'relax', past: 'relaxed', participle: 'relaxed', type: 'regular', meaning: 'relaxar' },
+            { id: 158, present: 'prefer', past: 'preferred', participle: 'preferred', type: 'regular', meaning: 'preferir' },
+            { id: 159, present: 'travel', past: 'traveled', participle: 'traveled', type: 'regular', meaning: 'viajar' },
+            { id: 160, present: 'remain', past: 'remained', participle: 'remained', type: 'regular', meaning: 'permanecer' },
+            // 161-180
+            { id: 161, present: 'belong', past: 'belonged', participle: 'belonged', type: 'regular', meaning: 'pertencer' },
+            { id: 162, present: 'develop', past: 'developed', participle: 'developed', type: 'regular', meaning: 'desenvolver' },
+            { id: 163, present: 'explain', past: 'explained', participle: 'explained', type: 'regular', meaning: 'explicar' },
+            { id: 164, present: 'imagine', past: 'imagined', participle: 'imagined', type: 'regular', meaning: 'imaginar' },
+            { id: 165, present: 'recognize', past: 'recognized', participle: 'recognized', type: 'regular', meaning: 'reconhecer' },
+            { id: 166, present: 'realize', past: 'realized', participle: 'realized', type: 'regular', meaning: 'perceber / realizar' },
+            { id: 167, present: 'prepare', past: 'prepared', participle: 'prepared', type: 'regular', meaning: 'preparar' },
+            { id: 168, present: 'complete', past: 'completed', participle: 'completed', type: 'regular', meaning: 'completar' },
+            { id: 169, present: 'improve', past: 'improved', participle: 'improved', type: 'regular', meaning: 'melhorar' },
+            { id: 170, present: 'reduce', past: 'reduced', participle: 'reduced', type: 'regular', meaning: 'reduzir' },
+            { id: 171, present: 'increase', past: 'increased', participle: 'increased', type: 'regular', meaning: 'aumentar' },
+            { id: 172, present: 'encourage', past: 'encouraged', participle: 'encouraged', type: 'regular', meaning: 'encorajar' },
+            { id: 173, present: 'survive', past: 'survived', participle: 'survived', type: 'regular', meaning: 'sobreviver' },
+            { id: 174, present: 'deliver', past: 'delivered', participle: 'delivered', type: 'regular', meaning: 'entregar' },
+            { id: 175, present: 'depend', past: 'depended', participle: 'depended', type: 'regular', meaning: 'depender' },
+            { id: 176, present: 'deserve', past: 'deserved', participle: 'deserved', type: 'regular', meaning: 'merecer' },
+            { id: 177, present: 'determine', past: 'determined', participle: 'determined', type: 'regular', meaning: 'determinar' },
+            { id: 178, present: 'direct', past: 'directed', participle: 'directed', type: 'regular', meaning: 'dirigir / direcionar' },
+            { id: 179, present: 'establish', past: 'established', participle: 'established', type: 'regular', meaning: 'estabelecer' },
+            { id: 180, present: 'evaluate', past: 'evaluated', participle: 'evaluated', type: 'regular', meaning: 'avaliar' },
+            // 181-200
+            { id: 181, present: 'eliminate', past: 'eliminated', participle: 'eliminated', type: 'regular', meaning: 'eliminar' },
+            { id: 182, present: 'emerge', past: 'emerged', participle: 'emerged', type: 'regular', meaning: 'emergir / surgir' },
+            { id: 183, present: 'encounter', past: 'encountered', participle: 'encountered', type: 'regular', meaning: 'encontrar / deparar-se' },
+            { id: 184, present: 'ensure', past: 'ensured', participle: 'ensured', type: 'regular', meaning: 'garantir / assegurar' },
+            { id: 185, present: 'estimate', past: 'estimated', participle: 'estimated', type: 'regular', meaning: 'estimar' },
+            { id: 186, present: 'examine', past: 'examined', participle: 'examined', type: 'regular', meaning: 'examinar' },
+            { id: 187, present: 'expand', past: 'expanded', participle: 'expanded', type: 'regular', meaning: 'expandir' },
+            { id: 188, present: 'explore', past: 'explored', participle: 'explored', type: 'regular', meaning: 'explorar' },
+            { id: 189, present: 'express', past: 'expressed', participle: 'expressed', type: 'regular', meaning: 'expressar' },
+            { id: 190, present: 'extend', past: 'extended', participle: 'extended', type: 'regular', meaning: 'estender / ampliar' },
+            { id: 191, present: 'form', past: 'formed', participle: 'formed', type: 'regular', meaning: 'formar' },
+            { id: 192, present: 'function', past: 'functioned', participle: 'functioned', type: 'regular', meaning: 'funcionar' },
+            { id: 193, present: 'generate', past: 'generated', participle: 'generated', type: 'regular', meaning: 'gerar' },
+            { id: 194, present: 'guarantee', past: 'guaranteed', participle: 'guaranteed', type: 'regular', meaning: 'garantir' },
+            { id: 195, present: 'identify', past: 'identified', participle: 'identified', type: 'regular', meaning: 'identificar' },
+            { id: 196, present: 'illustrate', past: 'illustrated', participle: 'illustrated', type: 'regular', meaning: 'ilustrar' },
+            { id: 197, present: 'implement', past: 'implemented', participle: 'implemented', type: 'regular', meaning: 'implementar' },
+            { id: 198, present: 'indicate', past: 'indicated', participle: 'indicated', type: 'regular', meaning: 'indicar' },
+            { id: 199, present: 'initiate', past: 'initiated', participle: 'initiated', type: 'regular', meaning: 'iniciar' },
+            { id: 200, present: 'integrate', past: 'integrated', participle: 'integrated', type: 'regular', meaning: 'integrar' },
+            // 201-220
+            { id: 201, present: 'interact', past: 'interacted', participle: 'interacted', type: 'regular', meaning: 'interagir' },
+            { id: 202, present: 'interpret', past: 'interpreted', participle: 'interpreted', type: 'regular', meaning: 'interpretar' },
+            { id: 203, present: 'invest', past: 'invested', participle: 'invested', type: 'regular', meaning: 'investir' },
+            { id: 204, present: 'isolate', past: 'isolated', participle: 'isolated', type: 'regular', meaning: 'isolar' },
+            { id: 205, present: 'justify', past: 'justified', participle: 'justified', type: 'regular', meaning: 'justificar' },
+            { id: 206, present: 'liberate', past: 'liberated', participle: 'liberated', type: 'regular', meaning: 'libertar' },
+            { id: 207, present: 'maintain', past: 'maintained', participle: 'maintained', type: 'regular', meaning: 'manter' },
+            { id: 208, present: 'motivate', past: 'motivated', participle: 'motivated', type: 'regular', meaning: 'motivar' },
+            { id: 209, present: 'negotiate', past: 'negotiated', participle: 'negotiated', type: 'regular', meaning: 'negociar' },
+            { id: 210, present: 'observe', past: 'observed', participle: 'observed', type: 'regular', meaning: 'observar' },
+            { id: 211, present: 'obtain', past: 'obtained', participle: 'obtained', type: 'regular', meaning: 'obter' },
+            { id: 212, present: 'operate', past: 'operated', participle: 'operated', type: 'regular', meaning: 'operar / funcionar' },
+            { id: 213, present: 'organize', past: 'organized', participle: 'organized', type: 'regular', meaning: 'organizar' },
+            { id: 214, present: 'perceive', past: 'perceived', participle: 'perceived', type: 'regular', meaning: 'perceber' },
+            { id: 215, present: 'perform', past: 'performed', participle: 'performed', type: 'regular', meaning: 'realizar / executar' },
+            { id: 216, present: 'persuade', past: 'persuaded', participle: 'persuaded', type: 'regular', meaning: 'persuadir' },
+            { id: 217, present: 'predict', past: 'predicted', participle: 'predicted', type: 'regular', meaning: 'prever' },
+            { id: 218, present: 'present', past: 'presented', participle: 'presented', type: 'regular', meaning: 'apresentar' },
+            { id: 219, present: 'prevent', past: 'prevented', participle: 'prevented', type: 'regular', meaning: 'prevenir' },
+            { id: 220, present: 'produce', past: 'produced', participle: 'produced', type: 'regular', meaning: 'produzir' },
+            // 221-240
+            { id: 221, present: 'promote', past: 'promoted', participle: 'promoted', type: 'regular', meaning: 'promover' },
+            { id: 222, present: 'propose', past: 'proposed', participle: 'proposed', type: 'regular', meaning: 'propor' },
+            { id: 223, present: 'pursue', past: 'pursued', participle: 'pursued', type: 'regular', meaning: 'perseguir / buscar' },
+            { id: 224, present: 'qualify', past: 'qualified', participle: 'qualified', type: 'regular', meaning: 'qualificar-se' },
+            { id: 225, present: 'recover', past: 'recovered', participle: 'recovered', type: 'regular', meaning: 'recuperar' },
+            { id: 226, present: 'refer', past: 'referred', participle: 'referred', type: 'regular', meaning: 'referir' },
+            { id: 227, present: 'regulate', past: 'regulated', participle: 'regulated', type: 'regular', meaning: 'regular' },
+            { id: 228, present: 'release', past: 'released', participle: 'released', type: 'regular', meaning: 'liberar / lançar' },
+            { id: 229, present: 'represent', past: 'represented', participle: 'represented', type: 'regular', meaning: 'representar' },
+            { id: 230, present: 'resist', past: 'resisted', participle: 'resisted', type: 'regular', meaning: 'resistir' },
+            { id: 231, present: 'restore', past: 'restored', participle: 'restored', type: 'regular', meaning: 'restaurar' },
+            { id: 232, present: 'restrict', past: 'restricted', participle: 'restricted', type: 'regular', meaning: 'restringir' },
+            { id: 233, present: 'reveal', past: 'revealed', participle: 'revealed', type: 'regular', meaning: 'revelar' },
+            { id: 234, present: 'revise', past: 'revised', participle: 'revised', type: 'regular', meaning: 'revisar' },
+            { id: 235, present: 'separate', past: 'separated', participle: 'separated', type: 'regular', meaning: 'separar' },
+            { id: 236, present: 'simplify', past: 'simplified', participle: 'simplified', type: 'regular', meaning: 'simplificar' },
+            { id: 237, present: 'submit', past: 'submitted', participle: 'submitted', type: 'regular', meaning: 'submeter' },
+            { id: 238, present: 'succeed', past: 'succeeded', participle: 'succeeded', type: 'regular', meaning: 'ter sucesso' },
+            { id: 239, present: 'summarize', past: 'summarized', participle: 'summarized', type: 'regular', meaning: 'resumir' },
+            { id: 240, present: 'support', past: 'supported', participle: 'supported', type: 'regular', meaning: 'apoiar' },
+            // 241-260
+            { id: 241, present: 'suppose', past: 'supposed', participle: 'supposed', type: 'regular', meaning: 'supor' },
+            { id: 242, present: 'transfer', past: 'transferred', participle: 'transferred', type: 'regular', meaning: 'transferir' },
+            { id: 243, present: 'transform', past: 'transformed', participle: 'transformed', type: 'regular', meaning: 'transformar' },
+            { id: 244, present: 'translate', past: 'translated', participle: 'translated', type: 'regular', meaning: 'traduzir' },
+            { id: 245, present: 'travel', past: 'traveled', participle: 'traveled', type: 'regular', meaning: 'viajar' },
+            { id: 246, present: 'treat', past: 'treated', participle: 'treated', type: 'regular', meaning: 'tratar' },
+            { id: 247, present: 'unify', past: 'unified', participle: 'unified', type: 'regular', meaning: 'unificar' },
+            { id: 248, present: 'utilize', past: 'utilized', participle: 'utilized', type: 'regular', meaning: 'utilizar' },
+            { id: 249, present: 'validate', past: 'validated', participle: 'validated', type: 'regular', meaning: 'validar' },
+            { id: 250, present: 'visualize', past: 'visualized', participle: 'visualized', type: 'regular', meaning: 'visualizar' },
+            { id: 251, present: 'withdraw', past: 'withdrew', participle: 'withdrawn', type: 'irregular', meaning: 'retirar / sacar' },
+            { id: 252, present: 'withhold', past: 'withheld', participle: 'withheld', type: 'irregular', meaning: 'reter / ocultar' },
+            { id: 253, present: 'withstand', past: 'withstood', participle: 'withstood', type: 'irregular', meaning: 'resistir / suportar' },
+            { id: 254, present: 'wring', past: 'wrung', participle: 'wrung', type: 'irregular', meaning: 'torcer' },
+            { id: 255, present: 'writhe', past: 'writhed', participle: 'writhed', type: 'regular', meaning: 'contorcer-se' },
+            { id: 256, present: 'yawn', past: 'yawned', participle: 'yawned', type: 'regular', meaning: 'bocejar' },
+            { id: 257, present: 'yell', past: 'yelled', participle: 'yelled', type: 'regular', meaning: 'gritar' },
+            { id: 258, present: 'yield', past: 'yielded', participle: 'yielded', type: 'regular', meaning: 'ceder / render' },
+            { id: 259, present: 'zenith', past: 'zenithed', participle: 'zenithed', type: 'regular', meaning: 'atingir o zênite' },
+            { id: 260, present: 'zigzag', past: 'zigzagged', participle: 'zigzagged', type: 'regular', meaning: 'zigzaguear' },
+            // 261-280
+            { id: 261, present: 'abide', past: 'abode', participle: 'abode', type: 'irregular', meaning: 'obedecer / suportar' },
+            { id: 262, present: 'arise', past: 'arose', participle: 'arisen', type: 'irregular', meaning: 'surgir / levantar-se' },
+            { id: 263, present: 'awake', past: 'awoke', participle: 'awoken', type: 'irregular', meaning: 'despertar' },
+            { id: 264, present: 'backbite', past: 'backbit', participle: 'backbitten', type: 'irregular', meaning: 'falar mal pelas costas' },
+            { id: 265, present: 'backslide', past: 'backslid', participle: 'backslid', type: 'irregular', meaning: 'recair' },
+            { id: 266, present: 'befall', past: 'befell', participle: 'befallen', type: 'irregular', meaning: 'acontecer / suceder' },
+            { id: 267, present: 'bend', past: 'bent', participle: 'bent', type: 'irregular', meaning: 'dobrar / curvar' },
+            { id: 268, present: 'bet', past: 'bet', participle: 'bet', type: 'irregular', meaning: 'apostar' },
+            { id: 269, present: 'bid', past: 'bid', participle: 'bid', type: 'irregular', meaning: 'oferecer / dar lance' },
+            { id: 270, present: 'bind', past: 'bound', participle: 'bound', type: 'irregular', meaning: 'amarrar / vincular' },
+            { id: 271, present: 'bleed', past: 'bled', participle: 'bled', type: 'irregular', meaning: 'sangrar' },
+            { id: 272, present: 'breed', past: 'bred', participle: 'bred', type: 'irregular', meaning: 'criar / procriar' },
+            { id: 273, present: 'broadcast', past: 'broadcast', participle: 'broadcast', type: 'irregular', meaning: 'transmitir' },
+            { id: 274, present: 'browbeat', past: 'browbeat', participle: 'browbeaten', type: 'irregular', meaning: 'intimidar' },
+            { id: 275, present: 'burn', past: 'burnt/burned', participle: 'burnt/burned', type: 'irregular', meaning: 'queimar' },
+            { id: 276, present: 'burst', past: 'burst', participle: 'burst', type: 'irregular', meaning: 'estourar / romper' },
+            { id: 277, present: 'bust', past: 'bust', participle: 'bust', type: 'irregular', meaning: 'arrebentar / prender' },
+            { id: 278, present: 'cast', past: 'cast', participle: 'cast', type: 'irregular', meaning: 'lançar / jogar' },
+            { id: 279, present: 'catch', past: 'caught', participle: 'caught', type: 'irregular', meaning: 'pegar / capturar' },
+            { id: 280, present: 'chide', past: 'chid', participle: 'chidden', type: 'irregular', meaning: 'repreender' },
+            // 281-300
+            { id: 281, present: 'cleave', past: 'cleft', participle: 'cleft', type: 'irregular', meaning: 'fender / rachar' },
+            { id: 282, present: 'cling', past: 'clung', participle: 'clung', type: 'irregular', meaning: 'agarrar-se' },
+            { id: 283, present: 'clothe', past: 'clad', participle: 'clad', type: 'irregular', meaning: 'vestir / cobrir' },
+            { id: 284, present: 'cost', past: 'cost', participle: 'cost', type: 'irregular', meaning: 'custar' },
+            { id: 285, present: 'creep', past: 'crept', participle: 'crept', type: 'irregular', meaning: 'rastejar' },
+            { id: 286, present: 'deal', past: 'dealt', participle: 'dealt', type: 'irregular', meaning: 'lidar / negociar' },
+            { id: 287, present: 'dig', past: 'dug', participle: 'dug', type: 'irregular', meaning: 'cavar' },
+            { id: 288, present: 'dive', past: 'dove/dived', participle: 'dived', type: 'irregular', meaning: 'mergulhar' },
+            { id: 289, present: 'dream', past: 'dreamt/dreamed', participle: 'dreamt/dreamed', type: 'irregular', meaning: 'sonhar' },
+            { id: 290, present: 'dwell', past: 'dwelt', participle: 'dwelt', type: 'irregular', meaning: 'habitar / morar' },
+            { id: 291, present: 'eat', past: 'ate', participle: 'eaten', type: 'irregular', meaning: 'comer' },
+            { id: 292, present: 'fight', past: 'fought', participle: 'fought', type: 'irregular', meaning: 'lutar' },
+            { id: 293, present: 'flee', past: 'fled', participle: 'fled', type: 'irregular', meaning: 'fugir' },
+            { id: 294, present: 'fling', past: 'flung', participle: 'flung', type: 'irregular', meaning: 'atirar / lançar' },
+            { id: 295, present: 'forbid', past: 'forbade', participle: 'forbidden', type: 'irregular', meaning: 'proibir' },
+            { id: 296, present: 'forecast', past: 'forecast', participle: 'forecast', type: 'irregular', meaning: 'prever / prognosticar' },
+            { id: 297, present: 'foresee', past: 'foresaw', participle: 'foreseen', type: 'irregular', meaning: 'prever' },
+            { id: 298, present: 'foretell', past: 'foretold', participle: 'foretold', type: 'irregular', meaning: 'predizer' },
+            { id: 299, present: 'forgive', past: 'forgave', participle: 'forgiven', type: 'irregular', meaning: 'perdoar' },
+            { id: 300, present: 'forsake', past: 'forsook', participle: 'forsaken', type: 'irregular', meaning: 'abandonar' },
+            // 301-320
+            { id: 301, present: 'forswear', past: 'forswore', participle: 'forsworn', type: 'irregular', meaning: 'renegar / jurar falsamente' },
+            { id: 302, present: 'grind', past: 'ground', participle: 'ground', type: 'irregular', meaning: 'moer / triturar' },
+            { id: 303, present: 'hang', past: 'hung', participle: 'hung', type: 'irregular', meaning: 'pendurar' },
+            { id: 304, present: 'heave', past: 'hove', participle: 'hoven', type: 'irregular', meaning: 'levantar / arfar' },
+            { id: 305, present: 'hew', past: 'hewed', participle: 'hewn', type: 'irregular', meaning: 'talhar / cortar' },
+            { id: 306, present: 'hit', past: 'hit', participle: 'hit', type: 'irregular', meaning: 'bater / acertar' },
+            { id: 307, present: 'hurt', past: 'hurt', participle: 'hurt', type: 'irregular', meaning: 'machucar / doer' },
+            { id: 308, present: 'input', past: 'input', participle: 'input', type: 'irregular', meaning: 'inserir / fornecer' },
+            { id: 309, present: 'interweave', past: 'interwove', participle: 'interwoven', type: 'irregular', meaning: 'entrelaçar' },
+            { id: 310, present: 'kneel', past: 'knelt', participle: 'knelt', type: 'irregular', meaning: 'ajoelhar' },
+            { id: 311, present: 'knit', past: 'knit', participle: 'knit', type: 'irregular', meaning: 'tricotar' },
+            { id: 312, present: 'lay', past: 'laid', participle: 'laid', type: 'irregular', meaning: 'colocar / pôr' },
+            { id: 313, present: 'lean', past: 'leant/leaned', participle: 'leant/leaned', type: 'irregular', meaning: 'inclinar-se' },
+            { id: 314, present: 'leap', past: 'leapt/leaped', participle: 'leapt/leaped', type: 'irregular', meaning: 'saltar' },
+            { id: 315, present: 'lie', past: 'lay', participle: 'lain', type: 'irregular', meaning: 'deitar-se / estar deitado' },
+            { id: 316, present: 'light', past: 'lit', participle: 'lit', type: 'irregular', meaning: 'acender / iluminar' },
+            { id: 317, present: 'misdeal', past: 'misdealt', participle: 'misdealt', type: 'irregular', meaning: 'distribuir mal (cartas)' },
+            { id: 318, present: 'misgive', past: 'misgave', participle: 'misgiven', type: 'irregular', meaning: 'dar desconfiança' },
+            { id: 319, present: 'mislay', past: 'mislaid', participle: 'mislaid', type: 'irregular', meaning: 'extraviar / perder' },
+            { id: 320, present: 'mislead', past: 'misled', participle: 'misled', type: 'irregular', meaning: 'enganar / iludir' },
+            // 321-340
+            { id: 321, present: 'misspell', past: 'misspelt', participle: 'misspelt', type: 'irregular', meaning: 'soletrar errado' },
+            { id: 322, present: 'mistake', past: 'mistook', participle: 'mistaken', type: 'irregular', meaning: 'errar / confundir' },
+            { id: 323, present: 'misunderstand', past: 'misunderstood', participle: 'misunderstood', type: 'irregular', meaning: 'entender mal' },
+            { id: 324, present: 'mow', past: 'mowed', participle: 'mown', type: 'irregular', meaning: 'cortar (grama)' },
+            { id: 325, present: 'outdo', past: 'outdid', participle: 'outdone', type: 'irregular', meaning: 'superar' },
+            { id: 326, present: 'outrun', past: 'outran', participle: 'outrun', type: 'irregular', meaning: 'ultrapassar correndo' },
+            { id: 327, present: 'outshine', past: 'outshone', participle: 'outshone', type: 'irregular', meaning: 'superar / ofuscar' },
+            { id: 328, present: 'overcome', past: 'overcame', participle: 'overcome', type: 'irregular', meaning: 'superar / vencer' },
+            { id: 329, present: 'overdo', past: 'overdid', participle: 'overdone', type: 'irregular', meaning: 'exagerar / passar' },
+            { id: 330, present: 'overhang', past: 'overhung', participle: 'overhung', type: 'irregular', meaning: 'pender sobre' },
+            { id: 331, present: 'overhear', past: 'overheard', participle: 'overheard', type: 'irregular', meaning: 'ouvir por acaso' },
+            { id: 332, present: 'overlay', past: 'overlaid', participle: 'overlaid', type: 'irregular', meaning: 'cobrir / revestir' },
+            { id: 333, present: 'overlie', past: 'overlay', participle: 'overlain', type: 'irregular', meaning: 'estar sobre / cobrir' },
+            { id: 334, present: 'override', past: 'overrode', participle: 'overridden', type: 'irregular', meaning: 'sobrepor / anular' },
+            { id: 335, present: 'overrun', past: 'overran', participle: 'overrun', type: 'irregular', meaning: 'invadir / tomar' },
+            { id: 336, present: 'oversee', past: 'oversaw', participle: 'overseen', type: 'irregular', meaning: 'supervisionar' },
+            { id: 337, present: 'overshoot', past: 'overshot', participle: 'overshot', type: 'irregular', meaning: 'ultrapassar / passar' },
+            { id: 338, present: 'oversleep', past: 'overslept', participle: 'overslept', type: 'irregular', meaning: 'dormir demais' },
+            { id: 339, present: 'overtake', past: 'overtook', participle: 'overtaken', type: 'irregular', meaning: 'ultrapassar' },
+            { id: 340, present: 'overthrow', past: 'overthrew', participle: 'overthrown', type: 'irregular', meaning: 'derrubar / derrotar' },
+            // 341-360
+            { id: 341, present: 'partake', past: 'partook', participle: 'partaken', type: 'irregular', meaning: 'participar / tomar parte' },
+            { id: 342, present: 'plead', past: 'pled', participle: 'pled', type: 'irregular', meaning: 'pleitear / suplicar' },
+            { id: 343, present: 'prepay', past: 'prepaid', participle: 'prepaid', type: 'irregular', meaning: 'pagar adiantado' },
+            { id: 344, present: 'preset', past: 'preset', participle: 'preset', type: 'irregular', meaning: 'pré-ajustar' },
+            { id: 345, present: 'prove', past: 'proved', participle: 'proven', type: 'irregular', meaning: 'provar / demonstrar' },
+            { id: 346, present: 'quit', past: 'quit', participle: 'quit', type: 'irregular', meaning: 'desistir / sair' },
+            { id: 347, present: 'recast', past: 'recast', participle: 'recast', type: 'irregular', meaning: 'reformular / refundir' },
+            { id: 348, present: 'redo', past: 'redid', participle: 'redone', type: 'irregular', meaning: 'refazer' },
+            { id: 349, present: 'remake', past: 'remade', participle: 'remade', type: 'irregular', meaning: 'refazer / remodelar' },
+            { id: 350, present: 'rend', past: 'rent', participle: 'rent', type: 'irregular', meaning: 'rasgar / arrancar' },
+            { id: 351, present: 'repay', past: 'repaid', participle: 'repaid', type: 'irregular', meaning: 'reembolsar / pagar de volta' },
+            { id: 352, present: 'rerun', past: 'reran', participle: 'rerun', type: 'irregular', meaning: 'repassar / reprisar' },
+            { id: 353, present: 'resell', past: 'resold', participle: 'resold', type: 'irregular', meaning: 'revender' },
+            { id: 354, present: 'reset', past: 'reset', participle: 'reset', type: 'irregular', meaning: 'reiniciar / redefinir' },
+            { id: 355, present: 'resit', past: 'resat', participle: 'resat', type: 'irregular', meaning: 'refazer (prova)' },
+            { id: 356, present: 'retake', past: 'retook', participle: 'retaken', type: 'irregular', meaning: 'retomar / refazer' },
+            { id: 357, present: 'retell', past: 'retold', participle: 'retold', type: 'irregular', meaning: 'recontar' },
+            { id: 358, present: 'rethink', past: 'rethought', participle: 'rethought', type: 'irregular', meaning: 'repensar' },
+            { id: 359, present: 'rewind', past: 'rewound', participle: 'rewound', type: 'irregular', meaning: 'rebobinar' },
+            { id: 360, present: 'rewrite', past: 'rewrote', participle: 'rewritten', type: 'irregular', meaning: 'reescrever' },
+            // 361-380
+            { id: 361, present: 'saw', past: 'sawed', participle: 'sawn', type: 'irregular', meaning: 'serrar' },
+            { id: 362, present: 'seek', past: 'sought', participle: 'sought', type: 'irregular', meaning: 'procurar / buscar' },
+            { id: 363, present: 'sew', past: 'sewed', participle: 'sewn', type: 'irregular', meaning: 'costurar' },
+            { id: 364, present: 'shed', past: 'shed', participle: 'shed', type: 'irregular', meaning: 'derramar / libertar-se' },
+            { id: 365, present: 'shin', past: 'shone', participle: 'shone', type: 'irregular', meaning: 'brilhar' },
+            { id: 366, present: 'shit', past: 'shat', participle: 'shat', type: 'irregular', meaning: 'defecar (gíria)' },
+            { id: 367, present: 'shoe', past: 'shod', participle: 'shod', type: 'irregular', meaning: 'calçar' },
+            { id: 368, present: 'shoot', past: 'shot', participle: 'shot', type: 'irregular', meaning: 'atirar / filmar' },
+            { id: 369, present: 'shrink', past: 'shrank', participle: 'shrunk', type: 'irregular', meaning: 'encolher' },
+            { id: 370, present: 'shut', past: 'shut', participle: 'shut', type: 'irregular', meaning: 'fechar' },
+            { id: 371, present: 'sink', past: 'sank', participle: 'sunk', type: 'irregular', meaning: 'afundar' },
+            { id: 372, present: 'slay', past: 'slew', participle: 'slain', type: 'irregular', meaning: 'matar / assassinar' },
+            { id: 373, present: 'slide', past: 'slid', participle: 'slid', type: 'irregular', meaning: 'deslizar' },
+            { id: 374, present: 'sling', past: 'slung', participle: 'slung', type: 'irregular', meaning: 'atirar / pendurar' },
+            { id: 375, present: 'slink', past: 'slunk', participle: 'slunk', type: 'irregular', meaning: 'esgueirar-se' },
+            { id: 376, present: 'smell', past: 'smelt', participle: 'smelt', type: 'irregular', meaning: 'cheirar' },
+            { id: 377, present: 'sow', past: 'sowed', participle: 'sown', type: 'irregular', meaning: 'semear' },
+            { id: 378, present: 'speed', past: 'sped', participle: 'sped', type: 'irregular', meaning: 'acelerar / correr' },
+            { id: 379, present: 'spell', past: 'spelt', participle: 'spelt', type: 'irregular', meaning: 'soletrar' },
+            { id: 380, present: 'spend', past: 'spent', participle: 'spent', type: 'irregular', meaning: 'gastar / passar (tempo)' },
+            // 381-400
+            { id: 381, present: 'spill', past: 'spilt', participle: 'spilt', type: 'irregular', meaning: 'derramar' },
+            { id: 382, present: 'spin', past: 'spun', participle: 'spun', type: 'irregular', meaning: 'girar / fiar' },
+            { id: 383, present: 'spit', past: 'spat', participle: 'spat', type: 'irregular', meaning: 'cuspir' },
+            { id: 384, present: 'split', past: 'split', participle: 'split', type: 'irregular', meaning: 'dividir / rachar' },
+            { id: 385, present: 'spoil', past: 'spoilt', participle: 'spoilt', type: 'irregular', meaning: 'estragar / mimar' },
+            { id: 386, present: 'spread', past: 'spread', participle: 'spread', type: 'irregular', meaning: 'espalhar' },
+            { id: 387, present: 'spring', past: 'sprang', participle: 'sprung', type: 'irregular', meaning: 'saltar / brotar' },
+            { id: 388, present: 'stave', past: 'stove', participle: 'stove', type: 'irregular', meaning: 'arrombar / furar' },
+            { id: 389, present: 'stick', past: 'stuck', participle: 'stuck', type: 'irregular', meaning: 'colar / ficar preso' },
+            { id: 390, present: 'sting', past: 'stung', participle: 'stung', type: 'irregular', meaning: 'picar / ferir' },
+            { id: 391, present: 'stink', past: 'stank', participle: 'stunk', type: 'irregular', meaning: 'feder / cheirar mal' },
+            { id: 392, present: 'strew', past: 'strewed', participle: 'strewn', type: 'irregular', meaning: 'espalhar / polvilhar' },
+            { id: 393, present: 'stride', past: 'strode', participle: 'stridden', type: 'irregular', meaning: 'andar a passos largos' },
+            { id: 394, present: 'strike', past: 'struck', participle: 'struck', type: 'irregular', meaning: 'bater / greve' },
+            { id: 395, present: 'string', past: 'strung', participle: 'strung', type: 'irregular', meaning: 'amarrar / enfiar' },
+            { id: 396, present: 'stuck', past: 'stuck', participle: 'stuck', type: 'irregular', meaning: 'prender / colar' },
+            { id: 397, present: 'stun', past: 'stunned', participle: 'stunned', type: 'regular', meaning: 'aturdir / surpreender' },
+            { id: 398, present: 'swell', past: 'swelled', participle: 'swollen', type: 'irregular', meaning: 'inchar' },
+            { id: 399, present: 'swing', past: 'swung', participle: 'swung', type: 'irregular', meaning: 'balançar' },
+            { id: 400, present: 'tread', past: 'trod', participle: 'trodden', type: 'irregular', meaning: 'pisar / trilhar' },
+            // 401-420
+            { id: 401, present: 'typeset', past: 'typeset', participle: 'typeset', type: 'irregular', meaning: 'compor (texto)' },
+            { id: 402, present: 'unbend', past: 'unbent', participle: 'unbent', type: 'irregular', meaning: 'desdobrar / relaxar' },
+            { id: 403, present: 'unbind', past: 'unbound', participle: 'unbound', type: 'irregular', meaning: 'desamarrar' },
+            { id: 404, present: 'underbid', past: 'underbid', participle: 'underbid', type: 'irregular', meaning: 'fazer lance menor' },
+            { id: 405, present: 'undercut', past: 'undercut', participle: 'undercut', type: 'irregular', meaning: 'vender mais barato' },
+            { id: 406, present: 'underfeed', past: 'underfed', participle: 'underfed', type: 'irregular', meaning: 'alimentar mal' },
+            { id: 407, present: 'undergo', past: 'underwent', participle: 'undergone', type: 'irregular', meaning: 'passar por / sofrer' },
+            { id: 408, present: 'underlie', past: 'underlay', participle: 'underlain', type: 'irregular', meaning: 'fundamentar / estar abaixo' },
+            { id: 409, present: 'undersell', past: 'undersold', participle: 'undersold', type: 'irregular', meaning: 'vender mais barato' },
+            { id: 410, present: 'undershoot', past: 'undershot', participle: 'undershot', type: 'irregular', meaning: 'não atingir / ficar aquém' },
+            { id: 411, present: 'understand', past: 'understood', participle: 'understood', type: 'irregular', meaning: 'entender' },
+            { id: 412, present: 'undertake', past: 'undertook', participle: 'undertaken', type: 'irregular', meaning: 'empreender / assumir' },
+            { id: 413, present: 'underwrite', past: 'underwrote', participle: 'underwritten', type: 'irregular', meaning: 'subscrever / garantir' },
+            { id: 414, present: 'undo', past: 'undid', participle: 'undone', type: 'irregular', meaning: 'desfazer' },
+            { id: 415, present: 'unfreeze', past: 'unfroze', participle: 'unfrozen', type: 'irregular', meaning: 'descongelar' },
+            { id: 416, present: 'unhang', past: 'unhung', participle: 'unhung', type: 'irregular', meaning: 'despendurar' },
+            { id: 417, present: 'unlearn', past: 'unlearnt', participle: 'unlearnt', type: 'irregular', meaning: 'desaprender' },
+            { id: 418, present: 'unstring', past: 'unstrung', participle: 'unstrung', type: 'irregular', meaning: 'desenfar' },
+            { id: 419, present: 'unwind', past: 'unwound', participle: 'unwound', type: 'irregular', meaning: 'desenrolar / relaxar' },
+            { id: 420, present: 'uphold', past: 'upheld', participle: 'upheld', type: 'irregular', meaning: 'manter / sustentar' },
+            // 421-440
+            { id: 421, present: 'upset', past: 'upset', participle: 'upset', type: 'irregular', meaning: 'chatear / perturbar' },
+            { id: 422, present: 'wed', past: 'wed', participle: 'wed', type: 'irregular', meaning: 'casar' },
+            { id: 423, present: 'wet', past: 'wet', participle: 'wet', type: 'irregular', meaning: 'molhar' },
+            { id: 424, present: 'wind', past: 'wound', participle: 'wound', type: 'irregular', meaning: 'enrolar / dar corda' },
+            { id: 425, present: 'winter', past: 'wintered', participle: 'wintered', type: 'regular', meaning: 'passar o inverno' },
+            { id: 426, present: 'wire', past: 'wired', participle: 'wired', type: 'regular', meaning: 'fiar / conectar' },
+            { id: 427, present: 'withdraw', past: 'withdrew', participle: 'withdrawn', type: 'irregular', meaning: 'retirar / sacar' },
+            { id: 428, present: 'witness', past: 'witnessed', participle: 'witnessed', type: 'regular', meaning: 'testemunhar' },
+            { id: 429, present: 'wonder', past: 'wondered', participle: 'wondered', type: 'regular', meaning: 'perguntar-se / maravilhar-se' },
+            { id: 430, present: 'worry', past: 'worried', participle: 'worried', type: 'regular', meaning: 'preocupar-se' },
+            { id: 431, present: 'wrap', past: 'wrapped', participle: 'wrapped', type: 'regular', meaning: 'embrulhar' },
+            { id: 432, present: 'xerox', past: 'xeroxed', participle: 'xeroxed', type: 'regular', meaning: 'xerocar / fotocopiar' },
+            { id: 433, present: 'yawn', past: 'yawned', participle: 'yawned', type: 'regular', meaning: 'bocejar' },
+            { id: 434, present: 'yell', past: 'yelled', participle: 'yelled', type: 'regular', meaning: 'gritar' },
+            { id: 435, present: 'yield', past: 'yielded', participle: 'yielded', type: 'regular', meaning: 'ceder / render' },
+            { id: 436, present: 'zoom', past: 'zoomed', participle: 'zoomed', type: 'regular', meaning: 'zoom / acelerar' },
+            { id: 437, present: 'accelerate', past: 'accelerated', participle: 'accelerated', type: 'regular', meaning: 'acelerar' },
+            { id: 438, present: 'accommodate', past: 'accommodated', participle: 'accommodated', type: 'regular', meaning: 'acomodar' },
+            { id: 439, present: 'accumulate', past: 'accumulated', participle: 'accumulated', type: 'regular', meaning: 'acumular' },
+            { id: 440, present: 'acknowledge', past: 'acknowledged', participle: 'acknowledged', type: 'regular', meaning: 'reconhecer' },
+            // 441-460
+            { id: 441, present: 'adapt', past: 'adapted', participle: 'adapted', type: 'regular', meaning: 'adaptar' },
+            { id: 442, present: 'adjust', past: 'adjusted', participle: 'adjusted', type: 'regular', meaning: 'ajustar' },
+            { id: 443, present: 'admire', past: 'admired', participle: 'admired', type: 'regular', meaning: 'admirar' },
+            { id: 444, present: 'adopt', past: 'adopted', participle: 'adopted', type: 'regular', meaning: 'adotar' },
+            { id: 445, present: 'advance', past: 'advanced', participle: 'advanced', type: 'regular', meaning: 'avançar' },
+            { id: 446, present: 'advise', past: 'advised', participle: 'advised', type: 'regular', meaning: 'aconselhar' },
+            { id: 447, present: 'afford', past: 'afforded', participle: 'afforded', type: 'regular', meaning: 'ter condições / permitir' },
+            { id: 448, present: 'agree', past: 'agreed', participle: 'agreed', type: 'regular', meaning: 'concordar' },
+            { id: 449, present: 'aim', past: 'aimed', participle: 'aimed', type: 'regular', meaning: 'mirar / visar' },
+            { id: 450, present: 'alert', past: 'alerted', participle: 'alerted', type: 'regular', meaning: 'alertar' },
+            { id: 451, present: 'allocate', past: 'allocated', participle: 'allocated', type: 'regular', meaning: 'alocar' },
+            { id: 452, present: 'analyze', past: 'analyzed', participle: 'analyzed', type: 'regular', meaning: 'analisar' },
+            { id: 453, present: 'announce', past: 'announced', participle: 'announced', type: 'regular', meaning: 'anunciar' },
+            { id: 454, present: 'apologize', past: 'apologized', participle: 'apologized', type: 'regular', meaning: 'pedir desculpas' },
+            { id: 455, present: 'applaud', past: 'applauded', participle: 'applauded', type: 'regular', meaning: 'aplaudir' },
+            { id: 456, present: 'appreciate', past: 'appreciated', participle: 'appreciated', type: 'regular', meaning: 'apreciar / valorizar' },
+            { id: 457, present: 'approve', past: 'approved', participle: 'approved', type: 'regular', meaning: 'aprovar' },
+            { id: 458, present: 'arrange', past: 'arranged', participle: 'arranged', type: 'regular', meaning: 'arranjar / organizar' },
+            { id: 459, present: 'assess', past: 'assessed', participle: 'assessed', type: 'regular', meaning: 'avaliar' },
+            { id: 460, present: 'assist', past: 'assisted', participle: 'assisted', type: 'regular', meaning: 'assistir / ajudar' },
+            // 461-480
+            { id: 461, present: 'assume', past: 'assumed', participle: 'assumed', type: 'regular', meaning: 'assumir / supor' },
+            { id: 462, present: 'attach', past: 'attached', participle: 'attached', type: 'regular', meaning: 'anexar / prender' },
+            { id: 463, present: 'attempt', past: 'attempted', participle: 'attempted', type: 'regular', meaning: 'tentar' },
+            { id: 464, present: 'attract', past: 'attracted', participle: 'attracted', type: 'regular', meaning: 'atrair' },
+            { id: 465, present: 'balance', past: 'balanced', participle: 'balanced', type: 'regular', meaning: 'equilibrar' },
+            { id: 466, present: 'bargain', past: 'bargained', participle: 'bargained', type: 'regular', meaning: 'negociar / pechinchar' },
+            { id: 467, present: 'benefit', past: 'benefited', participle: 'benefited', type: 'regular', meaning: 'beneficiar' },
+            { id: 468, present: 'borrow', past: 'borrowed', participle: 'borrowed', type: 'regular', meaning: 'pegar emprestado' },
+            { id: 469, present: 'bounce', past: 'bounced', participle: 'bounced', type: 'regular', meaning: 'quicar / saltar' },
+            { id: 470, present: 'calculate', past: 'calculated', participle: 'calculated', type: 'regular', meaning: 'calcular' },
+            { id: 471, present: 'camp', past: 'camped', participle: 'camped', type: 'regular', meaning: 'acampar' },
+            { id: 472, present: 'cancel', past: 'canceled', participle: 'canceled', type: 'regular', meaning: 'cancelar' },
+            { id: 473, present: 'celebrate', past: 'celebrated', participle: 'celebrated', type: 'regular', meaning: 'celebrar' },
+            { id: 474, present: 'challenge', past: 'challenged', participle: 'challenged', type: 'regular', meaning: 'desafiar' },
+            { id: 475, present: 'charge', past: 'charged', participle: 'charged', type: 'regular', meaning: 'cobrar / carregar' },
+            { id: 476, present: 'cheat', past: 'cheated', participle: 'cheated', type: 'regular', meaning: 'trapacear' },
+            { id: 477, present: 'cheer', past: 'cheered', participle: 'cheered', type: 'regular', meaning: 'animar / torcer' },
+            { id: 478, present: 'collect', past: 'collected', participle: 'collected', type: 'regular', meaning: 'coletar' },
+            { id: 479, present: 'communicate', past: 'communicated', participle: 'communicated', type: 'regular', meaning: 'comunicar' },
+            { id: 480, present: 'compare', past: 'compared', participle: 'compared', type: 'regular', meaning: 'comparar' },
+            // 481-500
+            { id: 481, present: 'compete', past: 'competed', participle: 'competed', type: 'regular', meaning: 'competir' },
+            { id: 482, present: 'complain', past: 'complained', participle: 'complained', type: 'regular', meaning: 'reclamar' },
+            { id: 483, present: 'concentrate', past: 'concentrated', participle: 'concentrated', type: 'regular', meaning: 'concentrar' },
+            { id: 484, present: 'confirm', past: 'confirmed', participle: 'confirmed', type: 'regular', meaning: 'confirmar' },
+            { id: 485, present: 'confuse', past: 'confused', participle: 'confused', type: 'regular', meaning: 'confundir' },
+            { id: 486, present: 'connect', past: 'connected', participle: 'connected', type: 'regular', meaning: 'conectar' },
+            { id: 487, present: 'consume', past: 'consumed', participle: 'consumed', type: 'regular', meaning: 'consumir' },
+            { id: 488, present: 'contrast', past: 'contrasted', participle: 'contrasted', type: 'regular', meaning: 'contrastar' },
+            { id: 489, present: 'convince', past: 'convinced', participle: 'convinced', type: 'regular', meaning: 'convencer' },
+            { id: 490, present: 'correct', past: 'corrected', participle: 'corrected', type: 'regular', meaning: 'corrigir' },
+            { id: 491, present: 'crash', past: 'crashed', participle: 'crashed', type: 'regular', meaning: 'colidir / quebrar' },
+            { id: 492, present: 'criticize', past: 'criticized', participle: 'criticized', type: 'regular', meaning: 'criticar' },
+            { id: 493, present: 'demonstrate', past: 'demonstrated', participle: 'demonstrated', type: 'regular', meaning: 'demonstrar' },
+            { id: 494, present: 'describe', past: 'described', participle: 'described', type: 'regular', meaning: 'descrever' },
+            { id: 495, present: 'design', past: 'designed', participle: 'designed', type: 'regular', meaning: 'projetar / desenhar' },
+            { id: 496, present: 'detail', past: 'detailed', participle: 'detailed', type: 'regular', meaning: 'detalhar' },
+            { id: 497, present: 'discover', past: 'discovered', participle: 'discovered', type: 'regular', meaning: 'descobrir' },
+            { id: 498, present: 'discuss', past: 'discussed', participle: 'discussed', type: 'regular', meaning: 'discutir' },
+            { id: 499, present: 'distribute', past: 'distributed', participle: 'distributed', type: 'regular', meaning: 'distribuir' },
+            { id: 500, present: 'document', past: 'documented', participle: 'documented', type: 'regular', meaning: 'documentar' }
+        ];
+
+        // ============================================================
+        // LÓGICA DE RENDERIZAÇÃO
+        // ============================================================
+
+        function getTypeClass(verb) {
+            if (verb.type === 'regular') return 'regular';
+            if (verb.present === verb.past && verb.past === verb.participle) return 'same';
+            return 'irregular';
+        }
+
+        function getBadge(verb) {
+            const type = getTypeClass(verb);
+            if (type === 'regular') return '<span class="badge regular">Regular</span>';
+            if (type === 'same') return '<span class="badge same">Todas iguais</span>';
+            return '<span class="badge irregular">Irregular</span>';
+        }
+
+        function renderTable(filteredVerbs) {
+            const tbody = document.getElementById('verbTable');
+            tbody.innerHTML = '';
+            if (filteredVerbs.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:40px;color:#7f8c8d;">Nenhum verbo encontrado.</td></tr>';
+                return;
+            }
+            filteredVerbs.forEach(verb => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${verb.id}</td>
+                    <td class="present">${verb.present}</td>
+                    <td class="past">${verb.past}</td>
+                    <td class="participle">${verb.participle}</td>
+                    <td>${getBadge(verb)}</td>
+                    <td class="meaning">${verb.meaning}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+            updateStats(filteredVerbs);
+        }
+
+        function updateStats(verbsList) {
+            const total = verbsList.length;
+            const regular = verbsList.filter(v => getTypeClass(v) === 'regular').length;
+            const irregular = verbsList.filter(v => getTypeClass(v) === 'irregular').length;
+            const same = verbsList.filter(v => getTypeClass(v) === 'same').length;
+            
+            document.getElementById('regularCount').textContent = regular;
+            document.getElementById('irregularCount').textContent = irregular;
+            document.getElementById('sameCount').textContent = same;
+        }
+
+        // ============================================================
+        // FILTROS
+        // ============================================================
+
+        let currentFilter = 'all';
+        let currentSearch = '';
+
+        function filterAll() {
+            currentFilter = 'all';
+            applyFilters();
+        }
+
+        function filterRegular() {
+            currentFilter = 'regular';
+            applyFilters();
+        }
+
+        function filterIrregular() {
+            currentFilter = 'irregular';
+            applyFilters();
+        }
+
+        function filterSame() {
+            currentFilter = 'same';
+            applyFilters();
+        }
+
+        function resetFilter() {
+            currentFilter = 'all';
+            document.getElementById('searchInput').value = '';
+            currentSearch = '';
+            applyFilters();
+        }
+
+        function searchVerb() {
+            const input = document.getElementById('searchInput');
+            currentSearch = input.value.toLowerCase().trim();
+            applyFilters();
+        }
+
+        function applyFilters() {
+            let filtered = [...verbs];
+
+            if (currentFilter === 'regular') {
+                filtered = filtered.filter(v => getTypeClass(v) === 'regular');
+            } else if (currentFilter === 'irregular') {
+                filtered = filtered.filter(v => getTypeClass(v) === 'irregular');
+            } else if (currentFilter === 'same') {
+                filtered = filtered.filter(v => getTypeClass(v) === 'same');
+            }
+
+            if (currentSearch) {
+                filtered = filtered.filter(v => 
+                    v.present.toLowerCase().includes(currentSearch) ||
+                    v.past.toLowerCase().includes(currentSearch) ||
+                    v.participle.toLowerCase().includes(currentSearch) ||
+                    v.meaning.toLowerCase().includes(currentSearch)
+                );
+            }
+
+            renderTable(filtered);
+        }
+
+        // ============================================================
+        // ORDENAÇÃO
+        // ============================================================
+
+        document.querySelectorAll('thead th').forEach((th, index) => {
+            if (index === 0) return;
+            th.addEventListener('click', () => {
+                const tbody = document.getElementById('verbTable');
+                const rows = Array.from(tbody.querySelectorAll('tr'));
+                if (rows.length === 1 && rows[0].querySelector('td[colspan]')) return;
+                
+                const direction = th.dataset.direction === 'asc' ? 'desc' : 'asc';
+                th.dataset.direction = direction;
+
+                rows.sort((a, b) => {
+                    const aText = a.children[index].textContent.trim().toLowerCase();
+                    const bText = b.children[index].textContent.trim().toLowerCase();
+                    if (aText < bText) return direction === 'asc' ? -1 : 1;
+                    if (aText > bText) return direction === 'asc' ? 1 : -1;
+                    return 0;
+                });
+
+                rows.forEach(row => tbody.appendChild(row));
+            });
+        });
+
+        // ============================================================
+        // INICIALIZAÇÃO
+        // ============================================================
+
+        renderTable(verbs);
+    </script>
+</body>
+</html>

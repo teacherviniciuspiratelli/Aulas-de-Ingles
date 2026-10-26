@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 English Tenses Review - Revisão dos Tempos Verbais</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f0f4f8;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+        
+        /* Teaching Section */
+        .teaching-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .teaching-section h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .grammar-box {
+            background: #ecf0f1;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #3498db;
+        }
+        .grammar-box h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .grammar-box table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-size: 13px;
+        }
+        .grammar-box table td {
+            padding: 8px 12px;
+            border: 1px solid #bdc3c7;
+        }
+        .grammar-box table th {
+            background: #2c3e50;
+            color: white;
+            padding: 8px 12px;
+            border: 1px solid #2c3e50;
+            text-align: left;
+        }
+        .example {
+            background: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 8px 0;
+            border-left: 4px solid #2ecc71;
+        }
+        .example .en {
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        .example .pt {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        .highlight {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .highlight-blue {
+            color: #2980b9;
+            font-weight: bold;
+        }
+
+        .tense-card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-left: 6px solid #2ecc71;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .tense-card .tense-name {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+        .tense-card .tense-use {
+            color: #7f8c8d;
+            font-style: italic;
+            font-size: 0.95em;
+        }
+        .tense-card .formula {
+            background: #2c3e50;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 6px;
+            margin: 8px 0;
+            font-size: 0.95em;
+            display: inline-block;
+        }
+        .tense-card .formula span {
+            color: #f1c40f;
+        }
+
+        .tense-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .tense-grid .tense-card {
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .tense-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Exercise Sections */
+        .exercise-section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .exercise-section h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #e67e22;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .exercise-item {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+        .exercise-item .question {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .exercise-item .context {
+            color: #666;
+            font-style: italic;
+            font-size: 0.95em;
+            margin-bottom: 8px;
+        }
+        .options {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 8px 0;
+        }
+        .options label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+        .options label:hover {
+            background: #e8f4f8;
+        }
+        .options input[type="radio"] {
+            cursor: pointer;
+        }
+        .answer-line {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+        .answer-line input[type="text"] {
+            padding: 8px 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 15px;
+            width: 300px;
+            transition: border-color 0.3s;
+        }
+        .answer-line input[type="text"]:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        .translation-box {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .translation-box input {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        /* Feedback */
+        .feedback {
+            font-size: 0.9em;
+            margin-left: 10px;
+            padding: 3px 12px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        .feedback.correct {
+            background: #d4edda;
+            color: #155724;
+        }
+        .feedback.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .feedback.waiting {
+            background: #e9ecef;
+            color: #6c757d;
+        }
+        
+        /* Buttons */
+        .btn {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            margin: 5px;
+        }
+        .btn-success {
+            background: #2ecc71;
+            color: white;
+        }
+        .btn-success:hover {
+            background: #27ae60;
+            transform: translateY(-2px);
+        }
+        .btn-danger {
+            background: #e74c3c;
+            color: white;
+        }
+        .btn-danger:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background: #95a5a6;
+            color: white;
+        }
+        .btn-secondary:hover {
+            background: #7f8c8d;
+            transform: translateY(-2px);
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .result-box {
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            text-align: center;
+            display: none;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        .result-box.correct {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+        .result-box.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+        .result-box.partial {
+            background: #fff3cd;
+            color: #856404;
+            display: block;
+        }
+
+        .section-result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+        .section-result.correct {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+        .section-result.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+        .section-result.partial {
+            background: #fff3cd;
+            color: #856404;
+            display: block;
+        }
+
+        .score-display {
+            text-align: center;
+            font-size: 1.2em;
+            padding: 10px;
+            background: #ecf0f1;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .score-display span {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .tense-badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            margin-left: 8px;
+        }
+        .tense-badge.present { background: #d4edda; color: #155724; }
+        .tense-badge.past { background: #f8d7da; color: #721c24; }
+        .tense-badge.future { background: #cce5ff; color: #004085; }
+        .tense-badge.perfect { background: #e8d5f5; color: #6c3483; }
+
+        @media (max-width: 600px) {
+            .options {
+                flex-direction: column;
+                gap: 5px;
+            }
+            .answer-line input[type="text"] {
+                width: 100%;
+            }
+            .translation-box {
+                flex-direction: column;
+            }
+            .grammar-box table {
+                font-size: 11px;
+            }
+            .grammar-box table td, .grammar-box table th {
+                padding: 4px 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>📚 English Tenses Review</h1>
+    <p class="subtitle">Revisão completa de todos os tempos verbais em inglês</p>
+
+    <!-- ==================== ENSINO ==================== -->
+    <div class="teaching-section">
+        <h2>📖 Guia Rápido dos Tempos Verbais</h2>
+        
+        <div class="grammar-box">
+            <h3>🔹 Present Tenses</h3>
+            <div class="tense-grid">
+                <div class="tense-card" style="border-left-color: #27ae60;">
+                    <div class="tense-name">Present Simple <span class="tense-badge present">PRESENTE</span></div>
+                    <div class="tense-use">📌 Fatos, hábitos, rotinas</div>
+                    <div class="formula"><span>I</span> + <span>work</span> / <span>He</span> + <span>works</span></div>
+                    <div class="example">
+                        <span class="en">I <span class="highlight">work</span> every day.</span>
+                        <span class="pt">Eu trabalho todos os dias.</span>
+                    </div>
+                </div>
+                <div class="tense-card" style="border-left-color: #2ecc71;">
+                    <div class="tense-name">Present Continuous <span class="tense-badge present">PRESENTE</span></div>
+                    <div class="tense-use">📌 Ações acontecendo agora / temporárias / futuro próximo</div>
+                    <div class="formula"><span>am/is/are</span> + <span>working</span></div>
+                    <div class="example">
+                        <span class="en">I <span class="highlight">am working</span> right now.</span>
+                        <span class="pt">Eu estou trabalhando agora.</span>
+                    </div>
+                </div>
+                <div class="tense-card" style="border-left-color: #8e44ad;">
+                    <div class="tense-name">Present Perfect <span class="tense-badge perfect">PERFEITO</span></div>
+                    <div class="tense-use">📌 Passado com relevância no presente / experiências</div>
+                    <div class="formula"><span>have/has</span> + <span>worked</span> (V3)</div>
+                    <div class="example">
+                        <span class="en">I <span class="highlight">have worked</span> here for 5 years.</span>
+                        <span class="pt">Eu trabalho aqui há 5 anos.</span>
+                    </div>
+                </div>
+                <div class="tense-card" style="border-left-color: #9b59b6;">
+                    <div class="tense-name">Present Perfect Continuous <span class="tense-badge perfect">PERFEITO</span></div>
+                    <div class="tense-use">📌 Ações que começaram no passado e continuam</div>
+                    <div class="formula"><span>have/has been</span> + <span>working</span></div>
+                    <div class="example">
+                        <span class="en">I <span class="highlight">have been working</span> for 2 hours.</span>
+                        <span class="pt">Eu estou trabalhando há 2 horas.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grammar-box">
+            <h3>🔹 Past Tenses</h3>
+            <div class="tense-grid">
+                <div class="tense-card" style="border-left-color: #e74c3c;">
+                    <div class="tense-name">Past Simple <span class="tense-badge past">PASSADO</span></div>
+                    <div class="tense-use">📌 Ações concluídas no passado</div>
+                    <div class="formula"><span>worked</span> (V2) / <span>did</span></div>
+                    <div class="example">
+                        <span class="en">I <span class="highlight">worked</span> yesterday.</span>
+                        <span class="pt">Eu trabalhei ontem.</span>
+                    </div>
+                </div>
+                <div class="tense-card" style="border-left-color: #c0392b;">
+                    <div class="tense-name">Past Continuous <span class="tense-badge past">PASSADO</span></div>
+                    <div class="tense-use">📌 Ações em progresso no passado</div>
+                    <div class="formula"><span>was/were</span> + <span>working</span></div>
+                    <div class="example">
+                        <span class="en">I <span class="highlight">was working</span> when you called.</span>
+                        <span class="pt">Eu estava trabalhando quando você ligou.</span>
+                    </div>
+                </div>
+                <div class="tense-card" style="border-left-color: #e67e22;">
+                    <div class="tense-name">Past Perfect <span class="tense-badge perfect">PERFEITO</span></div>
+                    <div class="tense-use">📌 Ação anterior a outra no passado</div>
+                    <div class="formula"><span>had</span> + <span>worked</span> (V3)</div>
+                    <div class="example">
+                        <span class="en">I <span class="highlight">had worked</span> before you arrived.</span>
+                        <span class="pt">Eu tinha trabalhado antes de você chegar.</span>
+                    </div>
+                </div>
+                <div class="tense-card" style="border-left-color: #f39c12;">
+                    <div class="tense-name">Past Perfect Continuous <span class="tense-badge perfect">PERFEITO</span></div>
+                    <div class="tense-use">📌 Ação contínua anterior a outra no passado</div>
+                    <div class="formula"><span>had been</span> + <span>working</span></div>
+                    <div class="example">
+                        <span class="en">I <span class="highlight">had been working</span> for 2 hours.</span>
+                        <span class="pt">Eu tinha estado trabalhando por 2 horas.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grammar-box">
+            <h3>🔹 Future Tenses</h3>
+            <div class="tense-grid">
+                <div class="tense-card" style="border-left-color: #2980b9;">
+                    <div class="tense-name">Future Simple (Will) <span class="tense-badge future">FUTURO</span></div>
+                    <div class="tense-use">📌 Previsões, decisões, promessas</div>
+                    <div class="formula"><span>will</span> + <span>work</span></div>
+                    <div class="example">
+                        <span class="en">I <span class="highlight">will work</span> tomorrow.</span>
+                        <span class="pt">Eu trabalharei amanhã.</span>
+                    </div>
+                </div>
+                <div class="tense-card" style="border-left-color: #3498db;">
+                    <div class="tense-name">Future (Going to) <span class="tense-badge future">FUTURO</span></div>
+                    <div class="tense-use">📌 Planos, intenções</div>
+                    <div class="formula"><span>am/is/are going to</span> + <span>work</span></div>
+                    <div class="example">
+                        <span class="en">I <span class="highlight">am going to work</span> tomorrow.</span>
+                        <span class="pt">Eu vou trabalhar amanhã.</span>
+                    </div>
+                </div>
+                <div class="tense-card" style="border-left-color: #5dade2;">
+                    <div class="tense-name">Future Continuous <span class="tense-badge future">FUTURO</span></div>
+                    <div class="tense-use">📌 Ações em progresso no futuro</div>
+                    <div class="formula"><span>will be</span> + <span>working</span></div>
+                    <div class="example">
+                        <span class="en">I <span class="highlight">will be working</span> at 3 PM.</span>
+                        <span class="pt">Eu estarei trabalhando às 3 horas.</span>
+                    </div>
+                </div>
+                <div class="tense-card" style="border-left-color: #48c9b0;">
+                    <div class="tense-name">Future Perfect <span class="tense-badge perfect">PERFEITO</span></div>
+                    <div class="tense-use">📌 Ação concluída antes de um momento no futuro</div>
+                    <div class="formula"><span>will have</span> + <span>worked</span> (V3)</div>
+                    <div class="example">
+                        <span class="en">I <span class="highlight">will have worked</span> here for 10 years.</span>
+                        <span class="pt">Eu terei trabalhado aqui por 10 anos.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grammar-box">
+            <h3>🔹 Resumo Comparativo</h3>
+            <table>
+                <tr>
+                    <th>Tempo</th>
+                    <th>Estrutura</th>
+                    <th>Exemplo</th>
+                    <th>Uso</th>
+                </tr>
+                <tr>
+                    <td><strong>Present Simple</strong></td>
+                    <td>I work</td>
+                    <td>I <span class="highlight">work</span> every day.</td>
+                    <td>Hábitos, fatos</td>
+                </tr>
+                <tr>
+                    <td><strong>Present Continuous</strong></td>
+                    <td>I am working</td>
+                    <td>I <span class="highlight">am working</span> now.</td>
+                    <td>Agora, temporário</td>
+                </tr>
+                <tr>
+                    <td><strong>Past Simple</strong></td>
+                    <td>I worked</td>
+                    <td>I <span class="highlight">worked</span> yesterday.</td>
+                    <td>Passado concluído</td>
+                </tr>
+                <tr>
+                    <td><strong>Past Continuous</strong></td>
+                    <td>I was working</td>
+                    <td>I <span class="highlight">was working</span> when...</td>
+                    <td>Progresso no passado</td>
+                </tr>
+                <tr>
+                    <td><strong>Present Perfect</strong></td>
+                    <td>I have worked</td>
+                    <td>I <span class="highlight">have worked</span> here.</td>
+                    <td>Experiência / até agora</td>
+                </tr>
+                <tr>
+                    <td><strong>Past Perfect</strong></td>
+                    <td>I had worked</td>
+                    <td>I <span class="highlight">had worked</span> before...</td>
+                    <td>Antes de outra ação</td>
+                </tr>
+                <tr>
+                    <td><strong>Future (will)</strong></td>
+                    <td>I will work</td>
+                    <td>I <span class="highlight">will work</span> tomorrow.</td>
+                    <td>Previsão, promessa</td>
+                </tr>
+                <tr>
+                    <td><strong>Future (going to)</strong></td>
+                    <td>I am going to work</td>
+                    <td>I <span class="highlight">am going to work</span>.</td>
+                    <td>Plano, intenção</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- ==================== EXERCÍCIOS ==================== -->
+
+    <!-- EXERCÍCIO 1: Identificar o tempo verbal -->
+    <div class="exercise-section" id="sec1">
+        <h2>📝 Exercício 1: Identifique o tempo verbal</h2>
+        <p style="color: #666; margin-bottom: 15px;">Escolha qual tempo verbal está sendo usado.</p>
+
+        <div class="exercise-item">
+            <div class="context">"I work every day."</div>
+            <div class="question">1. Qual é o tempo verbal?</div>
+            <div class="options">
+                <label><input type="radio" name="q1" value="present simple"> Present Simple</label>
+                <label><input type="radio" name="q1" value="present continuous"> Present Continuous</label>
+                <label><input type="radio" name="q1" value="past simple"> Past Simple</label>
+            </div>
+            <span class="feedback" id="fb1"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">"I am working right now."</div>
+            <div class="question">2. Qual é o tempo verbal?</div>
+            <div class="options">
+                <label><input type="radio" name="q2" value="present simple"> Present Simple</label>
+                <label><input type="radio" name="q2" value="present continuous"> Present Continuous</label>
+                <label><input type="radio" name="q2" value="future"> Future</label>
+            </div>
+            <span class="feedback" id="fb2"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">"I have worked here for 5 years."</div>
+            <div class="question">3. Qual é o tempo verbal?</div>
+            <div class="options">
+                <label><input type="radio" name="q3" value="past simple"> Past Simple</label>
+                <label><input type="radio" name="q3" value="present perfect"> Present Perfect</label>
+                <label><input type="radio" name="q3" value="past perfect"> Past Perfect</label>
+            </div>
+            <span class="feedback" id="fb3"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">"I will travel tomorrow."</div>
+            <div class="question">4. Qual é o tempo verbal?</div>
+            <div class="options">
+                <label><input type="radio" name="q4" value="present"> Present</label>
+                <label><input type="radio" name="q4" value="past"> Past</label>
+                <label><input type="radio" name="q4" value="future"> Future</label>
+            </div>
+            <span class="feedback" id="fb4"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">"I was working when you called."</div>
+            <div class="question">5. Qual é o tempo verbal?</div>
+            <div class="options">
+                <label><input type="radio" name="q5" value="past simple"> Past Simple</label>
+                <label><input type="radio" name="q5" value="past continuous"> Past Continuous</label>
+                <label><input type="radio" name="q5" value="present continuous"> Present Continuous</label>
+            </div>
+            <span class="feedback" id="fb5"></span>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-success" onclick="checkIdentifyExercise()">Verificar Respostas</button>
+        </div>
+        <div class="section-result" id="resultIdentify"></div>
+    </div>
+
+    <!-- EXERCÍCIO 2: Escolher a forma correta -->
+    <div class="exercise-section" id="sec2">
+        <h2>📝 Exercício 2: Escolha a forma correta</h2>
+        <p style="color: #666; margin-bottom: 15px;">Escolha o tempo verbal correto para cada frase.</p>
+
+        <div class="exercise-item">
+            <div class="question">6. She ______ (study) English every day.</div>
+            <div class="options">
+                <label><input type="radio" name="q6" value="studies"> studies</label>
+                <label><input type="radio" name="q6" value="is studying"> is studying</label>
+                <label><input type="radio" name="q6" value="studied"> studied</label>
+            </div>
+            <span class="feedback" id="fb6"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">7. I ______ (work) when you called.</div>
+            <div class="options">
+                <label><input type="radio" name="q7" value="work"> work</label>
+                <label><input type="radio" name="q7" value="was working"> was working</label>
+                <label><input type="radio" name="q7" value="have worked"> have worked</label>
+            </div>
+            <span class="feedback" id="fb7"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">8. They ______ (travel) to Paris next month.</div>
+            <div class="options">
+                <label><input type="radio" name="q8" value="travel"> travel</label>
+                <label><input type="radio" name="q8" value="traveled"> traveled</label>
+                <label><input type="radio" name="q8" value="are going to travel"> are going to travel</label>
+            </div>
+            <span class="feedback" id="fb8"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">9. I ______ (live) here since 2018.</div>
+            <div class="options">
+                <label><input type="radio" name="q9" value="live"> live</label>
+                <label><input type="radio" name="q9" value="have lived"> have lived</label>
+                <label><input type="radio" name="q9" value="lived"> lived</label>
+            </div>
+            <span class="feedback" id="fb9"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">10. She ______ (finish) the project before the deadline.</div>
+            <div class="options">
+                <label><input type="radio" name="q10" value="finishes"> finishes</label>
+                <label><input type="radio" name="q10" value="has finished"> has finished</label>
+                <label><input type="radio" name="q10" value="will have finished"> will have finished</label>
+            </div>
+            <span class="feedback" id="fb10"></span>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-success" onclick="checkChooseExercise()">Verificar Respostas</button>
+        </div>
+        <div class="section-result" id="resultChoose"></div>
+    </div>
+
+    <!-- EXERCÍCIO 3: Completar com o tempo correto -->
+    <div class="exercise-section" id="sec3">
+        <h2>✍️ Exercício 3: Complete com o tempo correto</h2>
+        <p style="color: #666; margin-bottom: 15px;">Use o tempo verbal adequado.</p>
+
+        <div class="exercise-item">
+            <div class="question">11. I usually ______ (wake up) at 7 AM.</div>
+            <div class="answer-line">
+                <input type="text" class="q11" placeholder="Sua resposta..." style="width: 250px;">
+                <span class="feedback" id="fb11"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">12. She ______ (cook) dinner when I arrived.</div>
+            <div class="answer-line">
+                <input type="text" class="q12" placeholder="Sua resposta..." style="width: 250px;">
+                <span class="feedback" id="fb12"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">13. They ______ (live) in London for 3 years.</div>
+            <div class="answer-line">
+                <input type="text" class="q13" placeholder="Sua resposta..." style="width: 250px;">
+                <span class="feedback" id="fb13"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">14. I ______ (travel) to Japan next year.</div>
+            <div class="answer-line">
+                <input type="text" class="q14" placeholder="Sua resposta..." style="width: 250px;">
+                <span class="feedback" id="fb14"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">15. By 2025, I ______ (work) here for 10 years.</div>
+            <div class="answer-line">
+                <input type="text" class="q15" placeholder="Sua resposta..." style="width: 250px;">
+                <span class="feedback" id="fb15"></span>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-success" onclick="checkCompleteExercise()">Verificar Respostas</button>
+        </div>
+        <div class="section-result" id="resultComplete"></div>
+    </div>
+
+    <!-- EXERCÍCIO 4: Tradução -->
+    <div class="exercise-section" id="sec4">
+        <h2>🌍 Exercício 4: Tradução</h2>
+        <p style="color: #666; margin-bottom: 15px;">Traduza as frases para o inglês usando o tempo correto.</p>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 Eu trabalho todos os dias.</div>
+            <div class="translation-box">
+                <input type="text" class="q16" placeholder="Tradução em inglês..." style="width: 450px;">
+                <span class="feedback" id="fb16"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 Eu estou estudando agora.</div>
+            <div class="translation-box">
+                <input type="text" class="q17" placeholder="Tradução em inglês..." style="width: 450px;">
+                <span class="feedback" id="fb17"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 Eu morei em Paris por 5 anos.</div>
+            <div class="translation-box">
+                <input type="text" class="q18" placeholder="Tradução em inglês..." style="width: 450px;">
+                <span class="feedback" id="fb18"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 Ela vai viajar amanhã.</div>
+            <div class="translation-box">
+                <input type="text" class="q19" placeholder="Tradução em inglês..." style="width: 450px;">
+                <span class="feedback" id="fb19"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 Eu estou trabalhando há 2 horas.</div>
+            <div class="translation-box">
+                <input type="text" class="q20" placeholder="Tradução em inglês..." style="width: 450px;">
+                <span class="feedback" id="fb20"></span>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-success" onclick="checkTranslationExercise()">Verificar Traduções</button>
+        </div>
+        <div class="section-result" id="resultTranslation"></div>
+    </div>
+
+    <!-- EXERCÍCIO 5: Misto -->
+    <div class="exercise-section" id="sec5">
+        <h2>🔀 Exercício 5: Misto</h2>
+        <p style="color: #666; margin-bottom: 15px;">Combine diferentes tempos verbais.</p>
+
+        <div class="exercise-item">
+            <div class="context">"I am going to the store."</div>
+            <div class="question">21. Qual é o tempo verbal?</div>
+            <div class="options">
+                <label><input type="radio" name="q21" value="present simple"> Present Simple</label>
+                <label><input type="radio" name="q21" value="present continuous"> Present Continuous</label>
+                <label><input type="radio" name="q21" value="future"> Future</label>
+            </div>
+            <span class="feedback" id="fb21"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">22. I ______ (be) a student since 2019.</div>
+            <div class="answer-line">
+                <input type="text" class="q22" placeholder="Sua resposta..." style="width: 250px;">
+                <span class="feedback" id="fb22"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 Ela estava lendo quando eu cheguei.</div>
+            <div class="translation-box">
+                <input type="text" class="q23" placeholder="Tradução em inglês..." style="width: 450px;">
+                <span class="feedback" id="fb23"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">24. Escolha: He ______ (eat) breakfast right now.</div>
+            <div class="options">
+                <label><input type="radio" name="q24" value="eats"> eats</label>
+                <label><input type="radio" name="q24" value="is eating"> is eating</label>
+                <label><input type="radio" name="q24" value="ate"> ate</label>
+            </div>
+            <span class="feedback" id="fb24"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">25. Complete: They ______ (finish) the project by Friday.</div>
+            <div class="answer-line">
+                <input type="text" class="q25" placeholder="Sua resposta..." style="width: 250px;">
+                <span class="feedback" id="fb25"></span>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-success" onclick="checkMixedExercise()">Verificar Respostas</button>
+        </div>
+        <div class="section-result" id="resultMixed"></div>
+    </div>
+
+    <!-- ==================== BOTÕES GLOBAIS ==================== -->
+    <div class="button-group">
+        <button class="btn btn-danger" onclick="checkAllExercises()">✅ Verificar Todos os Exercícios</button>
+        <button class="btn btn-secondary" onclick="resetAllExercises()">🔄 Resetar Todos</button>
+    </div>
+
+    <div class="score-display" id="globalScore">
+        Total: <span id="scoreCount">0</span> / <span id="totalCount">0</span> corretas
+    </div>
+    <div class="result-box" id="globalResult"></div>
+
+    <script>
+        // ==================== DADOS DAS RESPOSTAS ====================
+        const answers = {
+            identify: ['present simple', 'present continuous', 'present perfect', 'future', 'past continuous'],
+            choose: ['studies', 'was working', 'are going to travel', 'have lived', 'will have finished'],
+            complete: ['wake up', 'was cooking', 'have lived', 'am going to travel', 'will have worked'],
+            translations: [
+                'i work every day',
+                'i am studying now',
+                'i lived in paris for 5 years',
+                'she is going to travel tomorrow',
+                'i have been working for 2 hours'
+            ],
+            mixed: ['present continuous', 'have been', 'she was reading when i arrived', 'is eating', 'will have finished']
+        };
+
+        // ==================== FUNÇÕES DE VERIFICAÇÃO ====================
+        function normalize(text) {
+            return text.toLowerCase().trim().replace(/\s+/g, ' ');
+        }
+
+        function checkIdentifyExercise() {
+            let correct = 0;
+            const total = 5;
+            for (let i = 1; i <= total; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                const fb = document.getElementById(`fb${i}`);
+                if (selected) {
+                    const isCorrect = selected.value === answers.identify[i-1];
+                    fb.textContent = isCorrect ? '✓ Correto' : '✗ Incorreto';
+                    fb.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                    if (isCorrect) correct++;
+                } else {
+                    fb.textContent = '⚠️ Selecione uma opção';
+                    fb.className = 'feedback waiting';
+                }
+            }
+            showSectionResult('resultIdentify', correct, total);
+        }
+
+        function checkChooseExercise() {
+            let correct = 0;
+            const total = 5;
+            for (let i = 6; i <= 10; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                const fb = document.getElementById(`fb${i}`);
+                if (selected) {
+                    const isCorrect = selected.value === answers.choose[i-6];
+                    fb.textContent = isCorrect ? '✓ Correto' : '✗ Incorreto';
+                    fb.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                    if (isCorrect) correct++;
+                } else {
+                    fb.textContent = '⚠️ Selecione uma opção';
+                    fb.className = 'feedback waiting';
+                }
+            }
+            showSectionResult('resultChoose', correct, total);
+        }
+
+        function checkCompleteExercise() {
+            let correct = 0;
+            const total = 5;
+            for (let i = 11; i <= 15; i++) {
+                const input = document.querySelector(`.q${i}`);
+                const fb = document.getElementById(`fb${i}`);
+                if (input) {
+                    const userAnswer = normalize(input.value);
+                    const isCorrect = userAnswer === answers.complete[i-11];
+                    fb.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                    fb.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                    if (isCorrect) correct++;
+                }
+            }
+            showSectionResult('resultComplete', correct, total);
+        }
+
+        function checkTranslationExercise() {
+            let correct = 0;
+            const total = 5;
+            for (let i = 16; i <= 20; i++) {
+                const input = document.querySelector(`.q${i}`);
+                const fb = document.getElementById(`fb${i}`);
+                if (input) {
+                    const userAnswer = normalize(input.value);
+                    const isCorrect = userAnswer === answers.translations[i-16];
+                    fb.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                    fb.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                    if (isCorrect) correct++;
+                }
+            }
+            showSectionResult('resultTranslation', correct, total);
+        }
+
+        function checkMixedExercise() {
+            let correct = 0;
+            const total = 5;
+            
+            // Q21
+            const selected21 = document.querySelector(`input[name="q21"]:checked`);
+            const fb21 = document.getElementById('fb21');
+            if (selected21) {
+                const isCorrect = selected21.value === answers.mixed[0];
+                fb21.textContent = isCorrect ? '✓ Correto' : '✗ Incorreto';
+                fb21.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                if (isCorrect) correct++;
+            } else {
+                fb21.textContent = '⚠️ Selecione uma opção';
+                fb21.className = 'feedback waiting';
+            }
+
+            // Q22
+            const input22 = document.querySelector('.q22');
+            const fb22 = document.getElementById('fb22');
+            if (input22) {
+                const userAnswer = normalize(input22.value);
+                const isCorrect = userAnswer === answers.mixed[1];
+                fb22.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                fb22.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                if (isCorrect) correct++;
+            }
+
+            // Q23
+            const input23 = document.querySelector('.q23');
+            const fb23 = document.getElementById('fb23');
+            if (input23) {
+                const userAnswer = normalize(input23.value);
+                const isCorrect = userAnswer === answers.mixed[2];
+                fb23.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                fb23.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                if (isCorrect) correct++;
+            }
+
+            // Q24
+            const selected24 = document.querySelector(`input[name="q24"]:checked`);
+            const fb24 = document.getElementById('fb24');
+            if (selected24) {
+                const isCorrect = selected24.value === answers.mixed[3];
+                fb24.textContent = isCorrect ? '✓ Correto' : '✗ Incorreto';
+                fb24.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                if (isCorrect) correct++;
+            } else {
+                fb24.textContent = '⚠️ Selecione uma opção';
+                fb24.className = 'feedback waiting';
+            }
+
+            // Q25
+            const input25 = document.querySelector('.q25');
+            const fb25 = document.getElementById('fb25');
+            if (input25) {
+                const userAnswer = normalize(input25.value);
+                const isCorrect = userAnswer === answers.mixed[4];
+                fb25.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                fb25.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                if (isCorrect) correct++;
+            }
+
+            showSectionResult('resultMixed', correct, total);
+        }
+
+        // ==================== FUNÇÕES AUXILIARES ====================
+        function showSectionResult(elementId, correct, total) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.textContent = `Você acertou ${correct} de ${total} (${Math.round(correct/total*100)}%)`;
+                element.className = `section-result ${correct === total ? 'correct' : (correct > 0 ? 'partial' : 'incorrect')}`;
+            }
+            updateGlobalScore();
+        }
+
+        function updateGlobalScore() {
+            let correct = 0;
+            let total = 0;
+            
+            document.querySelectorAll('.feedback').forEach(fb => {
+                if (fb.textContent.includes('✓')) {
+                    correct++;
+                    total++;
+                } else if (fb.textContent.includes('✗') || fb.textContent.includes('⚠️')) {
+                    total++;
+                }
+            });
+            
+            document.getElementById('scoreCount').textContent = correct;
+            document.getElementById('totalCount').textContent = total;
+        }
+
+        function checkAllExercises() {
+            checkIdentifyExercise();
+            checkChooseExercise();
+            checkCompleteExercise();
+            checkTranslationExercise();
+            checkMixedExercise();
+            
+            const total = document.querySelectorAll('.feedback').length;
+            const correct = document.querySelectorAll('.feedback.correct').length;
+            const result = document.getElementById('globalResult');
+            result.textContent = `🎯 Você acertou ${correct} de ${total} questões (${Math.round(correct/total*100)}%)`;
+            result.className = `result-box ${correct === total ? 'correct' : (correct > total/2 ? 'partial' : 'incorrect')}`;
+        }
+
+        function resetAllExercises() {
+            document.querySelectorAll('input[type="radio"]').forEach(el => el.checked = false);
+            document.querySelectorAll('input[type="text"]').forEach(el => el.value = '');
+            document.querySelectorAll('.feedback').forEach(el => {
+                el.textContent = '';
+                el.className = 'feedback';
+            });
+            document.querySelectorAll('.section-result').forEach(el => {
+                el.textContent = '';
+                el.className = 'section-result';
+            });
+            const result = document.getElementById('globalResult');
+            result.textContent = '';
+            result.className = 'result-box';
+            updateGlobalScore();
+        }
+
+        document.querySelectorAll('input[type="text"]').forEach(input => {
+            input.addEventListener('input', updateGlobalScore);
+        });
+        document.querySelectorAll('input[type="radio"]').forEach(input => {
+            input.addEventListener('change', updateGlobalScore);
+        });
+
+        updateGlobalScore();
+    </script>
+</body>
+</html>
