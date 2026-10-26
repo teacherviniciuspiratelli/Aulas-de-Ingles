@@ -360,6 +360,80 @@
                 grid-template-columns: 1fr;
             }
         }
+    /* ================= BOTÃO VOLTAR & SELETOR DE TEMAS ================= */
+        .back-button {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1000;
+            background: white;
+            color: #2c3e50;
+            padding: 8px 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            border: 1px solid #ddd;
+        }
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .theme-switcher {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 1000;
+            background: white;
+            padding: 5px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: 1px solid #ddd;
+        }
+        .theme-switcher select {
+            padding: 8px;
+            border: none;
+            background: transparent;
+            color: #2c3e50;
+            cursor: pointer;
+            font-weight: bold;
+            outline: none;
+        }
+
+        /* ================= MODO ESCURO (DARK MODE) ================= */
+        body.dark-mode { background-color: #121212; color: #e0e0e0; }
+        body.dark-mode .container, body.dark-mode .teaching-section, body.dark-mode .exercise-section { background-color: #1e1e1e; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode .question, body.dark-mode .word, body.dark-mode .base { color: #bb86fc; border-color: #bb86fc; }
+        body.dark-mode .grammar-box, body.dark-mode .exercise-item, body.dark-mode .example, body.dark-mode .rule-card, body.dark-mode .tip-box, body.dark-mode .warning-box, body.dark-mode .form-card, body.dark-mode .qw-item, body.dark-mode .noun-column, body.dark-mode .tense-card { background-color: #2d2d2d; color: #e0e0e0; border-color: #bb86fc; }
+        body.dark-mode .subtitle, body.dark-mode .context, body.dark-mode .use { color: #aaaaaa; }
+        body.dark-mode input[type="text"], body.dark-mode select { background-color: #333; color: #fff; border-color: #555; }
+        body.dark-mode input[type="text"]:focus { border-color: #bb86fc; }
+        body.dark-mode table td, body.dark-mode .noun-list li { border-color: #444; }
+        body.dark-mode table th { background-color: #bb86fc; color: #121212; border-color: #bb86fc; }
+        body.dark-mode .question { background-color: #2d2d2d; }
+        body.dark-mode .highlight { background-color: rgba(187, 134, 252, 0.2); color: #bb86fc; }
+        body.dark-mode .back-button, body.dark-mode .theme-switcher { background-color: #2d2d2d; color: #bb86fc; border-color: #555; }
+        body.dark-mode .theme-switcher select { color: #bb86fc; }
+        
+        /* ================= MODO LEITURA (READING MODE) MELHORADO ================= */
+        body.reading-mode { background-color: #F4F1EA; color: #2A2A2A; }
+        body.reading-mode .container, body.reading-mode .teaching-section, body.reading-mode .exercise-section { background-color: #FFFCF5; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        body.reading-mode h1, body.reading-mode h2, body.reading-mode h3, body.reading-mode .question, body.reading-mode .word, body.reading-mode .base { color: #5D4037; border-color: #5D4037; }
+        body.reading-mode .grammar-box, body.reading-mode .exercise-item, body.reading-mode .example, body.reading-mode .rule-card, body.reading-mode .tip-box, body.reading-mode .warning-box, body.reading-mode .form-card, body.reading-mode .qw-item, body.reading-mode .noun-column, body.reading-mode .tense-card { background-color: #F4F1EA; color: #2A2A2A; border-color: #A1887F; }
+        body.reading-mode .subtitle, body.reading-mode .context, body.reading-mode .use { color: #5D4037; }
+        body.reading-mode input[type="text"], body.reading-mode select { background-color: #FFF; color: #2A2A2A; border-color: #D7CCC8; }
+        body.reading-mode input[type="text"]:focus { border-color: #5D4037; }
+        body.reading-mode table td, body.reading-mode .noun-list li { border-color: #D7CCC8; }
+        body.reading-mode table th { background-color: #5D4037; color: #FFF; border-color: #5D4037; }
+        body.reading-mode .question { background-color: #FFFCF5; }
+        body.reading-mode .highlight { background-color: rgba(93, 64, 55, 0.1); color: #5D4037; }
+        body.reading-mode .back-button, body.reading-mode .theme-switcher { background-color: #FFFCF5; color: #5D4037; border-color: #D7CCC8; }
+        body.reading-mode .theme-switcher select { color: #5D4037; }
     </style>
 </head>
 <body>
@@ -977,6 +1051,41 @@
         });
 
         updateGlobalScore();
+    </script>
+<!-- BOTÕES FLUTUANTES (VOLTAR E TEMA) -->
+    <a href="../index.html" class="back-button">
+        <i class="fa-solid fa-arrow-left"></i> Voltar
+    </a>
+
+    <div class="theme-switcher">
+        <select id="themeSelect" onchange="changeTheme(this.value)">
+            <option value="light">☀️ Modo Claro</option>
+            <option value="reading">📖 Modo Leitura</option>
+            <option value="dark">🌙 Modo Escuro</option>
+        </select>
+    </div>
+
+    <!-- SCRIPT DO TEMA -->
+    <script>
+        function changeTheme(theme) {
+            // Remove as classes antigas
+            document.body.classList.remove('dark-mode', 'reading-mode');
+            
+            // Adiciona a nova classe se não for o modo claro
+            if (theme !== 'light') {
+                document.body.classList.add(theme + '-mode');
+            }
+            
+            // Salva a escolha do aluno no navegador
+            localStorage.setItem('preferredEnglishTheme', theme);
+        }
+
+        // Quando a página carrega, verifica se o aluno já tinha escolhido um tema antes
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('preferredEnglishTheme') || 'light';
+            document.getElementById('themeSelect').value = savedTheme;
+            changeTheme(savedTheme);
+        });
     </script>
 </body>
 </html>
