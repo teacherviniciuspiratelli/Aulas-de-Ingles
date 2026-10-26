@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Question Words - Pronomes Interrogativos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f0f4f8;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+        
+        .teaching-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .teaching-section h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .grammar-box {
+            background: #ecf0f1;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #3498db;
+        }
+        .grammar-box h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .grammar-box table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        .grammar-box table td {
+            padding: 8px 12px;
+            border: 1px solid #bdc3c7;
+        }
+        .grammar-box table th {
+            background: #2c3e50;
+            color: white;
+            padding: 8px 12px;
+            border: 1px solid #2c3e50;
+            text-align: left;
+        }
+        .example {
+            background: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 8px 0;
+            border-left: 4px solid #2ecc71;
+        }
+        .example .en {
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        .example .pt {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        .highlight {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .highlight-blue {
+            color: #2980b9;
+            font-weight: bold;
+        }
+
+        .qw-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 10px 0;
+        }
+        .qw-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #2ecc71;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .qw-item .word {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+        .qw-item .use {
+            color: #7f8c8d;
+            font-size: 0.95em;
+            margin-top: 5px;
+        }
+        .qw-item .ex {
+            margin-top: 5px;
+            color: #2c3e50;
+        }
+        .qw-item .ex .highlight {
+            color: #e74c3c;
+        }
+
+        @media (max-width: 600px) {
+            .qw-card {
+                grid-template-columns: 1fr;
+            }
+            .options {
+                flex-direction: column;
+                gap: 5px;
+            }
+            .answer-line input[type="text"] {
+                width: 100%;
+            }
+            .translation-box {
+                flex-direction: column;
+            }
+        }
+
+        .exercise-section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .exercise-section h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #e67e22;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .exercise-item {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+        .exercise-item .question {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .exercise-item .context {
+            color: #666;
+            font-style: italic;
+            font-size: 0.95em;
+            margin-bottom: 8px;
+        }
+        .options {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 8px 0;
+        }
+        .options label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+        .options label:hover {
+            background: #e8f4f8;
+        }
+        .options input[type="radio"] {
+            cursor: pointer;
+        }
+        .answer-line {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+        .answer-line input[type="text"] {
+            padding: 8px 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 15px;
+            width: 300px;
+            transition: border-color 0.3s;
+        }
+        .answer-line input[type="text"]:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        .translation-box {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .translation-box input {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .feedback {
+            font-size: 0.9em;
+            margin-left: 10px;
+            padding: 3px 12px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        .feedback.correct {
+            background: #d4edda;
+            color: #155724;
+        }
+        .feedback.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .feedback.waiting {
+            background: #e9ecef;
+            color: #6c757d;
+        }
+        
+        .btn {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            margin: 5px;
+        }
+        .btn-success {
+            background: #2ecc71;
+            color: white;
+        }
+        .btn-success:hover {
+            background: #27ae60;
+            transform: translateY(-2px);
+        }
+        .btn-danger {
+            background: #e74c3c;
+            color: white;
+        }
+        .btn-danger:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background: #95a5a6;
+            color: white;
+        }
+        .btn-secondary:hover {
+            background: #7f8c8d;
+            transform: translateY(-2px);
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .result-box {
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            text-align: center;
+            display: none;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        .result-box.correct {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+        .result-box.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+        .result-box.partial {
+            background: #fff3cd;
+            color: #856404;
+            display: block;
+        }
+
+        .section-result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+        .section-result.correct {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+        .section-result.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+        .section-result.partial {
+            background: #fff3cd;
+            color: #856404;
+            display: block;
+        }
+
+        .score-display {
+            text-align: center;
+            font-size: 1.2em;
+            padding: 10px;
+            background: #ecf0f1;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .score-display span {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>📚 Question Words</h1>
+    <p class="subtitle">Aprenda a usar os pronomes interrogativos em inglês</p>
+
+    <!-- ==================== ENSINO ==================== -->
+    <div class="teaching-section">
+        <h2>📖 O que são Question Words?</h2>
+        
+        <div class="grammar-box">
+            <h3>🔹 As Question Words</h3>
+            <div class="qw-card">
+                <div class="qw-item">
+                    <div class="word">WHAT</div>
+                    <div class="use">O quê / Qual</div>
+                    <div class="ex"><span class="highlight">What</span> is your name?</div>
+                    <div class="pt">Qual é o seu nome?</div>
+                </div>
+                <div class="qw-item">
+                    <div class="word">WHO</div>
+                    <div class="use">Quem</div>
+                    <div class="ex"><span class="highlight">Who</span> is she?</div>
+                    <div class="pt">Quem é ela?</div>
+                </div>
+                <div class="qw-item">
+                    <div class="word">WHOSE</div>
+                    <div class="use">De quem</div>
+                    <div class="ex"><span class="highlight">Whose</span> book is this?</div>
+                    <div class="pt">De quem é este livro?</div>
+                </div>
+                <div class="qw-item">
+                    <div class="word">WHICH</div>
+                    <div class="use">Qual (entre opções)</div>
+                    <div class="ex"><span class="highlight">Which</span> one do you prefer?</div>
+                    <div class="pt">Qual você prefere?</div>
+                </div>
+                <div class="qw-item">
+                    <div class="word">WHERE</div>
+                    <div class="use">Onde</div>
+                    <div class="ex"><span class="highlight">Where</span> do you live?</div>
+                    <div class="pt">Onde você mora?</div>
+                </div>
+                <div class="qw-item">
+                    <div class="word">WHEN</div>
+                    <div class="use">Quando</div>
+                    <div class="ex"><span class="highlight">When</span> will you arrive?</div>
+                    <div class="pt">Quando você vai chegar?</div>
+                </div>
+                <div class="qw-item">
+                    <div class="word">WHY</div>
+                    <div class="use">Por quê</div>
+                    <div class="ex"><span class="highlight">Why</span> are you sad?</div>
+                    <div class="pt">Por que você está triste?</div>
+                </div>
+                <div class="qw-item">
+                    <div class="word">HOW</div>
+                    <div class="use">Como</div>
+                    <div class="ex"><span class="highlight">How</span> are you?</div>
+                    <div class="pt">Como você está?</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grammar-box">
+            <h3>🔹 Variações de "HOW"</h3>
+            <table>
+                <tr>
+                    <th>Question Word</th>
+                    <th>Uso</th>
+                    <th>Exemplo</th>
+                </tr>
+                <tr>
+                    <td><strong>How much</strong></td>
+                    <td>Quantidade (incontável)</td>
+                    <td><span class="highlight">How much</span> water do you need?</td>
+                </tr>
+                <tr>
+                    <td><strong>How many</strong></td>
+                    <td>Quantidade (contável)</td>
+                    <td><span class="highlight">How many</span> apples do you have?</td>
+                </tr>
+                <tr>
+                    <td><strong>How often</strong></td>
+                    <td>Com que frequência</td>
+                    <td><span class="highlight">How often</span> do you exercise?</td>
+                </tr>
+                <tr>
+                    <td><strong>How long</strong></td>
+                    <td>Quanto tempo</td>
+                    <td><span class="highlight">How long</span> have you been here?</td>
+                </tr>
+                <tr>
+                    <td><strong>How far</strong></td>
+                    <td>Quão longe</td>
+                    <td><span class="highlight">How far</span> is the station?</td>
+                </tr>
+                <tr>
+                    <td><strong>How old</strong></td>
+                    <td>Quantos anos</td>
+                    <td><span class="highlight">How old</span> are you?</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="grammar-box">
+            <h3>🔹 Estrutura das Perguntas</h3>
+            <p><strong>Question Word</strong> + <strong>verbo auxiliar</strong> + <strong>sujeito</strong> + <strong>verbo principal</strong>?</p>
+            
+            <div class="example">
+                <span class="en"><span class="highlight">Where</span> <span class="highlight-blue">do</span> you <span class="highlight">live</span>?</span>
+                <span class="pt">Onde você mora?</span>
+            </div>
+            <div class="example">
+                <span class="en"><span class="highlight">What</span> <span class="highlight-blue">are</span> you <span class="highlight">doing</span>?</span>
+                <span class="pt">O que você está fazendo?</span>
+            </div>
+            <div class="example">
+                <span class="en"><span class="highlight">Why</span> <span class="highlight-blue">did</span> you <span class="highlight">leave</span>?</span>
+                <span class="pt">Por que você saiu?</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== EXERCÍCIOS ==================== -->
+
+    <div class="exercise-section" id="sec1">
+        <h2>📝 Exercício 1: Escolha a Question Word correta</h2>
+
+        <div class="exercise-item">
+            <div class="question">1. ______ is your name?</div>
+            <div class="options">
+                <label><input type="radio" name="q1" value="What"> What</label>
+                <label><input type="radio" name="q1" value="Who"> Who</label>
+                <label><input type="radio" name="q1" value="Where"> Where</label>
+            </div>
+            <span class="feedback" id="fb1"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">2. ______ do you live?</div>
+            <div class="options">
+                <label><input type="radio" name="q2" value="What"> What</label>
+                <label><input type="radio" name="q2" value="Where"> Where</label>
+                <label><input type="radio" name="q2" value="When"> When</label>
+            </div>
+            <span class="feedback" id="fb2"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">3. ______ book is this?</div>
+            <div class="options">
+                <label><input type="radio" name="q3" value="Who"> Who</label>
+                <label><input type="radio" name="q3" value="Whose"> Whose</label>
+                <label><input type="radio" name="q3" value="Which"> Which</label>
+            </div>
+            <span class="feedback" id="fb3"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">4. ______ are you sad?</div>
+            <div class="options">
+                <label><input type="radio" name="q4" value="What"> What</label>
+                <label><input type="radio" name="q4" value="Where"> Where</label>
+                <label><input type="radio" name="q4" value="Why"> Why</label>
+            </div>
+            <span class="feedback" id="fb4"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">5. ______ do you go to the gym? - Every day.</div>
+            <div class="options">
+                <label><input type="radio" name="q5" value="How often"> How often</label>
+                <label><input type="radio" name="q5" value="How much"> How much</label>
+                <label><input type="radio" name="q5" value="How many"> How many</label>
+            </div>
+            <span class="feedback" id="fb5"></span>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-success" onclick="checkSelectExercise()">Verificar Respostas</button>
+        </div>
+        <div class="section-result" id="resultSelect"></div>
+    </div>
+
+    <div class="exercise-section" id="sec2">
+        <h2>✍️ Exercício 2: Complete com a Question Word</h2>
+
+        <div class="exercise-item">
+            <div class="question">6. ______ is your favorite color?</div>
+            <div class="answer-line">
+                <input type="text" class="q6" placeholder="Sua resposta..." style="width: 150px;">
+                <span class="feedback" id="fb6"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">7. ______ did you go yesterday?</div>
+            <div class="answer-line">
+                <input type="text" class="q7" placeholder="Sua resposta..." style="width: 150px;">
+                <span class="feedback" id="fb7"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">8. ______ time is it?</div>
+            <div class="answer-line">
+                <input type="text" class="q8" placeholder="Sua resposta..." style="width: 150px;">
+                <span class="feedback" id="fb8"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">9. ______ are you? - I'm fine, thanks.</div>
+            <div class="answer-line">
+                <input type="text" class="q9" placeholder="Sua resposta..." style="width: 150px;">
+                <span class="feedback" id="fb9"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">10. ______ students are in the class?</div>
+            <div class="answer-line">
+                <input type="text" class="q10" placeholder="Sua resposta..." style="width: 150px;">
+                <span class="feedback" id="fb10"></span>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-success" onclick="checkCompleteExercise()">Verificar Respostas</button>
+        </div>
+        <div class="section-result" id="resultComplete"></div>
+    </div>
+
+    <div class="exercise-section" id="sec3">
+        <h2>🌍 Exercício 3: Tradução</h2>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 Qual é o seu nome?</div>
+            <div class="translation-box">
+                <input type="text" class="q11" placeholder="Tradução em inglês..." style="width: 450px;">
+                <span class="feedback" id="fb11"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 Onde você mora?</div>
+            <div class="translation-box">
+                <input type="text" class="q12" placeholder="Tradução em inglês..." style="width: 450px;">
+                <span class="feedback" id="fb12"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 Quantos anos você tem?</div>
+            <div class="translation-box">
+                <input type="text" class="q13" placeholder="Tradução em inglês..." style="width: 450px;">
+                <span class="feedback" id="fb13"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 Por que você está triste?</div>
+            <div class="translation-box">
+                <input type="text" class="q14" placeholder="Tradução em inglês..." style="width: 450px;">
+                <span class="feedback" id="fb14"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 Com que frequência você pratica esportes?</div>
+            <div class="translation-box">
+                <input type="text" class="q15" placeholder="Tradução em inglês..." style="width: 450px;">
+                <span class="feedback" id="fb15"></span>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-success" onclick="checkTranslationExercise()">Verificar Traduções</button>
+        </div>
+        <div class="section-result" id="resultTranslation"></div>
+    </div>
+
+    <div class="exercise-section" id="sec4">
+        <h2>🔀 Exercício 4: Misto</h2>
+
+        <div class="exercise-item">
+            <div class="question">16. ______ is that woman? - She's my sister.</div>
+            <div class="options">
+                <label><input type="radio" name="q16" value="What"> What</label>
+                <label><input type="radio" name="q16" value="Who"> Who</label>
+                <label><input type="radio" name="q16" value="Where"> Where</label>
+            </div>
+            <span class="feedback" id="fb16"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">17. ______ do you prefer: tea or coffee?</div>
+            <div class="answer-line">
+                <input type="text" class="q17" placeholder="Sua resposta..." style="width: 150px;">
+                <span class="feedback" id="fb17"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 De quem é este carro?</div>
+            <div class="translation-box">
+                <input type="text" class="q18" placeholder="Tradução em inglês..." style="width: 450px;">
+                <span class="feedback" id="fb18"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">19. ______ are you late?</div>
+            <div class="options">
+                <label><input type="radio" name="q19" value="What"> What</label>
+                <label><input type="radio" name="q19" value="Why"> Why</label>
+                <label><input type="radio" name="q19" value="When"> When</label>
+            </div>
+            <span class="feedback" id="fb19"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">20. ______ coffee do you drink every day?</div>
+            <div class="answer-line">
+                <input type="text" class="q20" placeholder="Sua resposta..." style="width: 150px;">
+                <span class="feedback" id="fb20"></span>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-success" onclick="checkMixedExercise()">Verificar Respostas</button>
+        </div>
+        <div class="section-result" id="resultMixed"></div>
+    </div>
+
+    <!-- ==================== BOTÕES GLOBAIS ==================== -->
+    <div class="button-group">
+        <button class="btn btn-danger" onclick="checkAllExercises()">✅ Verificar Todos os Exercícios</button>
+        <button class="btn btn-secondary" onclick="resetAllExercises()">🔄 Resetar Todos</button>
+    </div>
+
+    <div class="score-display" id="globalScore">
+        Total: <span id="scoreCount">0</span> / <span id="totalCount">0</span> corretas
+    </div>
+    <div class="result-box" id="globalResult"></div>
+
+    <script>
+        const answers = {
+            select: ['What', 'Where', 'Whose', 'Why', 'How often'],
+            complete: ['what', 'where', 'what', 'how', 'how many'],
+            translations: [
+                'what is your name',
+                'where do you live',
+                'how old are you',
+                'why are you sad',
+                'how often do you practice sports'
+            ],
+            mixed: ['Who', 'which', 'whose car is this', 'Why', 'How much']
+        };
+
+        function normalize(text) {
+            return text.toLowerCase().trim().replace(/\s+/g, ' ');
+        }
+
+        function checkSelectExercise() {
+            let correct = 0;
+            const total = 5;
+            for (let i = 1; i <= total; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                const fb = document.getElementById(`fb${i}`);
+                if (selected) {
+                    const isCorrect = selected.value === answers.select[i-1];
+                    fb.textContent = isCorrect ? '✓ Correto' : '✗ Incorreto';
+                    fb.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                    if (isCorrect) correct++;
+                } else {
+                    fb.textContent = '⚠️ Selecione uma opção';
+                    fb.className = 'feedback waiting';
+                }
+            }
+            showSectionResult('resultSelect', correct, total);
+        }
+
+        function checkCompleteExercise() {
+            let correct = 0;
+            const total = 5;
+            for (let i = 6; i <= 10; i++) {
+                const input = document.querySelector(`.q${i}`);
+                const fb = document.getElementById(`fb${i}`);
+                if (input) {
+                    const userAnswer = normalize(input.value);
+                    const isCorrect = userAnswer === answers.complete[i-6];
+                    fb.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                    fb.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                    if (isCorrect) correct++;
+                }
+            }
+            showSectionResult('resultComplete', correct, total);
+        }
+
+        function checkTranslationExercise() {
+            let correct = 0;
+            const total = 5;
+            for (let i = 11; i <= 15; i++) {
+                const input = document.querySelector(`.q${i}`);
+                const fb = document.getElementById(`fb${i}`);
+                if (input) {
+                    const userAnswer = normalize(input.value);
+                    const isCorrect = userAnswer === answers.translations[i-11];
+                    fb.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                    fb.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                    if (isCorrect) correct++;
+                }
+            }
+            showSectionResult('resultTranslation', correct, total);
+        }
+
+        function checkMixedExercise() {
+            let correct = 0;
+            const total = 5;
+            
+            // Q16
+            const selected16 = document.querySelector(`input[name="q16"]:checked`);
+            const fb16 = document.getElementById('fb16');
+            if (selected16) {
+                const isCorrect = selected16.value === answers.mixed[0];
+                fb16.textContent = isCorrect ? '✓ Correto' : '✗ Incorreto';
+                fb16.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                if (isCorrect) correct++;
+            } else {
+                fb16.textContent = '⚠️ Selecione uma opção';
+                fb16.className = 'feedback waiting';
+            }
+
+            // Q17
+            const input17 = document.querySelector('.q17');
+            const fb17 = document.getElementById('fb17');
+            if (input17) {
+                const userAnswer = normalize(input17.value);
+                const isCorrect = userAnswer === answers.mixed[1];
+                fb17.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                fb17.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                if (isCorrect) correct++;
+            }
+
+            // Q18
+            const input18 = document.querySelector('.q18');
+            const fb18 = document.getElementById('fb18');
+            if (input18) {
+                const userAnswer = normalize(input18.value);
+                const isCorrect = userAnswer === answers.mixed[2];
+                fb18.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                fb18.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                if (isCorrect) correct++;
+            }
+
+            // Q19
+            const selected19 = document.querySelector(`input[name="q19"]:checked`);
+            const fb19 = document.getElementById('fb19');
+            if (selected19) {
+                const isCorrect = selected19.value === answers.mixed[3];
+                fb19.textContent = isCorrect ? '✓ Correto' : '✗ Incorreto';
+                fb19.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                if (isCorrect) correct++;
+            } else {
+                fb19.textContent = '⚠️ Selecione uma opção';
+                fb19.className = 'feedback waiting';
+            }
+
+            // Q20
+            const input20 = document.querySelector('.q20');
+            const fb20 = document.getElementById('fb20');
+            if (input20) {
+                const userAnswer = normalize(input20.value);
+                const isCorrect = userAnswer === answers.mixed[4];
+                fb20.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                fb20.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                if (isCorrect) correct++;
+            }
+
+            showSectionResult('resultMixed', correct, total);
+        }
+
+        function showSectionResult(elementId, correct, total) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.textContent = `Você acertou ${correct} de ${total} (${Math.round(correct/total*100)}%)`;
+                element.className = `section-result ${correct === total ? 'correct' : (correct > 0 ? 'partial' : 'incorrect')}`;
+            }
+            updateGlobalScore();
+        }
+
+        function updateGlobalScore() {
+            let correct = 0;
+            let total = 0;
+            document.querySelectorAll('.feedback').forEach(fb => {
+                if (fb.textContent.includes('✓')) {
+                    correct++;
+                    total++;
+                } else if (fb.textContent.includes('✗') || fb.textContent.includes('⚠️')) {
+                    total++;
+                }
+            });
+            document.getElementById('scoreCount').textContent = correct;
+            document.getElementById('totalCount').textContent = total;
+        }
+
+        function checkAllExercises() {
+            checkSelectExercise();
+            checkCompleteExercise();
+            checkTranslationExercise();
+            checkMixedExercise();
+            const total = document.querySelectorAll('.feedback').length;
+            const correct = document.querySelectorAll('.feedback.correct').length;
+            const result = document.getElementById('globalResult');
+            result.textContent = `🎯 Você acertou ${correct} de ${total} questões (${Math.round(correct/total*100)}%)`;
+            result.className = `result-box ${correct === total ? 'correct' : (correct > total/2 ? 'partial' : 'incorrect')}`;
+        }
+
+        function resetAllExercises() {
+            document.querySelectorAll('input[type="radio"]').forEach(el => el.checked = false);
+            document.querySelectorAll('input[type="text"]').forEach(el => el.value = '');
+            document.querySelectorAll('.feedback').forEach(el => {
+                el.textContent = '';
+                el.className = 'feedback';
+            });
+            document.querySelectorAll('.section-result').forEach(el => {
+                el.textContent = '';
+                el.className = 'section-result';
+            });
+            const result = document.getElementById('globalResult');
+            result.textContent = '';
+            result.className = 'result-box';
+            updateGlobalScore();
+        }
+
+        document.querySelectorAll('input[type="text"]').forEach(input => {
+            input.addEventListener('input', updateGlobalScore);
+        });
+        document.querySelectorAll('input[type="radio"]').forEach(input => {
+            input.addEventListener('change', updateGlobalScore);
+        });
+
+        updateGlobalScore();
+    </script>
+</body>
+</html>

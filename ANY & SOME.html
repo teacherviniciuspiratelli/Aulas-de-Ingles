@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprendendo SOME e ANY</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #4b6cb7, #182848);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        section {
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            color: #4b6cb7;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .rule-card {
+            background-color: #f9f9f9;
+            border-left: 4px solid #4b6cb7;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .example {
+            background-color: #eef5ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        .example p {
+            margin-bottom: 10px;
+        }
+        
+        .highlight {
+            background-color: #ffeb3b;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .exercise {
+            background-color: #f0f8ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .question {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        input[type="text"] {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            margin-top: 5px;
+        }
+        
+        button {
+            background-color: #4b6cb7;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #3a5795;
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .correct {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #c8e6c9;
+        }
+        
+        .incorrect {
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ffcdd2;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f1f1f1;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Aprendendo SOME e ANY</h1>
+            <p class="subtitle">Guia completo com explicações, exemplos e exercícios</p>
+        </header>
+        
+        <div class="content">
+            <section id="introduction">
+                <h2>Introdução</h2>
+                <p>As palavras <strong>"some"</strong> e <strong>"any"</strong> são quantificadores em inglês que usamos para nos referir a quantidades indefinidas. Elas são frequentemente usadas em frases afirmativas, negativas e interrogativas, mas com regras específicas.</p>
+            </section>
+            
+            <section id="some">
+                <h2>Quando usar SOME</h2>
+                
+                <div class="rule-card">
+                    <h3>1. Em frases afirmativas</h3>
+                    <p>Usamos "some" em frases afirmativas para nos referir a quantidades indefinidas.</p>
+                    <div class="example">
+                        <p>• I have <span class="highlight">some</span> friends in Brazil.</p>
+                        <p>• There is <span class="highlight">some</span> milk in the fridge.</p>
+                        <p>• She bought <span class="highlight">some</span> apples at the market.</p>
+                    </div>
+                </div>
+                
+                <div class="rule-card">
+                    <h3>2. Em perguntas quando oferecemos algo, sugerimos ou pedimos algo</h3>
+                    <p>Usamos "some" em perguntas quando estamos oferecendo algo, sugerindo ou fazendo um pedido educado.</p>
+                    <div class="example">
+                        <p>• Would you like <span class="highlight">some</span> coffee? (oferta)</p>
+                        <p>• Can I have <span class="highlight">some</span> water, please? (pedido)</p>
+                        <p>• Could you give me <span class="highlight">some</span> information? (pedido)</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="any">
+                <h2>Quando usar ANY</h2>
+                
+                <div class="rule-card">
+                    <h3>1. Em frases negativas</h3>
+                    <p>Usamos "any" em frases negativas para nos referir a quantidades indefinidas.</p>
+                    <div class="example">
+                        <p>• I don't have <span class="highlight">any</span> money.</p>
+                        <p>• There isn't <span class="highlight">any</span> sugar left.</p>
+                        <p>• She doesn't know <span class="highlight">any</span> famous people.</p>
+                    </div>
+                </div>
+                
+                <div class="rule-card">
+                    <h3>2. Na maioria das perguntas</h3>
+                    <p>Usamos "any" na maioria das perguntas, exceto quando oferecemos algo ou fazemos um pedido.</p>
+                    <div class="example">
+                        <p>• Do you have <span class="highlight">any</span> brothers or sisters?</p>
+                        <p>• Is there <span class="highlight">any</span> bread in the kitchen?</p>
+                        <p>• Did you buy <span class="highlight">any</span> vegetables?</p>
+                    </div>
+                </div>
+                
+                <div class="rule-card">
+                    <h3>3. Com o significado de "qualquer"</h3>
+                    <p>Usamos "any" com o significado de "qualquer" em frases afirmativas.</p>
+                    <div class="example">
+                        <p>• You can choose <span class="highlight">any</span> book you like.</p>
+                        <p>• Come and visit us <span class="highlight">any</span> time.</p>
+                        <p>• <span class="highlight">Any</span> student can participate in the contest.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="summary">
+                <h2>Resumo das Regras</h2>
+                <div class="example">
+                    <p><strong>AFIRMATIVAS:</strong> Usamos <span class="highlight">SOME</span> ou Usamos <span class="highlight">ANY</span> (somente para QUALQUER)</p>
+                    <p><strong>NEGATIVAS:</strong> Usamos <span class="highlight">ANY</span></p>
+                    <p><strong>PERGUNTAS:</strong> Geralmente usamos <span class="highlight">ANY</span>, exceto quando:</p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Oferecemos, sugerimos ou fazemos um pedido: <span class="highlight">SOME</span></li>
+                                   </ul>
+                </div>
+            </section>
+            
+            <section id="practice">
+                <h2>Exercícios Práticos</h2>
+                <p>Complete as frases com "some" ou "any":</p>
+                
+                <div class="exercise">
+                    <div class="question">
+                        <p>1. I need to buy _____ groceries for dinner.</p>
+                        <input type="text" id="q1" placeholder="Digite sua resposta">
+                    </div>
+                    
+                    <div class="question">
+                        <p>2. There aren't _____ students in the classroom.</p>
+                        <input type="text" id="q2" placeholder="Digite sua resposta">
+                    </div>
+                    
+                    <div class="question">
+                        <p>3. Would you like _____ tea?</p>
+                        <input type="text" id="q3" placeholder="Digite sua resposta">
+                    </div>
+                    
+                    <div class="question">
+                        <p>4. Do you have _____ plans for the weekend?</p>
+                        <input type="text" id="q4" placeholder="Digite sua resposta">
+                    </div>
+                    
+                    <div class="question">
+                        <p>5. She doesn't have _____ brothers or sisters.</p>
+                        <input type="text" id="q5" placeholder="Digite sua resposta">
+                    </div>
+                    
+                    <div class="question">
+                        <p>6. Can I have _____ water, please?</p>
+                        <input type="text" id="q6" placeholder="Digite sua resposta">
+                    </div>
+                    
+                    <div class="question">
+                        <p>7. We saw _____ beautiful flowers in the garden.</p>
+                        <input type="text" id="q7" placeholder="Digite sua resposta">
+                    </div>
+                    
+                    <div class="question">
+                        <p>8. Is there _____ milk in the fridge?</p>
+                        <input type="text" id="q8" placeholder="Digite sua resposta">
+                    </div>
+                    
+                    <div class="question">
+                        <p>9. You can choose _____ color you want.</p>
+                        <input type="text" id="q9" placeholder="Digite sua resposta">
+                    </div>
+                    
+                    <div class="question">
+                        <p>10. I have _____ important news to share.</p>
+                        <input type="text" id="q10" placeholder="Digite sua resposta">
+                    </div>
+                    
+                    <button id="checkAnswers">Verificar Respostas</button>
+                    
+                    <div class="result" id="result">
+                        <!-- Resultado será inserido aqui -->
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <footer>
+            <p>Material de ensino de Inglês - SOME e ANY</p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('checkAnswers').addEventListener('click', function() {
+            const answers = {
+                q1: 'some',
+                q2: 'any',
+                q3: 'some',
+                q4: 'any',
+                q5: 'any',
+                q6: 'some',
+                q7: 'some',
+                q8: 'any',
+                q9: 'any',
+                q10: 'some'
+            };
+            
+            let correctCount = 0;
+            let resultHTML = '<h3>Resultado:</h3><ul>';
+            
+            for (let i = 1; i <= 10; i++) {
+                const questionId = 'q' + i;
+                const userAnswer = document.getElementById(questionId).value.trim().toLowerCase();
+                const correctAnswer = answers[questionId];
+                
+                if (userAnswer === correctAnswer) {
+                    correctCount++;
+                    resultHTML += `<li>Pergunta ${i}: <span style="color: green;">✓ Correto!</span></li>`;
+                } else {
+                    resultHTML += `<li>Pergunta ${i}: <span style="color: red;">✗ Incorreto. A resposta correta é "${correctAnswer}".</span></li>`;
+                }
+            }
+            
+            resultHTML += `</ul><p><strong>Total: ${correctCount}/10 acertos</strong></p>`;
+            
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = resultHTML;
+            
+            if (correctCount >= 8) {
+                resultDiv.className = 'result correct';
+                resultHTML += '<p>Parabéns! Você compreendeu bem o uso de SOME e ANY!</p>';
+            } else if (correctCount >= 5) {
+                resultDiv.className = 'result correct';
+                resultHTML += '<p>Bom trabalho! Revise as regras e tente novamente para melhorar.</p>';
+            } else {
+                resultDiv.className = 'result incorrect';
+                resultHTML += '<p>Estude mais as regras e tente novamente. Você consegue!</p>';
+            }
+            
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = resultHTML;
+        });
+    </script>
+</body>
+</html>

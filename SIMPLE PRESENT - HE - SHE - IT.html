@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Present - HE/SHE/IT</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        section {
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            color: #e74c3c;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        h3 {
+            color: #2c3e50;
+            margin: 15px 0 10px 0;
+        }
+        
+        .rule-card {
+            background-color: #f9f9f9;
+            border-left: 4px solid #e74c3c;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .example {
+            background-color: #fdedec;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        .example p {
+            margin-bottom: 10px;
+        }
+        
+        .highlight {
+            background-color: #f9b4b4;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .rule-highlight {
+            background-color: #f9e79f;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .exercise {
+            background-color: #fdf0ef;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .question {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            margin-top: 5px;
+        }
+        
+        input[type="text"] {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            margin-top: 5px;
+        }
+        
+        button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background-color: #c0392b;
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .correct {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #c8e6c9;
+        }
+        
+        .incorrect {
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ffcdd2;
+        }
+        
+        .conjugation-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .conjugation-table th {
+            background-color: #e74c3c;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .conjugation-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .conjugation-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .conjugation-table tr:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .rules-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .rule-card-special {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border-top: 4px solid #e74c3c;
+        }
+        
+        .rule-card-special h3 {
+            color: #e74c3c;
+            margin-bottom: 15px;
+        }
+        
+        .tip-box {
+            background-color: #e8f6f3;
+            border-left: 4px solid #1abc9c;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .warning-box {
+            background-color: #fdebd0;
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .pronunciation-box {
+            background-color: #e8f4f8;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .examples-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .examples-column {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .examples-column h3 {
+            text-align: center;
+            color: #e74c3c;
+            margin-bottom: 15px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f1f1f1;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .rules-grid, .examples-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .conjugation-table {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>SIMPLE PRESENT - HE/SHE/IT</h1>
+            <p class="subtitle">Regras do S, ES e IES para a terceira pessoa do singular</p>
+        </header>
+        
+        <div class="content">
+            <section id="introduction">
+                <h2>Introdução</h2>
+                <p>No <strong>Simple Present</strong> (Presente Simples), a terceira pessoa do singular (HE, SHE, IT) tem uma conjugação especial: adicionamos <strong>-S</strong>, <strong>-ES</strong> ou <strong>-IES</strong> ao final do verbo. Esta é uma das regras mais importantes do inglês!</p>
+                
+                <div class="example">
+                    <p>• I work → <span class="highlight">He works</span></p>
+                    <p>• You study → <span class="highlight">She studies</span></p>
+                    <p>• We watch → <span class="highlight">It watches</span></p>
+                </div>
+            </section>
+            
+            <section id="basic-rule">
+                <h2>A Regra Básica: -S</h2>
+                
+                <div class="rule-card">
+                    <h3>Para a maioria dos verbos</h3>
+                    <p>Simplesmente adicionamos <span class="rule-highlight">-S</span> ao final do verbo:</p>
+                    <div class="example">
+                        <p>• work → <span class="highlight">works</span></p>
+                        <p>• play → <span class="highlight">plays</span></p>
+                        <p>• run → <span class="highlight">runs</span></p>
+                        <p>• like → <span class="highlight">likes</span></p>
+                        <p>• eat → <span class="highlight">eats</span></p>
+                    </div>
+                </div>
+                
+                <div class="conjugation-table">
+                    <thead>
+                        <tr>
+                            <th>Pronome</th>
+                            <th>Verbo</th>
+                            <th>Exemplo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>I, You, We, They</td>
+                            <td>work</td>
+                            <td>I work every day.</td>
+                        </tr>
+                        <tr>
+                            <td>He, She, It</td>
+                            <td>works</td>
+                            <td>He works every day.</td>
+                        </tr>
+                        <tr>
+                            <td>I, You, We, They</td>
+                            <td>like</td>
+                            <td>They like pizza.</td>
+                        </tr>
+                        <tr>
+                            <td>He, She, It</td>
+                            <td>likes</td>
+                            <td>She likes pizza.</td>
+                        </tr>
+                    </tbody>
+                </div>
+            </section>
+            
+            <section id="special-rules">
+                <h2>Regras Especiais</h2>
+                
+                <div class="rules-grid">
+                    <div class="rule-card-special">
+                        <h3>Regra do -ES</h3>
+                        <p>Verbos terminados em:</p>
+                        <ul style="text-align: left; margin-top: 10px;">
+                            <li><strong>-SS</strong></li>
+                            <li><strong>-SH</strong></li>
+                            <li><strong>-CH</strong></li>
+                            <li><strong>-X</strong></li>
+                            <li><strong>-O</strong></li>
+                            <li><strong>-Z</strong></li>
+                        </ul>
+                        <div class="example">
+                            <p>watch → <span class="highlight">watches</span></p>
+                            <p>go → <span class="highlight">goes</span></p>
+                            <p>fix → <span class="highlight">fixes</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule-card-special">
+                        <h3>Regra do -IES</h3>
+                        <p>Verbos terminados em <strong>-Y</strong> precedido de consoante:</p>
+                        <p style="margin: 10px 0;">Removemos o -Y e adicionamos -IES</p>
+                        <div class="example">
+                            <p>study → <span class="highlight">studies</span></p>
+                            <p>try → <span class="highlight">tries</span></p>
+                            <p>fly → <span class="highlight">flies</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule-card-special">
+                        <h3>Exceção do -Y</h3>
+                        <p>Verbos terminados em <strong>-Y</strong> precedido de vogal:</p>
+                        <p style="margin: 10px 0;">Apenas adicionamos -S</p>
+                        <div class="example">
+                            <p>play → <span class="highlight">plays</span></p>
+                            <p>buy → <span class="highlight">buys</span></p>
+                            <p>enjoy → <span class="highlight">enjoys</span></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="detailed-examples">
+                <h2>Exemplos Detalhados</h2>
+                
+                <div class="examples-grid">
+                    <div class="examples-column">
+                        <h3>Verbos com -ES</h3>
+                        <div class="example">
+                            <p><strong>watch</strong> → He <span class="highlight">watches</span> TV</p>
+                            <p><strong>wash</strong> → She <span class="highlight">washes</span> the car</p>
+                            <p><strong>go</strong> → It <span class="highlight">goes</span> fast</p>
+                            <p><strong>do</strong> → He <span class="highlight">does</span> homework</p>
+                            <p><strong>fix</strong> → She <span class="highlight">fixes</span> computers</p>
+                            <p><strong>kiss</strong> → He <span class="highlight">kisses</span> his mother</p>
+                        </div>
+                    </div>
+                    
+                    <div class="examples-column">
+                        <h3>Verbos com -IES</h3>
+                        <div class="example">
+                            <p><strong>study</strong> → She <span class="highlight">studies</span> English</p>
+                            <p><strong>try</strong> → He <span class="highlight">tries</span> hard</p>
+                            <p><strong>fly</strong> → It <span class="highlight">flies</span> high</p>
+                            <p><strong>cry</strong> → She <span class="highlight">cries</span> every day</p>
+                            <p><strong>carry</strong> → He <span class="highlight">carries</span> the bag</p>
+                            <p><strong>worry</strong> → She <span class="highlight">worries</span> a lot</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="pronunciation">
+                <h2>Pronúncia do -S</h2>
+                
+                <div class="pronunciation-box">
+                    <h3>Três sons diferentes para o -S</h3>
+                    
+                    <div class="rule-card">
+                        <h3>Som /s/ (surdo)</h3>
+                        <p>Após consoantes surdas: <strong>p, t, k, f, θ</strong></p>
+                        <div class="example">
+                            <p>• works → /wɜːr<strong>ks</strong>/</p>
+                            <p>• stops → /stɒ<strong>ps</strong>/</p>
+                            <p>• likes → /laɪ<strong>ks</strong>/</p>
+                            <p>• laughs → /læ<strong>fs</strong>/</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule-card">
+                        <h3>Som /z/ (sonoro)</h3>
+                        <p>Após vogais e consoantes sonoras: <strong>b, d, g, v, ð, l, m, n, ŋ, r</strong></p>
+                        <div class="example">
+                            <p>• plays → /pleɪ<strong>z</strong>/</p>
+                            <p>• goes → /ɡəʊ<strong>z</strong>/</p>
+                            <p>• lives → /lɪ<strong>vz</strong>/</p>
+                            <p>• runs → /rʌ<strong>nz</strong>/</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule-card">
+                        <h3>Som /ɪz/</h3>
+                        <p>Após os sons: <strong>s, z, ʃ, ʒ, tʃ, dʒ</strong></p>
+                        <div class="example">
+                            <p>• watches → /ˈwɒtʃ<strong>ɪz</strong>/</p>
+                            <p>• misses → /ˈmɪs<strong>ɪz</strong>/</p>
+                            <p>• fixes → /ˈfɪks<strong>ɪz</strong>/</p>
+                            <p>• washes → /ˈwɒʃ<strong>ɪz</strong>/</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="common-mistakes">
+                <h2>Erros Comuns e Dicas</h2>
+                
+                <div class="warning-box">
+                    <h3>⚠️ Cuidado com os verbos irregulares!</h3>
+                    <p>Alguns verbos são irregulares na terceira pessoa:</p>
+                    <div class="example">
+                        <p>• have → <span class="highlight">has</span></p>
+                        <p>• do → <span class="highlight">does</span></p>
+                        <p>• go → <span class="highlight">goes</span></p>
+                        <p>• be → <span class="highlight">is</span></p>
+                    </div>
+                </div>
+                
+                <div class="tip-box">
+                    <h3>🎯 Dica de Memorização</h3>
+                    <p>Lembre-se da frase: <strong>"She misses the bus that goes to school where she studies"</strong></p>
+                    <p>Esta frase contém 3 verbos com regras diferentes:</p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li><strong>miss</strong> + ES → misses</li>
+                        <li><strong>go</strong> + ES → goes</li>
+                        <li><strong>study</strong> + IES → studies</li>
+                    </ul>
+                </div>
+                
+                <div class="tip-box">
+                    <h3>💡 Verbos que terminam em -Y</h3>
+                    <p>Para saber se usa -S ou -IES, veja a letra ANTES do -Y:</p>
+                    <div class="example">
+                        <p>• Consoante + Y = <strong>IES</strong><br>
+                           study (d = consoante) → studies</p>
+                        <p>• Vogal + Y = <strong>S</strong><br>
+                           play (a = vogal) → plays</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="practice">
+                <h2>Exercícios Práticos</h2>
+                <p>Complete as frases com a forma correta do verbo para HE, SHE ou IT:</p>
+                
+                <div class="exercise">
+                    <div class="question">
+                        <p>1. She __________ (work) in an office.</p>
+                        <input type="text" id="q1" placeholder="Digite a forma correta">
+                    </div>
+                    
+                    <div class="question">
+                        <p>2. He __________ (study) English every day.</p>
+                        <input type="text" id="q2" placeholder="Digite a forma correta">
+                    </div>
+                    
+                    <div class="question">
+                        <p>3. It __________ (watch) TV all night.</p>
+                        <input type="text" id="q3" placeholder="Digite a forma correta">
+                    </div>
+                    
+                    <div class="question">
+                        <p>4. She __________ (go) to school by bus.</p>
+                        <input type="text" id="q4" placeholder="Digite a forma correta">
+                    </div>
+                    
+                    <div class="question">
+                        <p>5. He __________ (play) soccer on weekends.</p>
+                        <input type="text" id="q5" placeholder="Digite a forma correta">
+                    </div>
+                    
+                    <div class="question">
+                        <p>6. She __________ (wash) the dishes.</p>
+                        <input type="text" id="q6" placeholder="Digite a forma correta">
+                    </div>
+                    
+                    <div class="question">
+                        <p>7. He __________ (try) to learn French.</p>
+                        <input type="text" id="q7" placeholder="Digite a forma correta">
+                    </div>
+                    
+                    <div class="question">
+                        <p>8. It __________ (fly) very high.</p>
+                        <input type="text" id="q8" placeholder="Digite a forma correta">
+                    </div>
+                    
+                    <div class="question">
+                        <p>9. She __________ (do) her homework.</p>
+                        <input type="text" id="q9" placeholder="Digite a forma correta">
+                    </div>
+                    
+                    <div class="question">
+                        <p>10. He __________ (have) a big house.</p>
+                        <input type="text" id="q10" placeholder="Digite a forma correta">
+                    </div>
+                    
+                    <button id="checkAnswers">Verificar Respostas</button>
+                    
+                    <div class="result" id="result">
+                        <!-- Resultado será inserido aqui -->
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <footer>
+            <p>Material de ensino de Inglês - Simple Present (HE/SHE/IT)</p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('checkAnswers').addEventListener('click', function() {
+            const answers = {
+                q1: 'works',
+                q2: 'studies',
+                q3: 'watches',
+                q4: 'goes',
+                q5: 'plays',
+                q6: 'washes',
+                q7: 'tries',
+                q8: 'flies',
+                q9: 'does',
+                q10: 'has'
+            };
+            
+            let correctCount = 0;
+            let resultHTML = '<h3>Resultado:</h3><ul>';
+            
+            for (let i = 1; i <= 10; i++) {
+                const questionId = 'q' + i;
+                const userAnswer = document.getElementById(questionId).value.trim().toLowerCase();
+                const correctAnswer = answers[questionId];
+                
+                if (userAnswer === correctAnswer) {
+                    correctCount++;
+                    resultHTML += `<li>Pergunta ${i}: <span style="color: green;">✓ Correto!</span></li>`;
+                } else {
+                    resultHTML += `<li>Pergunta ${i}: <span style="color: red;">✗ Incorreto. A resposta correta é "${correctAnswer}".</span></li>`;
+                }
+            }
+            
+            resultHTML += `</ul><p><strong>Total: ${correctCount}/10 acertos</strong></p>`;
+            
+            const resultDiv = document.getElementById('result');
+            
+            if (correctCount >= 8) {
+                resultDiv.className = 'result correct';
+                resultHTML += '<p>Parabéns! Você domina as regras do -S, -ES e -IES!</p>';
+            } else if (correctCount >= 5) {
+                resultDiv.className = 'result correct';
+                resultHTML += '<p>Bom trabalho! Revise as regras e tente novamente.</p>';
+            } else {
+                resultDiv.className = 'result incorrect';
+                resultHTML += '<p>Estude mais as regras e tente novamente. Você consegue!</p>';
+            }
+            
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = resultHTML;
+        });
+    </script>
+</body>
+</html>

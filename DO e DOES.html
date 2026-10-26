@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprendendo DO e DOES</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        section {
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            color: #9b59b6;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        h3 {
+            color: #2c3e50;
+            margin: 15px 0 10px 0;
+        }
+        
+        .rule-card {
+            background-color: #f9f9f9;
+            border-left: 4px solid #9b59b6;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .example {
+            background-color: #f4ecf7;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        .example p {
+            margin-bottom: 10px;
+        }
+        
+        .highlight {
+            background-color: #d7bde2;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .negative {
+            background-color: #fadbd8;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .exercise {
+            background-color: #faf4fb;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .question {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            margin-top: 5px;
+        }
+        
+        input[type="text"] {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            margin-top: 5px;
+        }
+        
+        button {
+            background-color: #9b59b6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background-color: #8e44ad;
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .correct {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #c8e6c9;
+        }
+        
+        .incorrect {
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ffcdd2;
+        }
+        
+        .conjugation-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .conjugation-table th {
+            background-color: #9b59b6;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .conjugation-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .conjugation-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .conjugation-table tr:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .forms-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .form-card {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border-top: 4px solid #9b59b6;
+        }
+        
+        .form-card h3 {
+            color: #9b59b6;
+            margin-bottom: 15px;
+        }
+        
+        .tip-box {
+            background-color: #e8f6f3;
+            border-left: 4px solid #1abc9c;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .warning-box {
+            background-color: #fdebd0;
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .comparison-card {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .comparison-card h3 {
+            text-align: center;
+            color: #9b59b6;
+            margin-bottom: 15px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f1f1f1;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .forms-grid, .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .conjugation-table {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>DO e DOES</h1>
+            <p class="subtitle">Auxiliares para perguntas e negativas no Present Simple</p>
+        </header>
+        
+        <div class="content">
+            <section id="introduction">
+                <h2>Introdução</h2>
+                <p>Os auxiliares <strong>DO</strong> e <strong>DOES</strong> são usados para formar perguntas e frases negativas no <strong>Present Simple</strong> (tempo presente simples). Eles funcionam como verbos auxiliares que não têm significado próprio, mas são essenciais para a estrutura gramatical.</p>
+                
+                <div class="example">
+                    <p>• <span class="highlight">Do</span> you like pizza? (Você gosta de pizza?)</p>
+                    <p>• <span class="highlight">Does</span> she live here? (Ela mora aqui?)</p>
+                    <p>• I <span class="highlight">don't</span> understand. (Eu não entendo.)</p>
+                    <p>• He <span class="highlight">doesn't</span> work on weekends. (Ele não trabalha nos fins de semana.)</p>
+                </div>
+            </section>
+            
+            <section id="when-to-use">
+                <h2>Quando Usar DO e DOES</h2>
+                
+                <div class="comparison-grid">
+                    <div class="comparison-card">
+                        <h3>DO</h3>
+                        <p>Usamos <strong>DO</strong> com:</p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>I</li>
+                            <li>You</li>
+                            <li>We</li>
+                            <li>They</li>
+                            <li>Nomes no plural</li>
+                        </ul>
+                        <div class="example">
+                            <p>• <strong>Do</strong> you like coffee?</p>
+                            <p>• <strong>Do</strong> they play soccer?</p>
+                            <p>• <strong>Do</strong> Maria and João study here?</p>
+                        </div>
+                    </div>
+                    
+                    <div class="comparison-card">
+                        <h3>DOES</h3>
+                        <p>Usamos <strong>DOES</strong> com:</p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>He</li>
+                            <li>She</li>
+                            <li>It</li>
+                            <li>Nomes no singular</li>
+                        </ul>
+                        <div class="example">
+                            <p>• <strong>Does</strong> he work here?</p>
+                            <p>• <strong>Does</strong> she speak English?</p>
+                            <p>• <strong>Does</strong> your brother live nearby?</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="forms">
+                <h2>Formas do DO/DOES</h2>
+                
+                <div class="forms-grid">
+                    <div class="form-card">
+                        <h3>Forma Afirmativa</h3>
+                        <p>NÃO usamos DO/DOES na afirmativa!</p>
+                        <div class="example">
+                            <p>I <strong>work</strong> every day.</p>
+                            <p>She <strong>works</strong> in an office.</p>
+                            <p>They <strong>study</strong> English.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-card">
+                        <h3>Forma Negativa</h3>
+                        <p>Sujeito + DO/DOES + NOT + verbo principal</p>
+                        <div class="example">
+                            <p>I <strong>do not</strong> like coffee.</p>
+                            <p>He <strong>does not</strong> work here.</p>
+                            <p>We <strong>do not</strong> understand.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-card">
+                        <h3>Forma Interrogativa</h3>
+                        <p>DO/DOES + sujeito + verbo principal</p>
+                        <div class="example">
+                            <p><strong>Do</strong> you live here?</p>
+                            <p><strong>Does</strong> she speak Spanish?</p>
+                            <p><strong>Do</strong> they like music?</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="contractions">
+                <h2>Contrações</h2>
+                
+                <div class="rule-card">
+                    <h3>Contrações Negativas</h3>
+                    <p>As formas negativas são frequentemente contraídas no inglês falado e escrito:</p>
+                    <div class="example">
+                        <p>• do not → <span class="negative">don't</span></p>
+                        <p>• does not → <span class="negative">doesn't</span></p>
+                    </div>
+                    
+                    <div class="example">
+                        <p>• I <strong>don't</strong> like horror movies.</p>
+                        <p>• She <strong>doesn't</strong> work on Sundays.</p>
+                        <p>• They <strong>don't</strong> live here anymore.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="rules">
+                <h2>Regras Importantes</h2>
+                
+                <div class="rule-card">
+                    <h3>1. O verbo principal volta para a forma base</h3>
+                    <p>Quando usamos DO/DOES, o verbo principal <strong>nunca</strong> leva -s, -es ou -ies, mesmo com HE, SHE, IT:</p>
+                    <div class="example">
+                        <p>• <span class="highlight">Does she work</span> here? (✓)<br>
+                           <span class="negative">Does she works here?</span> (✗)</p>
+                    </div>
+                </div>
+                
+                <div class="rule-card">
+                    <h3>2. Respostas Curtas</h3>
+                    <p>Podemos responder perguntas com DO/DOES usando respostas curtas:</p>
+                    <div class="example">
+                        <p>• "<strong>Do</strong> you like pizza?"<br>
+                           "Yes, I <strong>do</strong>. / No, I <strong>don't</strong>."</p>
+                        <p>• "<strong>Does</strong> he speak English?"<br>
+                           "Yes, he <strong>does</strong>. / No, he <strong>doesn't</strong>."</p>
+                    </div>
+                </div>
+                
+                <div class="rule-card">
+                    <h3>3. Palavras WH- com DO/DOES</h3>
+                    <p>Quando usamos palavras interrogativas (what, where, when, why, how), DO/DOES vem depois:</p>
+                    <div class="example">
+                        <p>• <strong>What do</strong> you do? (O que você faz?)</p>
+                        <p>• <strong>Where does</strong> she live? (Onde ela mora?)</p>
+                        <p>• <strong>When do</strong> they arrive? (Quando eles chegam?)</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="examples">
+                <h2>Exemplos Completos</h2>
+                
+                <table class="conjugation-table">
+                    <thead>
+                        <tr>
+                            <th>Pronome</th>
+                            <th>Afirmativa</th>
+                            <th>Negativa</th>
+                            <th>Pergunta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>I</td>
+                            <td>I work</td>
+                            <td>I don't work</td>
+                            <td>Do I work?</td>
+                        </tr>
+                        <tr>
+                            <td>You</td>
+                            <td>You work</td>
+                            <td>You don't work</td>
+                            <td>Do you work?</td>
+                        </tr>
+                        <tr>
+                            <td>He</td>
+                            <td>He works</td>
+                            <td>He doesn't work</td>
+                            <td>Does he work?</td>
+                        </tr>
+                        <tr>
+                            <td>She</td>
+                            <td>She works</td>
+                            <td>She doesn't work</td>
+                            <td>Does she work?</td>
+                        </tr>
+                        <tr>
+                            <td>It</td>
+                            <td>It works</td>
+                            <td>It doesn't work</td>
+                            <td>Does it work?</td>
+                        </tr>
+                        <tr>
+                            <td>We</td>
+                            <td>We work</td>
+                            <td>We don't work</td>
+                            <td>Do we work?</td>
+                        </tr>
+                        <tr>
+                            <td>They</td>
+                            <td>They work</td>
+                            <td>They don't work</td>
+                            <td>Do they work?</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            
+            <section id="tips">
+                <h2>Dicas Importantes</h2>
+                
+                <div class="tip-box">
+                    <h3>🎯 Quando NÃO usar DO/DOES</h3>
+                    <p>Não usamos DO/DOES com:</p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Verbo TO BE (am, is, are)</li>
+                        <li>Verbos modais (can, could, should, would, etc.)</li>
+                    </ul>
+                    <div class="example">
+                        <p>• <span class="highlight">Are</span> you happy? (✓)<br>
+                           <span class="negative">Do you be happy?</span> (✗)</p>
+                        <p>• <span class="highlight">Can</span> you swim? (✓)<br>
+                           <span class="negative">Do you can swim?</span> (✗)</p>
+                    </div>
+                </div>
+                
+                <div class="warning-box">
+                    <h3>⚠️ Cuidado com o -S!</h3>
+                    <p>Lembre-se: com HE, SHE, IT na <strong>afirmativa</strong>, o verbo principal leva -s, mas nas <strong>perguntas e negativas</strong> com DOES, o verbo volta para a forma base:</p>
+                    <div class="example">
+                        <p>• She <strong>works</strong> here. (afirmativa)</p>
+                        <p>• <strong>Does</strong> she <strong>work</strong> here? (pergunta - sem -s!)</p>
+                        <p>• She <strong>doesn't work</strong> here. (negativa - sem -s!)</p>
+                    </div>
+                </div>
+                
+                <div class="tip-box">
+                    <h3>💡 Pronúncia</h3>
+                    <p>• Do → /duː/<br>
+                       • Does → /dʌz/<br>
+                       • Don't → /doʊnt/<br>
+                       • Doesn't → /ˈdʌz.ənt/</p>
+                </div>
+            </section>
+            
+            <section id="practice">
+                <h2>Exercícios Práticos</h2>
+                <p>Complete as frases com DO, DOES, DON'T ou DOESN'T:</p>
+                
+                <div class="exercise">
+                    <div class="question">
+                        <p>1. __________ you like chocolate?</p>
+                        <select id="q1">
+                            <option value="">Selecione</option>
+                            <option value="Do">Do</option>
+                            <option value="Does">Does</option>
+                            <option value="Don't">Don't</option>
+                            <option value="Doesn't">Doesn't</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>2. She __________ live in São Paulo.</p>
+                        <select id="q2">
+                            <option value="">Selecione</option>
+                            <option value="Do">Do</option>
+                            <option value="Does">Does</option>
+                            <option value="Don't">Don't</option>
+                            <option value="Doesn't">Doesn't</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>3. __________ he work on weekends?</p>
+                        <select id="q3">
+                            <option value="">Selecione</option>
+                            <option value="Do">Do</option>
+                            <option value="Does">Does</option>
+                            <option value="Don't">Don't</option>
+                            <option value="Doesn't">Doesn't</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>4. We __________ understand this exercise.</p>
+                        <select id="q4">
+                            <option value="">Selecione</option>
+                            <option value="Do">Do</option>
+                            <option value="Does">Does</option>
+                            <option value="Don't">Don't</option>
+                            <option value="Doesn't">Doesn't</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>5. __________ they speak English?</p>
+                        <select id="q5">
+                            <option value="">Selecione</option>
+                            <option value="Do">Do</option>
+                            <option value="Does">Does</option>
+                            <option value="Don't">Don't</option>
+                            <option value="Doesn't">Doesn't</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>6. My brother __________ like vegetables.</p>
+                        <select id="q6">
+                            <option value="">Selecione</option>
+                            <option value="Do">Do</option>
+                            <option value="Does">Does</option>
+                            <option value="Don't">Don't</option>
+                            <option value="Doesn't">Doesn't</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>7. Where __________ you work?</p>
+                        <select id="q7">
+                            <option value="">Selecione</option>
+                            <option value="Do">Do</option>
+                            <option value="Does">Does</option>
+                            <option value="Don't">Don't</option>
+                            <option value="Doesn't">Doesn't</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>8. I __________ know the answer.</p>
+                        <select id="q8">
+                            <option value="">Selecione</option>
+                            <option value="Do">Do</option>
+                            <option value="Does">Does</option>
+                            <option value="Don't">Don't</option>
+                            <option value="Doesn't">Doesn't</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>9. What time __________ the store open?</p>
+                        <select id="q9">
+                            <option value="">Selecione</option>
+                            <option value="Do">Do</option>
+                            <option value="Does">Does</option>
+                            <option value="Don't">Don't</option>
+                            <option value="Doesn't">Doesn't</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>10. They __________ have a car.</p>
+                        <select id="q10">
+                            <option value="">Selecione</option>
+                            <option value="Do">Do</option>
+                            <option value="Does">Does</option>
+                            <option value="Don't">Don't</option>
+                            <option value="Doesn't">Doesn't</option>
+                        </select>
+                    </div>
+                    
+                    <button id="checkAnswers">Verificar Respostas</button>
+                    
+                    <div class="result" id="result">
+                        <!-- Resultado será inserido aqui -->
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <footer>
+            <p>Material de ensino de Inglês - DO e DOES</p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('checkAnswers').addEventListener('click', function() {
+            const answers = {
+                q1: 'Do',
+                q2: "Doesn't",
+                q3: 'Does',
+                q4: "Don't",
+                q5: 'Do',
+                q6: "Doesn't",
+                q7: 'Do',
+                q8: "Don't",
+                q9: 'Does',
+                q10: "Don't"
+            };
+            
+            let correctCount = 0;
+            let resultHTML = '<h3>Resultado:</h3><ul>';
+            
+            for (let i = 1; i <= 10; i++) {
+                const questionId = 'q' + i;
+                const userAnswer = document.getElementById(questionId).value;
+                const correctAnswer = answers[questionId];
+                
+                if (userAnswer === correctAnswer) {
+                    correctCount++;
+                    resultHTML += `<li>Pergunta ${i}: <span style="color: green;">✓ Correto!</span></li>`;
+                } else {
+                    resultHTML += `<li>Pergunta ${i}: <span style="color: red;">✗ Incorreto. A resposta correta é "${correctAnswer}".</span></li>`;
+                }
+            }
+            
+            resultHTML += `</ul><p><strong>Total: ${correctCount}/10 acertos</strong></p>`;
+            
+            const resultDiv = document.getElementById('result');
+            
+            if (correctCount >= 8) {
+                resultDiv.className = 'result correct';
+                resultHTML += '<p>Parabéns! Você domina o uso de DO e DOES!</p>';
+            } else if (correctCount >= 5) {
+                resultDiv.className = 'result correct';
+                resultHTML += '<p>Bom trabalho! Revise as regras e tente novamente.</p>';
+            } else {
+                resultDiv.className = 'result incorrect';
+                resultHTML += '<p>Estude mais as regras e tente novamente. Você consegue!</p>';
+            }
+            
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = resultHTML;
+        });
+    </script>
+</body>
+</html>

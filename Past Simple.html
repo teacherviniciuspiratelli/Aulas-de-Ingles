@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Past Simple - Ensino e Exercícios</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f0f4f8;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+        
+        /* Teaching Section */
+        .teaching-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .teaching-section h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .grammar-box {
+            background: #ecf0f1;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #3498db;
+        }
+        .grammar-box h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .grammar-box table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        .grammar-box table td {
+            padding: 8px 12px;
+            border: 1px solid #bdc3c7;
+        }
+        .grammar-box table th {
+            background: #3498db;
+            color: white;
+            padding: 8px 12px;
+            border: 1px solid #3498db;
+            text-align: left;
+        }
+        .example {
+            background: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 8px 0;
+            border-left: 4px solid #2ecc71;
+        }
+        .example .en {
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        .example .pt {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        .highlight {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .irregular-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .irregular-list .item {
+            background: #f8f9fa;
+            padding: 8px 12px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .irregular-list .item .base {
+            color: #2c3e50;
+        }
+        .irregular-list .item .past {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        /* Exercise Sections */
+        .exercise-section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .exercise-section h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #e67e22;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .exercise-item {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+        .exercise-item .question {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .exercise-item .context {
+            color: #666;
+            font-style: italic;
+            font-size: 0.95em;
+            margin-bottom: 8px;
+        }
+        .options {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 8px 0;
+        }
+        .options label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+        .options label:hover {
+            background: #e8f4f8;
+        }
+        .options input[type="radio"] {
+            cursor: pointer;
+        }
+        .answer-line {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+        .answer-line input[type="text"] {
+            padding: 8px 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 15px;
+            width: 250px;
+            transition: border-color 0.3s;
+        }
+        .answer-line input[type="text"]:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        .translation-box {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .translation-box input {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        /* Feedback */
+        .feedback {
+            font-size: 0.9em;
+            margin-left: 10px;
+            padding: 3px 12px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        .feedback.correct {
+            background: #d4edda;
+            color: #155724;
+        }
+        .feedback.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .feedback.waiting {
+            background: #e9ecef;
+            color: #6c757d;
+        }
+        
+        /* Buttons */
+        .btn {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            margin: 5px;
+        }
+        .btn-primary {
+            background: #3498db;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        .btn-success {
+            background: #2ecc71;
+            color: white;
+        }
+        .btn-success:hover {
+            background: #27ae60;
+            transform: translateY(-2px);
+        }
+        .btn-danger {
+            background: #e74c3c;
+            color: white;
+        }
+        .btn-danger:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+        .btn-warning {
+            background: #f39c12;
+            color: white;
+        }
+        .btn-warning:hover {
+            background: #e67e22;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background: #95a5a6;
+            color: white;
+        }
+        .btn-secondary:hover {
+            background: #7f8c8d;
+            transform: translateY(-2px);
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .result-box {
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            text-align: center;
+            display: none;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        .result-box.correct {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+        .result-box.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+        .result-box.partial {
+            background: #fff3cd;
+            color: #856404;
+            display: block;
+        }
+
+        .section-result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+        .section-result.correct {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+        .section-result.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+        .section-result.partial {
+            background: #fff3cd;
+            color: #856404;
+            display: block;
+        }
+
+        .score-display {
+            text-align: center;
+            font-size: 1.2em;
+            padding: 10px;
+            background: #ecf0f1;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .score-display span {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        @media (max-width: 600px) {
+            .options {
+                flex-direction: column;
+                gap: 5px;
+            }
+            .answer-line input[type="text"] {
+                width: 100%;
+            }
+            .translation-box {
+                flex-direction: column;
+            }
+            .irregular-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>📚 Past Simple</h1>
+    <p class="subtitle">Aprenda e pratique o passado simples em inglês</p>
+
+    <!-- ==================== ENSINO ==================== -->
+    <div class="teaching-section">
+        <h2>📖 Quando usar o Past Simple</h2>
+        
+        <div class="grammar-box">
+            <h3>🔹 Usos principais</h3>
+            <ul style="margin-left: 20px; line-height: 1.8;">
+                <li><strong>Ações concluídas no passado:</strong> <em>I <span class="highlight">visited</span> my grandmother yesterday.</em></li>
+                <li><strong>Séries de ações no passado:</strong> <em>She <span class="highlight">woke up</span>, <span class="highlight">took</span> a shower, and <span class="highlight">went</span> to work.</em></li>
+                <li><strong>Hábitos ou rotinas no passado:</strong> <em>When I was a child, I <span class="highlight">played</span> outside every day.</em></li>
+                <li><strong>Fatos ou estados passados:</strong> <em>He <span class="highlight">was</span> a teacher for 10 years.</em></li>
+            </ul>
+        </div>
+
+        <div class="grammar-box">
+            <h3>🔹 Formação dos verbos regulares</h3>
+            <p>Verbos regulares recebem <strong>-ed</strong> no passado:</p>
+            <table>
+                <tr>
+                    <th>Regra</th>
+                    <th>Exemplo</th>
+                </tr>
+                <tr>
+                    <td>Verbo + <strong>-ed</strong></td>
+                    <td>walk → <span class="highlight">walked</span>, play → <span class="highlight">played</span></td>
+                </tr>
+                <tr>
+                    <td>Verbo terminado em <strong>-e</strong> → + <strong>-d</strong></td>
+                    <td>like → <span class="highlight">liked</span>, dance → <span class="highlight">danced</span></td>
+                </tr>
+                <tr>
+                    <td>Verbo terminado em <strong>consoante + y</strong> → <strong>-ied</strong></td>
+                    <td>study → <span class="highlight">studied</span>, cry → <span class="highlight">cried</span></td>
+                </tr>
+                <tr>
+                    <td>Verbo terminado em <strong>CVC</strong> → dobra consoante + <strong>-ed</strong></td>
+                    <td>stop → <span class="highlight">stopped</span>, plan → <span class="highlight">planned</span></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="grammar-box">
+            <h3>🔹 Verbos irregulares (os mais comuns)</h3>
+            <div class="irregular-list">
+                <div class="item"><span class="base">be</span> <span class="past">was/were</span></div>
+                <div class="item"><span class="base">go</span> <span class="past">went</span></div>
+                <div class="item"><span class="base">have</span> <span class="past">had</span></div>
+                <div class="item"><span class="base">do</span> <span class="past">did</span></div>
+                <div class="item"><span class="base">say</span> <span class="past">said</span></div>
+                <div class="item"><span class="base">get</span> <span class="past">got</span></div>
+                <div class="item"><span class="base">make</span> <span class="past">made</span></div>
+                <div class="item"><span class="base">know</span> <span class="past">knew</span></div>
+                <div class="item"><span class="base">see</span> <span class="past">saw</span></div>
+                <div class="item"><span class="base">come</span> <span class="past">came</span></div>
+                <div class="item"><span class="base">take</span> <span class="past">took</span></div>
+                <div class="item"><span class="base">write</span> <span class="past">wrote</span></div>
+                <div class="item"><span class="base">read</span> <span class="past">read</span></div>
+                <div class="item"><span class="base">buy</span> <span class="past">bought</span></div>
+                <div class="item"><span class="base">think</span> <span class="past">thought</span></div>
+                <div class="item"><span class="base">eat</span> <span class="past">ate</span></div>
+                <div class="item"><span class="base">drink</span> <span class="past">drank</span></div>
+                <div class="item"><span class="base">speak</span> <span class="past">spoke</span></div>
+            </div>
+            <p style="margin-top: 10px;"><em>Consulte uma lista completa para mais verbos irregulares.</em></p>
+        </div>
+
+        <div class="grammar-box">
+            <h3>🔹 Estrutura das frases</h3>
+            <table>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Estrutura</th>
+                    <th>Exemplo</th>
+                </tr>
+                <tr>
+                    <td><strong>Afirmativa</strong></td>
+                    <td>Sujeito + verbo no passado</td>
+                    <td><span class="highlight">She visited</span> London.</td>
+                </tr>
+                <tr>
+                    <td><strong>Negativa</strong></td>
+                    <td>Sujeito + <strong>did not</strong> + verbo base</td>
+                    <td><span class="highlight">She did not visit</span> London.</td>
+                </tr>
+                <tr>
+                    <td><strong>Interrogativa</strong></td>
+                    <td><strong>Did</strong> + sujeito + verbo base?</td>
+                    <td><span class="highlight">Did she visit</span> London?</td>
+                </tr>
+                <tr>
+                    <td><strong>Resposta curta</strong></td>
+                    <td>Yes, sujeito + did. / No, sujeito + didn't.</td>
+                    <td>Yes, <span class="highlight">she did</span>. / No, <span class="highlight">she didn't</span>.</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="grammar-box">
+            <h3>🔹 Expressões de tempo comuns</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 15px;">
+                <span style="background: #e8f4f8; padding: 5px 15px; border-radius: 20px;">yesterday</span>
+                <span style="background: #e8f4f8; padding: 5px 15px; border-radius: 20px;">last week/month/year</span>
+                <span style="background: #e8f4f8; padding: 5px 15px; border-radius: 20px;">in 2010</span>
+                <span style="background: #e8f4f8; padding: 5px 15px; border-radius: 20px;">two days ago</span>
+                <span style="background: #e8f4f8; padding: 5px 15px; border-radius: 20px;">when I was a child</span>
+                <span style="background: #e8f4f8; padding: 5px 15px; border-radius: 20px;">on Monday</span>
+                <span style="background: #e8f4f8; padding: 5px 15px; border-radius: 20px;">in the past</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== EXERCÍCIOS ==================== -->
+
+    <!-- EXERCÍCIO 1: Selecionar (Regular vs Irregular) -->
+    <div class="exercise-section" id="sec1">
+        <h2>📝 Exercício 1: Escolha a forma correta do passado</h2>
+        <p style="color: #666; margin-bottom: 15px;">Selecione a opção correta para cada verbo.</p>
+
+        <div class="exercise-item">
+            <div class="question">1. Yesterday, I ______ (walk) to school.</div>
+            <div class="options">
+                <label><input type="radio" name="q1" value="walked"> walked</label>
+                <label><input type="radio" name="q1" value="walk"> walk</label>
+                <label><input type="radio" name="q1" value="walking"> walking</label>
+            </div>
+            <span class="feedback" id="fb1"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">2. She ______ (eat) dinner at 7 PM.</div>
+            <div class="options">
+                <label><input type="radio" name="q2" value="eated"> eated</label>
+                <label><input type="radio" name="q2" value="ate"> ate</label>
+                <label><input type="radio" name="q2" value="eat"> eat</label>
+            </div>
+            <span class="feedback" id="fb2"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">3. They ______ (go) to the beach last weekend.</div>
+            <div class="options">
+                <label><input type="radio" name="q3" value="goed"> goed</label>
+                <label><input type="radio" name="q3" value="went"> went</label>
+                <label><input type="radio" name="q3" value="gone"> gone</label>
+            </div>
+            <span class="feedback" id="fb3"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">4. He ______ (study) all night for the exam.</div>
+            <div class="options">
+                <label><input type="radio" name="q4" value="studied"> studied</label>
+                <label><input type="radio" name="q4" value="studeyed"> studyed</label>
+                <label><input type="radio" name="q4" value="study"> study</label>
+            </div>
+            <span class="feedback" id="fb4"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">5. I ______ (see) a great movie yesterday.</div>
+            <div class="options">
+                <label><input type="radio" name="q5" value="seed"> seed</label>
+                <label><input type="radio" name="q5" value="saw"> saw</label>
+                <label><input type="radio" name="q5" value="seen"> seen</label>
+            </div>
+            <span class="feedback" id="fb5"></span>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-success" onclick="checkSelectExercise()">Verificar Respostas</button>
+        </div>
+        <div class="section-result" id="resultSelect"></div>
+    </div>
+
+    <!-- EXERCÍCIO 2: Escrever (completar frases) -->
+    <div class="exercise-section" id="sec2">
+        <h2>✍️ Exercício 2: Complete com a forma correta do passado</h2>
+        <p style="color: #666; margin-bottom: 15px;">Escreva a forma do passado do verbo entre parênteses.</p>
+
+        <div class="exercise-item">
+            <div class="question">6. She ______ (work) at a hospital in 2015.</div>
+            <div class="answer-line">
+                <input type="text" class="q6" placeholder="Sua resposta...">
+                <span class="feedback" id="fb6"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">7. We ______ (have) a wonderful time at the party.</div>
+            <div class="answer-line">
+                <input type="text" class="q7" placeholder="Sua resposta...">
+                <span class="feedback" id="fb7"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">8. He ______ (write) three emails this morning.</div>
+            <div class="answer-line">
+                <input type="text" class="q8" placeholder="Sua resposta...">
+                <span class="feedback" id="fb8"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">9. They ______ (buy) a new car last month.</div>
+            <div class="answer-line">
+                <input type="text" class="q9" placeholder="Sua resposta...">
+                <span class="feedback" id="fb9"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">10. I ______ (not / eat) breakfast this morning.</div>
+            <div class="answer-line">
+                <input type="text" class="q10" placeholder="Sua resposta...">
+                <span class="feedback" id="fb10"></span>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-success" onclick="checkWriteExercise()">Verificar Respostas</button>
+        </div>
+        <div class="section-result" id="resultWrite"></div>
+    </div>
+
+    <!-- EXERCÍCIO 3: Escrever (formar frases) -->
+    <div class="exercise-section" id="sec3">
+        <h2>✍️ Exercício 3: Forme frases no Past Simple</h2>
+        <p style="color: #666; margin-bottom: 15px;">Transforme as frases para o Past Simple.</p>
+
+        <div class="exercise-item">
+            <div class="question">11. I (go) to the supermarket. (afirmativa)</div>
+            <div class="answer-line">
+                <input type="text" class="q11" placeholder="Escreva a frase completa..." style="width: 400px;">
+                <span class="feedback" id="fb11"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">12. She (visit) her grandmother. (negativa)</div>
+            <div class="answer-line">
+                <input type="text" class="q12" placeholder="Escreva a frase completa..." style="width: 400px;">
+                <span class="feedback" id="fb12"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">13. He (study) for the test. (interrogativa)</div>
+            <div class="answer-line">
+                <input type="text" class="q13" placeholder="Escreva a frase completa..." style="width: 400px;">
+                <span class="feedback" id="fb13"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">14. They (play) soccer yesterday. (afirmativa)</div>
+            <div class="answer-line">
+                <input type="text" class="q14" placeholder="Escreva a frase completa..." style="width: 400px;">
+                <span class="feedback" id="fb14"></span>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-success" onclick="checkSentenceExercise()">Verificar Respostas</button>
+        </div>
+        <div class="section-result" id="resultSentence"></div>
+    </div>
+
+    <!-- EXERCÍCIO 4: Tradução -->
+    <div class="exercise-section" id="sec4">
+        <h2>🌍 Exercício 4: Tradução</h2>
+        <p style="color: #666; margin-bottom: 15px;">Traduza as frases para o inglês usando o Past Simple.</p>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 Eu comi pizza ontem.</div>
+            <div class="translation-box">
+                <input type="text" class="q15" placeholder="Tradução em inglês..." style="width: 400px;">
+                <span class="feedback" id="fb15"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 Ela não foi à festa.</div>
+            <div class="translation-box">
+                <input type="text" class="q16" placeholder="Tradução em inglês..." style="width: 400px;">
+                <span class="feedback" id="fb16"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 Você visitou o museu?</div>
+            <div class="translation-box">
+                <input type="text" class="q17" placeholder="Tradução em inglês..." style="width: 400px;">
+                <span class="feedback" id="fb17"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 Nós estudamos inglês por três anos.</div>
+            <div class="translation-box">
+                <input type="text" class="q18" placeholder="Tradução em inglês..." style="width: 400px;">
+                <span class="feedback" id="fb18"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 Eles compraram um carro novo.</div>
+            <div class="translation-box">
+                <input type="text" class="q19" placeholder="Tradução em inglês..." style="width: 400px;">
+                <span class="feedback" id="fb19"></span>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-success" onclick="checkTranslationExercise()">Verificar Traduções</button>
+        </div>
+        <div class="section-result" id="resultTranslation"></div>
+    </div>
+
+    <!-- EXERCÍCIO 5: Misto (todos os tipos) -->
+    <div class="exercise-section" id="sec5">
+        <h2>🔀 Exercício 5: Misto - Escolha, Escreva e Traduza</h2>
+        <p style="color: #666; margin-bottom: 15px;">Combine diferentes habilidades no Past Simple.</p>
+
+        <div class="exercise-item">
+            <div class="question">20. Escolha: She ______ (bring) her umbrella.</div>
+            <div class="options">
+                <label><input type="radio" name="q20" value="bringed"> bringed</label>
+                <label><input type="radio" name="q20" value="brought"> brought</label>
+                <label><input type="radio" name="q20" value="brang"> brang</label>
+            </div>
+            <span class="feedback" id="fb20"></span>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">21. Complete: I ______ (lose) my keys yesterday.</div>
+            <div class="answer-line">
+                <input type="text" class="q21" placeholder="Sua resposta...">
+                <span class="feedback" id="fb21"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="context">🇧🇷 Ele bebeu café esta manhã.</div>
+            <div class="translation-box">
+                <input type="text" class="q22" placeholder="Tradução em inglês..." style="width: 400px;">
+                <span class="feedback" id="fb22"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">23. Complete a negativa: They ______ (not / finish) the project.</div>
+            <div class="answer-line">
+                <input type="text" class="q23" placeholder="Sua resposta..." style="width: 300px;">
+                <span class="feedback" id="fb23"></span>
+            </div>
+        </div>
+
+        <div class="exercise-item">
+            <div class="question">24. Escolha: ______ he ______ (call) you?</div>
+            <div class="options">
+                <label><input type="radio" name="q24" value="Did call"> Did / call</label>
+                <label><input type="radio" name="q24" value="Did called"> Did / called</label>
+                <label><input type="radio" name="q24" value="Does call"> Does / call</label>
+            </div>
+            <span class="feedback" id="fb24"></span>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-success" onclick="checkMixedExercise()">Verificar Respostas</button>
+        </div>
+        <div class="section-result" id="resultMixed"></div>
+    </div>
+
+    <!-- ==================== BOTÕES GLOBAIS ==================== -->
+    <div class="button-group">
+        <button class="btn btn-danger" onclick="checkAllExercises()">✅ Verificar Todos os Exercícios</button>
+        <button class="btn btn-secondary" onclick="resetAllExercises()">🔄 Resetar Todos</button>
+    </div>
+
+    <div class="score-display" id="globalScore">
+        Total: <span id="scoreCount">0</span> / <span id="totalCount">0</span> corretas
+    </div>
+    <div class="result-box" id="globalResult"></div>
+
+    <script>
+        // ==================== DADOS DAS RESPOSTAS ====================
+        const answers = {
+            // Seleção
+            select: ['walked', 'ate', 'went', 'studied', 'saw'],
+            // Escrita simples
+            write: ["worked", "had", "wrote", "bought", "didn't eat"],
+            // Frases
+            sentences: [
+                "i went to the supermarket",
+                "she didn't visit her grandmother",
+                "did he study for the test",
+                "they played soccer yesterday"
+            ],
+            // Tradução
+            translations: [
+                "i ate pizza yesterday",
+                "she didn't go to the party",
+                "did you visit the museum",
+                "we studied english for three years",
+                "they bought a new car"
+            ],
+            // Misto
+            mixed: ["brought", "lost", "he drank coffee this morning", "didn't finish", "Did call"]
+        };
+
+        // ==================== FUNÇÕES DE VERIFICAÇÃO ====================
+        function normalize(text) {
+            return text.toLowerCase().trim().replace(/\s+/g, ' ');
+        }
+
+        function checkSelectExercise() {
+            let correct = 0;
+            const total = 5;
+            for (let i = 1; i <= total; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                const fb = document.getElementById(`fb${i}`);
+                if (selected) {
+                    const isCorrect = selected.value === answers.select[i-1];
+                    fb.textContent = isCorrect ? '✓ Correto' : '✗ Incorreto';
+                    fb.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                    if (isCorrect) correct++;
+                } else {
+                    fb.textContent = '⚠️ Selecione uma opção';
+                    fb.className = 'feedback waiting';
+                }
+            }
+            showSectionResult('resultSelect', correct, total);
+        }
+
+        function checkWriteExercise() {
+            let correct = 0;
+            const total = 5;
+            for (let i = 6; i <= 10; i++) {
+                const input = document.querySelector(`.q${i}`);
+                const fb = document.getElementById(`fb${i}`);
+                if (input) {
+                    const userAnswer = normalize(input.value);
+                    const isCorrect = userAnswer === answers.write[i-6];
+                    fb.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                    fb.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                    if (isCorrect) correct++;
+                }
+            }
+            showSectionResult('resultWrite', correct, total);
+        }
+
+        function checkSentenceExercise() {
+            let correct = 0;
+            const total = 4;
+            for (let i = 11; i <= 14; i++) {
+                const input = document.querySelector(`.q${i}`);
+                const fb = document.getElementById(`fb${i}`);
+                if (input) {
+                    const userAnswer = normalize(input.value);
+                    const isCorrect = userAnswer === answers.sentences[i-11];
+                    fb.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                    fb.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                    if (isCorrect) correct++;
+                }
+            }
+            showSectionResult('resultSentence', correct, total);
+        }
+
+        function checkTranslationExercise() {
+            let correct = 0;
+            const total = 5;
+            for (let i = 15; i <= 19; i++) {
+                const input = document.querySelector(`.q${i}`);
+                const fb = document.getElementById(`fb${i}`);
+                if (input) {
+                    const userAnswer = normalize(input.value);
+                    const isCorrect = userAnswer === answers.translations[i-15];
+                    fb.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                    fb.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                    if (isCorrect) correct++;
+                }
+            }
+            showSectionResult('resultTranslation', correct, total);
+        }
+
+        function checkMixedExercise() {
+            let correct = 0;
+            const total = 5;
+            
+            // Q20 - seleção
+            const selected = document.querySelector(`input[name="q20"]:checked`);
+            const fb20 = document.getElementById('fb20');
+            if (selected) {
+                const isCorrect = selected.value === answers.mixed[0];
+                fb20.textContent = isCorrect ? '✓ Correto' : '✗ Incorreto';
+                fb20.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                if (isCorrect) correct++;
+            } else {
+                fb20.textContent = '⚠️ Selecione uma opção';
+                fb20.className = 'feedback waiting';
+            }
+
+            // Q21 - escrita
+            const input21 = document.querySelector('.q21');
+            const fb21 = document.getElementById('fb21');
+            if (input21) {
+                const userAnswer = normalize(input21.value);
+                const isCorrect = userAnswer === answers.mixed[1];
+                fb21.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                fb21.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                if (isCorrect) correct++;
+            }
+
+            // Q22 - tradução
+            const input22 = document.querySelector('.q22');
+            const fb22 = document.getElementById('fb22');
+            if (input22) {
+                const userAnswer = normalize(input22.value);
+                const isCorrect = userAnswer === answers.mixed[2];
+                fb22.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                fb22.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                if (isCorrect) correct++;
+            }
+
+            // Q23 - escrita negativa
+            const input23 = document.querySelector('.q23');
+            const fb23 = document.getElementById('fb23');
+            if (input23) {
+                const userAnswer = normalize(input23.value);
+                const isCorrect = userAnswer === answers.mixed[3];
+                fb23.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                fb23.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                if (isCorrect) correct++;
+            }
+
+            // Q24 - seleção
+            const selected24 = document.querySelector(`input[name="q24"]:checked`);
+            const fb24 = document.getElementById('fb24');
+            if (selected24) {
+                const isCorrect = selected24.value === answers.mixed[4];
+                fb24.textContent = isCorrect ? '✓ Correto' : '✗ Incorreto';
+                fb24.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                if (isCorrect) correct++;
+            } else {
+                fb24.textContent = '⚠️ Selecione uma opção';
+                fb24.className = 'feedback waiting';
+            }
+
+            showSectionResult('resultMixed', correct, total);
+        }
+
+        // ==================== FUNÇÕES AUXILIARES ====================
+        function showSectionResult(elementId, correct, total) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.textContent = `Você acertou ${correct} de ${total} (${Math.round(correct/total*100)}%)`;
+                element.className = `section-result ${correct === total ? 'correct' : (correct > 0 ? 'partial' : 'incorrect')}`;
+            }
+            updateGlobalScore();
+        }
+
+        function updateGlobalScore() {
+            let correct = 0;
+            let total = 0;
+            
+            // Contar todos os feedbacks
+            document.querySelectorAll('.feedback').forEach(fb => {
+                if (fb.textContent.includes('✓')) {
+                    correct++;
+                    total++;
+                } else if (fb.textContent.includes('✗') || fb.textContent.includes('⚠️')) {
+                    total++;
+                }
+            });
+            
+            document.getElementById('scoreCount').textContent = correct;
+            document.getElementById('totalCount').textContent = total;
+        }
+
+        function checkAllExercises() {
+            checkSelectExercise();
+            checkWriteExercise();
+            checkSentenceExercise();
+            checkTranslationExercise();
+            checkMixedExercise();
+            
+            const total = document.querySelectorAll('.feedback').length;
+            const correct = document.querySelectorAll('.feedback.correct').length;
+            const result = document.getElementById('globalResult');
+            result.textContent = `🎯 Você acertou ${correct} de ${total} questões (${Math.round(correct/total*100)}%)`;
+            result.className = `result-box ${correct === total ? 'correct' : (correct > total/2 ? 'partial' : 'incorrect')}`;
+        }
+
+        function resetAllExercises() {
+            // Resetar seleções
+            document.querySelectorAll('input[type="radio"]').forEach(el => el.checked = false);
+            
+            // Resetar textos
+            document.querySelectorAll('input[type="text"]').forEach(el => el.value = '');
+            
+            // Resetar feedbacks
+            document.querySelectorAll('.feedback').forEach(el => {
+                el.textContent = '';
+                el.className = 'feedback';
+            });
+            
+            // Resetar resultados de seção
+            document.querySelectorAll('.section-result').forEach(el => {
+                el.textContent = '';
+                el.className = 'section-result';
+            });
+            
+            // Resetar resultado global
+            const result = document.getElementById('globalResult');
+            result.textContent = '';
+            result.className = 'result-box';
+            
+            updateGlobalScore();
+        }
+
+        // ==================== EVENT LISTENERS ====================
+        document.querySelectorAll('input[type="text"]').forEach(input => {
+            input.addEventListener('input', updateGlobalScore);
+        });
+        document.querySelectorAll('input[type="radio"]').forEach(input => {
+            input.addEventListener('change', updateGlobalScore);
+        });
+
+        // Inicializar contagem
+        updateGlobalScore();
+    </script>
+
+</body>
+</html>

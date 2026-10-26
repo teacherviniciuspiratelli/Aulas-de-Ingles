@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprendendo VERB TO BE</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        section {
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            color: #3498db;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        h3 {
+            color: #2c3e50;
+            margin: 15px 0 10px 0;
+        }
+        
+        .rule-card {
+            background-color: #f9f9f9;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .example {
+            background-color: #e8f4fc;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        .example p {
+            margin-bottom: 10px;
+        }
+        
+        .highlight {
+            background-color: #aed6f1;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .negative {
+            background-color: #fadbd8;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .exercise {
+            background-color: #ebf5fb;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .question {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            margin-top: 5px;
+        }
+        
+        input[type="text"] {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            margin-top: 5px;
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .correct {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #c8e6c9;
+        }
+        
+        .incorrect {
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ffcdd2;
+        }
+        
+        .conjugation-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .conjugation-table th {
+            background-color: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .conjugation-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .conjugation-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .conjugation-table tr:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .forms-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .form-card {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border-top: 4px solid #3498db;
+        }
+        
+        .form-card h3 {
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+        
+        .tip-box {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f1f1f1;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .forms-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .conjugation-table {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>VERB TO BE</h1>
+            <p class="subtitle">O verbo mais importante do inglês</p>
+        </header>
+        
+        <div class="content">
+            <section id="introduction">
+                <h2>Introdução</h2>
+                <p>O <strong>Verb To Be</strong> (verbo ser/estar) é o verbo mais importante e mais usado na língua inglesa. Ele funciona como verbo principal e também como verbo auxiliar.</p>
+                
+                <div class="example">
+                    <p>• I <span class="highlight">am</span> a student. (Eu <strong>sou</strong> um estudante.)</p>
+                    <p>• You <span class="highlight">are</span> happy. (Você <strong>está</strong> feliz.)</p>
+                    <p>• She <span class="highlight">is</span> at home. (Ela <strong>está</strong> em casa.)</p>
+                </div>
+            </section>
+            
+            <section id="conjugation">
+                <h2>Conjugação do Verb To Be</h2>
+                
+                <table class="conjugation-table">
+                    <thead>
+                        <tr>
+                            <th>Pronome</th>
+                            <th>Presente</th>
+                            <th>Tradução</th>
+                            <th>Contração</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>I</td>
+                            <td>am</td>
+                            <td>eu sou/estou</td>
+                            <td>I'm</td>
+                        </tr>
+                        <tr>
+                            <td>You</td>
+                            <td>are</td>
+                            <td>você é/está</td>
+                            <td>you're</td>
+                        </tr>
+                        <tr>
+                            <td>He</td>
+                            <td>is</td>
+                            <td>ele é/está</td>
+                            <td>he's</td>
+                        </tr>
+                        <tr>
+                            <td>She</td>
+                            <td>is</td>
+                            <td>ela é/está</td>
+                            <td>she's</td>
+                        </tr>
+                        <tr>
+                            <td>It</td>
+                            <td>is</td>
+                            <td>ele/ela é/está (coisas/animais)</td>
+                            <td>it's</td>
+                        </tr>
+                        <tr>
+                            <td>We</td>
+                            <td>are</td>
+                            <td>nós somos/estamos</td>
+                            <td>we're</td>
+                        </tr>
+                        <tr>
+                            <td>You</td>
+                            <td>are</td>
+                            <td>vocês são/estão</td>
+                            <td>you're</td>
+                        </tr>
+                        <tr>
+                            <td>They</td>
+                            <td>are</td>
+                            <td>eles/elas são/estão</td>
+                            <td>they're</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            
+            <section id="forms">
+                <h2>Formas do Verb To Be</h2>
+                
+                <div class="forms-grid">
+                    <div class="form-card">
+                        <h3>Forma Afirmativa</h3>
+                        <p>Sujeito + verbo + complemento</p>
+                        <div class="example">
+                            <p>I <strong>am</strong> Brazilian.</p>
+                            <p>She <strong>is</strong> a doctor.</p>
+                            <p>They <strong>are</strong> at school.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-card">
+                        <h3>Forma Negativa</h3>
+                        <p>Sujeito + verbo + NOT + complemento</p>
+                        <div class="example">
+                            <p>I <strong>am not</strong> tired.</p>
+                            <p>He <strong>is not</strong> here.</p>
+                            <p>We <strong>are not</strong> students.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-card">
+                        <h3>Forma Interrogativa</h3>
+                        <p>Verbo + sujeito + complemento?</p>
+                        <div class="example">
+                            <p><strong>Are</strong> you happy?</p>
+                            <p><strong>Is</strong> she at home?</p>
+                            <p><strong>Are</strong> they ready?</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="negative">
+                <h2>Forma Negativa - Contrações</h2>
+                <p>Na forma negativa, podemos usar contrações que são muito comuns no inglês falado:</p>
+                
+                <div class="rule-card">
+                    <h3>Contrações Negativas</h3>
+                    <div class="example">
+                        <p>• I am not → <span class="negative">I'm not</span></p>
+                        <p>• You are not → <span class="negative">You aren't</span> ou <span class="negative">You're not</span></p>
+                        <p>• He is not → <span class="negative">He isn't</span> ou <span class="negative">He's not</span></p>
+                        <p>• She is not → <span class="negative">She isn't</span> ou <span class="negative">She's not</span></p>
+                        <p>• It is not → <span class="negative">It isn't</span> ou <span class="negative">It's not</span></p>
+                        <p>• We are not → <span class="negative">We aren't</span> ou <span class="negative">We're not</span></p>
+                        <p>• They are not → <span class="negative">They aren't</span> ou <span class="negative">They're not</span></p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="usage">
+                <h2>Usos do Verb To Be</h2>
+                
+                <div class="rule-card">
+                    <h3>1. Identificar pessoas e coisas</h3>
+                    <div class="example">
+                        <p>• I <span class="highlight">am</span> a teacher. (Eu <strong>sou</strong> um professor.)</p>
+                        <p>• This <span class="highlight">is</span> a book. (Isso <strong>é</strong> um livro.)</p>
+                        <p>• They <span class="highlight">are</span> my friends. (Eles <strong>são</strong> meus amigos.)</p>
+                    </div>
+                </div>
+                
+                <div class="rule-card">
+                    <h3>2. Indicar localização</h3>
+                    <div class="example">
+                        <p>• She <span class="highlight">is</span> at home. (Ela <strong>está</strong> em casa.)</p>
+                        <p>• We <span class="highlight">are</span> in the classroom. (Nós <strong>estamos</strong> na sala de aula.)</p>
+                        <p>• The keys <span class="highlight">are</span> on the table. (As chaves <strong>estão</strong> sobre a mesa.)</p>
+                    </div>
+                </div>
+                
+                <div class="rule-card">
+                    <h3>3. Descrever estados e características</h3>
+                    <div class="example">
+                        <p>• He <span class="highlight">is</span> tall. (Ele <strong>é</strong> alto.)</p>
+                        <p>• I <span class="highlight">am</span> happy. (Eu <strong>estou</strong> feliz.)</p>
+                        <p>• The weather <span class="highlight">is</span> nice. (O tempo <strong>está</strong> bom.)</p>
+                    </div>
+                </div>
+                
+                <div class="rule-card">
+                    <h3>4. Indicar idade</h3>
+                    <div class="example">
+                        <p>• I <span class="highlight">am</span> 25 years old. (Eu <strong>tenho</strong> 25 anos.)</p>
+                        <p>• She <span class="highlight">is</span> 30 years old. (Ela <strong>tem</strong> 30 anos.)</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="tips">
+                <h2>Dicas Importantes</h2>
+                
+                <div class="tip-box">
+                    <h3>⚠️ Cuidado com as traduções!</h3>
+                    <p>O Verb To Be pode significar <strong>"ser"</strong> ou <strong>"estar"</strong> dependendo do contexto:</p>
+                    <div class="example">
+                        <p>• I <strong>am</strong> Brazilian. = Eu <strong>sou</strong> brasileiro. (identidade)</p>
+                        <p>• I <strong>am</strong> in Brazil. = Eu <strong>estou</strong> no Brasil. (localização)</p>
+                        <p>• I <strong>am</strong> happy. = Eu <strong>estou</strong> feliz. (estado)</p>
+                    </div>
+                </div>
+                
+                <div class="tip-box">
+                    <h3>📝 Não existe "am not" contraído!</h3>
+                    <p>A única forma correta é <strong>"I'm not"</strong>. Nunca use "I amn't" - isso não existe no inglês!</p>
+                </div>
+                
+                <div class="tip-box">
+                    <h3>🎯 Pronúncia das contrações</h3>
+                    <p>• I'm → /áim/<br>
+                       • You're → /iur/<br>
+                       • He's/She's/It's → /hiz/, /shiz/, /its/<br>
+                       • We're → /uir/<br>
+                       • They're → /~vér/</p>
+                </div>
+            </section>
+            
+            <section id="practice">
+                <h2>Exercícios Práticos</h2>
+                <p>Complete as frases com a forma correta do Verb To Be (am, is, are):</p>
+                
+                <div class="exercise">
+                    <div class="question">
+                        <p>1. I __________ a student.</p>
+                        <select id="q1">
+                            <option value="">Selecione</option>
+                            <option value="am">am</option>
+                            <option value="is">is</option>
+                            <option value="are">are</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>2. She __________ from Brazil.</p>
+                        <select id="q2">
+                            <option value="">Selecione</option>
+                            <option value="am">am</option>
+                            <option value="is">is</option>
+                            <option value="are">are</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>3. We __________ in the classroom.</p>
+                        <select id="q3">
+                            <option value="">Selecione</option>
+                            <option value="am">am</option>
+                            <option value="is">is</option>
+                            <option value="are">are</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>4. They __________ my friends.</p>
+                        <select id="q4">
+                            <option value="">Selecione</option>
+                            <option value="am">am</option>
+                            <option value="is">is</option>
+                            <option value="are">are</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>5. He __________ a doctor.</p>
+                        <select id="q5">
+                            <option value="">Selecione</option>
+                            <option value="am">am</option>
+                            <option value="is">is</option>
+                            <option value="are">are</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>6. You __________ very tall.</p>
+                        <select id="q6">
+                            <option value="">Selecione</option>
+                            <option value="am">am</option>
+                            <option value="is">is</option>
+                            <option value="are">are</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>7. It __________ a beautiful day.</p>
+                        <select id="q7">
+                            <option value="">Selecione</option>
+                            <option value="am">am</option>
+                            <option value="is">is</option>
+                            <option value="are">are</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>8. Maria and João __________ at home.</p>
+                        <select id="q8">
+                            <option value="">Selecione</option>
+                            <option value="am">am</option>
+                            <option value="is">is</option>
+                            <option value="are">are</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>9. I __________ 20 years old.</p>
+                        <select id="q9">
+                            <option value="">Selecione</option>
+                            <option value="am">am</option>
+                            <option value="is">is</option>
+                            <option value="are">are</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>10. The books __________ on the table.</p>
+                        <select id="q10">
+                            <option value="">Selecione</option>
+                            <option value="am">am</option>
+                            <option value="is">is</option>
+                            <option value="are">are</option>
+                        </select>
+                    </div>
+                    
+                    <button id="checkAnswers">Verificar Respostas</button>
+                    
+                    <div class="result" id="result">
+                        <!-- Resultado será inserido aqui -->
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <footer>
+            <p>Material de ensino de Inglês - VERB TO BE</p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('checkAnswers').addEventListener('click', function() {
+            const answers = {
+                q1: 'am',
+                q2: 'is',
+                q3: 'are',
+                q4: 'are',
+                q5: 'is',
+                q6: 'are',
+                q7: 'is',
+                q8: 'are',
+                q9: 'am',
+                q10: 'are'
+            };
+            
+            let correctCount = 0;
+            let resultHTML = '<h3>Resultado:</h3><ul>';
+            
+            for (let i = 1; i <= 10; i++) {
+                const questionId = 'q' + i;
+                const userAnswer = document.getElementById(questionId).value;
+                const correctAnswer = answers[questionId];
+                
+                if (userAnswer === correctAnswer) {
+                    correctCount++;
+                    resultHTML += `<li>Pergunta ${i}: <span style="color: green;">✓ Correto!</span></li>`;
+                } else {
+                    resultHTML += `<li>Pergunta ${i}: <span style="color: red;">✗ Incorreto. A resposta correta é "${correctAnswer}".</span></li>`;
+                }
+            }
+            
+            resultHTML += `</ul><p><strong>Total: ${correctCount}/10 acertos</strong></p>`;
+            
+            const resultDiv = document.getElementById('result');
+            
+            if (correctCount >= 8) {
+                resultDiv.className = 'result correct';
+                resultHTML += '<p>Parabéns! Você domina o Verb To Be!</p>';
+            } else if (correctCount >= 5) {
+                resultDiv.className = 'result correct';
+                resultHTML += '<p>Bom trabalho! Revise as conjugações e tente novamente.</p>';
+            } else {
+                resultDiv.className = 'result incorrect';
+                resultHTML += '<p>Estude mais as conjugações e tente novamente. Você consegue!</p>';
+            }
+            
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = resultHTML;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preposições em Inglês - Guia Completo</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #16a085, #1abc9c);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        section {
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            color: #16a085;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        h3 {
+            color: #2c3e50;
+            margin: 15px 0 10px 0;
+        }
+        
+        .rule-card {
+            background-color: #f9f9f9;
+            border-left: 4px solid #16a085;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .example {
+            background-color: #e8f6f3;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        .example p {
+            margin-bottom: 10px;
+        }
+        
+        .highlight {
+            background-color: #a3e4d7;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .warning {
+            background-color: #f9e79f;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .exercise {
+            background-color: #f4f9f8;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .question {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            margin-top: 5px;
+        }
+        
+        input[type="text"] {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            margin-top: 5px;
+        }
+        
+        button {
+            background-color: #16a085;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background-color: #138d75;
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .correct {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #c8e6c9;
+        }
+        
+        .incorrect {
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ffcdd2;
+        }
+        
+        .preposition-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .preposition-card {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-top: 4px solid #16a085;
+        }
+        
+        .preposition-card h3 {
+            color: #16a085;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .tip-box {
+            background-color: #e8f4f8;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .warning-box {
+            background-color: #fdebd0;
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .comparison-table th {
+            background-color: #16a085;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .comparison-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .time-prepositions {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .time-card {
+            background-color: #f0f7f5;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .time-card h4 {
+            color: #16a085;
+            margin-bottom: 10px;
+        }
+        
+        .visual-guide {
+            background: linear-gradient(135deg, #e8f6f3, #d1f2eb);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .visual-guide h3 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f1f1f1;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .preposition-grid, .time-prepositions {
+                grid-template-columns: 1fr;
+            }
+            
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>PREPOSIÇÕES EM INGLÊS</h1>
+            <p class="subtitle">Guia Completo - Lugar, Tempo, Movimento e Mais</p>
+        </header>
+        
+        <div class="content">
+            <section id="introduction">
+                <h2>O que são Preposições?</h2>
+                <p>Preposições são palavras que mostram a relação entre um substantivo/pronome e outras palavras na frase. Elas indicam <strong>lugar, tempo, direção, causa, modo</strong> e outras relações.</p>
+                
+                <div class="example">
+                    <p>• The book is <span class="highlight">on</span> the table. (lugar)</p>
+                    <p>• I'll see you <span class="highlight">at</span> 3 PM. (tempo)</p>
+                    <p>• She went <span class="highlight">to</span> school. (direção)</p>
+                </div>
+            </section>
+
+            <section id="place-prepositions">
+                <h2>Preposições de Lugar</h2>
+                
+                <div class="preposition-grid">
+                    <div class="preposition-card">
+                        <h3>IN - ON - AT</h3>
+                        <div class="example">
+                            <p><strong>IN</strong> - lugares fechados/áreas amplas:<br>
+                            • <span class="highlight">in</span> the room<br>
+                            • <span class="highlight">in</span> Brazil<br>
+                            • <span class="highlight">in</span> the car</p>
+                            
+                            <p><strong>ON</strong> - superfícies/linhas:<br>
+                            • <span class="highlight">on</span> the table<br>
+                            • <span class="highlight">on</span> the wall<br>
+                            • <span class="highlight">on</span> the street</p>
+                            
+                            <p><strong>AT</strong> - pontos específicos:<br>
+                            • <span class="highlight">at</span> home<br>
+                            • <span class="highlight">at</span> the bus stop<br>
+                            • <span class="highlight">at</span> work</p>
+                        </div>
+                    </div>
+                    
+                    <div class="preposition-card">
+                        <h3>OUTRAS PREPOSIÇÕES</h3>
+                        <div class="example">
+                            <p><strong>UNDER</strong> - embaixo<br>
+                            • The cat is <span class="highlight">under</span> the table</p>
+                            
+                            <p><strong>OVER</strong> - sobre (sem tocar)<br>
+                            • The plane flew <span class="highlight">over</span> the city</p>
+                            
+                            <p><strong>BETWEEN</strong> - entre dois<br>
+                            • Sit <span class="highlight">between</span> us</p>
+                            
+                            <p><strong>AMONG</strong> - entre vários<br>
+                            • She was <span class="highlight">among</span> friends</p>
+                            
+                            <p><strong>NEXT TO</strong> - ao lado<br>
+                            • My house is <span class="highlight">next to</span> the school</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="time-prepositions">
+                <h2>Preposições de Tempo</h2>
+                
+                <div class="time-prepositions">
+                    <div class="time-card">
+                        <h4>IN</h4>
+                        <p>• <strong>Meses</strong>: in January<br>
+                        • <strong>Anos</strong>: in 2024<br>
+                        • <strong>Estações</strong>: in summer<br>
+                        • <strong>Partes do dia</strong>: in the morning</p>
+                    </div>
+                    
+                    <div class="time-card">
+                        <h4>ON</h4>
+                        <p>• <strong>Dias</strong>: on Monday<br>
+                        • <strong>Datas</strong>: on December 25th<br>
+                        • <strong>Dias + parte do dia</strong>: on Friday morning</p>
+                    </div>
+                    
+                    <div class="time-card">
+                        <h4>AT</h4>
+                        <p>• <strong>Horas</strong>: at 3 o'clock<br>
+                        • <strong>Festas</strong>: at Christmas<br>
+                        • <strong>Noite</strong>: at night<br>
+                        • <strong>Fim de semana</strong>: at weekend</p>
+                    </div>
+                </div>
+                
+                <div class="visual-guide">
+                    <h3>Guia Visual: IN - ON - AT para Tempo</h3>
+                    <div class="example">
+                        <p><strong>IN</strong> → Períodos LONGOS (meses, anos, séculos)<br>
+                        <strong>ON</strong> → Dias ESPECÍFICOS (datas, dias da semana)<br>
+                        <strong>AT</strong> → Pontos EXATOS (horas, momentos específicos)</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="movement-prepositions">
+                <h2>Preposições de Movimento</h2>
+                
+                <div class="preposition-grid">
+                    <div class="preposition-card">
+                        <h3>TO - INTO - ONTO</h3>
+                        <div class="example">
+                            <p><strong>TO</strong> - direção para<br>
+                            • I go <span class="highlight">to</span> school<br>
+                            • She came <span class="highlight">to</span> my house</p>
+                            
+                            <p><strong>INTO</strong> - movimento para dentro<br>
+                            • He walked <span class="highlight">into</span> the room<br>
+                            • Put the money <span class="highlight">into</span> the box</p>
+                            
+                            <p><strong>ONTO</strong> - movimento para sobre<br>
+                            • The cat jumped <span class="highlight">onto</span> the table<br>
+                            • Get <span class="highlight">onto</span> the bus</p>
+                        </div>
+                    </div>
+                    
+                    <div class="preposition-card">
+                        <h3>OUT OF - OFF - FROM</h3>
+                        <div class="example">
+                            <p><strong>OUT OF</strong> - movimento para fora<br>
+                            • She got <span class="highlight">out of</span> the car<br>
+                            • Take the book <span class="highlight">out of</span> the bag</p>
+                            
+                            <p><strong>OFF</strong> - movimento de descida/remoção<br>
+                            • Get <span class="highlight">off</span> the bus<br>
+                            • Take your shoes <span class="highlight">off</span></p>
+                            
+                            <p><strong>FROM</strong> - origem/procedência<br>
+                            • I am <span class="highlight">from</span> Brazil<br>
+                            • This letter is <span class="highlight">from</span> my friend</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="other-prepositions">
+                <h2>Outras Preposições Importantes</h2>
+                
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Preposição</th>
+                            <th>Uso</th>
+                            <th>Exemplos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>BY</strong></td>
+                            <td>Meio de transporte, autor</td>
+                            <td>by car, by Shakespeare</td>
+                        </tr>
+                        <tr>
+                            <td><strong>WITH</strong></td>
+                            <td>Companhia, instrumento</td>
+                            <td>with friends, with a pen</td>
+                        </tr>
+                        <tr>
+                            <td><strong>WITHOUT</strong></td>
+                            <td>Falta/ausência</td>
+                            <td>without money, without you</td>
+                        </tr>
+                        <tr>
+                            <td><strong>FOR</strong></td>
+                            <td>Finalidade, duração</td>
+                            <td>for studying, for 2 hours</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SINCE</strong></td>
+                            <td>Desde (tempo)</td>
+                            <td>since 2010, since Monday</td>
+                        </tr>
+                        <tr>
+                            <td><strong>UNTIL</strong></td>
+                            <td>Até (tempo)</td>
+                            <td>until Friday, until 5 PM</td>
+                        </tr>
+                        <tr>
+                            <td><strong>DURING</strong></td>
+                            <td>Durante</td>
+                            <td>during the movie, during summer</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ABOUT</strong></td>
+                            <td>Sobre (assunto)</td>
+                            <td>about history, about you</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="common-mistakes">
+                <h2>Erros Comuns e Exceções</h2>
+                
+                <div class="warning-box">
+                    <h3>⚠️ AT vs. IN para Lugares</h3>
+                    <p><strong>AT</strong> - para lugares como pontos (endereços específicos)<br>
+                    <strong>IN</strong> - para lugares como espaços (dentro de algo)</p>
+                    <div class="example">
+                        <p>• I'm <span class="highlight">at</span> the hospital. (visiting someone)<br>
+                        • I'm <span class="highlight">in</span> the hospital. (as a patient)</p>
+                    </div>
+                </div>
+                
+                <div class="warning-box">
+                    <h3>⚠️ ON vs. IN para Transporte</h3>
+                    <p><strong>ON</strong> - transporte público/grande<br>
+                    <strong>IN</strong> - transporte privado/pequeno</p>
+                    <div class="example">
+                        <p>• <span class="highlight">on</span> the bus/train/plane<br>
+                        • <span class="highlight">in</span> the car/taxi</p>
+                    </div>
+                </div>
+                
+                <div class="tip-box">
+                    <h3>🎯 Dica: Preposições com Verbos</h3>
+                    <p>Muitos verbos em inglês são seguidos por preposições específicas:</p>
+                    <div class="example">
+                        <p>• listen <span class="highlight">to</span><br>
+                        • depend <span class="highlight">on</span><br>
+                        • believe <span class="highlight">in</span><br>
+                        • wait <span class="highlight">for</span><br>
+                        • think <span class="highlight">about</span></p>
+                    </div>
+                </div>
+                
+                <div class="tip-box">
+                    <h3>🎯 Dica: Preposições com Adjetivos</h3>
+                    <p>Adjetivos também têm preposições específicas:</p>
+                    <div class="example">
+                        <p>• good <span class="highlight">at</span><br>
+                        • interested <span class="highlight">in</span><br>
+                        • afraid <span class="highlight">of</span><br>
+                        • famous <span class="highlight">for</span><br>
+                        • married <span class="highlight">to</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="special-cases">
+                <h2>Casos Especiais e Expressões</h2>
+                
+                <div class="preposition-grid">
+                    <div class="preposition-card">
+                        <h3>NO PREPOSITION</h3>
+                        <p>Algumas palavras NÃO usam preposição:</p>
+                        <div class="example">
+                            <p>• I'll see you <span class="warning">[ ]</span> next week<br>
+                            • She arrived <span class="warning">[ ]</span> yesterday<br>
+                            • Let's meet <span class="warning">[ ]</span> tonight<br>
+                            • I go <span class="warning">[ ]</span> home<br>
+                            • We stay <span class="warning">[ ]</span> inside/outside</p>
+                        </div>
+                    </div>
+                    
+                    <div class="preposition-card">
+                        <h3>EXPRESSÕES FIXAS</h3>
+                        <p>Algumas expressões têm preposições fixas:</p>
+                        <div class="example">
+                            <p>• <span class="highlight">by</span> chance<br>
+                            • <span class="highlight">on</span> purpose<br>
+                            • <span class="highlight">in</span> common<br>
+                            • <span class="highlight">at</span> first<br>
+                            • <span class="highlight">for</span> example</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="practice">
+                <h2>Exercícios Práticos</h2>
+                <p>Complete as frases com a preposição correta:</p>
+                
+                <div class="exercise">
+                    <div class="question">
+                        <p>1. I live __________ Brazil.</p>
+                        <select id="q1">
+                            <option value="">Selecione</option>
+                            <option value="in">in</option>
+                            <option value="on">on</option>
+                            <option value="at">at</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>2. She was born __________ 1990.</p>
+                        <select id="q2">
+                            <option value="">Selecione</option>
+                            <option value="in">in</option>
+                            <option value="on">on</option>
+                            <option value="at">at</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>3. Let's meet __________ Friday.</p>
+                        <select id="q3">
+                            <option value="">Selecione</option>
+                            <option value="in">in</option>
+                            <option value="on">on</option>
+                            <option value="at">at</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>4. The party starts __________ 8 PM.</p>
+                        <select id="q4">
+                            <option value="">Selecione</option>
+                            <option value="in">in</option>
+                            <option value="on">on</option>
+                            <option value="at">at</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>5. The book is __________ the table.</p>
+                        <select id="q5">
+                            <option value="">Selecione</option>
+                            <option value="in">in</option>
+                            <option value="on">on</option>
+                            <option value="at">at</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>6. I'm going __________ the supermarket.</p>
+                        <select id="q6">
+                            <option value="">Selecione</option>
+                            <option value="to">to</option>
+                            <option value="in">in</option>
+                            <option value="at">at</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>7. She's interested __________ music.</p>
+                        <select id="q7">
+                            <option value="">Selecione</option>
+                            <option value="in">in</option>
+                            <option value="on">on</option>
+                            <option value="at">at</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>8. I usually travel __________ bus.</p>
+                        <select id="q8">
+                            <option value="">Selecione</option>
+                            <option value="by">by</option>
+                            <option value="with">with</option>
+                            <option value="in">in</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>9. He's good __________ math.</p>
+                        <select id="q9">
+                            <option value="">Selecione</option>
+                            <option value="at">at</option>
+                            <option value="in">in</option>
+                            <option value="on">on</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question">
+                        <p>10. We'll stay here __________ December.</p>
+                        <select id="q10">
+                            <option value="">Selecione</option>
+                            <option value="until">until</option>
+                            <option value="since">since</option>
+                            <option value="for">for</option>
+                        </select>
+                    </div>
+                    
+                    <button id="checkAnswers">Verificar Respostas</button>
+                    
+                    <div class="result" id="result">
+                        <!-- Resultado será inserido aqui -->
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <footer>
+            <p>Material de ensino de Inglês - Preposições - Guia Completo</p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('checkAnswers').addEventListener('click', function() {
+            const answers = {
+                q1: 'in',
+                q2: 'in',
+                q3: 'on',
+                q4: 'at',
+                q5: 'on',
+                q6: 'to',
+                q7: 'in',
+                q8: 'by',
+                q9: 'at',
+                q10: 'until'
+            };
+            
+            let correctCount = 0;
+            let resultHTML = '<h3>Resultado:</h3><ul>';
+            
+            for (let i = 1; i <= 10; i++) {
+                const questionId = 'q' + i;
+                const userAnswer = document.getElementById(questionId).value;
+                const correctAnswer = answers[questionId];
+                
+                if (userAnswer === correctAnswer) {
+                    correctCount++;
+                    resultHTML += `<li>Pergunta ${i}: <span style="color: green;">✓ Correto!</span></li>`;
+                } else {
+                    resultHTML += `<li>Pergunta ${i}: <span style="color: red;">✗ Incorreto. A resposta correta é "${correctAnswer}".</span></li>`;
+                }
+            }
+            
+            resultHTML += `</ul><p><strong>Total: ${correctCount}/10 acertos</strong></p>`;
+            
+            const resultDiv = document.getElementById('result');
+            
+            if (correctCount >= 8) {
+                resultDiv.className = 'result correct';
+                resultHTML += '<p>Parabéns! Você domina as preposições em inglês!</p>';
+            } else if (correctCount >= 5) {
+                resultDiv.className = 'result correct';
+                resultHTML += '<p>Bom trabalho! Revise as regras e tente novamente.</p>';
+            } else {
+                resultDiv.className = 'result incorrect';
+                resultHTML += '<p>Estude mais as preposições e tente novamente. Você consegue!</p>';
+            }
+            
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = resultHTML;
+        });
+    </script>
+</body>
+</html>
