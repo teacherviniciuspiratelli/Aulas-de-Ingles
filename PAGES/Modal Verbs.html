@@ -444,6 +444,17 @@
         body.reading-mode .highlight { background-color: rgba(93, 64, 55, 0.1); color: #5D4037; }
         body.reading-mode .back-button, body.reading-mode .theme-switcher { background-color: #FFFCF5; color: #5D4037; border-color: #D7CCC8; }
         body.reading-mode .theme-switcher select { color: #5D4037; }
+    /* ================= FOOTER BÁSICO ================= */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+            border-top: 1px solid #ddd;
+        }
+        body.dark-mode .footer { color: #888; border-top-color: #333; }
+        body.reading-mode .footer { color: #8b5a2b; border-top-color: #d7ccc8; }
     </style>
 </head>
 <body>
@@ -1141,7 +1152,10 @@
             <option value="dark">🌙 Modo Escuro</option>
         </select>
     </div>
-
+<!-- ================= FOOTER ================= -->
+    <div class="footer">
+        <p>Criação por Vinicius Piratelli &copy; Direitos reservados - 2026</p>
+    </div>
     <!-- SCRIPT DO TEMA -->
     <script>
         function changeTheme(theme) {
