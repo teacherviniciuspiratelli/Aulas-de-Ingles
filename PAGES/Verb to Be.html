@@ -267,13 +267,11 @@
         /* ================= MODO ESCURO (DARK MODE) COMPLETO ================= */
         body.dark-mode { background-color: #121212; color: #e0e0e0; }
 
-        /* Fundos Principais (Ecrã e Secções Maiores) */
         body.dark-mode .container, body.dark-mode .teaching-section, 
         body.dark-mode .exercise-section, body.dark-mode .exercise { 
             background-color: #1e1e1e; box-shadow: 0 4px 15px rgba(0,0,0,0.5); 
         }
         
-        /* Caixas Internas, Cartões, Listas e Destaques */
         body.dark-mode .grammar-box, body.dark-mode .exercise-item, body.dark-mode .example, 
         body.dark-mode .rule-card, body.dark-mode .tip-box, body.dark-mode .warning-box, 
         body.dark-mode .form-card, body.dark-mode .qw-item, body.dark-mode .noun-column, 
@@ -291,7 +289,6 @@
             background-color: #2d2d2d; color: #e0e0e0; border-color: #555; 
         }
         
-        /* Títulos, Nomes em Destaque e Textos Escuros Antigos */
         body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4,
         body.dark-mode .word, body.dark-mode .base, body.dark-mode .stat-card .label, 
         body.dark-mode .legend-item, body.dark-mode .word-en, body.dark-mode .phrasal, 
@@ -301,14 +298,12 @@
             color: #bb86fc; 
         }
         
-        /* Textos Secundários, Traduções e Contextos */
         body.dark-mode .subtitle, body.dark-mode .context, body.dark-mode .use, 
         body.dark-mode .meaning, body.dark-mode .word-pt, body.dark-mode .expression-pt,
         body.dark-mode .collocation-pt, body.dark-mode .example-text, body.dark-mode .rule-pt { 
             color: #aaaaaa; 
         }
 
-        /* Campos de Preenchimento, Pesquisa e Botões de Filtro */
         body.dark-mode input[type="text"], body.dark-mode select, 
         body.dark-mode .search-box input { 
             background-color: #333; color: #fff; border-color: #555; 
@@ -321,16 +316,17 @@
         body.dark-mode .category-filter button.active { background-color: #bb86fc; color: #121212; }
         body.dark-mode .theme-switcher select { color: #bb86fc; }
 
-        /* Tabelas */
+        /* TABELAS - CORREÇÃO DE CONTRASTE */
+        body.dark-mode table tr, body.dark-mode tbody tr { background-color: #1e1e1e; }
         body.dark-mode table tr:nth-child(even), body.dark-mode tbody tr:nth-child(even) { background-color: #252525; }
         body.dark-mode tbody tr:hover { background-color: #333; }
         body.dark-mode table td, body.dark-mode .noun-list li { border-color: #444; color: #e0e0e0; }
         body.dark-mode table th { background-color: #bb86fc; color: #121212; border-color: #bb86fc; }
         
-        /* Destaques de Cor Suave (Highlights) */
+        /* DESTAQUES (HIGHLIGHTS E NEGATIVES) - CORREÇÃO DE CONTRASTE */
         body.dark-mode .highlight { background-color: rgba(187, 134, 252, 0.2); color: #bb86fc; }
+        body.dark-mode .negative, body.dark-mode .negative-word { background-color: rgba(255, 82, 82, 0.2); color: #ff5252; }
         
-        /* Rodapé */
         body.dark-mode footer, body.dark-mode .footer { background-color: transparent; color: #888; border-top: 1px solid #333; padding-top: 15px; }
 
 
@@ -387,15 +383,18 @@
         body.reading-mode .category-filter button.active { background-color: #5D4037; color: #FFF; }
         body.reading-mode .theme-switcher select { color: #5D4037; }
 
+        /* TABELAS - CORREÇÃO DE CONTRASTE */
+        body.reading-mode table tr, body.reading-mode tbody tr { background-color: #FFFCF5; }
         body.reading-mode table tr:nth-child(even), body.reading-mode tbody tr:nth-child(even) { background-color: #EFEBE1; }
         body.reading-mode tbody tr:hover { background-color: #D7CCC8; }
         body.reading-mode table td, body.reading-mode .noun-list li { border-color: #D7CCC8; color: #2A2A2A; }
         body.reading-mode table th { background-color: #5D4037; color: #FFF; border-color: #5D4037; }
 
+        /* DESTAQUES (HIGHLIGHTS E NEGATIVES) */
         body.reading-mode .highlight { background-color: rgba(93, 64, 55, 0.1); color: #5D4037; }
+        body.reading-mode .negative, body.reading-mode .negative-word { background-color: rgba(192, 57, 43, 0.1); color: #c0392b; }
         
-        body.reading-mode footer, body.reading-mode .footer { background-color: transparent; color: #8b5a2b; border-top: 1px solid #d7ccc8; padding-top: 15px; }
-    </style>
+        body.reading-mode footer, body.reading-mode .footer { background-color: transparent; color: #8b5a2b; border-top: 1px solid #d7ccc8; padding-top: 15px; }    </style>
 </head>
 <body>
     <div class="container">
