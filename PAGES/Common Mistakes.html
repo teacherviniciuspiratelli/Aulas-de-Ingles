@@ -251,82 +251,155 @@
         }
     /* ================= BOTÃO VOLTAR & SELETOR DE TEMAS ================= */
         .back-button {
-            position: fixed;
-            top: 15px;
-            left: 15px;
-            z-index: 1000;
-            background: white;
-            color: #2c3e50;
-            padding: 8px 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            text-decoration: none;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s;
-            border: 1px solid #ddd;
+            position: fixed; top: 15px; left: 15px; z-index: 1000;
+            background: white; color: #2c3e50; padding: 8px 15px;
+            border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-decoration: none; font-weight: bold; display: flex;
+            align-items: center; gap: 8px; transition: all 0.3s; border: 1px solid #ddd;
         }
-        .back-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
+        .back-button:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        
         .theme-switcher {
-            position: fixed;
-            top: 15px;
-            right: 15px;
-            z-index: 1000;
-            background: white;
-            padding: 5px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border: 1px solid #ddd;
+            position: fixed; top: 15px; right: 15px; z-index: 1000;
+            background: white; padding: 5px; border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); border: 1px solid #ddd;
         }
         .theme-switcher select {
-            padding: 8px;
-            border: none;
-            background: transparent;
-            color: #2c3e50;
-            cursor: pointer;
-            font-weight: bold;
-            outline: none;
+            padding: 8px; border: none; background: transparent; color: #2c3e50;
+            cursor: pointer; font-weight: bold; outline: none;
         }
 
-        /* ================= MODO ESCURO (DARK MODE) ================= */
+        /* ================= MODO ESCURO (DARK MODE) COMPLETO ================= */
         body.dark-mode { background-color: #121212; color: #e0e0e0; }
-        body.dark-mode .container, body.dark-mode .teaching-section, body.dark-mode .exercise-section { background-color: #1e1e1e; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode .question, body.dark-mode .word, body.dark-mode .base { color: #bb86fc; border-color: #bb86fc; }
-        body.dark-mode .grammar-box, body.dark-mode .exercise-item, body.dark-mode .example, body.dark-mode .rule-card, body.dark-mode .tip-box, body.dark-mode .warning-box, body.dark-mode .form-card, body.dark-mode .qw-item, body.dark-mode .noun-column, body.dark-mode .tense-card { background-color: #2d2d2d; color: #e0e0e0; border-color: #bb86fc; }
-        body.dark-mode .subtitle, body.dark-mode .context, body.dark-mode .use { color: #aaaaaa; }
-        body.dark-mode input[type="text"], body.dark-mode select { background-color: #333; color: #fff; border-color: #555; }
-        body.dark-mode input[type="text"]:focus { border-color: #bb86fc; }
-        body.dark-mode table td, body.dark-mode .noun-list li { border-color: #444; }
-        body.dark-mode table th { background-color: #bb86fc; color: #121212; border-color: #bb86fc; }
-        body.dark-mode .question { background-color: #2d2d2d; }
-        body.dark-mode .highlight { background-color: rgba(187, 134, 252, 0.2); color: #bb86fc; }
-        body.dark-mode .back-button, body.dark-mode .theme-switcher { background-color: #2d2d2d; color: #bb86fc; border-color: #555; }
-        body.dark-mode .theme-switcher select { color: #bb86fc; }
+
+        /* Fundos Principais (Ecrã e Secções Maiores) */
+        body.dark-mode .container, body.dark-mode .teaching-section, 
+        body.dark-mode .exercise-section, body.dark-mode .exercise { 
+            background-color: #1e1e1e; box-shadow: 0 4px 15px rgba(0,0,0,0.5); 
+        }
         
-        /* ================= MODO LEITURA (READING MODE) MELHORADO ================= */
+        /* Caixas Internas, Cartões, Listas e Destaques */
+        body.dark-mode .grammar-box, body.dark-mode .exercise-item, body.dark-mode .example, 
+        body.dark-mode .rule-card, body.dark-mode .tip-box, body.dark-mode .warning-box, 
+        body.dark-mode .form-card, body.dark-mode .qw-item, body.dark-mode .noun-column, 
+        body.dark-mode .tense-card, body.dark-mode .irregular-list .item, 
+        body.dark-mode .verb-conjugation .item, body.dark-mode .phrasal-list .item, 
+        body.dark-mode .preposition-card, body.dark-mode .time-card, body.dark-mode .visual-guide, 
+        body.dark-mode .rule-card-special, body.dark-mode .examples-column, 
+        body.dark-mode .pronunciation-box, body.dark-mode .comparison-card, 
+        body.dark-mode .usage-card, body.dark-mode .usage-type-card, body.dark-mode .formula-box, 
+        body.dark-mode .word-pair, body.dark-mode .speech-example .direct, 
+        body.dark-mode .speech-example .indirect, body.dark-mode .idiom-card, 
+        body.dark-mode .stat-card, body.dark-mode .legend, body.dark-mode .score-display, 
+        body.dark-mode .question, body.dark-mode .back-button, body.dark-mode .theme-switcher,
+        body.dark-mode .diff-example, body.dark-mode .conditional-card, body.dark-mode .formula { 
+            background-color: #2d2d2d; color: #e0e0e0; border-color: #555; 
+        }
+        
+        /* Títulos, Nomes em Destaque e Textos Escuros Antigos */
+        body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4,
+        body.dark-mode .word, body.dark-mode .base, body.dark-mode .stat-card .label, 
+        body.dark-mode .legend-item, body.dark-mode .word-en, body.dark-mode .phrasal, 
+        body.dark-mode .idiom, body.dark-mode .word1, body.dark-mode .collocation-en, 
+        body.dark-mode .expression-en, body.dark-mode .tense-name, body.dark-mode .verb,
+        body.dark-mode .rule-en { 
+            color: #bb86fc; 
+        }
+        
+        /* Textos Secundários, Traduções e Contextos */
+        body.dark-mode .subtitle, body.dark-mode .context, body.dark-mode .use, 
+        body.dark-mode .meaning, body.dark-mode .word-pt, body.dark-mode .expression-pt,
+        body.dark-mode .collocation-pt, body.dark-mode .example-text, body.dark-mode .rule-pt { 
+            color: #aaaaaa; 
+        }
+
+        /* Campos de Preenchimento, Pesquisa e Botões de Filtro */
+        body.dark-mode input[type="text"], body.dark-mode select, 
+        body.dark-mode .search-box input { 
+            background-color: #333; color: #fff; border-color: #555; 
+        }
+        body.dark-mode input[type="text"]:focus, body.dark-mode .search-box input:focus { 
+            border-color: #bb86fc; 
+        }
+        body.dark-mode .category-filter button { background-color: #333; color: #ccc; }
+        body.dark-mode .category-filter button:hover { background-color: #444; }
+        body.dark-mode .category-filter button.active { background-color: #bb86fc; color: #121212; }
+        body.dark-mode .theme-switcher select { color: #bb86fc; }
+
+        /* Tabelas */
+        body.dark-mode table tr:nth-child(even), body.dark-mode tbody tr:nth-child(even) { background-color: #252525; }
+        body.dark-mode tbody tr:hover { background-color: #333; }
+        body.dark-mode table td, body.dark-mode .noun-list li { border-color: #444; color: #e0e0e0; }
+        body.dark-mode table th { background-color: #bb86fc; color: #121212; border-color: #bb86fc; }
+        
+        /* Destaques de Cor Suave (Highlights) */
+        body.dark-mode .highlight { background-color: rgba(187, 134, 252, 0.2); color: #bb86fc; }
+        
+        /* Rodapé */
+        body.dark-mode footer, body.dark-mode .footer { background-color: transparent; color: #888; border-top: 1px solid #333; padding-top: 15px; }
+
+
+        /* ================= MODO LEITURA (READING MODE) COMPLETO ================= */
         body.reading-mode { background-color: #F4F1EA; color: #2A2A2A; }
-        body.reading-mode .container, body.reading-mode .teaching-section, body.reading-mode .exercise-section { background-color: #FFFCF5; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        body.reading-mode h1, body.reading-mode h2, body.reading-mode h3, body.reading-mode .question, body.reading-mode .word, body.reading-mode .base { color: #5D4037; border-color: #5D4037; }
-        body.reading-mode .grammar-box, body.reading-mode .exercise-item, body.reading-mode .example, body.reading-mode .rule-card, body.reading-mode .tip-box, body.reading-mode .warning-box, body.reading-mode .form-card, body.reading-mode .qw-item, body.reading-mode .noun-column, body.reading-mode .tense-card { background-color: #F4F1EA; color: #2A2A2A; border-color: #A1887F; }
-        body.reading-mode .subtitle, body.reading-mode .context, body.reading-mode .use { color: #5D4037; }
-        body.reading-mode input[type="text"], body.reading-mode select { background-color: #FFF; color: #2A2A2A; border-color: #D7CCC8; }
-        body.reading-mode input[type="text"]:focus { border-color: #5D4037; }
-        body.reading-mode table td, body.reading-mode .noun-list li { border-color: #D7CCC8; }
-        body.reading-mode table th { background-color: #5D4037; color: #FFF; border-color: #5D4037; }
-        body.reading-mode .question { background-color: #FFFCF5; }
-        body.reading-mode .highlight { background-color: rgba(93, 64, 55, 0.1); color: #5D4037; }
-        body.reading-mode .back-button, body.reading-mode .theme-switcher { background-color: #FFFCF5; color: #5D4037; border-color: #D7CCC8; }
+
+        body.reading-mode .container, body.reading-mode .teaching-section, 
+        body.reading-mode .exercise-section, body.reading-mode .exercise { 
+            background-color: #FFFCF5; box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+        }
+
+        body.reading-mode .grammar-box, body.reading-mode .exercise-item, body.reading-mode .example, 
+        body.reading-mode .rule-card, body.reading-mode .tip-box, body.reading-mode .warning-box, 
+        body.reading-mode .form-card, body.reading-mode .qw-item, body.reading-mode .noun-column, 
+        body.reading-mode .tense-card, body.reading-mode .irregular-list .item, 
+        body.reading-mode .verb-conjugation .item, body.reading-mode .phrasal-list .item, 
+        body.reading-mode .preposition-card, body.reading-mode .time-card, body.reading-mode .visual-guide, 
+        body.reading-mode .rule-card-special, body.reading-mode .examples-column, 
+        body.reading-mode .pronunciation-box, body.reading-mode .comparison-card, 
+        body.reading-mode .usage-card, body.reading-mode .usage-type-card, body.reading-mode .formula-box, 
+        body.reading-mode .word-pair, body.reading-mode .speech-example .direct, 
+        body.reading-mode .speech-example .indirect, body.reading-mode .idiom-card, 
+        body.reading-mode .stat-card, body.reading-mode .legend, body.reading-mode .score-display, 
+        body.reading-mode .question, body.reading-mode .back-button, body.reading-mode .theme-switcher,
+        body.reading-mode .diff-example, body.reading-mode .conditional-card, body.reading-mode .formula { 
+            background-color: #F4F1EA; color: #2A2A2A; border-color: #D7CCC8; 
+        }
+
+        body.reading-mode h1, body.reading-mode h2, body.reading-mode h3, body.reading-mode h4,
+        body.reading-mode .word, body.reading-mode .base, body.reading-mode .stat-card .label, 
+        body.reading-mode .legend-item, body.reading-mode .word-en, body.reading-mode .phrasal, 
+        body.reading-mode .idiom, body.reading-mode .word1, body.reading-mode .collocation-en, 
+        body.reading-mode .expression-en, body.reading-mode .tense-name, body.reading-mode .verb,
+        body.reading-mode .rule-en { 
+            color: #5D4037; 
+        }
+
+        body.reading-mode .subtitle, body.reading-mode .context, body.reading-mode .use, 
+        body.reading-mode .meaning, body.reading-mode .word-pt, body.reading-mode .expression-pt,
+        body.reading-mode .collocation-pt, body.reading-mode .example-text, body.reading-mode .rule-pt { 
+            color: #6D4C41; 
+        }
+
+        body.reading-mode input[type="text"], body.reading-mode select, 
+        body.reading-mode .search-box input { 
+            background-color: #FFF; color: #2A2A2A; border-color: #D7CCC8; 
+        }
+        body.reading-mode input[type="text"]:focus, body.reading-mode .search-box input:focus { 
+            border-color: #5D4037; 
+        }
+        
+        body.reading-mode .category-filter button { background-color: #EFEBE1; color: #5D4037; }
+        body.reading-mode .category-filter button:hover { background-color: #D7CCC8; }
+        body.reading-mode .category-filter button.active { background-color: #5D4037; color: #FFF; }
         body.reading-mode .theme-switcher select { color: #5D4037; }
-    /* ================= ADAPTAÇÃO DO RODAPÉ AOS TEMAS ================= */
-        body.dark-mode .footer { color: #888; border-top: 1px solid #333; padding-top: 15px; }
-        body.reading-mode .footer { color: #8b5a2b; border-top: 1px solid #d7ccc8; padding-top: 15px; }
-    </style>
+
+        body.reading-mode table tr:nth-child(even), body.reading-mode tbody tr:nth-child(even) { background-color: #EFEBE1; }
+        body.reading-mode tbody tr:hover { background-color: #D7CCC8; }
+        body.reading-mode table td, body.reading-mode .noun-list li { border-color: #D7CCC8; color: #2A2A2A; }
+        body.reading-mode table th { background-color: #5D4037; color: #FFF; border-color: #5D4037; }
+
+        body.reading-mode .highlight { background-color: rgba(93, 64, 55, 0.1); color: #5D4037; }
+        
+        body.reading-mode footer, body.reading-mode .footer { background-color: transparent; color: #8b5a2b; border-top: 1px solid #d7ccc8; padding-top: 15px; }    </style>
 </head>
 <body>
     <div class="container">
