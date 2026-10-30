@@ -237,7 +237,7 @@
         }
         
         body.dark-mode .grammar-box, body.dark-mode .exercise-item, body.dark-mode .example, 
-        body.dark-mode .rule-card, body.dark-mode .tip-box, body.dark-mode .warning-box, 
+        body.dark-mode .rule-card, body.dark-mode .warning-box, 
         body.dark-mode .form-card, body.dark-mode .qw-item, body.dark-mode .noun-column, 
         body.dark-mode .tense-card, body.dark-mode .irregular-list .item, 
         body.dark-mode .verb-conjugation .item, body.dark-mode .phrasal-list .item, 
@@ -287,11 +287,21 @@
         body.dark-mode table td, body.dark-mode .noun-list li { border-color: #444; color: #e0e0e0; }
         body.dark-mode table th { background-color: #bb86fc; color: #121212; border-color: #bb86fc; }
         
-        /* DESTAQUES (HIGHLIGHTS E NEGATIVES) - CORREÇÃO DE CONTRASTE */
+        /* DESTAQUES (HIGHLIGHTS E NEGATIVES) */
         body.dark-mode .highlight { background-color: rgba(187, 134, 252, 0.2); color: #bb86fc; }
         body.dark-mode .negative, body.dark-mode .negative-word { background-color: rgba(255, 82, 82, 0.2); color: #ff5252; }
         
         body.dark-mode footer, body.dark-mode .footer { background-color: transparent; color: #888; border-top: 1px solid #333; padding-top: 15px; }
+
+        /* CORREÇÕES ESPECÍFICAS (GET, Phrasal Verbs, Tip-boxes) */
+        body.dark-mode .tip, body.dark-mode .tips, body.dark-mode .tip-box,
+        body.dark-mode .meaning-box, body.dark-mode .phrase-list li,
+        body.dark-mode .exercise-box {
+            background-color: #2d2d2d; border-color: #bb86fc; color: #e0e0e0;
+        }
+        body.dark-mode p { color: #e0e0e0; }
+        body.dark-mode .tips strong, body.dark-mode .tip strong, body.dark-mode .tip-box strong { color: #bb86fc; }
+        body.dark-mode .portuguese { color: #aaaaaa; }
 
 
         /* ================= MODO LEITURA (READING MODE) COMPLETO ================= */
@@ -303,7 +313,7 @@
         }
 
         body.reading-mode .grammar-box, body.reading-mode .exercise-item, body.reading-mode .example, 
-        body.reading-mode .rule-card, body.reading-mode .tip-box, body.reading-mode .warning-box, 
+        body.reading-mode .rule-card, body.reading-mode .warning-box, 
         body.reading-mode .form-card, body.reading-mode .qw-item, body.reading-mode .noun-column, 
         body.reading-mode .tense-card, body.reading-mode .irregular-list .item, 
         body.reading-mode .verb-conjugation .item, body.reading-mode .phrasal-list .item, 
@@ -358,7 +368,17 @@
         body.reading-mode .highlight { background-color: rgba(93, 64, 55, 0.1); color: #5D4037; }
         body.reading-mode .negative, body.reading-mode .negative-word { background-color: rgba(192, 57, 43, 0.1); color: #c0392b; }
         
-        body.reading-mode footer, body.reading-mode .footer { background-color: transparent; color: #8b5a2b; border-top: 1px solid #d7ccc8; padding-top: 15px; }    </style>
+        body.reading-mode footer, body.reading-mode .footer { background-color: transparent; color: #8b5a2b; border-top: 1px solid #d7ccc8; padding-top: 15px; }
+
+        /* CORREÇÕES ESPECÍFICAS (GET, Phrasal Verbs, Tip-boxes) */
+        body.reading-mode .tip, body.reading-mode .tips, body.reading-mode .tip-box,
+        body.reading-mode .meaning-box, body.reading-mode .phrase-list li,
+        body.reading-mode .exercise-box {
+            background-color: #F4F1EA; border-color: #5D4037; color: #2A2A2A;
+        }
+        body.reading-mode p { color: #2A2A2A; }
+        body.reading-mode .tips strong, body.reading-mode .tip strong, body.reading-mode .tip-box strong { color: #5D4037; }
+        body.reading-mode .portuguese { color: #6D4C41; }    </style>
 </head>
 <body>
     <div class="container">
