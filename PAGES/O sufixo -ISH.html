@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 The Suffix "-ISH" - Ensino e Exercícios</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        /* Teaching Section */
+        .teaching-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .teaching-section h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #8e44ad;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .grammar-box {
+            background: #ecf0f1;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #8e44ad;
+        }
+        .grammar-box h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .grammar-box table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        .grammar-box table td, .grammar-box table th {
+            padding: 8px 12px;
+            border: 1px solid #bdc3c7;
+        }
+        .grammar-box table th {
+            background: #8e44ad;
+            color: white;
+            text-align: left;
+        }
+        .example {
+            background: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 8px 0;
+            border-left: 4px solid #3498db;
+        }
+        .example .en {
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        .example .pt {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        .highlight {
+            color: #8e44ad;
+            font-weight: bold;
+        }
+        .tip {
+            background: #d1ecf1;
+            padding: 12px 18px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 4px solid #17a2b8;
+        }
+        .tip strong {
+            color: #0c5460;
+        }
+
+        /* Exercise Sections */
+        .exercise-section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .exercise-section h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .exercise-item {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+        .exercise-item .question {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        .exercise-item .context {
+            color: #666;
+            font-style: italic;
+            font-size: 0.95em;
+            margin-bottom: 8px;
+        }
+        .options {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 8px 0;
+        }
+        .options label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+        .options label:hover {
+            background: #e8f4f8;
+        }
+        .options input[type="radio"] {
+            cursor: pointer;
+        }
+        .answer-line {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+        .answer-line input[type="text"] {
+            padding: 8px 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 15px;
+            width: 250px;
+            transition: border-color 0.3s;
+        }
+        .answer-line input[type="text"]:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        .translation-box {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .translation-box input {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        /* Feedback */
+        .feedback {
+            font-size: 0.9em;
+            margin-left: 10px;
+            padding: 3px 12px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        .feedback.correct {
+            background: #d4edda;
+            color: #155724;
+        }
+        .feedback.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .feedback.waiting {
+            background: #e9ecef;
+            color: #6c757d;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            margin: 5px;
+        }
+        .btn-success { background: #2ecc71; color: white; }
+        .btn-success:hover { background: #27ae60; transform: translateY(-2px); }
+        .btn-danger { background: #e74c3c; color: white; }
+        .btn-danger:hover { background: #c0392b; transform: translateY(-2px); }
+        .btn-secondary { background: #95a5a6; color: white; }
+        .btn-secondary:hover { background: #7f8c8d; transform: translateY(-2px); }
+        
+        .button-group {
+            display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin: 20px 0;
+        }
+        .result-box, .section-result {
+            padding: 15px; border-radius: 8px; margin-top: 15px; text-align: center;
+            display: none; font-weight: 600; font-size: 1.1em;
+        }
+        .result-box.correct, .section-result.correct { background: #d4edda; color: #155724; display: block; }
+        .result-box.incorrect, .section-result.incorrect { background: #f8d7da; color: #721c24; display: block; }
+        .result-box.partial, .section-result.partial { background: #fff3cd; color: #856404; display: block; }
+        
+        .score-display {
+            text-align: center; font-size: 1.2em; padding: 10px; background: #ecf0f1;
+            border-radius: 8px; margin: 10px 0;
+        }
+        .score-display span { font-weight: bold; color: #2c3e50; }
+
+        @media (max-width: 600px) {
+            .options { flex-direction: column; gap: 5px; }
+            .answer-line input[type="text"], .translation-box input { width: 100%; }
+        }
+
+        /* ================= BOTÃO VOLTAR & SELETOR DE TEMAS ================= */
+        .back-button {
+            position: fixed; top: 15px; left: 15px; z-index: 1000;
+            background: white; color: #2c3e50; padding: 8px 15px;
+            border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-decoration: none; font-weight: bold; display: flex;
+            align-items: center; gap: 8px; transition: all 0.3s; border: 1px solid #ddd;
+        }
+        .back-button:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        
+        .theme-switcher {
+            position: fixed; top: 15px; right: 15px; z-index: 1000;
+            background: white; padding: 5px; border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); border: 1px solid #ddd;
+        }
+        .theme-switcher select {
+            padding: 8px; border: none; background: transparent; color: #2c3e50;
+            cursor: pointer; font-weight: bold; outline: none;
+        }
+
+        /* ================= MODO ESCURO (DARK MODE) ================= */
+        body.dark-mode { background-color: #121212; color: #e0e0e0; }
+        body.dark-mode .container, body.dark-mode .teaching-section, 
+        body.dark-mode .exercise-section { background-color: #1e1e1e; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        body.dark-mode .grammar-box, body.dark-mode .exercise-item, body.dark-mode .example,
+        body.dark-mode .back-button, body.dark-mode .theme-switcher, body.dark-mode .score-display { 
+            background-color: #2d2d2d; color: #e0e0e0; border-color: #555; 
+        }
+        body.dark-mode h1, body.dark-mode h2, body.dark-mode h3 { color: #bb86fc; }
+        body.dark-mode .subtitle, body.dark-mode .context, body.dark-mode .pt { color: #aaaaaa; }
+        body.dark-mode input[type="text"], body.dark-mode select { background-color: #333; color: #fff; border-color: #555; }
+        body.dark-mode input[type="text"]:focus { border-color: #bb86fc; }
+        body.dark-mode .theme-switcher select { color: #bb86fc; }
+        body.dark-mode table tr:nth-child(even) { background-color: #252525; }
+        body.dark-mode table td { border-color: #444; color: #e0e0e0; }
+        body.dark-mode table th { background-color: #bb86fc; color: #121212; border-color: #bb86fc; }
+        body.dark-mode .highlight { background-color: rgba(187, 134, 252, 0.2); color: #bb86fc; }
+        body.dark-mode footer, body.dark-mode .footer { color: #888; border-top: 1px solid #333; }
+
+        /* ================= MODO LEITURA (READING MODE) ================= */
+        body.reading-mode { background-color: #F4F1EA; color: #2A2A2A; }
+        body.reading-mode .container, body.reading-mode .teaching-section, 
+        body.reading-mode .exercise-section { background-color: #FFFCF5; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        body.reading-mode .grammar-box, body.reading-mode .exercise-item, body.reading-mode .example,
+        body.reading-mode .back-button, body.reading-mode .theme-switcher, body.reading-mode .score-display { 
+            background-color: #F4F1EA; color: #2A2A2A; border-color: #D7CCC8; 
+        }
+        body.reading-mode h1, body.reading-mode h2, body.reading-mode h3 { color: #5D4037; }
+        body.reading-mode .subtitle, body.reading-mode .context, body.reading-mode .pt { color: #6D4C41; }
+        body.reading-mode input[type="text"], body.reading-mode select { background-color: #FFF; color: #2A2A2A; border-color: #D7CCC8; }
+        body.reading-mode input[type="text"]:focus { border-color: #5D4037; }
+        body.reading-mode .theme-switcher select { color: #5D4037; }
+        body.reading-mode table tr:nth-child(even) { background-color: #EFEBE1; }
+        body.reading-mode table td { border-color: #D7CCC8; color: #2A2A2A; }
+        body.reading-mode table th { background-color: #5D4037; color: #FFF; border-color: #5D4037; }
+        body.reading-mode .highlight { background-color: rgba(93, 64, 55, 0.1); color: #5D4037; }
+        body.reading-mode footer, body.reading-mode .footer { color: #8b5a2b; border-top: 1px solid #d7ccc8; }
+        
+        .footer { text-align: center; padding: 20px; margin-top: 20px; font-size: 0.9em; color: #7f8c8d; }
+    </style>
+</head>
+<body>
+    <!-- BOTÕES FLUTUANTES (VOLTAR E TEMA) -->
+    <a href="../index.html" class="back-button">
+        🔙 Voltar
+    </a>
+
+    <div class="theme-switcher">
+        <select id="themeSelect" onchange="changeTheme(this.value)">
+            <option value="light">☀️ Modo Claro</option>
+            <option value="reading">📖 Modo Leitura</option>
+            <option value="dark">🌙 Modo Escuro</option>
+        </select>
+    </div>
+
+    <div class="container">
+        <h1>📚 O sufixo "-ISH"</h1>
+        <p class="subtitle">Aprenda a usar a palavra que significa "mais ou menos", "tipo isso" ou "por volta de".</p>
+
+        <!-- ==================== ENSINO ==================== -->
+        <div class="teaching-section">
+            <h2>📖 O que significa e como usar?</h2>
+            
+            <div class="grammar-box">
+                <h3>1️⃣ A Ideia Geral</h3>
+                <p>O sufixo <strong>-ish</strong> é usado no inglês informal para dar uma ideia de aproximação, incerteza ou semelhança. Ele transforma a palavra em algo como "um pouco", "meio", "por volta de" ou "com cara de".</p>
+            </div>
+
+            <div class="grammar-box">
+                <h3>2️⃣ Com Horários e Números (Por volta de)</h3>
+                <p>Muito usado para marcar encontros quando você não quer ser 100% exato.</p>
+                <div class="example">
+                    <div class="en">Let's meet at <span class="highlight">seven-ish</span>.</div>
+                    <div class="pt">Vamos nos encontrar por volta das sete / umas sete horas.</div>
+                </div>
+                <div class="example">
+                    <div class="en">He is <span class="highlight">forty-ish</span>.</div>
+                    <div class="pt">Ele tem lá para os seus 40 anos / uns 40 anos.</div>
+                </div>
+            </div>
+
+            <div class="grammar-box">
+                <h3>3️⃣ Com Cores (Avermelhado, Esverdeado...)</h3>
+                <p>Quando a cor não é sólida ou exata, adicionamos -ish.</p>
+                <table>
+                    <tr>
+                        <th>Cor Base</th>
+                        <th>Com -ish</th>
+                        <th>Significado</th>
+                    </tr>
+                    <tr>
+                        <td>Red</td>
+                        <td><span class="highlight">Reddish</span></td>
+                        <td>Avermelhado</td>
+                    </tr>
+                    <tr>
+                        <td>Blue</td>
+                        <td><span class="highlight">Bluish</span></td>
+                        <td>Azulado</td>
+                    </tr>
+                    <tr>
+                        <td>Yellow</td>
+                        <td><span class="highlight">Yellowish</span></td>
+                        <td>Amarelado</td>
+                    </tr>
+                    <tr>
+                        <td>Green</td>
+                        <td><span class="highlight">Greenish</span></td>
+                        <td>Esverdeado</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="grammar-box">
+                <h3>4️⃣ Com Adjetivos Físicos (Um pouco...)</h3>
+                <p>Serve para não ser muito extremo na descrição.</p>
+                <div class="example">
+                    <div class="en">She is <span class="highlight">tallish</span>.</div>
+                    <div class="pt">Ela é um pouco alta / altinha.</div>
+                </div>
+                <div class="example">
+                    <div class="en">The water is <span class="highlight">coldish</span>.</div>
+                    <div class="pt">A água está meio fria.</div>
+                </div>
+                <div class="example">
+                    <div class="en">This soup is <span class="highlight">sweetish</span>.</div>
+                    <div class="pt">Esta sopa é meio doce.</div>
+                </div>
+            </div>
+
+            <div class="grammar-box">
+                <h3>5️⃣ Comportamento e Personalidade</h3>
+                <p>Neste caso, significa "agir como". Atenção: geralmente tem um tom negativo ou pejorativo.</p>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li>🔸 <strong>Childish:</strong> Infantil (Agindo como criança de forma chata).</li>
+                    <li>🔸 <strong>Foolish:</strong> Tolo / Bobo.</li>
+                    <li>🔸 <strong>Selfish:</strong> Egoísta (Pensa só no "self" = si mesmo).</li>
+                </ul>
+                <div class="example">
+                    <div class="en">Stop crying, don't be <span class="highlight">childish</span>!</div>
+                    <div class="pt">Para de chorar, não sejas infantil!</div>
+                </div>
+            </div>
+
+            <div class="grammar-box">
+                <h3>6️⃣ Como Palavra Isolada (Gíria)</h3>
+                <p>Na fala do dia a dia, "ish" pode ser usado sozinho como resposta para dizer "mais ou menos".</p>
+                <div class="example">
+                    <div class="en">- Are you hungry?<br>- <span class="highlight">Ish.</span></div>
+                    <div class="pt">- Estás com fome?<br>- Mais ou menos / Um pouco.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== EXERCÍCIOS ==================== -->
+
+        <!-- EXERCÍCIO 1: Selecionar -->
+        <div class="exercise-section" id="sec1">
+            <h2>📝 Exercício 1: Múltipla Escolha</h2>
+            <p style="color: #666; margin-bottom: 15px;">Selecione a palavra que melhor completa a frase.</p>
+
+            <div class="exercise-item">
+                <div class="question">1. Let's meet at 8-____.</div>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="ish"> ish</label>
+                    <label><input type="radio" name="q1" value="ly"> ly</label>
+                    <label><input type="radio" name="q1" value="ness"> ness</label>
+                </div>
+                <span class="feedback" id="fb1"></span>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">2. Stop crying over a game, don't be ____.</div>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="fool"> fool</label>
+                    <label><input type="radio" name="q2" value="childish"> childish</label>
+                    <label><input type="radio" name="q2" value="sweetish"> sweetish</label>
+                </div>
+                <span class="feedback" id="fb2"></span>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">3. His hair is not exactly red, it's ____.</div>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="redish"> redish</label>
+                    <label><input type="radio" name="q3" value="reddish"> reddish (com dois d)</label>
+                    <label><input type="radio" name="q3" value="red"> red</label>
+                </div>
+                <span class="feedback" id="fb3"></span>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">4. - Are you ready to go?<br> - ____. Give me 5 minutes.</div>
+                <div class="options">
+                    <label><input type="radio" name="q4" value="Yes"> Yes</label>
+                    <label><input type="radio" name="q4" value="No"> No</label>
+                    <label><input type="radio" name="q4" value="Ish"> Ish</label>
+                </div>
+                <span class="feedback" id="fb4"></span>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">5. He never shares his food. He is very ____.</div>
+                <div class="options">
+                    <label><input type="radio" name="q5" value="selfish"> selfish</label>
+                    <label><input type="radio" name="q5" value="foolish"> foolish</label>
+                    <label><input type="radio" name="q5" value="tallish"> tallish</label>
+                </div>
+                <span class="feedback" id="fb5"></span>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-success" onclick="checkSelectExercise()">Verificar Respostas</button>
+            </div>
+            <div class="section-result" id="resultSelect"></div>
+        </div>
+
+        <!-- EXERCÍCIO 2: Escrever -->
+        <div class="exercise-section" id="sec2">
+            <h2>✍️ Exercício 2: Escreva a palavra com -ish</h2>
+            <p style="color: #666; margin-bottom: 15px;">Transforme a palavra em inglês adicionando o sufixo apropriado.</p>
+
+            <div class="exercise-item">
+                <div class="question">6. Por volta das sete (Seven) = ______</div>
+                <div class="answer-line">
+                    <input type="text" class="q6" placeholder="Sua resposta...">
+                    <span class="feedback" id="fb6"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">7. Amarelado (Yellow) = ______</div>
+                <div class="answer-line">
+                    <input type="text" class="q7" placeholder="Sua resposta...">
+                    <span class="feedback" id="fb7"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">8. Um pouco alto (Tall) = ______</div>
+                <div class="answer-line">
+                    <input type="text" class="q8" placeholder="Sua resposta...">
+                    <span class="feedback" id="fb8"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">9. Meio frio (Cold) = ______</div>
+                <div class="answer-line">
+                    <input type="text" class="q9" placeholder="Sua resposta...">
+                    <span class="feedback" id="fb9"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">10. Tolo/Bobo (Fool) = ______</div>
+                <div class="answer-line">
+                    <input type="text" class="q10" placeholder="Sua resposta...">
+                    <span class="feedback" id="fb10"></span>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-success" onclick="checkWriteExercise()">Verificar Respostas</button>
+            </div>
+            <div class="section-result" id="resultWrite"></div>
+        </div>
+
+        <!-- EXERCÍCIO 3: Frases completas -->
+        <div class="exercise-section" id="sec3">
+            <h2>✍️ Exercício 3: Escreva a frase</h2>
+            <p style="color: #666; margin-bottom: 15px;">Siga as instruções para criar a frase correta.</p>
+
+            <div class="exercise-item">
+                <div class="question">11. Use "ish" com a cor azul (blue) para descrever o carro: "The car is..."</div>
+                <div class="answer-line">
+                    <input type="text" class="q11" placeholder="Escreva a frase..." style="width: 400px;">
+                    <span class="feedback" id="fb11"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">12. Use "ish" com o número 10 (ten) para dizer "Chegarei por volta das 10" (I will arrive at...)</div>
+                <div class="answer-line">
+                    <input type="text" class="q12" placeholder="Escreva a frase..." style="width: 400px;">
+                    <span class="feedback" id="fb12"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">13. Use "ish" com criança (child) para dizer "Ele é infantil" (He is...)</div>
+                <div class="answer-line">
+                    <input type="text" class="q13" placeholder="Escreva a frase..." style="width: 400px;">
+                    <span class="feedback" id="fb13"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">14. Responda à pergunta apenas com a gíria (uma palavra) que significa "mais ou menos": <br>"- Did you like the movie?"</div>
+                <div class="answer-line">
+                    <input type="text" class="q14" placeholder="Escreva a resposta..." style="width: 400px;">
+                    <span class="feedback" id="fb14"></span>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-success" onclick="checkSentenceExercise()">Verificar Respostas</button>
+            </div>
+            <div class="section-result" id="resultSentence"></div>
+        </div>
+
+        <!-- EXERCÍCIO 4: Tradução -->
+        <div class="exercise-section" id="sec4">
+            <h2>🌍 Exercício 4: Tradução</h2>
+            <p style="color: #666; margin-bottom: 15px;">Traduza as frases para o inglês usando o sufixo.</p>
+
+            <div class="exercise-item">
+                <div class="context">🇧🇷 Ele é um pouco alto.</div>
+                <div class="translation-box">
+                    <input type="text" class="q15" placeholder="Tradução em inglês..." style="width: 400px;">
+                    <span class="feedback" id="fb15"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="context">🇧🇷 A camisa é avermelhada.</div>
+                <div class="translation-box">
+                    <input type="text" class="q16" placeholder="Tradução em inglês..." style="width: 400px;">
+                    <span class="feedback" id="fb16"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="context">🇧🇷 Vamos nos encontrar por volta das 9 (nine). (Let's meet at...)</div>
+                <div class="translation-box">
+                    <input type="text" class="q17" placeholder="Tradução em inglês..." style="width: 400px;">
+                    <span class="feedback" id="fb17"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="context">🇧🇷 Ela tem por volta de 30 (thirty) anos. (She is...)</div>
+                <div class="translation-box">
+                    <input type="text" class="q18" placeholder="Tradução em inglês..." style="width: 400px;">
+                    <span class="feedback" id="fb18"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="context">🇧🇷 Não seja egoísta (selfish).</div>
+                <div class="translation-box">
+                    <input type="text" class="q19" placeholder="Tradução em inglês..." style="width: 400px;">
+                    <span class="feedback" id="fb19"></span>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-success" onclick="checkTranslationExercise()">Verificar Traduções</button>
+            </div>
+            <div class="section-result" id="resultTranslation"></div>
+        </div>
+
+        <!-- EXERCÍCIO 5: Misto -->
+        <div class="exercise-section" id="sec5">
+            <h2>🔀 Exercício 5: Misto</h2>
+            <p style="color: #666; margin-bottom: 15px;">Teste final de conhecimentos.</p>
+
+            <div class="exercise-item">
+                <div class="question">20. Escolha: The water is not completely freezing, it is just ____.</div>
+                <div class="options">
+                    <label><input type="radio" name="q20" value="selfish"> selfish</label>
+                    <label><input type="radio" name="q20" value="coldish"> coldish</label>
+                    <label><input type="radio" name="q20" value="childish"> childish</label>
+                </div>
+                <span class="feedback" id="fb20"></span>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">21. Escreva: "Esverdeado" em inglês é:</div>
+                <div class="answer-line">
+                    <input type="text" class="q21" placeholder="Sua resposta...">
+                    <span class="feedback" id="fb21"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="context">🇧🇷 É meio doce. (It is...)</div>
+                <div class="translation-box">
+                    <input type="text" class="q22" placeholder="Tradução em inglês..." style="width: 400px;">
+                    <span class="feedback" id="fb22"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">23. Traduza: "Ele chegou por volta das cinco (five)." -> He arrived at...</div>
+                <div class="answer-line">
+                    <input type="text" class="q23" placeholder="Escreva a frase..." style="width: 400px;">
+                    <span class="feedback" id="fb23"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">24. Escolha: - Is the party good? - ____. (Mais ou menos).</div>
+                <div class="options">
+                    <label><input type="radio" name="q24" value="Ish"> Ish</label>
+                    <label><input type="radio" name="q24" value="Coldish"> Coldish</label>
+                    <label><input type="radio" name="q24" value="Childish"> Childish</label>
+                </div>
+                <span class="feedback" id="fb24"></span>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-success" onclick="checkMixedExercise()">Verificar Respostas</button>
+            </div>
+            <div class="section-result" id="resultMixed"></div>
+        </div>
+
+        <!-- ==================== BOTÕES GLOBAIS ==================== -->
+        <div class="button-group">
+            <button class="btn btn-danger" onclick="checkAllExercises()">✅ Verificar Todos os Exercícios</button>
+            <button class="btn btn-secondary" onclick="resetAllExercises()">🔄 Resetar Todos</button>
+        </div>
+
+        <div class="score-display">
+            Total: <span id="scoreCount">0</span> / <span id="totalCount">0</span> corretas
+        </div>
+        <div class="result-box" id="globalResult"></div>
+
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+    <div class="footer">
+        <p>Criação por Vinicius Piratelli &copy; Direitos reservados - 2026</p>
+    </div>
+
+    <script>
+        // ==================== RESPOSTAS ====================
+        const answers = {
+            select: ['ish', 'childish', 'reddish', 'Ish', 'selfish'],
+            write: ['sevenish', 'yellowish', 'tallish', 'coldish', 'foolish'],
+            sentences: [
+                ['the car is bluish', 'the car is blueish'],
+                ['i will arrive at tenish', 'i will arrive at 10ish'],
+                ['he is childish'],
+                ['ish']
+            ],
+            translations: [
+                ['he is tallish'],
+                ['the shirt is reddish', 'the tshirt is reddish', 'the shirt is redish'],
+                ['lets meet at nineish', 'lets meet at 9ish', 'we will meet at nineish'],
+                ['she is thirtyish', 'she is 30ish', 'she is thirtyish years old'],
+                ['dont be selfish', 'do not be selfish']
+            ],
+            mixed: ['coldish', 'greenish', 'it is sweetish', 'its sweetish', 'he arrived at fiveish', 'he arrived at 5ish', 'Ish']
+        };
+
+        // ==================== FUNÇÕES ====================
+        // Normalização agressiva para lidar com traços (hifens)
+        // ex: "seven-ish" vira "sevenish", evitando erros bobos de digitação do aluno
+        function normalize(text) {
+            return text.toLowerCase().trim().replace(/[.,!?;:'"-]/g, '').replace(/\s+/g, ' ');
+        }
+
+        function checkSelectExercise() {
+            let correct = 0;
+            const total = 5;
+            for (let i = 1; i <= total; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                const fb = document.getElementById(`fb${i}`);
+                if (selected) {
+                    const isCorrect = selected.value === answers.select[i-1];
+                    fb.textContent = isCorrect ? '✓ Correto' : '✗ Incorreto';
+                    fb.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                    if (isCorrect) correct++;
+                } else {
+                    fb.textContent = '⚠️ Selecione uma opção';
+                    fb.className = 'feedback waiting';
+                }
+            }
+            showSectionResult('resultSelect', correct, total);
+        }
+
+        function checkWriteExercise() {
+            let correct = 0;
+            const total = 5;
+            for (let i = 6; i <= 10; i++) {
+                const input = document.querySelector(`.q${i}`);
+                const fb = document.getElementById(`fb${i}`);
+                if (input) {
+                    const userAnswer = normalize(input.value);
+                    const isCorrect = userAnswer === answers.write[i-6];
+                    fb.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                    fb.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                    if (isCorrect) correct++;
+                }
+            }
+            showSectionResult('resultWrite', correct, total);
+        }
+
+        function checkSentenceExercise() {
+            let correct = 0;
+            const total = 4;
+            for (let i = 11; i <= 14; i++) {
+                const input = document.querySelector(`.q${i}`);
+                const fb = document.getElementById(`fb${i}`);
+                if (input) {
+                    const userAnswer = normalize(input.value);
+                    const isValid = answers.sentences[i-11].some(acceptable => 
+                        userAnswer === normalize(acceptable)
+                    );
+                    fb.textContent = userAnswer === '' ? '⚠️ Preencha' : (isValid ? '✓ Correto' : '✗ Incorreto');
+                    fb.className = `feedback ${userAnswer === '' ? 'waiting' : (isValid ? 'correct' : 'incorrect')}`;
+                    if (isValid) correct++;
+                }
+            }
+            showSectionResult('resultSentence', correct, total);
+        }
+
+        function checkTranslationExercise() {
+            let correct = 0;
+            const total = 5;
+            for (let i = 15; i <= 19; i++) {
+                const input = document.querySelector(`.q${i}`);
+                const fb = document.getElementById(`fb${i}`);
+                if (input) {
+                    const userAnswer = normalize(input.value);
+                    const isValid = answers.translations[i-15].some(acceptable => 
+                        userAnswer === normalize(acceptable)
+                    );
+                    fb.textContent = userAnswer === '' ? '⚠️ Preencha' : (isValid ? '✓ Correto' : '✗ Incorreto');
+                    fb.className = `feedback ${userAnswer === '' ? 'waiting' : (isValid ? 'correct' : 'incorrect')}`;
+                    if (isValid) correct++;
+                }
+            }
+            showSectionResult('resultTranslation', correct, total);
+        }
+
+        function checkMixedExercise() {
+            let correct = 0;
+            const total = 5;
+
+            // Q20
+            const selected20 = document.querySelector(`input[name="q20"]:checked`);
+            const fb20 = document.getElementById('fb20');
+            if (selected20) {
+                const isCorrect = selected20.value === answers.mixed[0];
+                fb20.textContent = isCorrect ? '✓ Correto' : '✗ Incorreto';
+                fb20.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                if (isCorrect) correct++;
+            } else {
+                fb20.textContent = '⚠️ Selecione uma opção';
+                fb20.className = 'feedback waiting';
+            }
+
+            // Q21
+            const input21 = document.querySelector('.q21');
+            const fb21 = document.getElementById('fb21');
+            if (input21) {
+                const userAnswer = normalize(input21.value);
+                const isCorrect = userAnswer === answers.mixed[1];
+                fb21.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                fb21.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                if (isCorrect) correct++;
+            }
+
+            // Q22
+            const input22 = document.querySelector('.q22');
+            const fb22 = document.getElementById('fb22');
+            if (input22) {
+                const userAnswer = normalize(input22.value);
+                const isCorrect = userAnswer === normalize(answers.mixed[2]) || userAnswer === normalize(answers.mixed[3]);
+                fb22.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                fb22.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                if (isCorrect) correct++;
+            }
+
+            // Q23
+            const input23 = document.querySelector('.q23');
+            const fb23 = document.getElementById('fb23');
+            if (input23) {
+                const userAnswer = normalize(input23.value);
+                const isCorrect = userAnswer === normalize(answers.mixed[4]) || userAnswer === normalize(answers.mixed[5]);
+                fb23.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                fb23.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                if (isCorrect) correct++;
+            }
+
+            // Q24
+            const selected24 = document.querySelector(`input[name="q24"]:checked`);
+            const fb24 = document.getElementById('fb24');
+            if (selected24) {
+                const isCorrect = selected24.value === answers.mixed[6];
+                fb24.textContent = isCorrect ? '✓ Correto' : '✗ Incorreto';
+                fb24.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                if (isCorrect) correct++;
+            } else {
+                fb24.textContent = '⚠️ Selecione uma opção';
+                fb24.className = 'feedback waiting';
+            }
+
+            showSectionResult('resultMixed', correct, total);
+        }
+
+        // ==================== FUNÇÕES AUXILIARES ====================
+        function showSectionResult(elementId, correct, total) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.textContent = `Você acertou ${correct} de ${total} (${Math.round(correct/total*100)}%)`;
+                element.className = `section-result ${correct === total ? 'correct' : (correct > 0 ? 'partial' : 'incorrect')}`;
+            }
+            updateGlobalScore();
+        }
+
+        function updateGlobalScore() {
+            let correct = 0;
+            let total = 0;
+            
+            document.querySelectorAll('.feedback').forEach(fb => {
+                if (fb.textContent.includes('✓')) {
+                    correct++;
+                    total++;
+                } else if (fb.textContent.includes('✗') || fb.textContent.includes('⚠️')) {
+                    total++;
+                }
+            });
+            
+            document.getElementById('scoreCount').textContent = correct;
+            document.getElementById('totalCount').textContent = total;
+        }
+
+        function checkAllExercises() {
+            checkSelectExercise();
+            checkWriteExercise();
+            checkSentenceExercise();
+            checkTranslationExercise();
+            checkMixedExercise();
+            
+            const total = document.querySelectorAll('.feedback').length;
+            const correct = document.querySelectorAll('.feedback.correct').length;
+            const result = document.getElementById('globalResult');
+            result.textContent = `🎯 Você acertou ${correct} de ${total} questões (${Math.round(correct/total*100)}%)`;
+            result.className = `result-box ${correct === total ? 'correct' : (correct > total/2 ? 'partial' : 'incorrect')}`;
+        }
+
+        function resetAllExercises() {
+            document.querySelectorAll('input[type="radio"]').forEach(el => el.checked = false);
+            document.querySelectorAll('input[type="text"]').forEach(el => el.value = '');
+            document.querySelectorAll('.feedback').forEach(el => {
+                el.textContent = '';
+                el.className = 'feedback';
+            });
+            document.querySelectorAll('.section-result').forEach(el => {
+                el.textContent = '';
+                el.className = 'section-result';
+            });
+            const result = document.getElementById('globalResult');
+            result.textContent = '';
+            result.className = 'result-box';
+            updateGlobalScore();
+        }
+
+        // Event listeners
+        document.querySelectorAll('input[type="text"]').forEach(input => {
+            input.addEventListener('input', updateGlobalScore);
+        });
+        document.querySelectorAll('input[type="radio"]').forEach(input => {
+            input.addEventListener('change', updateGlobalScore);
+        });
+
+        updateGlobalScore();
+
+        // ==================== TEMA E ARMAZENAMENTO LOCAL ====================
+        function changeTheme(theme) {
+            document.body.classList.remove('dark-mode', 'reading-mode');
+            if (theme !== 'light') {
+                document.body.classList.add(theme + '-mode');
+            }
+            localStorage.setItem('preferredEnglishTheme', theme);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('preferredEnglishTheme') || 'light';
+            document.getElementById('themeSelect').value = savedTheme;
+            changeTheme(savedTheme);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 The Word "EVEN" - Ensino e Exercícios</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        /* Teaching Section */
+        .teaching-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .teaching-section h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #8e44ad;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .grammar-box {
+            background: #ecf0f1;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #8e44ad;
+        }
+        .grammar-box h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .grammar-box table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        .grammar-box table td, .grammar-box table th {
+            padding: 8px 12px;
+            border: 1px solid #bdc3c7;
+        }
+        .grammar-box table th {
+            background: #8e44ad;
+            color: white;
+            text-align: left;
+        }
+        .example {
+            background: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 8px 0;
+            border-left: 4px solid #3498db;
+        }
+        .example .en {
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        .example .pt {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        .highlight {
+            color: #8e44ad;
+            font-weight: bold;
+        }
+        .tip {
+            background: #d1ecf1;
+            padding: 12px 18px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 4px solid #17a2b8;
+        }
+        .tip strong {
+            color: #0c5460;
+        }
+        .warning {
+            background: #fff3cd;
+            padding: 12px 18px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 4px solid #ffc107;
+        }
+        .warning strong {
+            color: #856404;
+        }
+
+        /* Exercise Sections */
+        .exercise-section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .exercise-section h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .exercise-item {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+        .exercise-item .question {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        .exercise-item .context {
+            color: #666;
+            font-style: italic;
+            font-size: 0.95em;
+            margin-bottom: 8px;
+        }
+        .options {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 8px 0;
+        }
+        .options label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+        .options label:hover {
+            background: #e8f4f8;
+        }
+        .options input[type="radio"] {
+            cursor: pointer;
+        }
+        .answer-line {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+        .answer-line input[type="text"] {
+            padding: 8px 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 15px;
+            width: 250px;
+            transition: border-color 0.3s;
+        }
+        .answer-line input[type="text"]:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        .translation-box {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .translation-box input {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        /* Feedback */
+        .feedback {
+            font-size: 0.9em;
+            margin-left: 10px;
+            padding: 3px 12px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        .feedback.correct {
+            background: #d4edda;
+            color: #155724;
+        }
+        .feedback.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .feedback.waiting {
+            background: #e9ecef;
+            color: #6c757d;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            margin: 5px;
+        }
+        .btn-success { background: #2ecc71; color: white; }
+        .btn-success:hover { background: #27ae60; transform: translateY(-2px); }
+        .btn-danger { background: #e74c3c; color: white; }
+        .btn-danger:hover { background: #c0392b; transform: translateY(-2px); }
+        .btn-secondary { background: #95a5a6; color: white; }
+        .btn-secondary:hover { background: #7f8c8d; transform: translateY(-2px); }
+        
+        .button-group {
+            display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin: 20px 0;
+        }
+        .result-box, .section-result {
+            padding: 15px; border-radius: 8px; margin-top: 15px; text-align: center;
+            display: none; font-weight: 600; font-size: 1.1em;
+        }
+        .result-box.correct, .section-result.correct { background: #d4edda; color: #155724; display: block; }
+        .result-box.incorrect, .section-result.incorrect { background: #f8d7da; color: #721c24; display: block; }
+        .result-box.partial, .section-result.partial { background: #fff3cd; color: #856404; display: block; }
+        
+        .score-display {
+            text-align: center; font-size: 1.2em; padding: 10px; background: #ecf0f1;
+            border-radius: 8px; margin: 10px 0;
+        }
+        .score-display span { font-weight: bold; color: #2c3e50; }
+
+        @media (max-width: 600px) {
+            .options { flex-direction: column; gap: 5px; }
+            .answer-line input[type="text"], .translation-box input { width: 100%; }
+        }
+
+        /* ================= BOTÃO VOLTAR & SELETOR DE TEMAS ================= */
+        .back-button {
+            position: fixed; top: 15px; left: 15px; z-index: 1000;
+            background: white; color: #2c3e50; padding: 8px 15px;
+            border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-decoration: none; font-weight: bold; display: flex;
+            align-items: center; gap: 8px; transition: all 0.3s; border: 1px solid #ddd;
+        }
+        .back-button:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        
+        .theme-switcher {
+            position: fixed; top: 15px; right: 15px; z-index: 1000;
+            background: white; padding: 5px; border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); border: 1px solid #ddd;
+        }
+        .theme-switcher select {
+            padding: 8px; border: none; background: transparent; color: #2c3e50;
+            cursor: pointer; font-weight: bold; outline: none;
+        }
+
+        /* ================= MODO ESCURO (DARK MODE) ================= */
+        body.dark-mode { background-color: #121212; color: #e0e0e0; }
+        body.dark-mode .container, body.dark-mode .teaching-section, 
+        body.dark-mode .exercise-section { background-color: #1e1e1e; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        body.dark-mode .grammar-box, body.dark-mode .exercise-item, body.dark-mode .example,
+        body.dark-mode .back-button, body.dark-mode .theme-switcher, body.dark-mode .score-display { 
+            background-color: #2d2d2d; color: #e0e0e0; border-color: #555; 
+        }
+        body.dark-mode h1, body.dark-mode h2, body.dark-mode h3 { color: #bb86fc; }
+        body.dark-mode .subtitle, body.dark-mode .context, body.dark-mode .pt { color: #aaaaaa; }
+        body.dark-mode input[type="text"], body.dark-mode select { background-color: #333; color: #fff; border-color: #555; }
+        body.dark-mode input[type="text"]:focus { border-color: #bb86fc; }
+        body.dark-mode .theme-switcher select { color: #bb86fc; }
+        body.dark-mode table tr:nth-child(even) { background-color: #252525; }
+        body.dark-mode table td { border-color: #444; color: #e0e0e0; }
+        body.dark-mode table th { background-color: #bb86fc; color: #121212; border-color: #bb86fc; }
+        body.dark-mode .highlight { background-color: rgba(187, 134, 252, 0.2); color: #bb86fc; }
+        body.dark-mode footer, body.dark-mode .footer { color: #888; border-top: 1px solid #333; }
+
+        /* ================= MODO LEITURA (READING MODE) ================= */
+        body.reading-mode { background-color: #F4F1EA; color: #2A2A2A; }
+        body.reading-mode .container, body.reading-mode .teaching-section, 
+        body.reading-mode .exercise-section { background-color: #FFFCF5; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        body.reading-mode .grammar-box, body.reading-mode .exercise-item, body.reading-mode .example,
+        body.reading-mode .back-button, body.reading-mode .theme-switcher, body.reading-mode .score-display { 
+            background-color: #F4F1EA; color: #2A2A2A; border-color: #D7CCC8; 
+        }
+        body.reading-mode h1, body.reading-mode h2, body.reading-mode h3 { color: #5D4037; }
+        body.reading-mode .subtitle, body.reading-mode .context, body.reading-mode .pt { color: #6D4C41; }
+        body.reading-mode input[type="text"], body.reading-mode select { background-color: #FFF; color: #2A2A2A; border-color: #D7CCC8; }
+        body.reading-mode input[type="text"]:focus { border-color: #5D4037; }
+        body.reading-mode .theme-switcher select { color: #5D4037; }
+        body.reading-mode table tr:nth-child(even) { background-color: #EFEBE1; }
+        body.reading-mode table td { border-color: #D7CCC8; color: #2A2A2A; }
+        body.reading-mode table th { background-color: #5D4037; color: #FFF; border-color: #5D4037; }
+        body.reading-mode .highlight { background-color: rgba(93, 64, 55, 0.1); color: #5D4037; }
+        body.reading-mode footer, body.reading-mode .footer { color: #8b5a2b; border-top: 1px solid #d7ccc8; }
+        
+        .footer { text-align: center; padding: 20px; margin-top: 20px; font-size: 0.9em; color: #7f8c8d; }
+    </style>
+</head>
+<body>
+    <!-- BOTÕES FLUTUANTES (VOLTAR E TEMA) -->
+    <a href="../index.html" class="back-button">
+        🔙 Voltar
+    </a>
+
+    <div class="theme-switcher">
+        <select id="themeSelect" onchange="changeTheme(this.value)">
+            <option value="light">☀️ Modo Claro</option>
+            <option value="reading">📖 Modo Leitura</option>
+            <option value="dark">🌙 Modo Escuro</option>
+        </select>
+    </div>
+
+    <div class="container">
+        <h1>📚 The Word "EVEN"</h1>
+        <p class="subtitle">Aprenda todos os significados e expressões com a palavra "even"</p>
+
+        <!-- ==================== ENSINO ==================== -->
+        <div class="teaching-section">
+            <h2>📖 Os Vários Usos de "EVEN"</h2>
+            
+            <div class="grammar-box">
+                <h3>1️⃣ Ênfase ou Surpresa (Até / Até mesmo / Nem sequer)</h3>
+                <p>Usamos <strong>even</strong> para mostrar que algo é surpreendente, incomum ou extremo.</p>
+                <div class="example">
+                    <div class="en">Everybody went to the party, <span class="highlight">even</span> John.</div>
+                    <div class="pt">Todo mundo foi para a festa, até (mesmo) o John.</div>
+                </div>
+                <div class="example">
+                    <div class="en">He doesn't <span class="highlight">even</span> know my name!</div>
+                    <div class="pt">Ele nem sequer sabe o meu nome!</div>
+                </div>
+            </div>
+
+            <div class="grammar-box">
+                <h3>2️⃣ Com Comparativos (Ainda mais)</h3>
+                <p>Quando colocado antes de um adjetivo comparativo (como <em>better, taller, faster</em>), ele intensifica a comparação, significando "ainda".</p>
+                <div class="example">
+                    <div class="en">This book is good, but the movie is <span class="highlight">even better</span>.</div>
+                    <div class="pt">Este livro é bom, mas o filme é ainda melhor.</div>
+                </div>
+                <div class="example">
+                    <div class="en">Today is <span class="highlight">even hotter</span> than yesterday.</div>
+                    <div class="pt">Hoje está ainda mais quente que ontem.</div>
+                </div>
+            </div>
+
+            <div class="grammar-box">
+                <h3>3️⃣ Como Adjetivo (Par, Empatado, Plano)</h3>
+                <table>
+                    <tr>
+                        <th>Uso</th>
+                        <th>Significado</th>
+                        <th>Exemplo</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Números</strong></td>
+                        <td>Par (Oposto de <em>Odd</em> = Ímpar)</td>
+                        <td><span class="highlight">2, 4, 6 and 8 are even numbers.</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Superfícies</strong></td>
+                        <td>Plano, nivelado, regular</td>
+                        <td><span class="highlight">Make sure the floor is even.</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Competições/Dívidas</strong></td>
+                        <td>Empatado, "Quites"</td>
+                        <td><span class="highlight">The score is 2-2. It's even. / We are even.</span> (Estamos quites).</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="grammar-box">
+                <h3>4️⃣ Expressões Importantes (Conjunções)</h3>
+                <p>O <strong>even</strong> forma algumas das expressões mais comuns do inglês:</p>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li>🔸 <strong>Even though</strong> / <strong>Even if</strong> = Apesar de / Mesmo que.</li>
+                    <li>🔸 <strong>Even so</strong> = Mesmo assim.</li>
+                </ul>
+                <div class="example">
+                    <div class="en"><span class="highlight">Even though</span> it was raining, we went out.</div>
+                    <div class="pt">Apesar de estar chovendo, nós saímos.</div>
+                </div>
+                <div class="example">
+                    <div class="en">I will go <span class="highlight">even if</span> I am tired.</div>
+                    <div class="pt">Eu irei mesmo que eu esteja cansado.</div>
+                </div>
+                <div class="example">
+                    <div class="en">He was sick. <span class="highlight">Even so</span>, he went to work.</div>
+                    <div class="pt">Ele estava doente. Mesmo assim, ele foi trabalhar.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== EXERCÍCIOS ==================== -->
+
+        <!-- EXERCÍCIO 1: Selecionar -->
+        <div class="exercise-section" id="sec1">
+            <h2>📝 Exercício 1: Múltipla Escolha</h2>
+            <p style="color: #666; margin-bottom: 15px;">Selecione a palavra que melhor completa a frase.</p>
+
+            <div class="exercise-item">
+                <div class="question">1. 10, 12 and 14 are ______ numbers.</div>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="even"> even</label>
+                    <label><input type="radio" name="q1" value="odd"> odd</label>
+                    <label><input type="radio" name="q1" value="equal"> equal</label>
+                </div>
+                <span class="feedback" id="fb1"></span>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">2. She is very smart. She is ______ smarter than her teacher!</div>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="very"> very</label>
+                    <label><input type="radio" name="q2" value="even"> even</label>
+                    <label><input type="radio" name="q2" value="much"> much</label>
+                </div>
+                <span class="feedback" id="fb2"></span>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">3. Everybody went to the beach, ______ my grandmother!</div>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="even"> even</label>
+                    <label><input type="radio" name="q3" value="although"> although</label>
+                    <label><input type="radio" name="q3" value="so"> so</label>
+                </div>
+                <span class="feedback" id="fb3"></span>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">4. ______ it was raining, we played outside. (Apesar de)</div>
+                <div class="options">
+                    <label><input type="radio" name="q4" value="Even"> Even</label>
+                    <label><input type="radio" name="q4" value="Even so"> Even so</label>
+                    <label><input type="radio" name="q4" value="Even though"> Even though</label>
+                </div>
+                <span class="feedback" id="fb4"></span>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">5. I paid for the lunch, you paid for the tickets. We are ______ now.</div>
+                <div class="options">
+                    <label><input type="radio" name="q5" value="even"> even</label>
+                    <label><input type="radio" name="q5" value="flat"> flat</label>
+                    <label><input type="radio" name="q5" value="odd"> odd</label>
+                </div>
+                <span class="feedback" id="fb5"></span>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-success" onclick="checkSelectExercise()">Verificar Respostas</button>
+            </div>
+            <div class="section-result" id="resultSelect"></div>
+        </div>
+
+        <!-- EXERCÍCIO 2: Escrever -->
+        <div class="exercise-section" id="sec2">
+            <h2>✍️ Exercício 2: Preencha as lacunas</h2>
+            <p style="color: #666; margin-bottom: 15px;">Escreva: <strong>even</strong>, <strong>even though</strong>, ou <strong>even if</strong>.</p>
+
+            <div class="exercise-item">
+                <div class="question">6. He doesn't ______ (nem sequer) know my name!</div>
+                <div class="answer-line">
+                    <input type="text" class="q6" placeholder="Sua resposta...">
+                    <span class="feedback" id="fb6"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">7. The floor is not ______. (plano/nivelado)</div>
+                <div class="answer-line">
+                    <input type="text" class="q7" placeholder="Sua resposta...">
+                    <span class="feedback" id="fb7"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">8. ______ ______ he is rich, he is not happy. (Apesar de)</div>
+                <div class="answer-line">
+                    <input type="text" class="q8" placeholder="Sua resposta...">
+                    <span class="feedback" id="fb8"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">9. I will go to the party ______ ______ it rains. (Mesmo que)</div>
+                <div class="answer-line">
+                    <input type="text" class="q9" placeholder="Sua resposta...">
+                    <span class="feedback" id="fb9"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">10. Ten (10) is an ______ number. (par)</div>
+                <div class="answer-line">
+                    <input type="text" class="q10" placeholder="Sua resposta...">
+                    <span class="feedback" id="fb10"></span>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-success" onclick="checkWriteExercise()">Verificar Respostas</button>
+            </div>
+            <div class="section-result" id="resultWrite"></div>
+        </div>
+
+        <!-- EXERCÍCIO 3: Frases completas -->
+        <div class="exercise-section" id="sec3">
+            <h2>✍️ Exercício 3: Escreva a frase</h2>
+            <p style="color: #666; margin-bottom: 15px;">Reescreva ou traduza as frases aplicando a palavra correta.</p>
+
+            <div class="exercise-item">
+                <div class="question">11. Adicione "even" para enfatizar surpresa: "He didn't say hello."</div>
+                <div class="answer-line">
+                    <input type="text" class="q11" placeholder="Escreva a frase..." style="width: 400px;">
+                    <span class="feedback" id="fb11"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">12. Adicione "even" para intensificar a comparação: "This book is better."</div>
+                <div class="answer-line">
+                    <input type="text" class="q12" placeholder="Escreva a frase..." style="width: 400px;">
+                    <span class="feedback" id="fb12"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">13. Traduza para o inglês: "Nós estamos quites."</div>
+                <div class="answer-line">
+                    <input type="text" class="q13" placeholder="Escreva a frase..." style="width: 400px;">
+                    <span class="feedback" id="fb13"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">14. Traduza para o inglês: "Mesmo assim, eu tentei." (Use "even so" e "tried")</div>
+                <div class="answer-line">
+                    <input type="text" class="q14" placeholder="Escreva a frase..." style="width: 400px;">
+                    <span class="feedback" id="fb14"></span>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-success" onclick="checkSentenceExercise()">Verificar Respostas</button>
+            </div>
+            <div class="section-result" id="resultSentence"></div>
+        </div>
+
+        <!-- EXERCÍCIO 4: Tradução -->
+        <div class="exercise-section" id="sec4">
+            <h2>🌍 Exercício 4: Tradução</h2>
+            <p style="color: #666; margin-bottom: 15px;">Traduza as frases para o inglês.</p>
+
+            <div class="exercise-item">
+                <div class="context">🇧🇷 Até o meu cachorro sabe disso (that).</div>
+                <div class="translation-box">
+                    <input type="text" class="q15" placeholder="Tradução em inglês..." style="width: 400px;">
+                    <span class="feedback" id="fb15"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="context">🇧🇷 Oito é um número par.</div>
+                <div class="translation-box">
+                    <input type="text" class="q16" placeholder="Tradução em inglês..." style="width: 400px;">
+                    <span class="feedback" id="fb16"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="context">🇧🇷 Esta superfície é plana (regular).</div>
+                <div class="translation-box">
+                    <input type="text" class="q17" placeholder="Tradução em inglês..." style="width: 400px;">
+                    <span class="feedback" id="fb17"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="context">🇧🇷 Ela é ainda mais rápida (faster).</div>
+                <div class="translation-box">
+                    <input type="text" class="q18" placeholder="Tradução em inglês..." style="width: 400px;">
+                    <span class="feedback" id="fb18"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="context">🇧🇷 Eu não sei nem o seu nome (your name).</div>
+                <div class="translation-box">
+                    <input type="text" class="q19" placeholder="Tradução em inglês..." style="width: 400px;">
+                    <span class="feedback" id="fb19"></span>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-success" onclick="checkTranslationExercise()">Verificar Traduções</button>
+            </div>
+            <div class="section-result" id="resultTranslation"></div>
+        </div>
+
+        <!-- EXERCÍCIO 5: Misto -->
+        <div class="exercise-section" id="sec5">
+            <h2>🔀 Exercício 5: Misto</h2>
+            <p style="color: #666; margin-bottom: 15px;">Teste final de conhecimentos.</p>
+
+            <div class="exercise-item">
+                <div class="question">20. Escolha: I am very tired. ______, I will go to the gym. (Mesmo assim)</div>
+                <div class="options">
+                    <label><input type="radio" name="q20" value="Even though"> Even though</label>
+                    <label><input type="radio" name="q20" value="Even so"> Even so</label>
+                    <label><input type="radio" name="q20" value="Even if"> Even if</label>
+                </div>
+                <span class="feedback" id="fb20"></span>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">21. Complete: The situation is ______ (ainda) worse than before.</div>
+                <div class="answer-line">
+                    <input type="text" class="q21" placeholder="Sua resposta...">
+                    <span class="feedback" id="fb21"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="context">🇧🇷 Mesmo que chova (rains)</div>
+                <div class="translation-box">
+                    <input type="text" class="q22" placeholder="Tradução em inglês..." style="width: 400px;">
+                    <span class="feedback" id="fb22"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">23. Traduza: "Eu nem sequer ligo (care)."</div>
+                <div class="answer-line">
+                    <input type="text" class="q23" placeholder="Escreva a frase..." style="width: 400px;">
+                    <span class="feedback" id="fb23"></span>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="question">24. Escolha: The score is 2-2. The game is ______.</div>
+                <div class="options">
+                    <label><input type="radio" name="q24" value="even"> even</label>
+                    <label><input type="radio" name="q24" value="odd"> odd</label>
+                    <label><input type="radio" name="q24" value="flat"> flat</label>
+                </div>
+                <span class="feedback" id="fb24"></span>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-success" onclick="checkMixedExercise()">Verificar Respostas</button>
+            </div>
+            <div class="section-result" id="resultMixed"></div>
+        </div>
+
+        <!-- ==================== BOTÕES GLOBAIS ==================== -->
+        <div class="button-group">
+            <button class="btn btn-danger" onclick="checkAllExercises()">✅ Verificar Todos os Exercícios</button>
+            <button class="btn btn-secondary" onclick="resetAllExercises()">🔄 Resetar Todos</button>
+        </div>
+
+        <div class="score-display">
+            Total: <span id="scoreCount">0</span> / <span id="totalCount">0</span> corretas
+        </div>
+        <div class="result-box" id="globalResult"></div>
+
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+    <div class="footer">
+        <p>Criação por Vinicius Piratelli &copy; Direitos reservados - 2026</p>
+    </div>
+
+    <script>
+        // ==================== RESPOSTAS ====================
+        const answers = {
+            select: ['even', 'even', 'even', 'Even though', 'even'],
+            write: ['even', 'even', 'even though', 'even if', 'even'],
+            sentences: [
+                ['he didnt even say hello', 'he did not even say hello', 'he doesnt even say hello'],
+                ['this book is even better', 'the book is even better'],
+                ['we are even', 'now we are even'],
+                ['even so i tried', 'even so i have tried']
+            ],
+            translations: [
+                ['even my dog knows that', 'even my dog knows this', 'even my dog knows it'],
+                ['eight is an even number', '8 is an even number'],
+                ['this surface is even', 'the surface is even', 'this is an even surface'],
+                ['she is even faster'],
+                ['i dont even know your name', 'i do not even know your name']
+            ],
+            mixed: ['Even so', 'even', 'even if it rains', 'i dont even care', 'even']
+        };
+
+        // ==================== FUNÇÕES ====================
+        // A função de normalizar agora remove aspas simples (apóstrofos) para evitar erros com "don't" / "didn't"
+        function normalize(text) {
+            return text.toLowerCase().trim().replace(/[.,!?;:'"]/g, '').replace(/\s+/g, ' ');
+        }
+
+        function checkSelectExercise() {
+            let correct = 0;
+            const total = 5;
+            for (let i = 1; i <= total; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                const fb = document.getElementById(`fb${i}`);
+                if (selected) {
+                    const isCorrect = selected.value === answers.select[i-1];
+                    fb.textContent = isCorrect ? '✓ Correto' : '✗ Incorreto';
+                    fb.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                    if (isCorrect) correct++;
+                } else {
+                    fb.textContent = '⚠️ Selecione uma opção';
+                    fb.className = 'feedback waiting';
+                }
+            }
+            showSectionResult('resultSelect', correct, total);
+        }
+
+        function checkWriteExercise() {
+            let correct = 0;
+            const total = 5;
+            for (let i = 6; i <= 10; i++) {
+                const input = document.querySelector(`.q${i}`);
+                const fb = document.getElementById(`fb${i}`);
+                if (input) {
+                    const userAnswer = normalize(input.value);
+                    const isCorrect = userAnswer === normalize(answers.write[i-6]);
+                    fb.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                    fb.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                    if (isCorrect) correct++;
+                }
+            }
+            showSectionResult('resultWrite', correct, total);
+        }
+
+        function checkSentenceExercise() {
+            let correct = 0;
+            const total = 4;
+            for (let i = 11; i <= 14; i++) {
+                const input = document.querySelector(`.q${i}`);
+                const fb = document.getElementById(`fb${i}`);
+                if (input) {
+                    const userAnswer = normalize(input.value);
+                    const isValid = answers.sentences[i-11].some(acceptable => 
+                        userAnswer === normalize(acceptable)
+                    );
+                    fb.textContent = userAnswer === '' ? '⚠️ Preencha' : (isValid ? '✓ Correto' : '✗ Incorreto');
+                    fb.className = `feedback ${userAnswer === '' ? 'waiting' : (isValid ? 'correct' : 'incorrect')}`;
+                    if (isValid) correct++;
+                }
+            }
+            showSectionResult('resultSentence', correct, total);
+        }
+
+        function checkTranslationExercise() {
+            let correct = 0;
+            const total = 5;
+            for (let i = 15; i <= 19; i++) {
+                const input = document.querySelector(`.q${i}`);
+                const fb = document.getElementById(`fb${i}`);
+                if (input) {
+                    const userAnswer = normalize(input.value);
+                    const isValid = answers.translations[i-15].some(acceptable => 
+                        userAnswer === normalize(acceptable)
+                    );
+                    fb.textContent = userAnswer === '' ? '⚠️ Preencha' : (isValid ? '✓ Correto' : '✗ Incorreto');
+                    fb.className = `feedback ${userAnswer === '' ? 'waiting' : (isValid ? 'correct' : 'incorrect')}`;
+                    if (isValid) correct++;
+                }
+            }
+            showSectionResult('resultTranslation', correct, total);
+        }
+
+        function checkMixedExercise() {
+            let correct = 0;
+            const total = 5;
+
+            // Q20
+            const selected20 = document.querySelector(`input[name="q20"]:checked`);
+            const fb20 = document.getElementById('fb20');
+            if (selected20) {
+                const isCorrect = selected20.value === answers.mixed[0];
+                fb20.textContent = isCorrect ? '✓ Correto' : '✗ Incorreto';
+                fb20.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                if (isCorrect) correct++;
+            } else {
+                fb20.textContent = '⚠️ Selecione uma opção';
+                fb20.className = 'feedback waiting';
+            }
+
+            // Q21
+            const input21 = document.querySelector('.q21');
+            const fb21 = document.getElementById('fb21');
+            if (input21) {
+                const userAnswer = normalize(input21.value);
+                const isCorrect = userAnswer === normalize(answers.mixed[1]);
+                fb21.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                fb21.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                if (isCorrect) correct++;
+            }
+
+            // Q22
+            const input22 = document.querySelector('.q22');
+            const fb22 = document.getElementById('fb22');
+            if (input22) {
+                const userAnswer = normalize(input22.value);
+                const isCorrect = userAnswer === normalize(answers.mixed[2]);
+                fb22.textContent = userAnswer === '' ? '⚠️ Preencha' : (isCorrect ? '✓ Correto' : '✗ Incorreto');
+                fb22.className = `feedback ${userAnswer === '' ? 'waiting' : (isCorrect ? 'correct' : 'incorrect')}`;
+                if (isCorrect) correct++;
+            }
+
+            // Q23
+            const input23 = document.querySelector('.q23');
+            const fb23 = document.getElementById('fb23');
+            if (input23) {
+                const userAnswer = normalize(input23.value);
+                const isValid = answers.mixed[3].includes(userAnswer) || userAnswer === normalize(answers.mixed[3]);
+                fb23.textContent = userAnswer === '' ? '⚠️ Preencha' : (isValid ? '✓ Correto' : '✗ Incorreto');
+                fb23.className = `feedback ${userAnswer === '' ? 'waiting' : (isValid ? 'correct' : 'incorrect')}`;
+                if (isValid) correct++;
+            }
+
+            // Q24
+            const selected24 = document.querySelector(`input[name="q24"]:checked`);
+            const fb24 = document.getElementById('fb24');
+            if (selected24) {
+                const isCorrect = selected24.value === answers.mixed[4];
+                fb24.textContent = isCorrect ? '✓ Correto' : '✗ Incorreto';
+                fb24.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                if (isCorrect) correct++;
+            } else {
+                fb24.textContent = '⚠️ Selecione uma opção';
+                fb24.className = 'feedback waiting';
+            }
+
+            showSectionResult('resultMixed', correct, total);
+        }
+
+        // ==================== FUNÇÕES AUXILIARES ====================
+        function showSectionResult(elementId, correct, total) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.textContent = `Você acertou ${correct} de ${total} (${Math.round(correct/total*100)}%)`;
+                element.className = `section-result ${correct === total ? 'correct' : (correct > 0 ? 'partial' : 'incorrect')}`;
+            }
+            updateGlobalScore();
+        }
+
+        function updateGlobalScore() {
+            let correct = 0;
+            let total = 0;
+            
+            document.querySelectorAll('.feedback').forEach(fb => {
+                if (fb.textContent.includes('✓')) {
+                    correct++;
+                    total++;
+                } else if (fb.textContent.includes('✗') || fb.textContent.includes('⚠️')) {
+                    total++;
+                }
+            });
+            
+            document.getElementById('scoreCount').textContent = correct;
+            document.getElementById('totalCount').textContent = total;
+        }
+
+        function checkAllExercises() {
+            checkSelectExercise();
+            checkWriteExercise();
+            checkSentenceExercise();
+            checkTranslationExercise();
+            checkMixedExercise();
+            
+            const total = document.querySelectorAll('.feedback').length;
+            const correct = document.querySelectorAll('.feedback.correct').length;
+            const result = document.getElementById('globalResult');
+            result.textContent = `🎯 Você acertou ${correct} de ${total} questões (${Math.round(correct/total*100)}%)`;
+            result.className = `result-box ${correct === total ? 'correct' : (correct > total/2 ? 'partial' : 'incorrect')}`;
+        }
+
+        function resetAllExercises() {
+            document.querySelectorAll('input[type="radio"]').forEach(el => el.checked = false);
+            document.querySelectorAll('input[type="text"]').forEach(el => el.value = '');
+            document.querySelectorAll('.feedback').forEach(el => {
+                el.textContent = '';
+                el.className = 'feedback';
+            });
+            document.querySelectorAll('.section-result').forEach(el => {
+                el.textContent = '';
+                el.className = 'section-result';
+            });
+            const result = document.getElementById('globalResult');
+            result.textContent = '';
+            result.className = 'result-box';
+            updateGlobalScore();
+        }
+
+        // Event listeners
+        document.querySelectorAll('input[type="text"]').forEach(input => {
+            input.addEventListener('input', updateGlobalScore);
+        });
+        document.querySelectorAll('input[type="radio"]').forEach(input => {
+            input.addEventListener('change', updateGlobalScore);
+        });
+
+        updateGlobalScore();
+
+        // ==================== TEMA E ARMAZENAMENTO LOCAL ====================
+        function changeTheme(theme) {
+            document.body.classList.remove('dark-mode', 'reading-mode');
+            if (theme !== 'light') {
+                document.body.classList.add(theme + '-mode');
+            }
+            localStorage.setItem('preferredEnglishTheme', theme);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('preferredEnglishTheme') || 'light';
+            document.getElementById('themeSelect').value = savedTheme;
+            changeTheme(savedTheme);
+        });
+    </script>
+</body>
+</html>
